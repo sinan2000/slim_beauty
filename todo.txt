@@ -1,6 +1,10 @@
 Gallery section - fetch data directly from facebook (req. fb app, do it later)
 
+Buton to book now make to nav with animation
+
 Form submission - rate limiting
+
+Footer - improve colors and hoverable links + links to anpc
 
 Services & About Us pages
 

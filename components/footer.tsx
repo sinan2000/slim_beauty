@@ -1,41 +1,67 @@
-import Link from "next/link";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Facebook, Instagram } from 'lucide-react'
 
 export default function Footer() {
     return (
-        <footer className="bg-[#2C2C2C] text-white py-12">
-            <div className="container mx-auto px-4">
+        <footer className="bg-[#3D2B1F] text-[#F5EBE6]">
+            <div className="container mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Despre Noi</h3>
-                        <p className="text-sm text-gray-400">Slim & Beauty by MC este destinația ta pentru tratamente dermato-cosmetice și de remodelare corporală avansate.</p>
+                        <p className="text-sm">
+                            Slim & Beauty by MC oferă servicii de înfrumusețare și remodelare corporală de înaltă calitate, folosind tehnologii avansate și produse premium.
+                        </p>
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold mb-4">Link-uri Rapide</h3>
-                        <ul className="space-y-2">
-                            <li><Link href="#" className="text-sm text-gray-400 hover:text-white">Acasă</Link></li>
-                            <li><Link href="#" className="text-sm text-gray-400 hover:text-white">Servicii</Link></li>
-                            <li><Link href="#" className="text-sm text-gray-400 hover:text-white">Despre Noi</Link></li>
-                            <li><Link href="#" className="text-sm text-gray-400 hover:text-white">Contact</Link></li>
+                        <h3 className="text-lg font-semibold mb-4">Pagini</h3>
+                        <ul className="text-sm space-y-2">
+                            <li><Link href="/">Acasă</Link></li>
+                            <li><Link href="/servicii">Servicii</Link></li>
+                            <li><Link href="/despre-noi">Despre noi</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Contact</h3>
-                        <p className="text-sm text-gray-400">strada Petofi Sandor 101, Dumbrăvița, Romania</p>
-                        <p className="text-sm text-gray-400">+40 733 407 329</p>
-                        <p className="text-sm text-gray-400">info@slimandbeauty.ro</p>
+                        <ul className="text-sm space-y-2">
+                            <li>Telefon: +40 733 407 329</li>
+                            <li>Email: contact@slimandbeauty.ro</li>
+                            <li>Adresă: Dumbrăvița, str. Petőfi Sándor 101</li>
+                        </ul>
+                        <div className="flex space-x-4 mt-4">
+                            <a href="https://www.facebook.com/SalonSlimBeautyByMc" target="_blank" rel="noopener noreferrer" className="text-[#6B4E32] hover:text-[#5A4129]">
+                                <Facebook size={24} />
+                                <span className="sr-only">Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/slimandbeautybymc/" target="_blank" rel="noopener noreferrer" className="text-[#6B4E32] hover:text-[#5A4129]">
+                                <Instagram size={24} />
+                                <span className="sr-only">Instagram</span>
+                            </a>
+                        </div>
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-                        <form className="space-y-2">
-                            <Input type="email" placeholder="Adresa ta de email" className="bg-gray-800 border-gray-700 text-white" />
-                            <Button type="submit" className="w-full">Abonează-te</Button>
-                        </form>
+                        <h3 className="text-lg font-semibold mb-4">Legal</h3>
+                        <div className="space-y-4">
+                            <Image
+                                src="/anpc.avif"
+                                alt="ANPC Logo"
+                                width={200}
+                                height={50}
+                                className="w-auto h-auto max-w-[200px]"
+                            />
+                            <Image
+                                src="/anpc_sal.avif"
+                                alt="ANPC SAL Logo"
+                                width={200}
+                                height={50}
+                                className="w-auto h-auto max-w-[200px]"
+                            />
+                        </div>
                     </div>
                 </div>
-                <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-                    <p className="text-sm text-gray-400">&copy; 2024 Slim & Beauty by MC. Toate drepturile rezervate.</p>
+                <div className="mt-8 pt-8 border-t border-[#6B4E32] text-center text-sm">
+                    <p>&copy; {new Date().getFullYear()} Slim & Beauty by MC. Toate drepturile rezervate.</p>
                 </div>
             </div>
         </footer>

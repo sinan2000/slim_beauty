@@ -6,7 +6,7 @@ export default function ContactSection() {
     return (
         <section className="py-16 bg-[#F5EBE6]">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-semibold text-center mb-12 text-[#6B4E32]">Contactează-ne</h2>
+                <h2 className="text-3xl font-semibold text-center mb-12">Contactează-ne</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-8">
                         <Card className="bg-white shadow-lg">
