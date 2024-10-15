@@ -1,10 +1,28 @@
+'use client';
+
+import { useState } from "react";
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from './ui/button';
+import { Menu, X } from 'lucide-react'
 
 export default function Navbar() {
+    const [mobileMenu, setMobileMenu] = useState(false)
+
+    const items = [
+        { name: "Acasă", href: "/" },
+        { name: "Servicii", href: "/servicii" },
+        { name: "Despre Noi", href: "/#despre-noi" },
+        { name: "Contact", href: "/#contact" }
+    ]
+
+    const toggleMenu = () => {
+        setMobileMenu(!mobileMenu)
+    }
+
     return (
-        <header className="bg-white shadow-sm fixed w-full z-10">
+        <header className="bg-[#F7F7F7] shadow-sm fixed w-full z-10">
+            {/* Desktop Menu */}
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 <Image
                     src="/logo.jpg"
@@ -15,13 +33,39 @@ export default function Navbar() {
                 />
                 <nav className="hidden md:block">
                     <ul className="flex space-x-6">
-                        <li><Link href="#" className="text-muted-foreground hover:text-primary">Acasă</Link></li>
-                        <li><Link href="#" className="text-muted-foreground hover:text-primary">Servicii</Link></li>
-                        <li><Link href="#" className="text-muted-foreground hover:text-primary">Despre Noi</Link></li>
-                        <li><Link href="#" className="text-muted-foreground hover:text-primary">Contact</Link></li>
+                        {items.map(item => (
+                            <Link href={item.href} key={item.name} className="text-[#6B4E32] hover:text-primary">{item.name}</Link>
+                        ))}
                     </ul>
                 </nav>
-                <Button size="sm" className="md:hidden">Meniu</Button>
+                <Button size="sm" variant="ghost" onClick={toggleMenu} className="md:hidden">
+                    <Menu className="h-6 w-6 text-[#6B4E32]" />
+                    <span className="sr-only">Deschide meniul</span>
+                </Button>
+            </div>
+
+            {/* Mobile Menu */}
+            <div className={`md:hidden fixed inset-y-0 right-0 transform ${mobileMenu ? 'translate-x-0' : 'translate-x-full'} w-64 bg-[#F7F7F7] shadow-lg transition duration-300 ease-in-out z-20 overflow-y-auto`}>
+                <div className="p-6 flex flex-col h-full">
+                    <div className="flex justify-end mb-8">
+                        <Button size="sm" variant="ghost" onClick={toggleMenu}>
+                            <X className="h-6 w-6 text-[#6B4E32]" />
+                            <span className="sr-only">Închide meniul</span>
+                        </Button>
+                    </div>
+                    <nav className="flex-grow">
+                        <ul className="space-y-6">
+                            {items.map(item => (
+                                <li key={item.name}>
+                                    <Link href={item.href} className="text-[#6B4E32] hover:text-primary text-lg font-medium block">{item.name}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+                    <div className="mt-auto pt-6 border-t border-gray-200">
+                        <p className="text-sm text-[#6B4E32] text-center">© {new Date().getFullYear()} Slim & Beauty by MC.</p>
+                    </div>
+                </div>
             </div>
         </header>
     )
