@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Zap, Snowflake, Waves, Radio, Wind, Droplet, Scissors, Sparkles, Star, Phone, MapPin, Instagram, Facebook } from 'lucide-react'
+import { Scissors, Sparkles, Star, Phone, MapPin, Instagram, Facebook } from 'lucide-react'
 import Hero from '@/components/landing_page/hero'
+import BodyCare from '@/components/landing_page/body_care'
 
 export default function HomePage() {
   return (
@@ -13,56 +14,7 @@ export default function HomePage() {
       <main className="flex-grow pt-[86px]">
         <Hero />
 
-        {/* Body Care Procedures Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-semibold text-center mb-12">Proceduri Corporale</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card>
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <Waves className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">VShape Anticelulitic</h3>
-                  <p className="text-muted-foreground">Tratamente pentru reducerea celulitei.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <Snowflake className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Criolipoliză</h3>
-                  <p className="text-muted-foreground">Sculptură corporală cu tehnologie avansată de răcire.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <Zap className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">EMSlim Neo RF</h3>
-                  <p className="text-muted-foreground">Tonifiere musculară și slăbire.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <Radio className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Radiofrecvență Bipolară</h3>
-                  <p className="text-muted-foreground">Lifting și regenerare celulară.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <Wind className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Masaj Vacuum Anticelulitic</h3>
-                  <p className="text-muted-foreground">Reducerea celulitei și tonifierea pielii.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <Droplet className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Presoterapie (Drenaj Limfatic)</h3>
-                  <p className="text-muted-foreground">Eliminarea toxinelor și reducerea retenției de apă.</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
+        <BodyCare />
 
         {/* Facial Aesthetic Treatments Section */}
         <section className="py-16 bg-[#F5EBE6]">
