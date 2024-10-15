@@ -4,6 +4,7 @@ import FaceCare from '@/components/landing_page/face_care'
 import Transformations from '@/components/landing_page/transformations'
 import Contact from '@/components/landing_page/contact'
 import Testimonials from '@/components/landing_page/testimonials'
+import BookingForm from '@/components/landing_page/booking_form'
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
         <FaceCare />
         <Testimonials />
         <Transformations />
+        <BookingForm />
         <Contact />
       </main>
     </div>

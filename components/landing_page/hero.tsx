@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, MapPin, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Hero() {
     const [currentImage, setCurrentImage] = useState(0);
@@ -30,14 +31,14 @@ export default function Hero() {
         <section className="relative min-h-[calc(100vh-86px)] overflow-hidden">
             <div className="flex flex-col lg:flex-row h-full">
                 {/* Image and controls */}
-                <div 
+                <div
                     className="relative w-full lg:w-1/2 h-[50vh] lg:h-[calc(100vh-86px)]"
                     style={{
                         backgroundImage: `url('${images[currentImage]}')`,
                         backgroundSize: 'contain',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
-                    }}    
+                    }}
                 >
                     <AnimatePresence initial={false}>
                         <motion.div
@@ -113,8 +114,16 @@ export default function Hero() {
                         transition={{ delay: 0.6 }}
                         className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
                     >
-                        <Button size="lg" className="bg-primary hover:bg-primary/90 w-full sm:w-auto">Rezervă acum</Button>
-                        <Button size="lg" variant="outline" className="border-primary text-primar w-full sm:w-auto">Explorează serviciile noastre</Button>
+                        <Link href="/rezervare">
+                            <Button size="lg" className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
+                                Rezervă acum
+                            </Button>
+                        </Link>
+                        <Link href='/servicii'>
+                            <Button size="lg" variant="outline" className="border-primary text-primar w-full sm:w-auto">
+                                Explorează serviciile noastre
+                            </Button>
+                        </Link>
                     </motion.div>
                 </div>
             </div>

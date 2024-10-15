@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 import { Menu, X, Instagram, Facebook } from 'lucide-react'
 
 export default function Navbar() {
@@ -12,7 +12,7 @@ export default function Navbar() {
     const items = [
         { name: "Acasă", href: "/" },
         { name: "Servicii", href: "/servicii" },
-        { name: "Despre Noi", href: "/#despre-noi" },
+        { name: "Despre Noi", href: "/despre-noi" },
         { name: "Contact", href: "/#contact" }
     ]
 
@@ -31,17 +31,29 @@ export default function Navbar() {
                     height={75}
                     className="w-36 h-auto"
                 />
-                <nav className="hidden md:block">
+                <nav className="hidden md:flex items-center space-x-6">
                     <ul className="flex space-x-6">
                         {items.map(item => (
                             <Link href={item.href} key={item.name} className="text-[#6B4E32] hover:text-primary">{item.name}</Link>
                         ))}
                     </ul>
+                    <Link href="/#rezervare">
+                        <Button variant="default" className="bg-primary text-white hover:bg-primary/90">
+                            Rezervă acum
+                        </Button>
+                    </Link>
                 </nav>
-                <Button size="sm" variant="ghost" onClick={toggleMenu} className="md:hidden">
-                    <Menu className="h-6 w-6 text-[#6B4E32]" />
-                    <span className="sr-only">Deschide meniul</span>
-                </Button>
+                <div className="flex items-center space-x-4 md:hidden">
+                    <Link href="/#rezervare">
+                        <Button variant="default" className="bg-primary text-white hover:bg-primary/90">
+                            Rezervă acum
+                        </Button>
+                    </Link>
+                    <Button size="sm" variant="ghost" onClick={toggleMenu}>
+                        <Menu className="h-6 w-6 text-[#6B4E32]" />
+                        <span className="sr-only">Deschide meniul</span>
+                    </Button>
+                </div>
             </div>
 
             {/* Mobile Menu */}
@@ -63,8 +75,14 @@ export default function Navbar() {
                         </ul>
                     </nav>
 
+                    <Link href="/#rezervare">
+                        <Button variant="default" className="bg-primary text-white hover:bg-primary/90">
+                            Rezervă acum
+                        </Button>
+                    </Link>
+
                     {/* Social Icons */}
-                    <div className="flex justify-center space-x-4 mt-4 mb-2">
+                    <div className="flex justify-center space-x-4 mt-6 mb-2">
                         <Link href="https://www.instagram.com/slimandbeautybymc/" className="text-[#6B4E32] hover:text-primary" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <Instagram className="h-6 w-6" />
                         </Link>
