@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Hero() {
@@ -36,7 +36,11 @@ export default function Hero() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                     className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('${images[currentImage]}')` }}
+                    style={{
+                        backgroundImage: `url('${images[currentImage]}')`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    }}
                 />
             </AnimatePresence>
             <div className="absolute inset-0 bg-black bg-opacity-50" />
@@ -64,7 +68,7 @@ export default function Hero() {
                     className="flex space-x-4"
                 >
                     <Button size="lg" className="bg-primary hover:bg-primary/90">Rezervă acum</Button>
-                    <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary">Explorează serviciile noastre</Button>
+                    <Button size="lg" variant="outline" className="text-black border-white">Explorează serviciile noastre</Button>
                 </motion.div>
             </div>
 
@@ -79,20 +83,27 @@ export default function Hero() {
                 ))}
             </div>
 
-            <button
+            <Button
                 onClick={prevImage}
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-300"
                 aria-label="Previous image"
             >
                 <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
+            </Button>
+            <Button
                 onClick={nextImage}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-300"
                 aria-label="Next image"
             >
                 <ChevronRight className="w-6 h-6" />
-            </button>
+            </Button>
+
+            <div className="absolute bottom-4 left-4 flex items-center space-x-4 text-white">
+                <Phone className="w-5 h-5" />
+                <span>+40 (733) 407 329</span>
+                <MapPin className="w-5 h-5 ml-4" />
+                <span>Dumbrăvița, str. Petofi Șandor 101</span>
+            </div>
         </section>
     );
 }
