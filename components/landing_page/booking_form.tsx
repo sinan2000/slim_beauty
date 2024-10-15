@@ -1,5 +1,264 @@
-export default function BookingForm() {
+'use client'
+
+import * as React from "react"
+import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
+
+const formSchema = z.object({
+    name: z.string({
+        required_error: "Vă rugăm să introduceți numele dvs.",
+    }).min(2, {
+        message: "Numele trebuie să conțină cel puțin 2 caractere.",
+    }),
+    phone: z.string({
+        required_error: "Vă rugăm să introduceți numărul de telefon.",
+    }).min(10, {
+        message: "Numărul de telefon trebuie să conțină 10 cifre.",
+    }).regex(/^\d+$/, {
+        message: "Numărul de telefon trebuie să conțină doar cifre.",
+    }),
+    service: z.string({
+        required_error: "Vă rugăm să selectați un serviciu.",
+    }),
+    date: z.date({
+        required_error: "Vă rugăm să selectați o dată.",
+    }),
+    time: z.string({
+        required_error: "Vă rugăm să selectați o oră.",
+    }),
+    message: z.string().optional(),
+})
+
+const schedule: { [key: number]: string[] } = {
+    0: [], // Sunday - closed
+    1: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"], // Monday
+    2: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"], // Tuesday
+    3: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"], // Wednesday
+    4: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"], // Thursday
+    5: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"], // Friday
+    6: [], // Saturday - closed
+};
+
+
+export default function BookAppointment() {
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+    })
+
+    const [availableTimes, setAvailableTimes] = React.useState<string[]>([])
+
+    const handleDateChange = (selectedDate: Date | undefined) => {
+        if (!selectedDate) return;
+
+        const dayOfWeek = selectedDate.getDay()
+        const times = schedule[dayOfWeek];
+        setAvailableTimes(times)
+    }
+
+    function onSubmit(values: z.infer<typeof formSchema>) {
+        console.log(values)
+        // Here you would typically send the form data to your backend
+    }
+
     return (
-        <p>Hello!</p>
+        <section className="py-16">
+            <div className="container mx-auto px-4">
+                <h2 className="text-3xl font-semibold text-center mb-12 text-[#6B4E32]">Programează o Întâlnire</h2>
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-2xl mx-auto">
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Nume</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Introduceți numele dvs." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Număr de Telefon</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Introduceți numărul dvs. de telefon" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="service"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Serviciu</FormLabel>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Selectați un serviciu" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                <SelectLabel className="text-[#6B4E32] font-semibold">Proceduri Corporale</SelectLabel>
+                                                <SelectItem value="vshape">VShape Anticelulitic</SelectItem>
+                                                <SelectItem value="criolipoliza">Criolipoliză</SelectItem>
+                                                <SelectItem value="emslim">EMSlim Neo RF</SelectItem>
+                                                <SelectItem value="radiofrecventa">Radiofrecvență Bipolară</SelectItem>
+                                                <SelectItem value="masaj">Masaj Vacuum Anticelulitic</SelectItem>
+                                                <SelectItem value="presoterapie">Presoterapie (Drenaj Limfatic)</SelectItem>
+                                                <SelectItem value="cavitatie">Cavitatie</SelectItem>
+                                                <SelectItem value="impachetari">Împachetări Tunel IR</SelectItem>
+                                                <SelectItem value="bronzare">Bronzare Organică cu DHA</SelectItem>
+                                            </SelectGroup>
+                                            <SelectGroup>
+                                                <SelectLabel className="text-[#6B4E32] font-semibold">Dermato Cosmetică</SelectLabel>
+                                                <SelectItem value="dermapen">Dermapen cu Microneedling</SelectItem>
+                                                <SelectItem value="microdermabraziune">Microdermabraziune</SelectItem>
+                                                <SelectItem value="tratament">Tratament Clasic de Curățire</SelectItem>
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="date"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col">
+                                    <FormLabel>Data</FormLabel>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <FormControl>
+                                                <Button
+                                                    variant={"outline"}
+                                                    className={cn(
+                                                        "w-full pl-3 text-left font-normal",
+                                                        !field.value && "text-muted-foreground"
+                                                    )}
+                                                >
+                                                    {field.value ? (
+                                                        format(field.value, "PPP")
+                                                    ) : (
+                                                        <span>Alegeți o dată</span>
+                                                    )}
+                                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                </Button>
+                                            </FormControl>
+                                        </PopoverTrigger>
+                                        <PopoverContent className="w-auto p-0" align="start">
+                                            <Calendar
+                                                mode="single"
+                                                selected={field.value}
+                                                onSelect={(date) => {
+                                                    field.onChange(date);
+                                                    handleDateChange(date);
+                                                }}
+                                                disabled={(date) =>
+                                                    date < new Date() ||
+                                                    date > new Date(new Date().setMonth(new Date().getMonth() + 2)) ||
+                                                    date.getDay() === 0 || date.getDay() === 6
+                                                }
+                                                initialFocus
+                                            />
+                                        </PopoverContent>
+                                    </Popover>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="time"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Ora</FormLabel>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Selectați o oră" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {availableTimes.length > 0 ? (
+                                                availableTimes.map((time, index) => (
+                                                    <SelectItem key={index} value={time}>
+                                                        {time}
+                                                    </SelectItem>
+                                                ))
+                                            ) : (
+                                                <SelectItem disabled value="null">
+                                                    Nicio oră disponibilă pentru această zi
+                                                </SelectItem>
+                                            )}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="message"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Mesaj (opțional)</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="Introduceți orice informații suplimentare aici"
+                                            className="resize-none"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button type="submit" className="w-full bg-[#6B4E32] hover:bg-[#5A4129] text-white">
+                            Trimiteți Programarea
+                        </Button>
+                    </form>
+                </Form>
+            </div>
+        </section>
     )
 }
