@@ -85,7 +85,7 @@ export default function Hero() {
                         </div>
                         <div className="flex items-center">
                             <MapPin className="w-5 h-5 mr-2" />
-                            <span>Dumbrăvița, str. Petofi Șandor 101</span>
+                            <span>Dumbrăvița, str. Petőfi Șándor 101</span>
                         </div>
                     </div>
                 </div>

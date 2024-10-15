@@ -109,7 +109,7 @@ export default function BookAppointment() {
     }
 
     return (
-        <section className="py-16">
+        <section id="rezervare" className="py-16">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-semibold text-center mb-12">Programează o Întâlnire</h2>
 
