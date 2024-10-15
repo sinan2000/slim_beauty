@@ -1,13 +1,13 @@
 Proceduri corporale
 -------------------
-vshape anticelulitic
+vshape anticelulitic X
 cavitatie
-criolipoliza
-radiofrecventa bipolara
-emslim neo rf
-presoterapie = drenaj limfatic
+criolipoliza X
+radiofrecventa bipolara X
+emslim neo rf X
+presoterapie = drenaj limfatic X
 impachetari tunel ir
-masaj vacuum anticelulitic
+masaj vacuum anticelulitic X
 
 Bronzare organica cu dha
 
