@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from './ui/button';
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Instagram, Facebook } from 'lucide-react'
 
 export default function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false)
@@ -62,6 +62,17 @@ export default function Navbar() {
                             ))}
                         </ul>
                     </nav>
+
+                    {/* Social Icons */}
+                    <div className="flex justify-center space-x-4 mt-4 mb-2">
+                        <Link href="https://www.instagram.com/slimandbeautybymc/" className="text-[#6B4E32] hover:text-primary" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <Instagram className="h-6 w-6" />
+                        </Link>
+                        <Link href="https://www.facebook.com/SalonSlimBeautyByMc" className="text-[#6B4E32] hover:text-primary" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <Facebook className="h-6 w-6" />
+                        </Link>
+                    </div>
+
                     <div className="mt-auto pt-6 border-t border-gray-200">
                         <p className="text-sm text-[#6B4E32] text-center">© {new Date().getFullYear()} Slim & Beauty by MC.</p>
                     </div>
