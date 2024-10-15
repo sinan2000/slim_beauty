@@ -3,7 +3,7 @@ import BodyCare from '@/components/landing_page/body_care'
 import FaceCare from '@/components/landing_page/face_care'
 import Transformations from '@/components/landing_page/transformations'
 import Contact from '@/components/landing_page/contact'
-import Footer from '@/components/footer'
+import Testimonials from '@/components/landing_page/testimonials'
 
 export default function HomePage() {
   return (
@@ -12,11 +12,10 @@ export default function HomePage() {
         <Hero />
         <BodyCare />
         <FaceCare />
+        <Testimonials />
         <Transformations />
         <Contact />
       </main>
-
-      <Footer />
     </div>
   )
 }
