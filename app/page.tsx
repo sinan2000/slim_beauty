@@ -1,7 +1,7 @@
 import Hero from '@/components/landing_page/hero'
 import BodyCare from '@/components/landing_page/body_care'
 import FaceCare from '@/components/landing_page/face_care'
-import Transformations from '@/components/landing_page/transformations'
+import Gallery from '@/components/landing_page/gallery'
 import Contact from '@/components/landing_page/contact'
 import Testimonials from '@/components/landing_page/testimonials'
 import BookingForm from '@/components/landing_page/booking_form'
@@ -14,7 +14,7 @@ export default function HomePage() {
         <BodyCare />
         <FaceCare />
         <Testimonials />
-        <Transformations />
+        <Gallery />
         <BookingForm />
         <Contact />
       </main>

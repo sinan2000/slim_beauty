@@ -1,4 +1,1 @@
-Hero section:
-- fix different screen widths image rendering
-- fix bottom phone and address overlapping with active photo button
-- fix mobile scroll buttons weird position
+Gallery section - fetch data directly from facebook (req. fb app, do it later)

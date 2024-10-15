@@ -76,9 +76,11 @@ export default function Navbar() {
                     </nav>
 
                     <Link href="/#rezervare">
-                        <Button variant="default" className="bg-primary text-white hover:bg-primary/90">
-                            Rezervă acum
-                        </Button>
+                        <div className="flex justify-center mt-6">
+                            <Button variant="default" className="bg-primary text-white hover:bg-primary/90">
+                                Rezervă acum
+                            </Button>
+                        </div>
                     </Link>
 
                     {/* Social Icons */}
