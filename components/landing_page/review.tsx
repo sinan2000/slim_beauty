@@ -9,7 +9,7 @@ interface ReviewCardProps {
 
 export default function ReviewCard({ review }: ReviewCardProps) {
     return (
-        <Card key={review.url} className="h-full">
+        <Card key={review.authorName} className="h-full">
             <CardContent className="p-6 flex flex-col h-full">
                 <div className="flex items-center mb-4">
                     <Image

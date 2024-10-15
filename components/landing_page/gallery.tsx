@@ -108,7 +108,7 @@ export default function FacebookPostsCarousel() {
     return (
         <section className="py-16 bg-[#F5EBE6]">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-semibold text-center mb-12 text-[#6B4E32]">Noutăți de pe Facebook</h2>
+                <h2 className="text-3xl font-semibold text-center mb-12">Noutăți de pe Facebook</h2>
                 <Carousel setApi={setApi} className="w-full max-w-5xl mx-auto" opts={{ loop: true }}>
                     <CarouselContent>
                         {posts.map((post, index) => (

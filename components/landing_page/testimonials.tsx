@@ -26,7 +26,7 @@ export default function Testimonials() {
     return (
         <section className="py-16">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-semibold text-center mb-12 text-[#6B4E32]">Ce zic clientele noastre</h2>
+                <h2 className="text-3xl font-semibold text-center mb-12">Ce zic clientele noastre</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {reviews.map(review => (
                         <ReviewCard review={review} />

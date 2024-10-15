@@ -34,6 +34,7 @@ import {
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import { sendSms } from "@/app/actions"
 
 const formSchema = z.object({
     name: z.string({
@@ -43,10 +44,8 @@ const formSchema = z.object({
     }),
     phone: z.string({
         required_error: "Vă rugăm să introduceți numărul de telefon.",
-    }).min(10, {
-        message: "Numărul de telefon trebuie să conțină 10 cifre.",
-    }).regex(/^\d+$/, {
-        message: "Numărul de telefon trebuie să conțină doar cifre.",
+    }).regex(/^\+?\d{8,15}$/, {
+        message: "Numărul de telefon trebuie să fie valid, având între 8 și 15 cifre și poate începe cu '+' pentru numere internaționale.",
     }),
     service: z.string({
         required_error: "Vă rugăm să selectați un serviciu.",
@@ -86,17 +85,12 @@ export default function BookAppointment() {
         setAvailableTimes(times)
     }
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
-        // Here you would typically send the form data to your backend
-    }
-
     return (
         <section className="py-16">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-semibold text-center mb-12 text-[#6B4E32]">Programează o Întâlnire</h2>
+                <h2 className="text-3xl font-semibold text-center mb-12">Programează o Întâlnire</h2>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-2xl mx-auto">
+                    <form action={sendSms} className="space-y-8 max-w-2xl mx-auto">
                         <FormField
                             control={form.control}
                             name="name"
@@ -129,7 +123,7 @@ export default function BookAppointment() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Serviciu</FormLabel>
-                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} name="service">
                                         <FormControl>
                                             <SelectTrigger>
                                                 <SelectValue placeholder="Selectați un serviciu" />
@@ -202,6 +196,7 @@ export default function BookAppointment() {
                                             />
                                         </PopoverContent>
                                     </Popover>
+                                    <input type="hidden" name="date" value={field.value ? field.value.toLocaleDateString('ro-RO', { day: 'numeric', month: 'long' }) : ''} />
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -212,7 +207,7 @@ export default function BookAppointment() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Ora</FormLabel>
-                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} name="time">
                                         <FormControl>
                                             <SelectTrigger>
                                                 <SelectValue placeholder="Selectați o oră" />
