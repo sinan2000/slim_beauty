@@ -5,26 +5,13 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Zap, Snowflake, Waves, Radio, Wind, Droplet, Scissors, Sparkles, Star, Phone, MapPin, Instagram, Facebook } from 'lucide-react'
-import Navbar from '@/components/navbar'
+import Hero from '@/components/landing_page/hero'
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#FDF8F5]">
-      <Navbar />
-
-      <main className="flex-grow pt-16">
-        {/* Hero Section */}
-        <section className="relative h-[80vh] bg-cover bg-center" style={{ backgroundImage: "url('/placeholder.svg?height=800&width=1200')" }}>
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-          <div className="relative container mx-auto px-4 h-full flex flex-col justify-center items-start text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">Hai să vorbim despre slăbit și frumusețe!</h1>
-            <p className="text-xl mb-8 max-w-2xl">Experimentează tratamente dermato-cosmetice și de remodelare corporală la Slim & Beauty by MC.</p>
-            <div className="flex space-x-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">Rezervă acum</Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary">Explorează serviciile noastre</Button>
-            </div>
-          </div>
-        </section>
+      <main className="flex-grow pt-[86px]">
+        <Hero />
 
         {/* Body Care Procedures Section */}
         <section className="py-16">

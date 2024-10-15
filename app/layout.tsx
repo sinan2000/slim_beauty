@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Cormorant_Garamond, Dancing_Script, Great_Vibes } from 'next/font/google'
 import "./globals.css";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Slim & Beauty by MC",
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${playfair.className} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
