@@ -9,7 +9,7 @@ import Link from 'next/link';
 export default function Hero() {
     const [currentImage, setCurrentImage] = useState(0);
 
-    const images = ['/hero1.jpg', '/hero2.jpg', '/hero3.jpg'];
+    const images = ['/hero1.jpg', '/hero2.jpg', '/hero3.jpg', '/hero4.jpg'];
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -114,7 +114,7 @@ export default function Hero() {
                         transition={{ delay: 0.6 }}
                         className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
                     >
-                        <Link href="/rezervare">
+                        <Link href="/#rezervare">
                             <Button size="lg" className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
                                 Rezervă acum
                             </Button>
