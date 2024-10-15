@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Cormorant_Garamond, Dancing_Script, Great_Vibes } from 'next/font/google'
+import { Playfair_Display } from 'next/font/google'
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from '@/components/footer'

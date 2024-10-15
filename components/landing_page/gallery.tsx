@@ -88,6 +88,7 @@ Radiofrecventa bipolara– incalzeste dermul pana la 20mm adancime, producand as
 ]
 
 export default function FacebookPostsCarousel() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [api, setApi] = React.useState<any>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
@@ -111,8 +112,8 @@ export default function FacebookPostsCarousel() {
                 <h2 className="text-3xl font-semibold text-center mb-12">Noutăți de pe Facebook</h2>
                 <Carousel setApi={setApi} className="w-full max-w-5xl mx-auto" opts={{ loop: true }}>
                     <CarouselContent>
-                        {posts.map((post, index) => (
-                            <PostCard post={post} />
+                        {posts.map((post) => (
+                            <PostCard key={post.date} post={post} />
                         ))}
                     </CarouselContent>
                     <CarouselPrevious />

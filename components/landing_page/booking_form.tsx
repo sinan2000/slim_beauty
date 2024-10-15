@@ -104,6 +104,7 @@ export default function BookAppointment() {
             setSubmitMessage('Programarea a fost trimisă cu succes! Vă vom contacta pentru confirmare.');
         } catch (error) {
             setSubmitSuccess(false);
+            console.error(error);
             setSubmitMessage('A apărut o eroare la trimiterea programării. Vă rugăm să încercați din nou mai târziu.');
         }
     }
