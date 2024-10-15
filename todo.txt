@@ -1,1 +1,3 @@
 Gallery section - fetch data directly from facebook (req. fb app, do it later)
+
+Form submission - rate limiting

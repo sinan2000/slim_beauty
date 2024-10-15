@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { format } from "date-fns"
-import { Calendar as CalendarIcon } from "lucide-react"
+import { Calendar as CalendarIcon, CheckCircle, XCircle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/select"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import * as z from "zod"
 import { sendSms } from "@/app/actions"
 
@@ -76,6 +77,8 @@ export default function BookAppointment() {
     })
 
     const [availableTimes, setAvailableTimes] = React.useState<string[]>([])
+    const [submitSuccess, setSubmitSuccess] = React.useState<boolean | null>(null)
+    const [submitMessage, setSubmitMessage] = React.useState<string>('')
 
     const handleDateChange = (selectedDate: Date | undefined) => {
         if (!selectedDate) return;
@@ -85,12 +88,49 @@ export default function BookAppointment() {
         setAvailableTimes(times)
     }
 
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        const payload = {
+            name: values.name,
+            phone: values.phone,
+            service: values.service,
+            date: values.date.toLocaleDateString('ro-RO', { day: 'numeric', month: 'long' }),
+            time: values.time,
+            message: values.message || '',
+        }
+        try {
+            await sendSms(payload);
+            form.reset();
+            setSubmitSuccess(true);
+            setSubmitMessage('Programarea a fost trimisă cu succes! Vă vom contacta pentru confirmare.');
+        } catch (error) {
+            setSubmitSuccess(false);
+            setSubmitMessage('A apărut o eroare la trimiterea programării. Vă rugăm să încercați din nou mai târziu.');
+        }
+    }
+
     return (
         <section className="py-16">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-semibold text-center mb-12">Programează o Întâlnire</h2>
+
+                {submitSuccess && (
+                    <Alert className={`mb-6 ${submitSuccess ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                        <div className="flex items-center">
+                            {submitSuccess ? (
+                                <CheckCircle className="h-6 w-6 mr-2" />
+                            ) : (
+                                <XCircle className="h-6 w-6 mr-2" />
+                            )}
+                            <div>
+                                <AlertTitle>{submitSuccess ? "Succes" : "Eroare"}</AlertTitle>
+                                <AlertDescription>{submitMessage}</AlertDescription>
+                            </div>
+                        </div>
+                    </Alert>
+                )}
+
                 <Form {...form}>
-                    <form action={sendSms} className="space-y-8 max-w-2xl mx-auto">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-2xl mx-auto">
                         <FormField
                             control={form.control}
                             name="name"
