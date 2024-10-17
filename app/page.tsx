@@ -104,6 +104,7 @@ export default function HomePage() {
         <Contact />
       </main>
       <Script
+        id="first-page-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
