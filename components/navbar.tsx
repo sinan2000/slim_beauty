@@ -52,7 +52,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className="bg-[#F7F7F7] shadow-sm fixed w-full z-20">
+        <header className="bg-[#F7F7F7] shadow-sm sticky top-0 z-20">
             {/* Desktop Menu */}
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 <Link href='/'>
