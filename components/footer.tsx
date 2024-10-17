@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Facebook, Instagram } from 'lucide-react'
+import { Facebook, Instagram, MapPin, Phone } from 'lucide-react'
 
 export default function Footer() {
     return (
@@ -25,16 +25,19 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Contact</h3>
                         <ul className="text-sm space-y-2">
-                            <li>Telefon: +40 733 407 329</li>
-                            <li>Email: contact@slimandbeauty.ro</li>
-                            <li>Adresă: Dumbrăvița, str. Petőfi Sándor 101</li>
+                            <li className="flex items-center">
+                                <Phone className="w-5 h-5 mr-2" />
+                                +40 733 407 329
+                            </li>
+                            <li className="flex items-center"><MapPin className="w-5 h-5 mr-2" /> 
+                                Dumbrăvița, str. Petőfi Sándor 101</li>
                         </ul>
                         <div className="flex space-x-4 mt-4">
-                            <a href="https://www.facebook.com/SalonSlimBeautyByMc" target="_blank" rel="noopener noreferrer" className="text-[#6B4E32] hover:text-[#5A4129]">
+                            <a href="https://www.facebook.com/SalonSlimBeautyByMc" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#C2A884]">
                                 <Facebook size={24} />
                                 <span className="sr-only">Facebook</span>
                             </a>
-                            <a href="https://www.instagram.com/slimandbeautybymc/" target="_blank" rel="noopener noreferrer" className="text-[#6B4E32] hover:text-[#5A4129]">
+                            <a href="https://www.instagram.com/slimandbeautybymc/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#C2A884]">
                                 <Instagram size={24} />
                                 <span className="sr-only">Instagram</span>
                             </a>
@@ -43,20 +46,24 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Legal</h3>
                         <div className="space-y-4">
-                            <Image
-                                src="/anpc.avif"
-                                alt="ANPC Logo"
-                                width={200}
-                                height={50}
-                                className="w-auto h-auto max-w-[200px]"
-                            />
-                            <Image
-                                src="/anpc_sal.avif"
-                                alt="ANPC SAL Logo"
-                                width={200}
-                                height={50}
-                                className="w-auto h-auto max-w-[200px]"
-                            />
+                            <Link href="https://anpc.ro/" target="_blank" rel="noopener noreferrer">
+                                <Image
+                                    src="/anpc.avif"
+                                    alt="ANPC Logo"
+                                    width={282}
+                                    height={70}
+                                    className="max-w-[200px]"
+                                />
+                            </Link>
+                            <Link href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener noreferrer">
+                                <Image
+                                    src="/anpc_sal.avif"
+                                    alt="ANPC SAL Logo"
+                                    width={282}
+                                    height={70}
+                                    className="max-w-[200px]"
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>
