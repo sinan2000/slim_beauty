@@ -11,3 +11,10 @@ export type Post = {
     description: string;
     url: string;
 }
+
+export type Service = {
+    icon: React.ReactNode
+    title: string
+    shortDescription: string
+    longDescription: string
+}
