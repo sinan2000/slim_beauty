@@ -72,9 +72,22 @@ const schedule: { [key: number]: string[] } = {
 
 
 export default function BookAppointment() {
+    const defaultValues = {
+        name: '',
+        phone: '',
+        service: '',
+        date: undefined,
+        time: '',
+        message: ''
+    }
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
+        defaultValues,
     })
+
+    const [selectedService, setSelectedService] = React.useState<string>('');
+    const [selectedTime, setSelectedTime] = React.useState<string>('');
 
     const [availableTimes, setAvailableTimes] = React.useState<string[]>([])
     const [submitSuccess, setSubmitSuccess] = React.useState<boolean | null>(null)
@@ -99,9 +112,12 @@ export default function BookAppointment() {
         }
         try {
             await sendSms(payload);
-            form.reset();
             setSubmitSuccess(true);
             setSubmitMessage('Programarea a fost trimisă cu succes! Vă vom contacta pentru confirmare.');
+            form.reset(defaultValues);
+            setSelectedService('');
+            setSelectedTime('');
+            setAvailableTimes([]);
         } catch (error) {
             setSubmitSuccess(false);
             console.error(error);
@@ -164,7 +180,10 @@ export default function BookAppointment() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Serviciu</FormLabel>
-                                    <Select onValueChange={field.onChange} defaultValue={field.value} name="service">
+                                    <Select 
+                                        onValueChange={(value) => {field.onChange(value); setSelectedService(value)}} 
+                                        value={selectedService} name="service"
+                                        >
                                         <FormControl>
                                             <SelectTrigger>
                                                 <SelectValue placeholder="Selectați un serviciu" />
@@ -248,7 +267,7 @@ export default function BookAppointment() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Ora</FormLabel>
-                                    <Select onValueChange={field.onChange} defaultValue={field.value} name="time">
+                                    <Select onValueChange={(value) => { field.onChange(value); setSelectedTime(value);}} defaultValue={selectedTime} name="time">
                                         <FormControl>
                                             <SelectTrigger>
                                                 <SelectValue placeholder="Selectați o oră" />
