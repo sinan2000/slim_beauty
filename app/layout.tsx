@@ -5,8 +5,9 @@ import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: "Slim & Beauty by MC",
-  description: "Slim & Beauty by MC",
+  title: "Slim & Beauty by MC - Remodelare corporală și dermato-cosmetică",
+  description: "Slim & Beauty by MC oferă o gamă largă de proceduri profesionale dermato-cosmetice și de remodelare corporală în Dumbrăvița, România. Obține-ți obiectivele de frumusețe cu tratamentele noastre experte.",
+  keywords: ['Slim & Beauty by MC', 'remodelare corporală', 'dermato-cosmetică', 'Dumbrăvița', 'România']
 };
 
 const playfair = Playfair_Display({

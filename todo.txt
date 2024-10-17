@@ -10,3 +10,5 @@ Footer - improve colors and hoverable links + links to anpc
 Services & About Us pages
 
 Optimize
+
+ora mising from sms
