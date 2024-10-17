@@ -1,10 +1,10 @@
 import Hero from '@/components/landing_page/hero'
 import BodyCare from '@/components/landing_page/body_care'
 import FaceCare from '@/components/landing_page/face_care'
-import Gallery from '@/components/landing_page/gallery'
 import Contact from '@/components/landing_page/contact'
 import Testimonials from '@/components/landing_page/testimonials'
 import BookingForm from '@/components/landing_page/booking_form'
+import FacebookPostsCarousel from '@/components/landing_page/gallery'
 
 export default function HomePage() {
   return (
@@ -14,7 +14,7 @@ export default function HomePage() {
         <BodyCare />
         <FaceCare />
         <Testimonials />
-        <Gallery />
+        <FacebookPostsCarousel />
         <BookingForm />
         <Contact />
       </main>

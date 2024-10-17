@@ -4,8 +4,6 @@ import * as React from "react"
 import {
     Carousel,
     CarouselContent,
-    CarouselNext,
-    CarouselPrevious,
 } from "@/components/ui/carousel"
 import PostCard from "./post"
 
@@ -116,8 +114,6 @@ export default function FacebookPostsCarousel() {
                             <PostCard key={post.date} post={post} />
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
                 </Carousel>
                 <div className="flex justify-center mt-4">
                     {Array.from({ length: count }).map((_, index) => (
