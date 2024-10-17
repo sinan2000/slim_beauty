@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,37 @@ import { Menu, X, Instagram, Facebook } from 'lucide-react'
 
 export default function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false)
+
+    useEffect(() => {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const handleTouchStart = (e: TouchEvent) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+
+        const handleTouchEnd = (e: TouchEvent) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleGesture();
+        }
+
+        const handleGesture = () => {
+            if (touchEndX < touchStartX - 50) {
+                setMobileMenu(false);
+            }
+            if (touchEndX > touchStartX + 50) {
+                setMobileMenu(true);
+            }
+        };
+
+        window.addEventListener('touchstart', handleTouchStart);
+        window.addEventListener('touchend', handleTouchEnd);
+
+        return () => {
+            window.removeEventListener('touchstart', handleTouchStart);
+            window.removeEventListener('touchend', handleTouchEnd);
+        }
+    }, []);
 
     const items = [
         { name: "Acasă", href: "/" },
