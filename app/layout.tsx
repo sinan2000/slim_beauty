@@ -25,6 +25,7 @@ export default function RootLayout({
     <html lang="ro" className={playfair.className}>
       <body className="font-playfair">
         <Navbar />
+        <p>salut</p>
         {children}
         <Footer />
       </body>

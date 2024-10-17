@@ -13,12 +13,12 @@ export default function Navbar() {
         let touchStartX = 0;
         let touchEndX = 0;
 
-        const handlePointerDown = (e: PointerEvent) => {
-            touchStartX = e.clientX;
+        const handleTouchStart = (e: TouchEvent) => {
+            touchStartX = e.touches[0].clientX;
         };
 
-        const handlePointerUp = (e: PointerEvent) => {
-            touchEndX = e.clientX;
+        const handleTouchEnd = (e: TouchEvent) => {
+            touchEndX = e.changedTouches[0].clientX;
             handleGesture();
         };
 
@@ -31,12 +31,12 @@ export default function Navbar() {
             }
         };
 
-        window.addEventListener('pointerdown', handlePointerDown);
-        window.addEventListener('pointerup', handlePointerUp);
+        window.addEventListener('touchstart', handleTouchStart);
+        window.addEventListener('touchend', handleTouchEnd);
 
         return () => {
-            window.removeEventListener('pointerdown', handlePointerDown);
-            window.removeEventListener('pointerup', handlePointerUp);
+            window.removeEventListener('touchstart', handleTouchStart);
+            window.removeEventListener('touchend', handleTouchEnd);
         };
     }, []);
 
@@ -55,13 +55,15 @@ export default function Navbar() {
         <header className="bg-[#F7F7F7] shadow-sm fixed w-full z-20">
             {/* Desktop Menu */}
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-                <Image
-                    src="/logo.jpg"
-                    alt="Slim & Beauty by MC Logo"
-                    width={150}
-                    height={75}
-                    className="w-36 h-auto"
-                />
+                <Link href='/'>
+                    <Image
+                        src="/logo.jpg"
+                        alt="Slim & Beauty by MC Logo"
+                        width={150}
+                        height={75}
+                        className="w-36 h-auto"
+                    />
+                </Link>
                 <nav className="hidden md:flex items-center space-x-6">
                     <ul className="flex space-x-6">
                         {items.map(item => (
