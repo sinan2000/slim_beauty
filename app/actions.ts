@@ -33,5 +33,6 @@ export async function sendSms(data: sensSmsProps) {
         console.log('SMS sent');
     } catch (error) {
         console.error(error);
+        throw new Error('SMS failed to send: ' + error);
     }
 }

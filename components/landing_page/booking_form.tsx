@@ -105,7 +105,7 @@ export default function BookAppointment() {
         const payload = {
             name: values.name,
             phone: values.phone,
-            service: values.service,
+            service: selectedTime,
             date: values.date.toLocaleDateString('ro-RO', { day: 'numeric', month: 'long' }),
             time: values.time,
             message: values.message || '',
