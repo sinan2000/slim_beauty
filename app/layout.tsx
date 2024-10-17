@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from 'next/font/google'
+import { Playfair_Display } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import Footer from '@/components/footer'
+import Footer from '@/components/footer';
 
 export const metadata: Metadata = {
   title: "Slim & Beauty by MC",
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 };
 
 const playfair = Playfair_Display({
-  weight: '400',
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  variable: '--font-playfair',
 })
 
 export default function RootLayout({
@@ -21,10 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${playfair.className} antialiased`}
-      >
+    <html lang="ro" className={playfair.className}>
+      <body className="font-playfair">
         <Navbar />
         {children}
         <Footer />

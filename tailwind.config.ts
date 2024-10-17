@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
   	extend: {
 		fontFamily: {
-			serif: ['Playfair Display', 'serif']
+			playfair: ['var(--font-playfair)'],
 		},
   		colors: {
   			background: 'hsl(var(--background))',
