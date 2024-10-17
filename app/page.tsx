@@ -94,7 +94,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FDF8F5]">
-      <main className="flex-grow pt-[86px]">
+      <main className="flex-grow">
         <Hero />
         <BodyCare />
         <FaceCare />
