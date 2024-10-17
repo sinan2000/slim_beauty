@@ -28,7 +28,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative min-h-[calc(100vh-86px)] overflow-hidden">
+        <section className="relative overflow-hidden">
             <div className="flex flex-col lg:flex-row h-full">
                 {/* Image and controls */}
                 <div
@@ -91,12 +91,12 @@ export default function Hero() {
                 </div>
 
                 {/* Content */}
-                <div className="w-full min-h-[calc(50vh-86px)] lg:w-1/2 flex flex-col justify-center items-start p-8 lg:p-16 text-black bg-[#F5EBE6]">
+                <div className="w-full min-h-[calc(50vh-86px)] lg:w-1/2 flex flex-col justify-center items-start p-4 md:p-8 lg:p-16 text-black bg-[#F5EBE6]">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-3xl lg:text-5xl font-bold mb-4"
+                        className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4"
                     >
                         Hai să vorbim despre slăbit și frumusețe!
                     </motion.h1>

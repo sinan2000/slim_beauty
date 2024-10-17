@@ -5,24 +5,22 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from '@/components/ui/button';
 import { Menu, X, Instagram, Facebook } from 'lucide-react'
-import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false)
-    const pathname = usePathname();
 
     useEffect(() => {
         let touchStartX = 0;
         let touchEndX = 0;
 
-        const handleTouchStart = (e: TouchEvent) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }
+        const handlePointerDown = (e: PointerEvent) => {
+            touchStartX = e.clientX;
+        };
 
-        const handleTouchEnd = (e: TouchEvent) => {
-            touchEndX = e.changedTouches[0].screenX;
+        const handlePointerUp = (e: PointerEvent) => {
+            touchEndX = e.clientX;
             handleGesture();
-        }
+        };
 
         const handleGesture = () => {
             if (touchEndX < touchStartX - 50) {
@@ -33,13 +31,13 @@ export default function Navbar() {
             }
         };
 
-        window.addEventListener('touchstart', handleTouchStart);
-        window.addEventListener('touchend', handleTouchEnd);
+        window.addEventListener('pointerdown', handlePointerDown);
+        window.addEventListener('pointerup', handlePointerUp);
 
         return () => {
-            window.removeEventListener('touchstart', handleTouchStart);
-            window.removeEventListener('touchend', handleTouchEnd);
-        }
+            window.removeEventListener('pointerdown', handlePointerDown);
+            window.removeEventListener('pointerup', handlePointerUp);
+        };
     }, []);
 
     const items = [
@@ -51,17 +49,6 @@ export default function Navbar() {
 
     const toggleMenu = () => {
         setMobileMenu(!mobileMenu)
-    }
-
-    const handleScrollToRezervare = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        e.preventDefault();
-        const section = document.querySelector('#rezervare');
-        
-        if (pathname === '/') {
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
     }
 
     return (
