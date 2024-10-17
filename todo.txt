@@ -1,12 +1,13 @@
 Gallery section - fetch data directly from facebook (req. fb app, do it later)
 
-Buton to book now make to nav with animation - not possible with
-Link, as href is needed as prop
-
 Form submission - rate limiting
 
-Footer - improve colors and hoverable links + links to anpc
+Footer - improve hover color for items
 
 Services & About Us pages
 
-Optimize
+Optimize, especially lazy loading the book now form - also, check Buton to book now make to nav with animation:
+option 1. create suspense with same id?
+option 2. useEffect on component mount for window.location.hash, if matches then scroll into view smoothly
+
+robots and sitemap
