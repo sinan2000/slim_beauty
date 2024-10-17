@@ -20,7 +20,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
                         className="rounded-full mr-4"
                     />
                     <div>
-                        <h4 className="font-semibold">{review.authorName}</h4>
+                        <h3 className="font-semibold">{review.authorName}</h3>
                     </div>
                 </div>
 
