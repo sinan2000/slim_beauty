@@ -1,13 +1,15 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from '@/components/ui/button';
 import { Menu, X, Instagram, Facebook } from 'lucide-react'
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false)
+    const pathname = usePathname();
 
     useEffect(() => {
         let touchStartX = 0;
@@ -49,6 +51,17 @@ export default function Navbar() {
 
     const toggleMenu = () => {
         setMobileMenu(!mobileMenu)
+    }
+
+    const handleScrollToRezervare = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        const section = document.querySelector('#rezervare');
+        
+        if (pathname === '/') {
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     }
 
     return (

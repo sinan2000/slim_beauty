@@ -1,6 +1,7 @@
 Gallery section - fetch data directly from facebook (req. fb app, do it later)
 
-Buton to book now make to nav with animation
+Buton to book now make to nav with animation - not possible with
+Link, as href is needed as prop
 
 Form submission - rate limiting
 
