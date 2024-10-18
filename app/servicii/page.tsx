@@ -32,10 +32,12 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   const offer = services.flatMap((category) =>
     category.items.map((item) => ({
+      '@context': 'https://schema.org',
       '@type': 'OfferForPurchase',
       name: item.title,
       description: item.shortDescription,
       priceCurrency: 'RON',
+      priceRange: '$$'
     })));
   const jsonLd: WithContext<LocalBusiness> = {
     '@context': 'https://schema.org',

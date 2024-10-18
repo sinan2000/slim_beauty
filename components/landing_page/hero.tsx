@@ -51,22 +51,11 @@ export default function Hero() {
                             alt={images[currentImage].alt}
                             fill
                             style= {{ objectFit: 'contain' }}
-                            priority={true}
+                            priority
                         />
                     </motion.div>
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-black bg-opacity-50" />
-
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
-                    {images.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentImage(index)}
-                            className={`h-4 w-4 rounded-full transition-all duration-300 ${currentImage === index ? 'bg-white w-6' : 'bg-gray-400'}`}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
-                </div>
 
                 <Button
                     onClick={prevImage}

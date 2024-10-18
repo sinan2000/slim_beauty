@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from '@/components/ui/button';
@@ -9,13 +9,9 @@ import Hammer from 'hammerjs';
 
 export default function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false);
-    const menuRef = useRef(null);
 
     useEffect(() => {
-        const menu = menuRef.current;
-        if (!menu) return;
-
-        const hammer = new Hammer(menu);
+        const hammer = new Hammer(document.body);
 
         hammer.on('swiperight', () => {
             setMobileMenu(true);
@@ -82,7 +78,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu */}
-            <div ref={menuRef} className={`md:hidden fixed inset-y-0 right-0 transform ${mobileMenu ? 'translate-x-0' : 'translate-x-full'} w-64 bg-[#F7F7F7] shadow-lg transition duration-300 ease-in-out z-20 overflow-y-auto`}>
+            <div className={`md:hidden fixed inset-y-0 right-0 transform ${mobileMenu ? 'translate-x-0' : 'translate-x-full'} w-64 bg-[#F7F7F7] shadow-lg transition duration-300 ease-in-out z-20 overflow-y-auto`}>
                 <div className="p-6 flex flex-col h-full">
                     <div className="flex justify-end mb-8">
                         <Button size="sm" variant="ghost" onClick={toggleMenu}>
