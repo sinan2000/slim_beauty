@@ -2,7 +2,7 @@ Gallery section - fetch data directly from facebook (req. fb app, do it later)
 
 Form submission - rate limiting
 
-fix pagespeed insights - accesibility, also maps optimization
+fix pagespeed insights - maps optimization
 
 Services & About Us pages
 

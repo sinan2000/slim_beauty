@@ -1,27 +1,9 @@
-import { mdiNeedle, mdiWaterCircle, mdiFaceWomanOutline } from '@mdi/js';
-import Icon from '@mdi/react';
 import { Card, CardContent } from "../ui/card";
 import React from "react";
+import { services } from "@/lib/data";
 
 export default function FaceCare() {
-    // Create an array of items
-    const items = [
-        {
-            icon: <Icon path={mdiNeedle} size={2} className="text-primary mb-4" />,
-            title: "Dermapen cu Microneedling",
-            description: "Rejuvenare și regenerare cutanată."
-        },
-        {
-            icon: <Icon path={mdiWaterCircle} size={2} className="text-primary mb-4" />,
-            title: "Microdermabraziune",
-            description: "Exfoliere și curățare profundă a pielii."
-        },
-        {
-            icon: <Icon path={mdiFaceWomanOutline} size={2} className="text-primary mb-4" />,
-            title: "Tratament Clasic de Curățire",
-            description: "Curățare facială în profunzime."
-        }
-    ];
+    const items = services[1].items;
 
     return (
         <section className="py-16 bg-[#F5EBE6]">
@@ -34,7 +16,7 @@ export default function FaceCare() {
                             <CardContent className="p-6 flex flex-col items-center text-center">
                                 {item.icon}
                                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                                <p className="text-muted-foreground">{item.description}</p>
+                                <p className="text-muted-foreground">{item.shortDescription}</p>
                             </CardContent>
                         </Card>
                     ))}
