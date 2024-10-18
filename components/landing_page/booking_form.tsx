@@ -105,14 +105,13 @@ export default function BookAppointment() {
         const payload = {
             name: values.name,
             phone: values.phone,
-            service: selectedTime,
+            service: selectedService,
             date: values.date.toLocaleDateString('ro-RO', { day: 'numeric', month: 'long' }),
             time: values.time,
             message: values.message || '',
         }
         try {
             await sendSms(payload);
-            //console.log(payload);
             setSubmitSuccess(true);
             setSubmitMessage('Programarea a fost trimisă cu succes! Vă vom contacta pentru confirmare.');
             form.reset(defaultValues);
