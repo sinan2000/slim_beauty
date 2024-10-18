@@ -17,9 +17,9 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Pagini</h3>
                         <ul className="text-sm space-y-2">
-                            <li><Link href="/">Acasă</Link></li>
-                            <li><Link href="/servicii">Servicii</Link></li>
-                            <li><Link href="/despre-noi">Despre noi</Link></li>
+                            <li><Link href="/" className="hover:text-[#B88A72]">Acasă</Link></li>
+                            <li><Link href="/servicii" className="hover:text-[#B88A72]">Servicii</Link></li>
+                            <li><Link href="/despre-noi" className="hover:text-[#B88A72]">Despre noi</Link></li>
                         </ul>
                     </div>
                     <div>
@@ -33,11 +33,11 @@ export default function Footer() {
                                 Dumbrăvița, str. Petőfi Sándor 101</li>
                         </ul>
                         <div className="flex space-x-4 mt-4">
-                            <a href="https://www.facebook.com/SalonSlimBeautyByMc" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#C2A884]">
+                            <a href="https://www.facebook.com/SalonSlimBeautyByMc" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#B88A72]">
                                 <Facebook size={24} />
                                 <span className="sr-only">Facebook</span>
                             </a>
-                            <a href="https://www.instagram.com/slimandbeautybymc/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#C2A884]">
+                            <a href="https://www.instagram.com/slimandbeautybymc/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#B88A72]">
                                 <Instagram size={24} />
                                 <span className="sr-only">Instagram</span>
                             </a>

@@ -4,10 +4,16 @@ Form submission - rate limiting
 
 Footer - improve hover color for items
 
-Services & About Us pages
-
 Optimize, especially lazy loading the book now form - also, check Buton to book now make to nav with animation:
 option 1. create suspense with same id?
 option 2. useEffect on component mount for window.location.hash, if matches then scroll into view smoothly
+
+fix pagespeed insights - accesibility, also maps optimization
+
+not found page
+
+loading component that fits website
+
+Services & About Us pages
 
 robots and sitemap
