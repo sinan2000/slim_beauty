@@ -1,43 +1,33 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from '@/components/ui/button';
-import { Menu, X, Instagram, Facebook } from 'lucide-react'
+import { Menu, X, Instagram, Facebook } from 'lucide-react';
+import Hammer from 'hammerjs';
 
 export default function Navbar() {
-    const [mobileMenu, setMobileMenu] = useState(false)
+    const [mobileMenu, setMobileMenu] = useState(false);
+    const menuRef = useRef(null);
 
     useEffect(() => {
-        let touchStartX = 0;
-        let touchEndX = 0;
+        const menu = menuRef.current;
+        if (!menu) return;
 
-        const handleTouchStart = (e: TouchEvent) => {
-            touchStartX = e.touches[0].clientX;
-        };
+        const hammer = new Hammer(menu);
 
-        const handleTouchEnd = (e: TouchEvent) => {
-            touchEndX = e.changedTouches[0].clientX;
-            handleGesture();
-        };
+        hammer.on('swiperight', () => {
+            setMobileMenu(true);
+        })
 
-        const handleGesture = () => {
-            if (touchEndX < touchStartX - 50) {
-                setMobileMenu(false);
-            }
-            if (touchEndX > touchStartX + 50) {
-                setMobileMenu(true);
-            }
-        };
-
-        window.addEventListener('touchstart', handleTouchStart);
-        window.addEventListener('touchend', handleTouchEnd);
+        hammer.on('swipeleft', () => {
+            setMobileMenu(false);
+        });
 
         return () => {
-            window.removeEventListener('touchstart', handleTouchStart);
-            window.removeEventListener('touchend', handleTouchEnd);
-        };
+            hammer.destroy();
+        }
     }, []);
 
     const items = [
@@ -92,7 +82,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`md:hidden fixed inset-y-0 right-0 transform ${mobileMenu ? 'translate-x-0' : 'translate-x-full'} w-64 bg-[#F7F7F7] shadow-lg transition duration-300 ease-in-out z-20 overflow-y-auto`}>
+            <div ref={menuRef} className={`md:hidden fixed inset-y-0 right-0 transform ${mobileMenu ? 'translate-x-0' : 'translate-x-full'} w-64 bg-[#F7F7F7] shadow-lg transition duration-300 ease-in-out z-20 overflow-y-auto`}>
                 <div className="p-6 flex flex-col h-full">
                     <div className="flex justify-end mb-8">
                         <Button size="sm" variant="ghost" onClick={toggleMenu}>
