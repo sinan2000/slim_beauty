@@ -186,7 +186,7 @@ export default function BookAppointment() {
                                         value={selectedService} name="service"
                                         >
                                         <FormControl>
-                                            <SelectTrigger>
+                                            <SelectTrigger aria-label="Selectați un serviciu">
                                                 <SelectValue placeholder="Selectați un serviciu" />
                                             </SelectTrigger>
                                         </FormControl>
@@ -222,7 +222,7 @@ export default function BookAppointment() {
                                 <FormItem className="flex flex-col">
                                     <FormLabel>Data</FormLabel>
                                     <Popover>
-                                        <PopoverTrigger asChild>
+                                        <PopoverTrigger asChild aria-label="Alegeți o dată">
                                             <FormControl>
                                                 <Button
                                                     variant={"outline"}
@@ -270,7 +270,7 @@ export default function BookAppointment() {
                                     <FormLabel>Ora</FormLabel>
                                     <Select onValueChange={(value) => { field.onChange(value); setSelectedTime(value);}} defaultValue={selectedTime} name="time">
                                         <FormControl>
-                                            <SelectTrigger>
+                                            <SelectTrigger aria-label="Selectați o oră">
                                                 <SelectValue placeholder="Selectați o oră" />
                                             </SelectTrigger>
                                         </FormControl>

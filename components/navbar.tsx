@@ -67,7 +67,9 @@ export default function Navbar() {
                 <nav className="hidden md:flex items-center space-x-6">
                     <ul className="flex space-x-6">
                         {items.map(item => (
-                            <Link href={item.href} key={item.name} className="text-[#6B4E32] hover:text-primary">{item.name}</Link>
+                            <li key={item.name}>
+                                <Link href={item.href} key={item.name} className="text-[#6B4E32] hover:text-primary">{item.name}</Link>
+                            </li>
                         ))}
                     </ul>
                     <Link href="/#rezervare">
