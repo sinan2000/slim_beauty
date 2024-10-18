@@ -2,8 +2,6 @@ Gallery section - fetch data directly from facebook (req. fb app, do it later)
 
 Form submission - rate limiting
 
-Footer - improve hover color for items
-
 Optimize, especially lazy loading the book now form - also, check Buton to book now make to nav with animation:
 option 1. create suspense with same id?
 option 2. useEffect on component mount for window.location.hash, if matches then scroll into view smoothly

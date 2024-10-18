@@ -8,9 +8,10 @@ import type { Metadata } from 'next'
 import { WithContext, LocalBusiness } from 'schema-dts'
 import Script from 'next/script'
 import dynamic from 'next/dynamic'
+import LoadingPage from './loading'
+
 const BookingForm = dynamic(() => import('@/components/landing_page/booking_form'), {
-  ssr: false,
-  loading: () => <p>Loading booking form...</p>,
+  loading: () => <LoadingPage />,
 })
 
 export const metadata: Metadata = {
@@ -104,8 +105,8 @@ export default function HomePage() {
         <FaceCare />
         <Testimonials />
         <FacebookPostsCarousel />
-        <div id="rezervare">
-        <BookingForm />
+        <div id="rezervare" className="py-5">
+          <BookingForm />
         </div>
         <Contact />
       </main>

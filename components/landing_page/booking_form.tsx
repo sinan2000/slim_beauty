@@ -111,7 +111,8 @@ export default function BookAppointment() {
             message: values.message || '',
         }
         try {
-            await sendSms(payload);
+            //await sendSms(payload);
+            console.log(payload);
             setSubmitSuccess(true);
             setSubmitMessage('Programarea a fost trimisă cu succes! Vă vom contacta pentru confirmare.');
             form.reset(defaultValues);
