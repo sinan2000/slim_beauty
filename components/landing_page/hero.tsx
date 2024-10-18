@@ -34,7 +34,7 @@ export default function Hero() {
                 className="relative w-full lg:w-1/2 h-full"
                 style={{
                     backgroundImage: `url('${images[currentImage]}')`,
-                    backgroundSize: 'contain', // contain
+                    backgroundSize: 'contain',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
                 }}
@@ -51,12 +51,12 @@ export default function Hero() {
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-black bg-opacity-50" />
 
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
                     {images.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => setCurrentImage(index)}
-                            className={`h-2 w-2 rounded-full transition-all duration-300 ${currentImage === index ? 'bg-white w-4' : 'bg-gray-400'}`}
+                            className={`h-4 w-4 rounded-full transition-all duration-300 ${currentImage === index ? 'bg-white w-6' : 'bg-gray-400'}`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
                     ))}
@@ -77,7 +77,7 @@ export default function Hero() {
                     <ChevronRight className="w-6 h-6" />
                 </Button>
 
-                <div className="absolute bottom-4 left-4 flex flex-col lg:flex-row items-start lg:items-center space-y-2 lg:space-y-0 lg:space-x-4 text-white text-sxs sm:text-sm mb-2">
+                <div className="absolute bottom-4 left-4 flex flex-col lg:flex-row items-start lg:items-center space-y-2 lg:space-y-0 lg:space-x-4 text-white text-sxs sm:text-sm mb-4">
                     <div className="flex items-center">
                         <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                         <span>+40 (733) 407 329</span>
