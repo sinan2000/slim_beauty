@@ -73,7 +73,7 @@ export default function Hero() {
                     <ChevronRight className="w-6 h-6" />
                 </Button>
 
-                <div className="absolute bottom-4 left-4 flex flex-col lg:flex-row items-start lg:items-center space-y-2 lg:space-y-0 lg:space-x-4 text-white text-sxs sm:text-sm mb-4">
+                <div className="absolute bottom-4 left-4 flex flex-col lg:flex-row items-start lg:items-center space-y-2 lg:space-y-0 lg:space-x-4 text-white text-sxs sm:text-sm">
                     <div className="flex items-center">
                         <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                         <span>+40 (733) 407 329</span>

@@ -16,7 +16,7 @@ import {
 
 export const services = [
     {
-        category: "Proceduri Corporale",
+        category: "Remodelare Corporale",
         items: [
             {
                 icon: <Icon path={mdiWaveform} size={2} className="text-primary mb-4" />,
