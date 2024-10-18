@@ -34,6 +34,7 @@ export default function PostCard({ post }: PostCardProps) {
                             alt={`Facebook post from ${post.date}`}
                             width={400}
                             height={300}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             className="w-full h-48 object-cover rounded-lg mb-4"
                         />
                         <p className="text-[#6B4E32] mb-4 line-clamp-5 whitespace-pre-wrap flex-grow">{post.description}</p>

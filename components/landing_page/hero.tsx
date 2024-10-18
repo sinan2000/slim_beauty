@@ -50,6 +50,7 @@ export default function Hero() {
                             src={images[currentImage].src}
                             alt={images[currentImage].alt}
                             fill
+                            sizes="(max-width: 1024px) 100vw, 50vw"
                             style= {{ objectFit: 'contain' }}
                             priority
                         />
