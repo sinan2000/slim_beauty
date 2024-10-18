@@ -67,8 +67,8 @@ export default function AboutUs() {
                                 <ContactItem icon={<Phone className="w-5 h-5 text-primary" />} text="+40 733 407 329" />
                                 <ContactItem icon={<MapPin className="w-5 h-5 text-primary" />} text="Str. Petofi Sandor 101, Dumbrăvița, Jud. Timiș" />
                                 <ContactItem icon={<Car className="w-5 h-5 text-primary" />} text="Locuri de parcare disponibile" />
-                                <ContactItem icon={<Calendar className="w-5 h-5 text-primary" />} text="Luni - Vineri: 9:00 - 20:00" />
-                                <ContactItem icon={<Clock className="w-5 h-5 text-primary" />} text="Sâmbătă: 9:00 - 14:00" />
+                                <ContactItem icon={<Calendar className="w-5 h-5 text-primary" />} text="Luni, Marți, Joi: 13:00 - 21:00" />
+                                <ContactItem icon={<Clock className="w-5 h-5 text-primary" />} text="Miercuri, Vineri: 9:00 - 17:00" />
                             </div>
                         </CardContent>
                     </Card>
@@ -133,7 +133,7 @@ export default function AboutUs() {
                                     ></iframe>*/}
                                 <GoogleMapsEmbed
                                     apiKey={process.env.MAPS_EMBED_API_KEY as string}
-                                    height="100$"
+                                    height="100%"
                                     width="100%"
                                     mode="place"
                                     q="Slim+&+Beauty+by+MC,+Dumbrăvița"

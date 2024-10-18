@@ -1,13 +1,15 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from '@/components/ui/button';
 import { Menu, X, Instagram, Facebook } from 'lucide-react';
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false);
+    const pathname = usePathname();
 
     const items = [
         { name: "Acasă", href: "/" },
@@ -15,6 +17,10 @@ export default function Navbar() {
         { name: "Despre Noi", href: "/despre-noi" },
         { name: "Contact", href: "/#contact" }
     ]
+
+    useEffect(() => {
+        setMobileMenu(false);
+    }, [pathname]);
 
     const toggleMenu = () => {
         setMobileMenu(!mobileMenu)

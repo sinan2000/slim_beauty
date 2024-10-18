@@ -2,10 +2,11 @@ import React from 'react'
 import { Phone, MapPin, Clock, Instagram, Facebook } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { GoogleMapsEmbed } from '@next/third-parties/google'
+import Link from 'next/link'
 
 export default function ContactSection() {
     return (
-        <section id="contact" className="py-16 bg-[#F5EBE6]">
+        <section id="contact" className="py-24 bg-[#F5EBE6]">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-semibold text-center mb-12">Contactează-ne</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -40,20 +41,20 @@ export default function ContactSection() {
                             </CardContent>
                         </Card>
                         <div className="flex justify-center space-x-6">
-                            <a href="https://www.instagram.com/slimandbeautybymc/" target="_blank" rel="noopener noreferrer" className="text-[#6B4E32] hover:text-[#5A4129] transition-colors">
+                            <Link href="https://www.instagram.com/slimandbeautybymc/" target="_blank" rel="noopener noreferrer" className="text-[#6B4E32] hover:text-[#5A4129] transition-colors">
                                 <Instagram className="w-8 h-8" />
                                 <span className="sr-only">Instagram</span>
-                            </a>
-                            <a href="https://www.facebook.com/SalonSlimBeautyByMc" target="_blank" rel="noopener noreferrer" className="text-[#6B4E32] hover:text-[#5A4129] transition-colors">
+                            </Link>
+                            <Link href="https://www.facebook.com/SalonSlimBeautyByMc" target="_blank" rel="noopener noreferrer" className="text-[#6B4E32] hover:text-[#5A4129] transition-colors">
                                 <Facebook className="w-8 h-8" />
                                 <span className="sr-only">Facebook</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="relative h-[400px] md:h-full rounded-lg overflow-hidden shadow-lg">
                         <GoogleMapsEmbed
                             apiKey={process.env.MAPS_EMBED_API_KEY as string}
-                            height="100$"
+                            height="100%"
                             width="100%"
                             mode="place"
                             q="Slim+&+Beauty+by+MC,+Dumbrăvița"

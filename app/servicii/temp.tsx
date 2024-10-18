@@ -62,7 +62,7 @@ export default function TempPage() {
                         <TabsTrigger
                             key={category.category}
                             value={category.category}
-                            className="text-lg font-semibold"
+                            className="text-sm sm:text-lg font-semibold text-center"
                         >
                             {category.category}
                         </TabsTrigger>
