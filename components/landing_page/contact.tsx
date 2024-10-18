@@ -54,8 +54,8 @@ export default function ContactSection() {
                     <div className="relative h-[400px] md:h-full rounded-lg overflow-hidden shadow-lg">
                         <GoogleMapsEmbed
                             apiKey={process.env.MAPS_EMBED_API_KEY as string}
-                            height="100%"
-                            width="100%"
+                            height="100%;"
+                            width="100%;"
                             mode="place"
                             q="Slim+&+Beauty+by+MC,+Dumbrăvița"
                             loading="lazy"

@@ -133,8 +133,8 @@ export default function AboutUs() {
                                     ></iframe>*/}
                                 <GoogleMapsEmbed
                                     apiKey={process.env.MAPS_EMBED_API_KEY as string}
-                                    height="100%"
-                                    width="100%"
+                                    height="100%;"
+                                    width="100%;"
                                     mode="place"
                                     q="Slim+&+Beauty+by+MC,+Dumbrăvița"
                                     loading="lazy"
