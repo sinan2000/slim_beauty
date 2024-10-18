@@ -132,7 +132,7 @@ export default function AboutUs() {
                                         Fondatoare și Specialist în Tratamente Corporale
                                     </p>
                                     <p className="text-gray-700">
-                                        Cu o experiență de peste 10 ani în domeniul frumuseții și îngrijirii corporale, Maria Cristina a fondat Slim & Beauty cu viziunea de a oferi servicii de cea mai înaltă calitate, personalizate pentru nevoile fiecărui client.
+                                        Cu o experiență de peste 10 ani în domeniul frumuseții și îngrijirii corporale, Mihaela Ceviker a fondat Slim & Beauty cu viziunea de a oferi servicii de cea mai înaltă calitate, personalizate pentru nevoile fiecărui client.
                                     </p>
                                 </div>
                             </div>

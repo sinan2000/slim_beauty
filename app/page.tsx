@@ -3,11 +3,15 @@ import BodyCare from '@/components/landing_page/body_care'
 import FaceCare from '@/components/landing_page/face_care'
 import Contact from '@/components/landing_page/contact'
 import Testimonials from '@/components/landing_page/testimonials'
-import BookingForm from '@/components/landing_page/booking_form'
 import FacebookPostsCarousel from '@/components/landing_page/gallery'
 import type { Metadata } from 'next'
 import { WithContext, LocalBusiness } from 'schema-dts'
 import Script from 'next/script'
+import dynamic from 'next/dynamic'
+const BookingForm = dynamic(() => import('@/components/landing_page/booking_form'), {
+  ssr: false,
+  loading: () => <p>Loading booking form...</p>,
+})
 
 export const metadata: Metadata = {
   description: "Descoperă servicii dermato-cosmetice de top și proceduri de remodelare corporală la Slim & Beauty by MC în Dumbrăvița. Fie că este vorba despre tratamente faciale, conturare corporală sau rejuvenarea pielii, suntem aici pentru a te ajuta să arăți și să te simți la cel mai bun nivel.",
@@ -100,7 +104,9 @@ export default function HomePage() {
         <FaceCare />
         <Testimonials />
         <FacebookPostsCarousel />
+        <div id="rezervare">
         <BookingForm />
+        </div>
         <Contact />
       </main>
       <Script

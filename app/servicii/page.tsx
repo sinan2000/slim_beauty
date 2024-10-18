@@ -116,10 +116,17 @@ const services = [
     }
 ]
 
-const ServiceCard = ({ service, index, category }) => {
-    const isBodyTreatment = category === "Proceduri Corporale"
-    const isEven = index % 2 === 0
+interface Service {
+    icon: JSX.Element;
+    title: string;
+    shortDescription: string;
+    longDescription: string;
+    fact: string;
+}
 
+const ServiceCard = ({ service, index, category }: { service: Service; index: number; category: string }) => {
+    const isBodyTreatment = category === "Proceduri Corporale"
+    
     return (
         <motion.div
             initial={{ opacity: 0, x: isBodyTreatment ? -50 : 50 }}
@@ -154,7 +161,7 @@ const ServiceCard = ({ service, index, category }) => {
     )
 }
 
-const CategoryHeader = ({ category }) => (
+const CategoryHeader = ({ category }: { category: string }) => (
     <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
