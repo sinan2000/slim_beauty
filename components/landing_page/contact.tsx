@@ -59,6 +59,7 @@ export default function ContactSection() {
                             q="Slim+&+Beauty+by+MC,+Dumbrăvița"
                             loading="lazy"
                             style="border: 0"
+                            language="ro"
                         />
                     </div>
                 </div>

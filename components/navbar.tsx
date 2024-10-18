@@ -1,30 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from '@/components/ui/button';
 import { Menu, X, Instagram, Facebook } from 'lucide-react';
-import Hammer from 'hammerjs';
 
 export default function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false);
-
-    useEffect(() => {
-        const hammer = new Hammer(document.body);
-
-        hammer.on('swiperight', () => {
-            setMobileMenu(true);
-        })
-
-        hammer.on('swipeleft', () => {
-            setMobileMenu(false);
-        });
-
-        return () => {
-            hammer.destroy();
-        }
-    }, []);
 
     const items = [
         { name: "Acasă", href: "/" },

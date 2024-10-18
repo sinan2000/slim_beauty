@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from 'next/font/google';
 import "./globals.css";
+import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
-import dynamic from "next/dynamic";
-const Navbar = dynamic(() => import("@/components/navbar"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Slim & Beauty by MC - Remodelare corporală și dermato-cosmetică",
