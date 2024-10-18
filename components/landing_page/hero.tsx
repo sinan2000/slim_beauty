@@ -5,11 +5,17 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, MapPin, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
     const [currentImage, setCurrentImage] = useState(0);
 
-    const images = ['/hero1.jpg', '/hero2.jpg', '/hero3.jpg', '/hero4.jpg'];
+    const images = [
+        { src: '/hero1.jpg', alt: 'Hero Image 1' },
+        { src: '/hero2.jpg', alt: 'Hero Image 2' },
+        { src: '/hero3.jpg', alt: 'Hero Image 3' },
+        { src: '/hero4.jpg', alt: 'Hero Image 4' }
+    ];
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,15 +36,7 @@ export default function Hero() {
     return (
         <section className="relative overflow-hidden h-[calc(100vh-86px)] flex flex-col lg:flex-row">
             {/* Image and controls */}
-            <div
-                className="relative w-full lg:w-1/2 h-full"
-                style={{
-                    backgroundImage: `url('${images[currentImage]}')`,
-                    backgroundSize: 'contain',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                }}
-            >
+            <div className="relative w-full lg:w-1/2 h-full">
                 <AnimatePresence initial={false}>
                     <motion.div
                         key={currentImage}
@@ -46,8 +44,16 @@ export default function Hero() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="absolute inset-0"
-                    />
+                        className="absolute inset-0 w-full h-full"
+                    >
+                        <Image
+                            src={images[currentImage].src}
+                            alt={images[currentImage].alt}
+                            fill
+                            style= {{ objectFit: 'contain' }}
+                            priority={true}
+                        />
+                    </motion.div>
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-black bg-opacity-50" />
 
