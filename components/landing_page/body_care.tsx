@@ -1,5 +1,3 @@
-import { mdiSnowflakeAlert, mdiArmFlex, mdiWifi, mdiVacuum, mdiBloodBag, mdiSignalVariant, mdiRadioboxMarked, mdiWhiteBalanceSunny, mdiWaveform } from '@mdi/js';
-import Icon from '@mdi/react';
 import { Card, CardContent } from "../ui/card";
 import React from "react";
 import { services } from '@/lib/data';
