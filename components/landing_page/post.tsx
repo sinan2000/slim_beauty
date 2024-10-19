@@ -10,10 +10,6 @@ interface PostCardProps {
     post: Post
 }
 
-const myCustomLoader = ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-};
-
 export default function PostCard({ post }: PostCardProps) {
     return (
         <CarouselItem key={post.date} className="md:basis-1/2 lg:basis-1/3">
@@ -22,7 +18,6 @@ export default function PostCard({ post }: PostCardProps) {
                     <CardContent className="p-6 flex-grow flex flex-col">
                         <div className="flex items-center mb-4">
                             <Image
-                                loader={myCustomLoader}
                                 src="https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/293656603_557661769205636_1626461736837315377_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xfwmA4hqCYYQ7kNvgE6y1xV&_nc_zt=23&_nc_ht=scontent-ams4-1.xx&_nc_gid=AImVCRWM3ef9dBCfvxELlQA&oh=00_AYAozGkkajcr3DMq3oVkOvb01u0Ig-rHp9FG-SffxB_o8Q&oe=671499AD"
                                 alt="Slim & Beauty by MC Logo"
                                 width={40}
@@ -35,7 +30,6 @@ export default function PostCard({ post }: PostCardProps) {
                             </div>
                         </div>
                         <Image
-                            loader={myCustomLoader}
                             src={post.image}
                             alt={`Facebook post from ${post.date}`}
                             width={400}

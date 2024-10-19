@@ -85,7 +85,7 @@ export default function TempPage() {
         }
 
         router.replace(`?${params.toString()}`, { scroll: false });
-    }, [expandedService]);
+    }, [expandedService, router, searchParams]);
 
     useEffect(() => {
         if (expandedService && hasInitialServiciuParam.current && !hasScrolledRef.current) {
