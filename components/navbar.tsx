@@ -37,6 +37,7 @@ export default function Navbar() {
                         width={150}
                         height={75}
                         className="w-36 h-auto"
+                        priority
                     />
                 </Link>
                 <nav className="hidden md:flex items-center space-x-6">
