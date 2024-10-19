@@ -36,6 +36,8 @@ export default function PostCard({ post }: PostCardProps) {
                             height={300}
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             className="w-full h-48 object-cover rounded-lg mb-4"
+                            blurDataURL='/blur.png'
+                            placeholder="blur"
                         />
                         <p className="text-[#6B4E32] mb-4 line-clamp-5 whitespace-pre-wrap flex-grow">{post.description}</p>
                     </CardContent>

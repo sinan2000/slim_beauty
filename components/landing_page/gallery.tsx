@@ -82,21 +82,19 @@ Radiofrecventa bipolara– incalzeste dermul pana la 20mm adancime, producand as
 `,
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0m72yfdvBw9fArpJznWF4AeKRc88Eq4Ub2pacc6gFboAkyjbp9smmKxpTWGVkJdKEl'
     }
-    
+
 ]
 
 export default function FacebookPostsCarousel() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [api, setApi] = React.useState<any>()
     const [current, setCurrent] = React.useState(0)
-    const [count, setCount] = React.useState(0)
 
     React.useEffect(() => {
         if (!api) {
             return
         }
 
-        setCount(api.scrollSnapList().length)
         setCurrent(api.selectedScrollSnap())
 
         api.on("select", () => {
@@ -116,15 +114,20 @@ export default function FacebookPostsCarousel() {
                     </CarouselContent>
                 </Carousel>
                 <div className="flex justify-center mt-4">
-                    {Array.from({ length: count }).map((_, index) => (
-                        <button
-                            key={index}
-                            className={`w-2 h-2 rounded-full mx-1 ${index === current ? 'bg-[#6B4E32]' : 'bg-gray-300'
-                                }`}
-                            onClick={() => api?.scrollTo(index)}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
+                    <button
+                        onClick={() => api?.scrollTo(current - 1)}
+                        aria-label="Previous slide"
+                        className="p-2"
+                    >
+                        Previous
+                    </button>
+                    <button
+                        onClick={() => api?.scrollTo(current + 1)}
+                        aria-label="Next slide"
+                        className="p-2"
+                    >
+                        Next
+                    </button>
                 </div>
             </div>
         </section>

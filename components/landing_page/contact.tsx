@@ -51,7 +51,7 @@ export default function ContactSection() {
                             </Link>
                         </div>
                     </div>
-                    <div className="relative h-[400px] md:h-full rounded-lg overflow-hidden shadow-lg">
+                    <div className="relative h-[400px] md:h-full rounded-lg overflow-hidden shadow-lg" title="Location of Slim&Beauty by MC">
                         <GoogleMapsEmbed
                             apiKey={process.env.MAPS_EMBED_API_KEY as string}
                             height="100%;"
