@@ -35,44 +35,47 @@ export default function Hero() {
     return (
         <section className="flex flex-col lg:flex-row h-[calc(100vh-86px)]">
             {/* Image Section */}
-            <div className="relative w-full lg:w-1/2 h-1/2 lg:h-full bg-transparent">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={currentImage}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="absolute inset-0 flex items-center justify-center"
-                    >
-                        <Image
-                            src={images[currentImage]}
-                            alt={`Slim & Beauty service ${currentImage + 1}`}
-                            layout="fill"
-                            objectFit="contain"
-                            priority
-                        />
-                    </motion.div>
-                </AnimatePresence>
+            <div className="relative w-full lg:w-1/2 h-1/2 lg:h-full flex flex-col">
+                {/* Image Container */}
+                <div className="relative flex-grow bg-transparent">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentImage}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="absolute inset-0 flex items-center justify-center"
+                        >
+                            <Image
+                                src={images[currentImage]}
+                                alt={`Slim & Beauty service ${currentImage + 1}`}
+                                layout="fill"
+                                objectFit="contain"
+                                priority
+                            />
+                        </motion.div>
+                    </AnimatePresence>
 
-                {/* Navigation buttons */}
-                <button
-                    onClick={prevImage}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition-colors"
-                    aria-label="Previous image"
-                >
-                    <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                    onClick={nextImage}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition-colors"
-                    aria-label="Next image"
-                >
-                    <ChevronRight className="w-6 h-6" />
-                </button>
+                    {/* Navigation buttons */}
+                    <button
+                        onClick={prevImage}
+                        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition-colors"
+                        aria-label="Previous image"
+                    >
+                        <ChevronLeft className="w-6 h-6" />
+                    </button>
+                    <button
+                        onClick={nextImage}
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/75 transition-colors"
+                        aria-label="Next image"
+                    >
+                        <ChevronRight className="w-6 h-6" />
+                    </button>
+                </div>
 
                 {/* Contact information */}
-                <div className="absolute bottom-0 left-0 right-0 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-black/50 text-white p-2 sm:p-4">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-black/50 text-white p-2 sm:p-4">
                     <div className="flex items-center mb-1 sm:mb-0">
                         <Phone className="w-4 h-4 mr-2" />
                         <span className="text-sm">+40 733 407 329</span>
