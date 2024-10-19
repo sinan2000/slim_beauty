@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
 import Script from "next/script";
 import CookieConsent from "@/components/cookies-consent";
-//import { cookies } from "next/headers";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Slim & Beauty by MC - Remodelare corporală și dermato-cosmetică",
@@ -24,13 +24,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  //const cookieStore = cookies();
-  //const consent = cookieStore.get('cookie_consent')?.value;
+  const cookieStore = cookies();
+  const consent = cookieStore.get('cookie_consent')?.value;
 
   return (
     <html lang="ro" className={playfair.className}>
       <head>
-        {true && (
+        {consent === 'accepted' && (
           <>
             <Script
               id="google-gtag"
