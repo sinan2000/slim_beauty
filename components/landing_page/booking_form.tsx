@@ -112,6 +112,13 @@ export default function BookAppointment() {
         }
         try {
             await sendSms(payload);
+
+            if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'conversion', {
+                    send_to: 'AW-16731906773/QaB6CKeQrN8ZENXFsqo-',
+                })
+            }
+
             setSubmitSuccess(true);
             setSubmitMessage('Programarea a fost trimisă cu succes! Vă vom contacta pentru confirmare.');
             form.reset(defaultValues);

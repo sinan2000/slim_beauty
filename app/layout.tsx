@@ -3,6 +3,7 @@ import { Playfair_Display } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Slim & Beauty by MC - Remodelare corporală și dermato-cosmetică",
@@ -23,6 +24,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro" className={playfair.className}>
+      <head>
+        <Script
+          id="google-gtag"
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=AW-16731906773`}
+        />
+        <Script
+          id="google-gtag-inline"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-16731906773');
+            `,
+          }}
+        />
+      </head>
       <body className="font-playfair">
         <Navbar />
         {children}
