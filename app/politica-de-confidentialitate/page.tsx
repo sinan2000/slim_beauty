@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
                         <section>
                             <h2 className="text-2xl font-semibold text-primary mt-6 mb-4">1. Introducere</h2>
                             <p>
-                                Bine ați venit la Slim & Beauty by MC ("noi", "nouă", "al nostru"). Ne angajăm să vă protejăm datele personale și să vă respectăm confidențialitatea. Această Politică de Confidențialitate explică modul în care colectăm, utilizăm și protejăm informațiile dvs. atunci când vizitați site-ul nostru web www.slimandbeauty.ro ("Site-ul") și utilizați serviciile noastre.
+                                Bine ați venit la Slim & Beauty by MC (&quot;noi&quot;, &quot;nouă&quot;, &quot;al nostru&quot;). Ne angajăm să vă protejăm datele personale și să vă respectăm confidențialitatea. Această Politică de Confidențialitate explică modul în care colectăm, utilizăm și protejăm informațiile dvs. atunci când vizitați site-ul nostru web www.slimandbeauty.ro (&quot;Site-ul&quot;) și utilizați serviciile noastre.
                             </p>
                         </section>
 

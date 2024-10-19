@@ -29,7 +29,7 @@ export default function Footer() {
                                 <Phone className="w-5 h-5 mr-2" />
                                 +40 733 407 329
                             </li>
-                            <li className="flex items-center"><MapPin className="w-5 h-5 mr-2" /> 
+                            <li className="flex items-center"><MapPin className="w-5 h-5 mr-2" />
                                 Dumbrăvița, str. Petőfi Sándor 101</li>
                         </ul>
                         <div className="flex space-x-4 mt-4">
@@ -68,7 +68,12 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="mt-8 pt-8 border-t border-[#6B4E32] text-center text-sm">
-                    <p>&copy; {new Date().getFullYear()} Slim & Beauty by MC. Toate drepturile rezervate.</p>
+                    <p className="mb-2">&copy; {new Date().getFullYear()} Slim & Beauty by MC. Toate drepturile rezervate.</p>
+                    <p>
+                        <Link href="/politica-de-confidentialitate" className="hover:text-[#B88A72]">
+                            Politica de confidențialitate
+                        </Link>
+                    </p>
                 </div>
             </div>
         </footer>
