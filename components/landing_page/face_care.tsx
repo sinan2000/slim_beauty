@@ -4,6 +4,7 @@ import { Card, CardContent } from "../ui/card";
 import React from "react";
 import { services } from "@/lib/data";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function FaceCare() {
     const data = services[1];
@@ -22,13 +23,15 @@ export default function FaceCare() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
                         >
-                            <Card>
-                                <CardContent className="p-6 flex flex-col items-center text-center">
-                                    {item.icon}
-                                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                                    <p className="text-muted-foreground">{item.shortDescription}</p>
-                                </CardContent>
-                            </Card>
+                            <Link href={`/servicii?serviciu=${encodeURIComponent(item.title)}`}>
+                                <Card>
+                                    <CardContent className="p-6 flex flex-col items-center text-center">
+                                        {item.icon}
+                                        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                                        <p className="text-muted-foreground">{item.shortDescription}</p>
+                                    </CardContent>
+                                </Card>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>

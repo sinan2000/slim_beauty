@@ -36,3 +36,10 @@ const romanianCharMap: { [key: string]: string } = {
 export function mapRomanianChars(input: string) {
   return input.replace(/[ăâîșțĂÂÎȘȚ]/g, match => romanianCharMap[match]);
 }
+
+export const normalizeString = (str: string) => {
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-');
+};
