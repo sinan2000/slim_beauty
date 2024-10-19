@@ -35,7 +35,8 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import * as z from "zod"
-import { sendSms } from "@/app/actions"
+import { sendSms } from "@/app/actions";
+import Cookies from "js-cookie"
 
 const formSchema = z.object({
     name: z.string({
@@ -113,7 +114,8 @@ export default function BookAppointment() {
         try {
             await sendSms(payload);
 
-            if (typeof window !== 'undefined' && window.gtag) {
+            const consent = Cookies.get('cookie_consent');
+            if (consent === 'accepted' && typeof window !== 'undefined' && window.gtag) {
                 window.gtag('event', 'conversion', {
                     send_to: 'AW-16731906773/QaB6CKeQrN8ZENXFsqo-',
                 })
