@@ -50,8 +50,9 @@ export default function AHero() {
                             <Image
                                 src={images[currentImage]}
                                 alt={`Slim & Beauty service ${currentImage + 1}`}
-                                layout="fill"
-                                objectFit="contain"
+                                fill
+                                style={{ objectFit: 'contain' }}
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                                 priority
                             />
                         </motion.div>
