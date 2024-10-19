@@ -1,4 +1,4 @@
-import Hero from '@/components/landing_page/hero'
+import AHero from '@/components/landing_page/hero'
 import BodyCare from '@/components/landing_page/body_care'
 import FaceCare from '@/components/landing_page/face_care'
 import Testimonials from '@/components/landing_page/testimonials'
@@ -104,7 +104,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#FDF8F5]">
       <main className="flex-grow">
-        <Hero />
+        <AHero />
         <BodyCare />
         <FaceCare />
         <Testimonials />

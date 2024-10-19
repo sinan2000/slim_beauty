@@ -14,7 +14,7 @@ const images = [
     '/hero4.jpg'
 ]
 
-export default function Hero() {
+export default function AHero() {
     const [currentImage, setCurrentImage] = useState(0)
 
     useEffect(() => {
