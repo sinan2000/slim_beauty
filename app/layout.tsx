@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="ro" className={playfair.className}>
       <head>
-        {consent === 'accepted' && (
+        {true && (
           <>
             <Script
               id="google-gtag"

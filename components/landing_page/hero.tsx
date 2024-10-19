@@ -76,7 +76,7 @@ export default function AHero() {
                 </div>
 
                 {/* Contact information */}
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-black/50 text-white p-2 sm:p-4">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-black/70 text-white p-2 sm:p-4">
                     <div className="flex items-center mb-1 sm:mb-0">
                         <Phone className="w-4 h-4 mr-2" />
                         <span className="text-sm">+40 733 407 329</span>
@@ -102,7 +102,7 @@ export default function AHero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
-                    className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 text-gray-700"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 text-gray-900"
                 >
                     Experimentează tratamente dermato-cosmetice și de remodelare corporală la Slim & Beauty by MC.
                 </motion.p>
