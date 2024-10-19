@@ -7,17 +7,12 @@ interface ReviewCardProps {
     review: Review
 }
 
-const myCustomLoader = ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-};
-
 export default function ReviewCard({ review }: ReviewCardProps) {
     return (
         <Card key={review.authorName} className="h-full">
             <CardContent className="p-6 flex flex-col h-full">
                 <div className="flex items-center mb-4">
                     <Image
-                        loader={myCustomLoader}
                         src={review.authorImage}
                         alt={review.authorName}
                         width={50}

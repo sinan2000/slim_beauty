@@ -47,7 +47,7 @@ export default function AboutUs() {
                                 De-a lungul anilor, ne-am dedicat îmbunătățirii continue a serviciilor noastre, investind în tehnologii de ultimă generație și în formarea continuă a echipei noastre de specialiști.
                             </p>
                             <p className="text-gray-700">
-                                Misiunea noastră este să oferim fiecărui client o experiență personalizată, care să îi ajute să se simtă încrezători și frumoși în propria piele.
+                                Misiunea noastră este să oferim fiecărei cliente o experiență personalizată, care să îi ajute să se simtă încrezători și frumoși în propria piele.
                             </p>
                         </CardContent>
                     </Card>
@@ -102,7 +102,7 @@ export default function AboutUs() {
                                     Fondatoare și Specialist în Tratamente Corporale
                                 </p>
                                 <p className="text-gray-700">
-                                    Cu o experiență de peste 10 ani în domeniul frumuseții și îngrijirii corporale, Mihaela Ceviker a fondat Slim & Beauty cu viziunea de a oferi servicii de cea mai înaltă calitate, personalizate pentru nevoile fiecărui client.
+                                    Cu o experiență de peste 10 ani în domeniul frumuseții și îngrijirii corporale, Mihaela Ceviker a fondat Slim & Beauty cu viziunea de a oferi servicii de cea mai înaltă calitate, personalizate pentru nevoile fiecărei cliente.
                                 </p>
                             </div>
                         </div>
