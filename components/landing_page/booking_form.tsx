@@ -130,22 +130,6 @@ export default function BookAppointment() {
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-semibold text-center mb-12">Programează o Întâlnire</h2>
 
-                {submitSuccess && (
-                    <Alert className={`mb-6 ${submitSuccess ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
-                        <div className="flex items-center">
-                            {submitSuccess ? (
-                                <CheckCircle className="h-6 w-6 mr-2" />
-                            ) : (
-                                <XCircle className="h-6 w-6 mr-2" />
-                            )}
-                            <div>
-                                <AlertTitle>{submitSuccess ? "Succes" : "Eroare"}</AlertTitle>
-                                <AlertDescription>{submitMessage}</AlertDescription>
-                            </div>
-                        </div>
-                    </Alert>
-                )}
-
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-2xl mx-auto">
                         <FormField
@@ -180,10 +164,10 @@ export default function BookAppointment() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Serviciu</FormLabel>
-                                    <Select 
-                                        onValueChange={(value) => {field.onChange(value); setSelectedService(value)}} 
+                                    <Select
+                                        onValueChange={(value) => { field.onChange(value); setSelectedService(value) }}
                                         value={selectedService} name="service"
-                                        >
+                                    >
                                         <FormControl>
                                             <SelectTrigger aria-label="Selectați un serviciu">
                                                 <SelectValue placeholder="Selectați un serviciu" />
@@ -267,7 +251,7 @@ export default function BookAppointment() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Ora</FormLabel>
-                                    <Select onValueChange={(value) => { field.onChange(value); setSelectedTime(value);}} defaultValue={selectedTime} name="time">
+                                    <Select onValueChange={(value) => { field.onChange(value); setSelectedTime(value); }} defaultValue={selectedTime} name="time">
                                         <FormControl>
                                             <SelectTrigger aria-label="Selectați o oră">
                                                 <SelectValue placeholder="Selectați o oră" />
@@ -308,6 +292,23 @@ export default function BookAppointment() {
                                 </FormItem>
                             )}
                         />
+
+                        {submitSuccess && (
+                            <Alert className={`mb-6 ${submitSuccess ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                                <div className="flex items-center">
+                                    {submitSuccess ? (
+                                        <CheckCircle className="h-6 w-6 mr-2" />
+                                    ) : (
+                                        <XCircle className="h-6 w-6 mr-2" />
+                                    )}
+                                    <div>
+                                        <AlertTitle>{submitSuccess ? "Succes" : "Eroare"}</AlertTitle>
+                                        <AlertDescription>{submitMessage}</AlertDescription>
+                                    </div>
+                                </div>
+                            </Alert>
+                        )}
+
                         <Button type="submit" className="w-full bg-[#6B4E32] hover:bg-[#5A4129] text-white">
                             Trimiteți Programarea
                         </Button>
