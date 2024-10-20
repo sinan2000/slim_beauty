@@ -21,7 +21,7 @@ const Contact = dynamic(() => import('@/components/landing_page/contact'), {
 export const metadata: Metadata = {
   title: "Remodelare Corporală în Dumbrăvița - Slim & Beauty",
   description: "Descoperă tratamente de remodelare corporală, masaj anticelulitic și bronzare organică la Slim & Beauty by MC, Dumbrăvița. Servicii dermato-cosmetice personalizate.",
-  keywords:  ['remodelare corporală', 'tratament anticelulitic', 'masaj anticelulitic', 'bronzare organică', 'dermato-cosmetică', 'tratament facial', 'slabire localizata', 'Dumbrăvița', 'Timișoara'],
+  keywords: ['remodelare corporală', 'tratament anticelulitic', 'masaj anticelulitic', 'bronzare organică', 'dermato-cosmetică', 'tratament facial', 'slabire localizata', 'Dumbrăvița', 'Timișoara'],
   authors: [{ name: "Slim & Beauty by MC", url: "https://www.slimandbeauty.ro" }],
   openGraph: {
     title: "Remodelare Corporală în Dumbrăvița - Slim & Beauty",
@@ -95,11 +95,24 @@ export default function HomePage() {
       name: 'Slim & Beauty by MC'
     },
     logo: 'https://www.slimandbeauty.ro/logo.jpg',
-    makesOffer: {
-      '@type': 'Offer',
-      name: 'Dermato-Cosmetice și Remodelare Corporală',
-      priceCurrency: 'RON'
-    }
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        name: 'Remodelare Corporală',
+        priceCurrency: 'RON',
+        category: 'Body Treatment'
+      },
+      {
+        '@type': 'Offer',
+        name: 'Dermato-Cosmetice',
+        priceCurrency: 'RON',
+        category: 'Skincare'
+      }
+    ],
+    sameAs: [
+      "https://www.facebook.com/SalonSlimBeautyByMc",
+      "https://www.instagram.com/slimandbeautybymc/"
+    ]
   }
 
   return (
