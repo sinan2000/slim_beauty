@@ -69,7 +69,42 @@ Vrei să reduci celulita și să ai o piele mai fermă și mai netedă? VShape A
                 title: "Criolipoliză",
                 shortDescription: "Sculptură corporală cu tehnologie avansată de răcire.",
                 mediumDescription: "Criolipoliza este o metodă revoluționară de sculptare corporală care folosește tehnologia de răcire pentru a elimina celulele grase în mod natural. Acest tratament non-chirurgical vizează zonele specifice de grăsime rezistentă, oferind o reducere semnificativă a țesutului adipos și conturând corpul fără timp de recuperare.",
-                fact: "Celulele grase sunt mai vulnerabile la frig decât alte celule din corp, motiv pentru care criolipoliza elimină grăsimea fără a afecta țesuturile din jur."
+                longDescription: `Criolipoliza este o tehnică non-invazivă și revoluționară pentru slăbirea localizată, care utilizează temperaturi scăzute pentru a elimina celulele grase rezistente la dietă și exerciții fizice. Acest tratament inovator de sculptare corporală funcționează prin răcirea țesutului adipos la o temperatură care declanșează procesul de descompunere naturală a celulelor grase, fără a afecta țesuturile înconjurătoare.
+
+Criolipoliza este ideală pentru persoanele care doresc să elimine grăsimea persistentă din zone precum abdomenul, coapsele, brațele sau talia. Fără intervenții chirurgicale și fără perioade de recuperare, acest tratament corporal de slăbire poate oferi rezultate vizibile în câteva săptămâni, pe măsură ce corpul elimină în mod natural celulele grase distruse.
+
+De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând circumferința zonelor tratate și îmbunătățind aspectul general al pielii. Este un tratament sigur, aprobat clinic, cu un disconfort minim, oferind o soluție eficientă pentru slăbirea localizată fără riscuri majore sau complicații.
+
+`,
+                fact: "Celulele grase sunt mai vulnerabile la frig decât alte celule din corp, motiv pentru care criolipoliza elimină grăsimea fără a afecta țesuturile din jur.",
+                benefits: [
+                    "Slăbire localizată fără intervenții chirurgicale: Criolipoliza oferă o metodă eficientă de eliminare a grăsimii fără bisturiu sau anestezie.",
+                    "Reducerea grăsimii rezistente: Acest tratament vizează celulele grase din zonele care nu răspund la dietă sau exerciții fizice.",
+                    "Fără perioadă de recuperare: După tratament, poți reveni imediat la activitățile zilnice, fără timp de recuperare necesar.",
+                    "Rezultate vizibile treptat: Corpul elimină natural celulele grase distruse în decurs de câteva săptămâni, rezultând o slăbire graduală.",
+                    "Tratament personalizat: Criolipoliza poate fi ajustată pentru a trata diverse zone ale corpului, inclusiv abdomenul, talia, coapsele și brațele.",
+                    "Siguranță dovedită clinic: Este o procedură aprobată clinic, cu riscuri minime și efecte secundare rare.",
+                    "Îmbunătățirea texturii pielii: Criolipoliza nu doar reduce grăsimea, ci poate îmbunătăți și tonusul pielii în zonele tratate.",
+                    "Tehnologie avansată de răcire: Utilizarea temperaturilor scăzute oferă o metodă sigură și eficientă pentru eliminarea celulelor grase fără a afecta țesuturile înconjurătoare."
+                ],
+                faq: [
+                    {
+                        question: "Cum funcționează criolipoliza?",
+                        answer: "Criolipoliza răcește țesuturile grase la o temperatură care determină distrugerea naturală a celulelor grase. Acestea sunt eliminate de organism în mod natural, reducând grăsimea din zona tratată.",
+                    },
+                    {
+                        question: "Este tratamentul dureros?",
+                        answer: "Criolipoliza nu este dureroasă, dar poți simți o senzație de răceală intensă la începutul tratamentului, care dispare rapid pe măsură ce zona tratată se amorțește."
+                    },
+                    {
+                        question: "Cât durează o sesiune de criolipoliză?",
+                        answer: "O sesiune durează între 35 și 60 de minute, în funcție de zona tratată și de nevoile pacientei."
+                    },
+                    {
+                        question: "Care sunt efectele secundare ale criolipolizei?",
+                        answer: "Criolipoliza are efecte secundare minime, care includ înroșirea temporară a pielii, amorțirea sau sensibilitatea în zona tratată, dar acestea dispar în câteva zile."
+                    }
+                ]
             },
             {
                 icon: <Icon path={mdiArmFlex} size={2} className="text-primary mb-4" />,
