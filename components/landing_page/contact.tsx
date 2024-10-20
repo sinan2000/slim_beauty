@@ -1,8 +1,8 @@
 import React from 'react'
 import { Phone, MapPin, Clock, Instagram, Facebook } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
-import { GoogleMapsEmbed } from '@next/third-parties/google'
 import Link from 'next/link'
+import GoogleMap from '../googlemap'
 
 export default function ContactSection() {
     return (
@@ -51,17 +51,8 @@ export default function ContactSection() {
                             </Link>
                         </div>
                     </div>
-                    <div className="relative h-[400px] md:h-full rounded-lg overflow-hidden shadow-lg" title="Location of Slim&Beauty by MC">
-                        <GoogleMapsEmbed
-                            apiKey={process.env.MAPS_EMBED_API_KEY as string}
-                            height="100%;"
-                            width="100%;"
-                            mode="place"
-                            q="Slim+&+Beauty+by+MC,+Dumbrăvița"
-                            loading="lazy"
-                            style="border: 0"
-                            language="ro"
-                        />
+                    <div className="relative h-[400px] md:h-full rounded-lg overflow-hidden shadow-lg">
+                        <GoogleMap />
                     </div>
                 </div>
             </div>

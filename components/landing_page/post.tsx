@@ -19,7 +19,7 @@ export default function PostCard({ post }: PostCardProps) {
                         <div className="flex items-center mb-4">
                             <Image
                                 src="https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/293656603_557661769205636_1626461736837315377_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xfwmA4hqCYYQ7kNvgE6y1xV&_nc_zt=23&_nc_ht=scontent-ams4-1.xx&_nc_gid=AImVCRWM3ef9dBCfvxELlQA&oh=00_AYAozGkkajcr3DMq3oVkOvb01u0Ig-rHp9FG-SffxB_o8Q&oe=671499AD"
-                                alt="Slim & Beauty by MC Logo"
+                                alt={`Slim & Beauty by MC Logo, de la postarea din ${post.date}`}
                                 width={40}
                                 height={40}
                                 className="rounded-full mr-3"
@@ -31,7 +31,7 @@ export default function PostCard({ post }: PostCardProps) {
                         </div>
                         <Image
                             src={post.image}
-                            alt={`Facebook post from ${post.date}`}
+                            alt={post.alt}
                             width={400}
                             height={300}
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -54,7 +54,7 @@ export default function Navbar() {
                         </Button>
                     </Link>
                 </nav>
-                <div className="flex items-center space-x-4 md:hidden">
+                <div className="flex items-center space-x-1 md:hidden">
                     <Link href="/#rezervare">
                         <Button variant="default" className="bg-primary text-white hover:bg-primary/90">
                             Rezervă acum

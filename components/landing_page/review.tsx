@@ -14,7 +14,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
                 <div className="flex items-center mb-4">
                     <Image
                         src={review.authorImage}
-                        alt={review.authorName}
+                        alt={review.imageDescription}
                         width={50}
                         height={50}
                         className="rounded-full mr-4"

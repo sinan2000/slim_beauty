@@ -13,18 +13,21 @@ const posts = [
         date: '20 septembrie 2024',
         description: `🔥Bronzarea organica DHA este alegerea perfecta pentru un bronz stralucitor si natural100%!💥
 Programari la ☎️0733407329`,
+        alt: "Imagine Facebook despre bronzare organică DHA la Slim & Beauty by MC, postare din 20 septembrie 2024",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0335uA4TTHaPAsY3Fhabk2tfznqSkqfhS1hXJaCwg2kzy79AQKwiZCQEaoLvtu83Hjl'
     },
     {
         image: 'https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/452421146_1104841714487636_703966770979959418_n.jpg?stp=cp6_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=QFpAtlYZ9eYQ7kNvgGg-Smd&_nc_zt=23&_nc_ht=scontent-ams4-1.xx&_nc_gid=Ak7OVDV8cJ8BAQjR_dmJZxP&oh=00_AYA-aywC99UiwxKzJzPiB9H8iHpDRGotPzzjPZG_99JIjA&oe=671475DE',
         date: '24 iulie 2024',
         description: 'Sfaturi utile inainte si dupa sesiunea de bronzare organica!❗️',
+        alt: "Sfaturi pentru bronzae organică DHA la Slim & Beauty by MC, postare din 24 iulie 2024",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0gFGoTzLkaaycwNQSpJfgtrpwBpLAiHhDKEg6WBjzL64X7tyTYNR643Ee8xRsRTYMl'
     },
     {
         image: 'https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/430018463_1007438330894642_7029938910149757227_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=qA6MmGQSuMcQ7kNvgGrhlJg&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=A2_pkvYWn1Kah6u_fuvD2Dt&oh=00_AYDOheZEYvs6ZRsQBRyNwvsZJwI1VqvddcMJwhbww4HZfw&oe=67149DF3',
         date: '8 martie 2024',
         description: 'Dragi doamne, în această zi specială vă doresc să vă simțiți apreciate și iubite așa cum meritați. Să aveți parte de multe momente frumoase și de multă fericire alături de cei dragi. La mulți ani!🤍🤍',
+        alt: "Mesaj pentru Ziua Femeii la Slim & Beauty by MC, postare din 8 martie 2024",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0T8WrrCrhZKciUmMSGjD8i49updLAfm1imX7wmkwFmz69jkh9TMxTGxDN6fTYLFE4l'
     },
     {
@@ -32,6 +35,7 @@ Programari la ☎️0733407329`,
         date: '8 ianuarie 2024',
         description: `Bronzare organică: metodă 100% sigură!💥
 Tehnica de bronzare organică / bronzare cu DHA e simplă: în doar 10-15 minute, aproximativ 75 ml de soluție de bronzare cu DHA se pulverizează după o metodă specială pe corp, nefiind necesare mai multe ședințe pentru a ajunge la culoarea dorită. 💥Rezultatul: o culoare uniformă, în nuanță exotică, intensă, radiantă.💥`,
+        alt: "Tehnica de bronzare organică DHA la Slim & Beauty by MC, postare din 8 ianuarie 2024",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0EVc7QsC5RrtSUoWD5tbDg9MNHAwZ9XeqHibnMYSw73dpYT3Z5Bydd8X227ovoc58l'
     },
     {
@@ -46,6 +50,7 @@ AVANTAJELE BRONZULUI ORGANIC :
 – hidrateaza pielea, lasand-o supla si luminoasa;
 – bronz de culoare naturala;
 – rezultat imediat.`,
+        alt: "Detalii despre bronzarea organică DHA la Slim & Beauty by MC, postare din 8 decembrie 2023",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0qh55ca6HHG8YBjS21BTQZ4Ce1VtnJ4tkXYPW5SpNo4dMd1TyXwmGx2DGXuE8YjhAl'
     },
     {
@@ -56,6 +61,7 @@ AVANTAJELE BRONZULUI ORGANIC :
 💥Tratamentul este nedureros, non-invaziv.
 💥Vă puteți întoarce la activitățile cotidiene imediat după tratament.
 💥Este o procedură eficienta cu rezultate satisfacatoare.`,
+        alt: "Detalii despre tratamentul anticelulitic VShape la Slim & Beauty by MC, postare din 26 octombrie 2023",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0YcKKNjVmGqaE4DM5eVbbqGaXjNoUKbKKE8oSgSyYq8BPaWBM9RRRjvpmf4YFNZkzl'
     },
     {
@@ -63,12 +69,14 @@ AVANTAJELE BRONZULUI ORGANIC :
         date: '4 octombrie 2023',
         description: `EMSlim este o tehnologie de stimulare electromagnetica PASIVA de intensitate mare asistata de radiofrecventa, ce induce contractii musculare puternice.
 Aparatul are 4 manipuli, facilitand folosirea pe 4 zone intr-o singura sedinta!`,
+        alt: "Descriere EMSlim Neo RF pentru tonifiere musculară la Slim & Beauty by MC, postare din 4 octombrie 2023",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0YtUoTxqWWdaGT25Qkvv5WS5SGCrxN5jKKTxFisY8vsA3MKFg3xQvBkp2Nu3wWmEHl'
     },
     {
         image: 'https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/366951793_868660838105726_3988613100836687219_n.jpg?stp=cp6_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=blv7RxkV9tIQ7kNvgHPi0h_&_nc_zt=23&_nc_ht=scontent-ams4-1.xx&_nc_gid=A9ADI4POPZpwVJ_EaQnhGMx&oh=00_AYDLN_eCnDW1U-nvtTvUaQgb9M_ndUlGsQLmbJu-dNh--w&oe=6714889A',
         date: '18 august 2023',
         description: 'CrioSculpt este un concept unic de remodelare corporala si slabire localizata prin inghetare, non-invaziv si non-chirurgical, care se adreseaza tuturor zonelor corporale ce prezinta tesut adipos in exces. CrioSculpt este prevazut cu aplicatori bazati pe tehnologia inovativa de inghetare a tesutului adipos 360°. Acest lucru inseamna ca zona din interiorul aplicatorilor este',
+        alt: "Postare despre remodelarea corporală CrioSculpt la Slim & Beauty by MC, postare din 18 august 2023",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0PyojyuYeZ4a7R7LyNZm4wEZSm7dCghvFJTQ9GVP7f4XPGhPusMP2p3N73FMycmQwl'
     },
     {
@@ -80,6 +88,7 @@ V-Shape combina 4 tehnologii puternice care lucreaza concomitent asupra zonei de
 
 Radiofrecventa bipolara– incalzeste dermul pana la 20mm adancime, producand astfel contractia fibrelor de colagen si
 `,
+        alt: "Explicație despre tehnologia V-Shape la Slim & Beauty by MC, postare din 13 iunie 2023",
         url: 'https://www.facebook.com/SalonSlimBeautyByMc/posts/pfbid0m72yfdvBw9fArpJznWF4AeKRc88Eq4Ub2pacc6gFboAkyjbp9smmKxpTWGVkJdKEl'
     }
 
@@ -119,14 +128,14 @@ export default function FacebookPostsCarousel() {
                         aria-label="Previous slide"
                         className="p-2"
                     >
-                        Previous
+                        Înapoi
                     </button>
                     <button
                         onClick={() => api?.scrollTo(current + 1)}
                         aria-label="Next slide"
                         className="p-2"
                     >
-                        Next
+                        Înainte
                     </button>
                 </div>
             </div>

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Phone, MapPin, Car, Calendar, Clock, Users, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { GoogleMapsEmbed } from '@next/third-parties/google'
+import GoogleMap from '@/components/googlemap'
 
 const ContactItem = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
     <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-lg shadow-sm">
@@ -122,25 +122,7 @@ export default function AboutUs() {
                         </CardHeader>
                         <CardContent>
                             <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-                                {/* 
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2783.0874762907417!2d21.23333661554912!3d45.79180077910623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47455d8a8f7f6a3d%3A0x7ab7c3c5d0d8d2c0!2sStrada%20Pet%C5%91fi%20S%C3%A1ndor%20101%2C%20Dumbr%C4%83vi%C8%9Ba%20307160!5e0!3m2!1sen!2sro!4v1634567890123!5m2!1sen!2sro"
-                                        width="100%"
-                                        height="100%"
-                                        style={{ border: 0 }}
-                                        allowFullScreen={true}
-                                        loading="lazy"
-                                    ></iframe>*/}
-                                <GoogleMapsEmbed
-                                    apiKey={process.env.MAPS_EMBED_API_KEY as string}
-                                    height="100%;"
-                                    width="100%;"
-                                    mode="place"
-                                    q="Slim+&+Beauty+by+MC,+Dumbrăvița"
-                                    loading="lazy"
-                                    style="border: 0"
-                                    language="ro"
-                                />
+                                <GoogleMap />
                             </div>
                         </CardContent>
                     </Card>
