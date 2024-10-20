@@ -13,6 +13,7 @@ export default function FaceCare() {
         <section className="py-16 bg-[#F5EBE6]">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-semibold text-center mb-12">{data.category}</h2>
+                <p className="text-center text-lg text-gray-700 mb-8">Descoperă tratamentele dermato-cosmetice personalizate, de la microneedling la microdermabraziune, pentru o piele revitalizată și strălucitoare.</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Map over the items array */}
                     {data.items.map((item, index) => (
@@ -23,15 +24,16 @@ export default function FaceCare() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
                         >
-                            <Link href={`/servicii?serviciu=${encodeURIComponent(item.title)}`}>
-                                <Card>
+                            <Card>
                                     <CardContent className="p-6 flex flex-col items-center text-center">
                                         {item.icon}
                                         <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                                         <p className="text-muted-foreground">{item.shortDescription}</p>
+                                        <Link href={`/servicii?serviciu=${encodeURIComponent(item.title)}`}>
+                                        <p className="text-primary font-medium mt-4 hover:underline">Află mai multe</p>
+                                    </Link>
                                     </CardContent>
                                 </Card>
-                            </Link>
                         </motion.div>
                     ))}
                 </div>

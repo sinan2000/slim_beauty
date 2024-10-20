@@ -12,6 +12,13 @@ const images = [
     '/hero2.jpg',
     '/hero3.jpg',
     '/hero4.jpg'
+];
+
+const alts = [
+    'Slim & Beauty by MC - Criolipoliză 360 pentru conturarea corpului, Dumbrăvița.',
+    'Terapie anticelulitică și slăbire localizată la Slim & Beauty by MC, cu servicii de VShape, EMSlim4, radiofrecvență și cavitație în Dumbrăvița.',
+    'Aparat EMSlim4 HI-EMT+RF pentru tonifierea mușchilor și conturarea corpului la Slim & Beauty by MC, Dumbrăvița.',
+    '"Tratament de criolipoliză 360 la Slim & Beauty by MC pentru reducerea grăsimii localizate, Dumbrăvița.'
 ]
 
 export default function AHero() {
@@ -49,7 +56,7 @@ export default function AHero() {
                         >
                             <Image
                                 src={images[currentImage]}
-                                alt={`Slim & Beauty service ${currentImage + 1}`}
+                                alt={alts[currentImage]}
                                 fill
                                 style={{ objectFit: 'contain' }}
                                 sizes="(max-width: 1024px) 100vw, 50vw"
