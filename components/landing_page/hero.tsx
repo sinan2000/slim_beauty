@@ -96,7 +96,7 @@ export default function AHero() {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4 text-primary"
                 >
-                    Hai să vorbim despre slăbit și frumusețe!
+                    Servicii de Remodelare Corporală și Dermato-Cosmetică în Dumbrăvița
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ export default function AHero() {
                     transition={{ delay: 0.4, duration: 0.5 }}
                     className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 text-gray-900"
                 >
-                    Experimentează tratamente dermato-cosmetice și de remodelare corporală la Slim & Beauty by MC.
+                    Descoperă tratamente de remodelare corporală, masaj anticelulitic și bronzare organică la Slim & Beauty by MC în Dumbrăvița. Experimentează cele mai avansate tratamente dermato-cosmetice pentru rejuvenarea pielii.
                 </motion.p>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

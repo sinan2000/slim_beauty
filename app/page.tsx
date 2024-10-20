@@ -19,12 +19,13 @@ const Contact = dynamic(() => import('@/components/landing_page/contact'), {
 })
 
 export const metadata: Metadata = {
-  description: "Descoperă servicii dermato-cosmetice de top și proceduri de remodelare corporală la Slim & Beauty by MC în Dumbrăvița. Fie că este vorba despre tratamente faciale, conturare corporală sau rejuvenarea pielii, suntem aici pentru a te ajuta să arăți și să te simți la cel mai bun nivel.",
-  keywords: ['Slim & Beauty by MC', 'remodelare corporală', 'dermato-cosmetică', 'Dumbrăvița', 'România', "Timișoara", "tratamente faciale", "îngrijirea pielii", "tratament de frumusețe"],
+  title: "Remodelare Corporală în Dumbrăvița - Slim & Beauty",
+  description: "Descoperă tratamente de remodelare corporală, masaj anticelulitic și bronzare organică la Slim & Beauty by MC, Dumbrăvița. Servicii dermato-cosmetice personalizate.",
+  keywords:  ['remodelare corporală', 'tratament anticelulitic', 'masaj anticelulitic', 'bronzare organică', 'dermato-cosmetică', 'tratament facial', 'slabire localizata', 'Dumbrăvița', 'Timișoara'],
   authors: [{ name: "Slim & Beauty by MC", url: "https://www.slimandbeauty.ro" }],
   openGraph: {
-    title: "Slim & Beauty by MC - Remodelare corporală și dermato-cosmetică",
-    description: "Slim & Beauty by MC oferă o gamă largă de proceduri profesionale dermato-cosmetice și de remodelare corporală în Dumbrăvița, România. Obține-ți obiectivele de frumusețe cu tratamentele noastre experte.",
+    title: "Remodelare Corporală în Dumbrăvița - Slim & Beauty",
+    description: "Descoperă tratamente de remodelare corporală, masaj anticelulitic și bronzare organică la Slim & Beauty by MC, Dumbrăvița. Servicii dermato-cosmetice personalizate.",
     url: "https://www.slimandbeauty.ro",
     siteName: "Slim & Beauty by MC",
     images: [
