@@ -19,4 +19,5 @@ export type Service = {
     title: string
     shortDescription: string
     longDescription: string
+    fact: string
 }

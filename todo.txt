@@ -28,5 +28,3 @@ main services page:
 list each item, with clicking to detailed page.
 
 about us page seo optimization
-
-home page optimize each section for improved seo.

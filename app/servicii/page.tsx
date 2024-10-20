@@ -1,17 +1,18 @@
 import TempPage from './temp';
 import { services } from '@/lib/data'
 import type { Metadata } from 'next';
-import { WithContext, LocalBusiness, OfferForPurchase } from 'schema-dts';
+import { WithContext, LocalBusiness, Offer } from 'schema-dts';
 import Script from 'next/script'
+import { normalizeString } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: "Serviciile Noastre - Slim & Beauty by MC",
-  description: "Explorează serviciile noastre profesionale de remodelare corporală și dermato-cosmetică la Slim & Beauty by MC. Descoperă tratamente precum VShape Anticelulitic, Criolipoliză, EMSlim Neo RF și multe altele.",
-  keywords: ['Slim & Beauty by MC', 'remodelare corporală', 'dermato-cosmetică', 'servicii de frumusețe', 'tratamente faciale', 'anticelulitic', 'Dumbrăvița', 'Timișoara', 'îngrijirea pielii'],
+  title: "Servicii de Remodelare Corporală și Dermato-Cosmetică - Slim & Beauty",
+  description: "Descoperă servicii de remodelare corporală și dermato-cosmetică la Slim & Beauty by MC: VShape, Criolipoliză, EMSlim Neo RF și multe altele pentru un corp tonifiat.",
+  keywords: ['Slim & Beauty by MC', 'remodelare corporală', 'tratament anticelulitic', 'criopoliză', 'dermato-cosmetică', 'tratament facial', 'îngrijire piele Dumbrăvița', 'Timișoara tratamente estetice', 'EMSlim Neo RF'],
   authors: [{ name: "Slim & Beauty by MC", url: "https://www.slimandbeauty.ro" }],
   openGraph: {
-    title: "Slim & Beauty by MC - Servicii de Remodelare Corporală și Dermato-Cosmetică",
-    description: "Slim & Beauty by MC oferă o gamă variată de tratamente pentru îngrijirea pielii și remodelare corporală, inclusiv Criolipoliză, EMSlim Neo RF, și Radiofrecvență Bipolară.",
+    title: "Servicii de Remodelare Corporală și Dermato-Cosmetică - Slim & Beauty",
+    description: "Descoperă servicii de remodelare corporală și dermato-cosmetică la Slim & Beauty by MC: VShape, Criolipoliză, EMSlim Neo RF și multe altele pentru un corp tonifiat.",
     url: "https://www.slimandbeauty.ro/servicii",
     siteName: "Slim & Beauty by MC",
     images: [
@@ -33,11 +34,14 @@ export default function ServicesPage() {
   const offer = services.flatMap((category) =>
     category.items.map((item) => ({
       '@context': 'https://schema.org',
-      '@type': 'OfferForPurchase',
+      '@type': 'Offer',
       name: item.title,
       description: item.shortDescription,
       priceCurrency: 'RON',
-      priceRange: '$$'
+      price: 'Consult',
+      priceRange: '$$',
+      url: `https://www.slimandbeauty.ro/servicii/${normalizeString(category.category)}/${normalizeString(item.title)}`,
+      availability: 'https://schema.org/InStock',
     })));
   const jsonLd: WithContext<LocalBusiness> = {
     '@context': 'https://schema.org',
@@ -55,6 +59,35 @@ export default function ServicesPage() {
       addressCountry: 'RO'
     },
     description: 'Descoperă tratamente inovative pentru îngrijirea pielii și remodelare corporală la Slim & Beauty by MC. Oferim servicii precum Criolipoliză, EMSlim Neo RF și VShape Anticelulitic.',
+    currenciesAccepted: 'RON',
+    paymentAccepted: 'Cash',
+    priceRange: '$$',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Thursday',
+        ],
+        opens: '12:00',
+        closes: '20:00'
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Wednesday',
+          'Friday',
+        ],
+        opens: '09:00',
+        closes: '17:00'
+      }
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.7',
+      reviewCount: '15'
+    },
     areaServed: {
       '@type': 'Place',
       name: 'Dumbrăvița, Timișoara, România',
@@ -63,7 +96,11 @@ export default function ServicesPage() {
       '@type': 'Brand',
       name: 'Slim & Beauty by MC'
     },
-    makesOffer: offer as WithContext<OfferForPurchase>[],
+    makesOffer: offer as WithContext<Offer>[],
+    sameAs: [
+      "https://www.facebook.com/SalonSlimBeautyByMc",
+      "https://www.instagram.com/slimandbeautybymc/"
+    ]
   }
 
   return (
