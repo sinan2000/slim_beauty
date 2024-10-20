@@ -118,7 +118,50 @@ De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând 
                 title: "Radiofrecvență Bipolară",
                 shortDescription: "Lifting și regenerare celulară.",
                 mediumDescription: "Radiofrecvența Bipolară este un tratament avansat pentru lifting și regenerare celulară. Prin încălzirea controlată a țesuturilor profunde ale pielii, stimulează producția naturală de colagen și elastină, rezultând într-o piele mai fermă, mai netedă și cu un aspect mai tânăr, fără necesitatea intervențiilor chirurgicale.",
-                fact: "Tratamentul stimulează producția de colagen, proteina responsabilă pentru structura și elasticitatea pielii, care scade odată cu înaintarea în vârstă."
+                longDescription: `
+Presoterapie (Drenaj Limfatic)
+Eliminarea toxinelor și reducerea retenției de apă prin drenaj limfatic
+
+Descriere detaliată
+Presoterapia, cunoscută și sub numele de drenaj limfatic prin presoterapie, este o tehnică non-invazivă care stimulează sistemul limfatic pentru a ajuta la eliminarea toxinelor, a reduce retenția de apă și a îmbunătăți circulația sângelui. Această metodă este utilizată frecvent pentru ameliorarea senzației de picioare grele și pentru a contribui la regenerarea generală a organismului.
+
+Tratamentul funcționează prin aplicarea unei presiuni blânde și ritmice asupra corpului, utilizând un aparat special care masează ușor zonele afectate. Această presiune stimulează fluxul limfatic, facilitând astfel drenarea excesului de lichide și reducând edemele. Presoterapia este o soluție excelentă pentru detoxifierea organismului, deoarece susține eliminarea substanțelor nocive și stimulează procesele naturale de vindecare ale corpului.
+
+Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și reducerea retenției de apă, el poate ajuta și la îmbunătățirea aspectului pielii, reducerea celulitei și susținerea sistemului imunitar. Rezultatele sunt vizibile după câteva ședințe, iar pacienții se simt mai ușori și mai revitalizați după tratament.
+
+`,
+                fact: "Tratamentul stimulează producția de colagen, proteina responsabilă pentru structura și elasticitatea pielii, care scade odată cu înaintarea în vârstă.",
+                benefits: [
+                    "Reducerea retenției de apă: Ajută la eliminarea excesului de lichide din corp și la reducerea umflăturilor.",
+                    "Detoxifiere eficientă: Stimulează eliminarea toxinelor și a substanțelor nocive din organism.",
+                    "Îmbunătățirea circulației: Presoterapia favorizează fluxul sanguin și circulația limfatică, contribuind la regenerarea celulară.",
+                    "Ameliorarea senzației de picioare grele: Reduce oboseala și disconfortul din picioare, oferind o senzație generală de ușurare.",
+                    "Întărirea sistemului imunitar: Stimularea sistemului limfatic ajută la întărirea imunității și la îmbunătățirea funcțiilor naturale de vindecare ale corpului.",
+                    "Reducerea aspectului celulitei: Presoterapia poate îmbunătăți textura pielii și poate reduce aspectul de coajă de portocală al celulitei.",
+                    "Tratament non-invaziv și relaxant: Presoterapia este o metodă blândă, relaxantă, care nu implică durere sau timp de recuperare."
+                ],
+                faq: [
+                    {
+                        question: "Ce este drenajul limfatic prin presoterapie?",
+                        answer: "Drenajul limfatic prin presoterapie este un tratament non-invaziv care folosește presiune controlată pentru a stimula circulația limfatică, ajutând la eliminarea toxinelor și a lichidelor în exces din corp."
+                    },
+                    {
+                        question: "Este presoterapia dureroasă?",
+                        answer: "Nu, presoterapia este complet nedureroasă. Este un tratament relaxant, asemănător unui masaj ușor, cu presiune ritmică aplicată asupra corpului.",
+                    },
+                    {
+                        question: "Cine poate beneficia de presoterapie?",
+                        answer: "Presoterapia este recomandată persoanelor care se confruntă cu retenție de apă, senzația de picioare grele, celulită sau care doresc o detoxifiere generală a organismului."
+                    },
+                    {
+                        question: "Cât durează o sesiune de presoterapie?",
+                        answer: "O sesiune de presoterapie durează, în general, între 30 și 45 de minute, în funcție de zona tratată și de recomandările terapeutului."
+                    },
+                    {
+                        question: "Există efecte secundare după presoterapie?",
+                        answer: "Efectele secundare sunt rare, însă unele persoane pot simți o ușoară senzație de oboseală sau o nevoie mai frecventă de a urina, deoarece corpul elimină lichidele și toxinele."
+                    }
+                ]
             },
             {
                 icon: <Icon path={mdiVacuum} size={2} className="text-primary mb-4" />,
@@ -139,7 +182,39 @@ De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând 
                 title: "Cavitatie",
                 shortDescription: "Ultrasunete pentru eliminarea celulitei.",
                 mediumDescription: "Cavitația utilizează tehnologia ultrasunetelor pentru a targeta și elimina celulele grase și celulita. Acest tratament non-invaziv creează microbule în țesutul adipos, care implodează și distrug celulele grase, permițând corpului să le elimine în mod natural. Rezultatul este o reducere vizibilă a circumferinței și o îmbunătățire a texturii pielii.",
-                fact: "Celulele grase pot fi eliminate în mod natural de corp după ce sunt dezmembrate prin cavitație."
+                longDescription: `Cavitația este o metodă non-invazivă de reducere a țesutului adipos, utilizând ultrasunete de joasă frecvență pentru a targeta și distruge celulele grase. Acest tratament corporal de slăbire localizată este ideal pentru persoanele care doresc să scape de grăsimea persistentă din anumite zone ale corpului, cum ar fi abdomenul, coapsele sau brațele.
+
+                Procesul de cavitație funcționează prin crearea de microbule în celulele grase, care ulterior implodesc și descompun grăsimea în fragmente mai mici, permițând corpului să le elimine natural prin sistemul limfatic. Tratamentul este rapid, nedureros și nu necesită timp de recuperare, ceea ce îl face o opțiune convenabilă pentru cei care caută rezultate vizibile fără intervenții chirurgicale.
+                
+                Cavitația contribuie la reducerea țesutului adipos și îmbunătățirea texturii pielii, oferind un aspect mai tonifiat și neted. În combinație cu un stil de viață sănătos, acest tratament poate ajuta la conturarea și modelarea corpului, fără a compromite sănătatea generală sau a provoca efecte secundare majore.`,
+                fact: "Celulele grase pot fi eliminate în mod natural de corp după ce sunt dezmembrate prin cavitație.",
+                benefits: [
+                    "Reducerea țesutului adipos localizat: Cavitația vizează în mod eficient depozitele de grăsime din zonele problematice.",
+                    "Tratament non-invaziv: Nu implică intervenții chirurgicale, anestezie sau ace, ceea ce reduce riscurile asociate.",
+                    "Slăbire localizată fără durere: Procedura este confortabilă și nedureroasă, cu un minim de disconfort pe durata tratamentului.",
+                    "Fără perioadă de recuperare: După tratament, pacienții pot reveni imediat la activitățile zilnice fără necesitatea unei perioade de recuperare.",
+                    "Îmbunătățirea texturii pielii: Cavitația poate ajuta la netezirea pielii și la reducerea aspectului de celulită în zonele tratate.",
+                    "Soluție sigură și aprobată clinic: Cavitația este o metodă testată și sigură pentru conturarea corporală, cu riscuri minime.",
+                    "Potrivită pentru mai multe zone ale corpului: Acest tratament poate fi utilizat pentru abdomen, talie, coapse, brațe și alte zone cu țesut adipos."
+                ],
+                faq: [
+                    {
+                        question: "Cum funcționează cavitația?",
+                        answer: "Cavitația utilizează ultrasunete de joasă frecvență pentru a descompune celulele grase, care sunt apoi eliminate natural de organism prin sistemul limfatic."
+                    },
+                    {
+                        question: "Este cavitația dureroasă?",
+                        answer: "Cavitația nu este dureroasă. Majoritatea pacienților simt o ușoară încălzire a pielii și un sunet ușor în urechi, care dispare rapid.",
+                    },
+                    {
+                        question: "Cât durează o sesiune de cavitație?",
+                        answer: "O sesiune de cavitație durează aproximativ 30-60 de minute, în funcție de zona tratată și de nevoile pacientei."
+                    },
+                    {
+                        question: "Există efecte secundare ale cavitației?",
+                        answer: "Efectele secundare sunt minime și pot include o ușoară înroșire sau sensibilitate în zona tratată, dar acestea dispar rapid."
+                    }
+                ]
             },
             {
                 icon: <Icon path={mdiRadioboxMarked} size={2} className="text-primary mb-4" />,
