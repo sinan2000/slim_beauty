@@ -23,7 +23,7 @@ const ServiceItem = ({ service }: { service: ServiceProps }) => {
                     <p className="text-gray-600 mb-4">{service.shortDescription}</p>
                     <div className="mb-4">
                         <h4 className="font-semibold text-primary mb-2">Descriere detaliată:</h4>
-                        <p className="text-sm text-gray-700 line-clamp-3">{service.longDescription}</p>
+                        <p className="text-sm text-gray-700 line-clamp-3">{service.mediumDescription}</p>
                     </div>
                     <div className="bg-primary/10 p-4 rounded-lg mb-4">
                         <h4 className="font-semibold text-primary mb-2">Știați că?</h4>

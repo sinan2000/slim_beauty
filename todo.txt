@@ -13,6 +13,7 @@ optimise seo, local seo, keyword optimization
 detailed service page:
 - title(h1), icon, short description in italic or other format;
 - long description, around 300-500 words, keyword optimized
+- do not make any guarantees for getting slim !!
 - benefits section with bullet points/ infographic;
 * introductory sentence to lead into the benefits (Here are the key benefits of micro
 needling); list items as numbered or bullet points; keep the list to around 5-8 items
@@ -23,8 +24,5 @@ short bullet list if needed. search for answer the public questions. direct answ
 roughly 40-50 words; faqpage schema for ensuring increased chances: type FAQPage
 - unique fact for each
 - breadcrumbs Acasa > Servici > Dermapen
-
-main services page:
-list each item, with clicking to detailed page.
 
 about us page seo optimization

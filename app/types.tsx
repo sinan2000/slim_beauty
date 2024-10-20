@@ -18,6 +18,12 @@ export type Service = {
     icon: React.ReactNode
     title: string
     shortDescription: string
-    longDescription: string
-    fact: string
+    mediumDescription: string
+    longDescription?: string
+    benefits?: string[]
+    faq?: {
+        question: string
+        answer: string
+    }[]
+    fact?: string
 }
