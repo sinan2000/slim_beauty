@@ -11,6 +11,7 @@ import LoadingPage from './loading'
 
 const BookingForm = dynamic(() => import('@/components/landing_page/booking_form'), {
   loading: () => <LoadingPage />,
+  ssr: false,
 })
 
 const Contact = dynamic(() => import('@/components/landing_page/contact'), {

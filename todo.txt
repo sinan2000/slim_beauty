@@ -2,14 +2,4 @@ Gallery section - fetch data directly from facebook (req. fb app, do it later)
 
 Form submission - rate limiting
 
-Dynamic page for each service
-- unique title, meta description, headings
-- descriptions, benefits, FAQs
-
-optimise seo, local seo, keyword optimization
-
--reorder correctly each service item, make a special file for each and import them into services array.
-
-about us page seo optimization
-
 update sitemap

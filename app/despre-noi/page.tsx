@@ -4,9 +4,9 @@ import Script from "next/script";
 import { LocalBusiness, WithContext } from "schema-dts";
 
 export const metadata: Metadata = {
-    title: "Despre Slim & Beauty by MC - Povestea Noastră și Informații de Contact",
-    description: "Află povestea Slim & Beauty by MC din Dumbrăvița. Oferim tratamente dermato-cosmetice și remodelare corporală de înaltă calitate din 2013. Programează o consultație acum!",
-    keywords: ['Slim & Beauty by MC', 'despre Slim & Beauty', 'remodelare corporală', 'dermato-cosmetică', 'îngrijirea pielii', 'consultație de frumusețe'],
+    title: "Despre Slim & Beauty by MC - Tratamente și Contact",
+    description: "Descoperă povestea Slim & Beauty by MC. Oferim tratamente dermato-cosmetice și remodelare corporală de top în Dumbrăvița. Programează o consultație!",
+    keywords: ['Slim & Beauty by MC', 'remodelare corporală', 'dermato-cosmetică', 'tratamente de frumusețe', 'consultație', 'îngrijire piele Dumbrăvița', 'poveste Slim & Beauty'],
     authors: [{ name: "Slim & Beauty by MC", url: "https://www.slimandbeauty.ro" }],
     openGraph: {
         title: "Despre Slim & Beauty by MC - Povestea Noastră",
@@ -79,7 +79,12 @@ export default function Page() {
             "@type": "Brand",
             name: "Slim & Beauty by MC"
         },
-        logo: "https://www.slimandbeauty.ro/logo.jpg"
+        logo: "https://www.slimandbeauty.ro/logo.jpg",
+        sameAs: [
+            "https://www.facebook.com/SalonSlimBeautyByMc",
+            "https://www.instagram.com/slimandbeautybymc/"
+        ]
+
     };
 
     return (

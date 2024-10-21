@@ -38,6 +38,14 @@ import * as z from "zod"
 import { sendSms } from "@/app/actions";
 import Cookies from "js-cookie"
 
+declare global {
+    interface Window {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        gtag?: (...args: any[]) => void;
+    }
+}
+
+
 const formSchema = z.object({
     name: z.string({
         required_error: "Vă rugăm să introduceți numele dvs.",

@@ -85,7 +85,7 @@ export default function ServiceDetailPage({ service }: PageProps) {
 
                 {/* Bottom Text */}
                 <div className="text-lg text-gray-700 mt-12">
-                    Dacă ai alte întrebări sau dorești să faci o programare, poți folosi <Link href="/#rezervare">formularul nostru online</Link> și te vom contacta noi sau poți suna la <strong>0733407329</strong>.
+                    Dacă ai alte întrebări sau dorești să faci o programare, poți folosi <Link href="/#rezervare" className="text-primary underline hover:text-primary/80 hover:underline">formularul nostru online</Link> și te vom contacta noi sau poți suna la <strong>0733407329</strong>.
                 </div>
             </div>
         </div>
