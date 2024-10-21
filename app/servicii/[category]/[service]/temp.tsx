@@ -50,12 +50,17 @@ export default function ServiceDetailPage({ service }: PageProps) {
                 <div className="mb-12">
                     <h2 className="text-2xl font-semibold text-primary mb-4">Beneficii</h2>
                     <p className="text-lg text-gray-700 mb-4">
-                        Tratamentul VShape Anticelulitic oferă numeroase avantaje pentru îmbunătățirea aspectului pielii și a conturului corporal:
+                        Tratamentul {service.title} oferă numeroase avantaje pentru îmbunătățirea aspectului pielii și a conturului corporal:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
-                        {service.benefits.map((benefit, index) => (
-                            <li key={index} className="text-gray-700">{benefit}</li>
-                        ))}
+                        {service.benefits.map((benefit, index) => {
+                            const [boldText, normalText] = benefit.split(':');
+                            return (
+                                <li key={index} className="text-gray-700">
+                                    <strong>{boldText}:</strong>{normalText}
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
 
@@ -76,6 +81,11 @@ export default function ServiceDetailPage({ service }: PageProps) {
                             <p className="text-gray-700">{item.answer}</p>
                         </div>
                     ))}
+                </div>
+
+                {/* Bottom Text */}
+                <div className="text-lg text-gray-700 mt-12">
+                    Dacă ai alte întrebări sau dorești să faci o programare, poți folosi <Link href="/#rezervare">formularul nostru online</Link> și te vom contacta noi sau poți suna la <strong>0733407329</strong>.
                 </div>
             </div>
         </div>

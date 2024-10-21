@@ -18,7 +18,7 @@ export default function PostCard({ post }: PostCardProps) {
                     <CardContent className="p-6 flex-grow flex flex-col">
                         <div className="flex items-center mb-4">
                             <Image
-                                src="https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/293656603_557661769205636_1626461736837315377_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=xfwmA4hqCYYQ7kNvgE6y1xV&_nc_zt=23&_nc_ht=scontent-ams4-1.xx&_nc_gid=AImVCRWM3ef9dBCfvxELlQA&oh=00_AYAozGkkajcr3DMq3oVkOvb01u0Ig-rHp9FG-SffxB_o8Q&oe=671499AD"
+                                src="/profile.jpg"
                                 alt={`Slim & Beauty by MC Logo, de la postarea din ${post.date}`}
                                 width={40}
                                 height={40}
