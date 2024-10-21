@@ -19,9 +19,9 @@ export type Service = {
     title: string
     shortDescription: string
     mediumDescription: string
-    longDescription?: string
-    benefits?: string[]
-    faq?: {
+    longDescription: string
+    benefits: string[]
+    faq: {
         question: string
         answer: string
     }[]

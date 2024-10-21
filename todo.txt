@@ -25,4 +25,7 @@ roughly 40-50 words; faqpage schema for ensuring increased chances: type FAQPage
 - unique fact for each
 - breadcrumbs Acasa > Servici > Dermapen
 
+
+-reorder correctly each service item, make a special file for each and import them into services array.
+
 about us page seo optimization
