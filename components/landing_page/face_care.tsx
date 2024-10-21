@@ -5,6 +5,7 @@ import React from "react";
 import { services } from "@/lib/data";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { normalizeString } from "@/lib/utils";
 
 export default function FaceCare() {
     const data = services[1];
@@ -25,15 +26,15 @@ export default function FaceCare() {
                             viewport={{ once: true }}
                         >
                             <Card>
-                                    <CardContent className="p-6 flex flex-col items-center text-center">
-                                        {item.icon}
-                                        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                                        <p className="text-muted-foreground">{item.shortDescription}</p>
-                                        <Link href={`/servicii?serviciu=${encodeURIComponent(item.title)}`}>
+                                <CardContent className="p-6 flex flex-col items-center text-center">
+                                    {item.icon}
+                                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                                    <p className="text-muted-foreground">{item.shortDescription}</p>
+                                    <Link href={`/servicii/${normalizeString(data.category)}/${normalizeString(item.title)}`}>
                                         <p className="text-primary font-medium mt-4 hover:underline">Află mai multe</p>
                                     </Link>
-                                    </CardContent>
-                                </Card>
+                                </CardContent>
+                            </Card>
                         </motion.div>
                     ))}
                 </div>
