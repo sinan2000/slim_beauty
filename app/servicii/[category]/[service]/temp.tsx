@@ -92,6 +92,8 @@ export default function ServiceDetailPage({ service }: PageProps) {
                     ))}
                 </div>
 
+                <hr className="border-t border-gray-200 mb-12" />
+
                 {/* Bottom Text */}
                 <div className="text-lg text-gray-700 mt-12">
                     Dacă ai alte întrebări sau dorești să faci o programare, poți folosi <Link href="/#rezervare" className="text-primary underline hover:text-primary/80 hover:underline">formularul nostru online</Link> și te vom contacta noi sau poți suna la <strong>0733407329</strong>.

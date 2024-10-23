@@ -38,7 +38,7 @@ export default function ServicesPage() {
       name: item.title,
       description: item.shortDescription,
       priceCurrency: 'RON',
-      price: 'Consult',
+      price: item.price[0],
       priceRange: '$$',
       url: `https://www.slimandbeauty.ro/servicii/${normalizeString(category.category)}/${normalizeString(item.title)}`,
       availability: 'https://schema.org/InStock',

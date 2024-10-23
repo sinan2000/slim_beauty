@@ -34,6 +34,7 @@ const MediaSection = ({ media }: { media: string[] }) => {
                             height={600}
                             objectFit="contain"
                             className="rounded-lg"
+                            priority
                         />
                     )}
                 </div>

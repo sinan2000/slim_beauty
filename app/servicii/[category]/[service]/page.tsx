@@ -123,7 +123,7 @@ export default function ServicePage({ params }: { params: { category: string, se
             "@type": "Offer",
             url: `https://www.slimandbeauty.ro/servicii/${category}/${service}`,
             priceCurrency: "RON",
-            price: "Consult",
+            price: serviceData.price[0],
             availability: "https://schema.org/InStock",
         },
         additionalType: "https://schema.org/Product",

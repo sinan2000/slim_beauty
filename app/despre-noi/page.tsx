@@ -122,10 +122,10 @@ export default function Page() {
                                     Slim & Beauty by MC a luat naștere în anul 2013 din pasiunea noastră pentru frumusețe și dorința de a oferi servicii de înaltă calitate în domeniul tratamentelor corporale și dermato-cosmetice.
                                 </p>
                                 <p className="text-gray-700 mb-4">
-                                    De-a lungul anilor, ne-am dedicat îmbunătățirii continue a serviciilor noastre, investind în tehnologii de ultimă generație și în formarea continuă a echipei noastre de specialiști.
+                                    De-a lungul anilor, ne-am dedicat îmbunătățirii continue a serviciilor noastre, investind în tehnologii de ultimă generație.
                                 </p>
                                 <p className="text-gray-700">
-                                    Misiunea noastră este să oferim fiecărei cliente o experiență personalizată, care să îi ajute să se simtă încrezători și frumoși în propria piele.
+                                    Misiunea noastră este să oferim fiecărei cliente o experiență personalizată, care să le ajute să se simtă încrezătoare și frumoase în propria piele.
                                 </p>
                             </CardContent>
                         </Card>
