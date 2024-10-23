@@ -22,7 +22,6 @@ const MediaSection = ({ media }: { media: string[] }) => {
                             src={`/${media[activeMedia]}`}
                             controls
                             className="w-full h-auto max-h-[600px] object-contain"
-                            autoPlay
                         >
                             Your browser does not support the video tag.
                         </video>
