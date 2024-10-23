@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from 'lucide-react'
@@ -6,6 +8,8 @@ import { services } from '@/lib/data'
 import { normalizeString } from '@/lib/utils'
 import Link from 'next/link'
 import type { Service } from '../types'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { motion } from "framer-motion"
 
 interface ServiceProps extends Service {
     category: string;
@@ -13,7 +17,12 @@ interface ServiceProps extends Service {
 
 const ServiceItem = ({ service }: { service: ServiceProps }) => {
     return (
-        <div className="mb-12">
+        <motion.div 
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+        >
             <Card className="bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-6">
                     <div className="flex items-center mb-4">
@@ -29,15 +38,20 @@ const ServiceItem = ({ service }: { service: ServiceProps }) => {
                         <h4 className="font-semibold text-primary mb-2">Știați că?</h4>
                         <p className="text-sm text-gray-700">{service.fact}</p>
                     </div>
-                    <Link href={`/servicii/${normalizeString(service.category)}/${normalizeString(service.title)}`} passHref>
-                        <Button variant="outline" className="w-full">
-                            Află mai multe
-                            <ChevronRight className="ml-2 h-4 w-4" />
-                        </Button>
-                    </Link>
+                    <div className="flex justify-between items-center mb-4">
+                        <p className="text-sm font-medium text-primary">
+                            {service.price.length > 1 ? `Preț: începând de la ${service.price[2] / 10} lei/ sesiune` : `Preț: ${service.price[0]} lei/ sesiune`}
+                        </p>
+                        <Link href={`/servicii/${normalizeString(service.category)}/${normalizeString(service.title)}`} passHref>
+                            <Button variant="outline" size="sm">
+                                Află mai multe
+                                <ChevronRight className="ml-2 h-4 w-4" />
+                            </Button>
+                        </Link>
+                    </div>
                 </CardContent>
             </Card>
-        </div>
+        </motion.div>
     )
 }
 
@@ -53,15 +67,32 @@ const CategorySection = ({ category, items }: { category: string; items: Service
 }
 
 export default function ServicesPage() {
+    const [activeTab, setActiveTab] = useState(services[0].category)
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-[#FDF8F5] to-[#F5EBE6] py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-4xl md:text-5xl font-bold text-center mb-16 text-primary">
                     Serviciile Noastre
                 </h1>
-                {services.map((category) => (
-                    <CategorySection key={category.category} category={category.category} items={category.items} />
-                ))}
+                <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
+                    <TabsList className="grid w-full grid-cols-2 mb-8">
+                        {services.map((category) => (
+                            <TabsTrigger 
+                                key={category.category} 
+                                value={category.category}
+                                className="text-sm sm:text-base px-2 py-1.5"
+                            >
+                                {category.category}
+                            </TabsTrigger>
+                        ))}
+                    </TabsList>
+                    {services.map((category) => (
+                        <TabsContent key={category.category} value={category.category}>
+                            <CategorySection category={category.category} items={category.items} />
+                        </TabsContent>
+                    ))}
+                </Tabs>
             </div>
         </div>
     )

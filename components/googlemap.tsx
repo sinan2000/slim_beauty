@@ -1,10 +1,9 @@
 export default function GoogleMap() {
     return (
         <iframe
-            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.MAPS_EMBED_API_KEY}&q=Slim+%26+Beauty+by+MC,Dumbrăvița`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.MAPS_EMBED_API_KEY}&q=Slim+%26+Beauty+by+MC,Dumbrăvița&language=ro`}
             width="100%"
             height="100%"
-            lang="ro"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"

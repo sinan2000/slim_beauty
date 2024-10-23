@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Service } from '@/app/types'
+import MediaComponent from './media'
+import PriceComponent from './price'
 
 interface PageProps {
     service: Service
@@ -31,12 +33,18 @@ export default function ServiceDetailPage({ service }: PageProps) {
                 <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">{service.title}</h1>
                 <p className="text-xl text-gray-600 mb-8">{service.shortDescription}</p>
 
+                {/* Media */}
+                {service.media && (<MediaComponent media={service.media[0]} />)}
+
                 {/* Medium Description */}
                 <Card className="mb-12">
                     <CardContent className="p-6">
                         <p className="text-lg text-gray-700">{service.mediumDescription}</p>
                     </CardContent>
                 </Card>
+
+                {/* Price */}
+                <PriceComponent prices={service.price} />
 
                 {/* Long Description */}
                 <div className="prose prose-lg max-w-none mb-12">

@@ -26,4 +26,6 @@ export type Service = {
         answer: string
     }[]
     fact?: string
+    price: number[]
+    media?: string[]
 }

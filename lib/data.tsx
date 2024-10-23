@@ -62,7 +62,8 @@ Vrei să reduci celulita și să ai o piele mai fermă și mai netedă? VShape A
                         question: "Ce zone pot fi tratate cu VShape?",
                         answer: "VShape poate fi aplicat pe coapse, abdomen, brațe, fese și alte zone predispuse la acumularea de celulită."
                     }
-                ]
+                ],
+                price: [120, 600, 900],
             },
             {
                 icon: <Icon path={mdiSnowflakeAlert} size={2} className="text-primary mb-4" />,
@@ -104,7 +105,9 @@ De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând 
                         question: "Care sunt efectele secundare ale criolipolizei?",
                         answer: "Criolipoliza are efecte secundare minime, care includ înroșirea temporară a pielii, amorțirea sau sensibilitatea în zona tratată, dar acestea dispar în câteva zile."
                     }
-                ]
+                ],
+                price: [280, 530, 700],
+                media: ['crio.jpg']
             },
             {
                 icon: <Icon path={mdiArmFlex} size={2} className="text-primary mb-4" />,
@@ -146,7 +149,9 @@ Tratamentul este perfect pentru cei care doresc să combine slăbirea localizat�
                         question: "Există efecte secundare?",
                         answer: "Tratamentul EMSlim Neo RF este considerat sigur și nu are efecte secundare semnificative. Unii pacienți pot resimți o ușoară senzație de oboseală musculară după ședință, similară unui antrenament intens."
                     }
-                ]
+                ],
+                price: [85, 450, 650],
+                media: ["emslim.mp4", "emslim.jpg"]
             },
             {
                 icon: <Icon path={mdiWifi} size={2} className="text-primary mb-4" />,
@@ -185,7 +190,8 @@ Radiofrecvența Bipolară este recunoscută pentru capacitatea sa de a oferi rez
                         question: "Există efecte secundare după tratamentul cu Radiofrecvență Bipolară?",
                         answer: "Nu există efecte secundare majore asociate cu acest tratament. Pacienții pot observa o ușoară înroșire a pielii imediat după ședință, dar aceasta dispare rapid."
                     }
-                ]
+                ],
+                price: [80, 450, 700]
             },
             {
                 icon: <Icon path={mdiVacuum} size={2} className="text-primary mb-4" />,
@@ -226,7 +232,8 @@ Tratamentul anticelulitic cu vacuum este non-invaziv și complet sigur, fără d
                         question: "Există efecte secundare după masajul vacuum anticelulitic?",
                         answer: "Nu există efecte secundare majore, însă pot apărea ușoare înroșiri ale pielii sau vânătăi temporare după tratament, care dispar rapid."
                     }
-                ]
+                ],
+                price: [75, 400, 600]
             },
             {
                 icon: <Icon path={mdiBloodBag} size={2} className="text-primary mb-4" />,
@@ -276,7 +283,9 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                         question: "Există efecte secundare după presoterapie?",
                         answer: "Efectele secundare sunt rare, însă unele persoane pot simți o ușoară senzație de oboseală sau o nevoie mai frecventă de a urina, deoarece corpul elimină lichidele și toxinele."
                     }
-                ]
+                ],
+                price: [70, 360, 550],
+                media: ["preso.jpg"]
             },
             {
                 icon: <Icon path={mdiSignalVariant} size={2} className="text-primary mb-4" />,
@@ -315,7 +324,8 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                         question: "Există efecte secundare ale cavitației?",
                         answer: "Efectele secundare sunt minime și pot include o ușoară înroșire sau sensibilitate în zona tratată, dar acestea dispar rapid."
                     }
-                ]
+                ],
+                price: [90, 480, 700]
             },
             {
                 icon: <Icon path={mdiRadioboxMarked} size={2} className="text-primary mb-4" />,
@@ -354,7 +364,8 @@ De asemenea, împachetările IR ajută la ameliorarea durerilor musculare și ar
                         question: "Ajută împachetările Tunel IR la reducerea celulitei?",
                         answer: "Da, căldura infraroșie stimulează descompunerea grăsimii din zonele afectate de celulită și îmbunătățește circulația, contribuind la reducerea aspectului de coajă de portocală."
                     }
-                ]
+                ],
+                price: [75, 390, 600]
             },
             {
                 icon: <Icon path={mdiWhiteBalanceSunny} size={2} className="text-primary mb-4" />,
@@ -397,7 +408,9 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
                         question: "Cum funcționează bronzarea organică cu DHA?",
                         answer: "DHA, ingredientul activ, reacționează cu aminoacizii din stratul superficial al pielii, creând un bronz natural care apare în câteva ore după tratament."
                     }
-                ]
+                ],
+                price: [110],
+                media: ["organic.jpg"]
             }
         ]
     },
@@ -443,7 +456,9 @@ Dermapen este un dispozitiv controlat electronic, care asigură o penetrare unif
                         question: "Cât durează recuperarea după microneedling?",
                         answer: "Recuperarea după un tratament cu Microneedling este rapidă. Pielea poate fi ușor înroșită timp de 1-2 zile, dar majoritatea pacienților revin la activitățile lor zilnice imediat după tratament."
                     }
-                ]
+                ],
+                price: [250, 600, 900],
+                media: ["derma.mp4", "derma.jpg"]
             },
             {
                 icon: <Icon path={mdiWaterCircle} size={2} className="text-primary mb-4" />,
@@ -486,7 +501,8 @@ Această tehnică modernă este blândă, dar eficientă, și necesită un timp 
                         question: "Este microdermabraziunea potrivită pentru pielea sensibilă?",
                         answer: "Da, microdermabraziunea este un tratament blând și sigur pentru toate tipurile de piele, inclusiv pielea sensibilă. Tratamentul poate fi ajustat în funcție de sensibilitatea pielii fiecărui pacient."
                     }
-                ]
+                ],
+                price: [170]
             },
             {
                 icon: <Icon path={mdiFaceWomanOutline} size={2} className="text-primary mb-4" />,
@@ -523,7 +539,8 @@ Datorită formulării blânde, tratamentul este ideal pentru toate tipurile de p
                         question: "Este tratamentul clasic de curățire bun pentru pielea grasă?",
                         answer: "Da, tratamentul este excelent pentru pielea grasă, deoarece desfundă porii și ajută la echilibrarea producției de sebum, prevenind apariția coșurilor și a punctelor negre."
                     }
-                ]
+                ],
+                price: [200]
             }
         ]
     }
