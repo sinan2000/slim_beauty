@@ -1,7 +1,4 @@
-'use client';
-
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
 
 const PriceList = ({ prices }: { prices: number[] }) => (
     <div className="space-y-2">
@@ -15,11 +12,6 @@ const PriceList = ({ prices }: { prices: number[] }) => (
 )
 
 const PriceComponent = ({ prices }: { prices: number[] }) => {
-    const fadeIn = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.5 }
-    };
 
     return (
         <Card>
