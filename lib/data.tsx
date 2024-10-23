@@ -457,7 +457,7 @@ Dermapen este un dispozitiv controlat electronic, care asigură o penetrare unif
                         answer: "Recuperarea după un tratament cu Microneedling este rapidă. Pielea poate fi ușor înroșită timp de 1-2 zile, dar majoritatea pacienților revin la activitățile lor zilnice imediat după tratament."
                     }
                 ],
-                price: [250, 600, 900],
+                price: [250],
                 media: ["derma.mp4", "derma.jpg"]
             },
             {

@@ -9,19 +9,20 @@ const MediaSection = ({ media }: { media: string[] }) => {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.5 }
-    }
+    };
 
-    const [activeMedia, setActiveMedia] = useState(0)
+    const [activeMedia, setActiveMedia] = useState(0);
 
     return (
         <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
             <div className="mb-8">
-                <div className="relative aspect-video mb-4 bg-black flex items-center justify-center">
+                <div className="relative mb-4 bg-gray-100 flex items-center justify-center overflow-hidden rounded-lg">
                     {media[activeMedia].endsWith('.mp4') ? (
                         <video
                             src={`/${media[activeMedia]}`}
                             controls
-                            className="max-w-full max-h-full"
+                            className="w-full h-auto max-h-[600px] object-contain"
+                            autoPlay
                         >
                             Your browser does not support the video tag.
                         </video>
@@ -29,7 +30,9 @@ const MediaSection = ({ media }: { media: string[] }) => {
                         <Image
                             src={`/${media[activeMedia]}`}
                             alt="Treatment visual"
-                            layout="fill"
+                            layout="intrinsic"
+                            width={800}
+                            height={600}
                             objectFit="contain"
                             className="rounded-lg"
                         />
@@ -48,7 +51,7 @@ const MediaSection = ({ media }: { media: string[] }) => {
                 )}
             </div>
         </motion.div>
-    )
-}
+    );
+};
 
 export default MediaSection;
