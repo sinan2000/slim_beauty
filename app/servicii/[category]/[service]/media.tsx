@@ -16,21 +16,21 @@ const MediaSection = ({ media }: { media: string[] }) => {
     return (
         <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
             <div className="mb-8">
-                <div className="relative aspect-video mb-4">
+                <div className="relative aspect-video mb-4 bg-black flex items-center justify-center">
                     {media[activeMedia].endsWith('.mp4') ? (
                         <video
                             src={`/${media[activeMedia]}`}
                             controls
-                            className="w-full h-full object-cover rounded-lg"
+                            className="max-w-full max-h-full"
                         >
                             Your browser does not support the video tag.
                         </video>
                     ) : (
                         <Image
                             src={`/${media[activeMedia]}`}
-                            alt="Media"
+                            alt="Treatment visual"
                             layout="fill"
-                            objectFit="cover"
+                            objectFit="contain"
                             className="rounded-lg"
                         />
                     )}

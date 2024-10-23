@@ -3,17 +3,16 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
-const PriceCard = ({option, index} : {option: number, index: number}) => {
-    const sedinte = [1, 6, 10];
-    return (
-    <Card className="mb-4">
-        <CardContent className="p-4">
-            <h4 className="text-lg font-semibold text-primary mb-2">{index === 0 ? 'O sedinta:' : sedinte[index] + ' sedinte:'}</h4>
-            <p className="text-2xl font-bold text-primary">{option} lei</p>
-        </CardContent>
-    </Card>
+const PriceList = ({ prices }: { prices: number[] }) => (
+    <div className="space-y-2">
+        {prices.map((price, index) => (
+            <div key={index} className="flex justify-between items-center border-b border-gray-200 py-2">
+                <span className="text-gray-600">{index === 0 ? 'O ședință' : `${index === 1 ? '6' : '10'} ședințe`}</span>
+                <span className="font-semibold text-primary">{price} lei</span>
+            </div>
+        ))}
+    </div>
 )
-}
 
 const PriceComponent = ({ prices }: { prices: number[] }) => {
     const fadeIn = {
@@ -24,12 +23,12 @@ const PriceComponent = ({ prices }: { prices: number[] }) => {
 
     return (
         <motion.div className="mb-12" {...fadeIn} transition={{ delay: 0.6 }}>
-            <h2 className="text-2xl font-semibold text-primary mb-4">Prețuri</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {prices.map((option, index) => (
-                    <PriceCard key={index} option={option} index={index}/>
-                ))}
-            </div>
+            <Card>
+                <CardContent className="p-6">
+                    <h2 className="text-2xl font-semibold text-primary mb-4">Prețuri</h2>
+                    <PriceList prices={prices} />
+                </CardContent>
+            </Card>
         </motion.div>
     )
 }
