@@ -37,14 +37,15 @@ export default function ServiceDetailPage({ service }: PageProps) {
                 {service.media && (<MediaComponent media={service.media} />)}
 
                 {/* Medium Description */}
-                <Card className="mb-12">
-                    <CardContent className="p-6">
-                        <p className="text-lg text-gray-700">{service.mediumDescription}</p>
-                    </CardContent>
-                </Card>
-
-                {/* Price */}
-                <PriceComponent prices={service.price} />
+                <div className="grid md:grid-cols-2 gap-8 mb-12">
+                    <Card>
+                        <CardContent className="p-6">
+                            <h2 className="text-2xl font-semibold text-primary mb-4">Despre Tratament</h2>
+                            <p className="text-gray-700">{service.mediumDescription}</p>
+                        </CardContent>
+                    </Card>
+                    <PriceComponent prices={service.price} />
+                </div>
 
                 {/* Long Description */}
                 <div className="prose prose-lg max-w-none mb-12">

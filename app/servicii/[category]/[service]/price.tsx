@@ -22,14 +22,12 @@ const PriceComponent = ({ prices }: { prices: number[] }) => {
     };
 
     return (
-        <motion.div className="mb-12" {...fadeIn} transition={{ delay: 0.6 }}>
-            <Card>
-                <CardContent className="p-6">
-                    <h2 className="text-2xl font-semibold text-primary mb-4">Prețuri</h2>
-                    <PriceList prices={prices} />
-                </CardContent>
-            </Card>
-        </motion.div>
+        <Card>
+            <CardContent className="p-6">
+                <h2 className="text-2xl font-semibold text-primary mb-4">Prețuri</h2>
+                <PriceList prices={prices} />
+            </CardContent>
+        </Card>
     )
 }
 
