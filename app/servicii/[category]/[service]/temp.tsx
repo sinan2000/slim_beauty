@@ -34,7 +34,7 @@ export default function ServiceDetailPage({ service }: PageProps) {
                 <p className="text-xl text-gray-600 mb-8">{service.shortDescription}</p>
 
                 {/* Media */}
-                {service.media && (<MediaComponent media={service.media[0]} />)}
+                {service.media && (<MediaComponent media={service.media} />)}
 
                 {/* Medium Description */}
                 <Card className="mb-12">
