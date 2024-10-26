@@ -22,5 +22,5 @@ export default function GoogleTagManagerInit() {
         };
     }, []);
 
-    return isGTMEnabled ? <GoogleTagManager gtmId="AW-16731906773" /> : null;
+    return isGTMEnabled ? <GoogleTagManager gtmId="GTM-5L3ZD3KW" /> : null;
 }
