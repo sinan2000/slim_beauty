@@ -19,7 +19,8 @@ export default function CookieConsent() {
 
     const handleAccept = () => {
         Cookies.set('cookie_consent', 'accepted', { expires: 365 })
-        setIsVisible(false)
+        setIsVisible(false);
+        window.dispatchEvent(new Event('cookieConsentUpdate'))
     }
 
     const handleDecline = () => {

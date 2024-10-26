@@ -8,10 +8,18 @@ export default function GoogleTagManagerInit() {
     const [isGTMEnabled, setIsGTMEnabled] = useState(false);
 
     useEffect(() => {
-        const consent = Cookies.get('cookie_consent');
-        if (consent === 'accepted') {
-            setIsGTMEnabled(true);
-        }
+        const handleConsentUpdate = () => {
+            if (Cookies.get('cookie_consent') === 'accepted') {
+                setIsGTMEnabled(true);
+            }
+        };
+
+        handleConsentUpdate();
+        window.addEventListener('cookieConsentUpdate', handleConsentUpdate);
+
+        return () => {
+            window.removeEventListener('cookieConsentUpdate', handleConsentUpdate)
+        };
     }, []);
 
     return isGTMEnabled ? <GoogleTagManager gtmId="AW-16731906773" /> : null;
