@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
 import CookieConsent from "@/components/cookies-consent";
 import GoogleTagManagerInit from '@/components/tagmanager';
+import { SNSFooter } from '@/components/sns/footer';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <SNSFooter />
         <CookieConsent />
       </body>
     </html>
