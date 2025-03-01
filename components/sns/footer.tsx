@@ -37,9 +37,9 @@ export function SNSFooter() {
                 </div>
 
                 {/* Animated Line */}
-                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent">
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-linear-to-r from-transparent via-emerald-500/20 to-transparent">
                     <div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent"
+                        className="absolute inset-0 bg-linear-to-r from-transparent via-emerald-400/40 to-transparent"
                         style={{
                             animation: 'shimmer 2s linear infinite',
                             backgroundSize: '200% 100%',

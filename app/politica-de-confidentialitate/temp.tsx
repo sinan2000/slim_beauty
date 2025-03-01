@@ -6,14 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const Content = ({date}: {date: string}) => {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#FDF8F5] to-[#F5EBE6] py-16 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-linear-to-br from-[#FDF8F5] to-[#F5EBE6] py-16 px-4 sm:px-6 lg:px-8">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="max-w-4xl mx-auto"
             >
-                <Card className="bg-white/80 backdrop-blur-sm shadow-lg">
+                <Card className="bg-white/80 backdrop-blur-xs shadow-lg">
                     <CardHeader>
                         <CardTitle className="text-3xl font-bold text-primary text-center mb-2">
                             Politica de Confidențialitate pentru Slim & Beauty by MC

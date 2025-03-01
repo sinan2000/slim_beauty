@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export function Logo({ className }: { className?: string }) {
     return (
         <div className={cn("relative group", className)}>
-            <div className="absolute -inset-[2px] bg-gradient-to-r from-emerald-400 via-emerald-500 to-cyan-400 rounded-lg blur-sm opacity-75 group-hover:opacity-100 transition duration-500"></div>
+            <div className="absolute -inset-[2px] bg-linear-to-r from-emerald-400 via-emerald-500 to-cyan-400 rounded-lg blur-xs opacity-75 group-hover:opacity-100 transition duration-500"></div>
             <div className="relative flex items-center bg-black rounded-lg p-1">
                 <svg
                     width="32"

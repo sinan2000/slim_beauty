@@ -12,7 +12,7 @@ interface PageProps {
 
 export default function ServiceDetailPage({ service }: PageProps) {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#FDF8F5] to-[#F5EBE6] py-8 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-linear-to-br from-[#FDF8F5] to-[#F5EBE6] py-8 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
                 {/* Breadcrumbs */}
                 <nav className="text-sm mb-8">

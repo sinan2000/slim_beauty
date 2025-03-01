@@ -15,7 +15,7 @@ export default function PostCard({ post }: PostCardProps) {
         <CarouselItem key={post.date} className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1 h-full">
                 <Card className="bg-white shadow-lg rounded-lg overflow-hidden h-full flex flex-col">
-                    <CardContent className="p-6 flex-grow flex flex-col">
+                    <CardContent className="p-6 grow flex flex-col">
                         <div className="flex items-center mb-4">
                             <Image
                                 src="/profile.jpg"
@@ -39,7 +39,7 @@ export default function PostCard({ post }: PostCardProps) {
                             blurDataURL='/blur.png'
                             placeholder="blur"
                         />
-                        <p className="text-[#6B4E32] mb-4 line-clamp-5 whitespace-pre-wrap flex-grow">{post.description}</p>
+                        <p className="text-[#6B4E32] mb-4 line-clamp-5 whitespace-pre-wrap grow">{post.description}</p>
                     </CardContent>
                     <CardFooter className="bg-gray-50 px-6 py-4">
                         <Link href={post.url} target="_blank" rel="noopener noreferrer">

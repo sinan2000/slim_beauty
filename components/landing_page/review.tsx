@@ -24,8 +24,8 @@ export default function ReviewCard({ review }: ReviewCardProps) {
                     </div>
                 </div>
 
-                {/* Add flex-grow to make the description take up the remaining space */}
-                <p className="text-muted-foreground mb-4 flex-grow">{review.description}</p>
+                {/* Add grow to make the description take up the remaining space */}
+                <p className="text-muted-foreground mb-4 grow">{review.description}</p>
 
                 {/* Ensure the link stays at the bottom */}
                 <div className="mt-auto">

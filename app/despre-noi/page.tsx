@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 const ContactItem = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
-    <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-lg shadow-sm">
+    <div className="flex items-center space-x-3 p-3 bg-white/50 rounded-lg shadow-xs">
         {icon}
         <span className="text-gray-700">{text}</span>
     </div>
@@ -101,7 +101,7 @@ export default function Page() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#FDF8F5] to-[#F5EBE6] py-16 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-linear-to-br from-[#FDF8F5] to-[#F5EBE6] py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
                 <h1
                     className="text-4xl md:text-5xl font-bold text-center mb-16 text-primary"
@@ -200,7 +200,7 @@ export default function Page() {
                             <CardHeader>
                                 <CardTitle className="text-2xl font-semibold text-primary">Programează o Consultație</CardTitle>
                             </CardHeader>
-                            <CardContent className="flex-grow flex flex-col justify-center">
+                            <CardContent className="grow flex flex-col justify-center">
                                 <p className="text-gray-700 mb-6">
                                     Suntem aici pentru a vă ajuta să vă atingeți obiectivele de frumusețe și wellness. Programați o consultație gratuită astăzi și începeți călătoria către cea mai bună versiune a dumneavoastră!
                                 </p>

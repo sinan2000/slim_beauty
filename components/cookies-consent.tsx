@@ -40,7 +40,7 @@ export default function CookieConsent() {
                     transition={{ duration: 0.5 }}
                     className="fixed bottom-2 right-2 left-2 sm:bottom-4 sm:right-4 sm:left-auto z-50 max-w-sm w-auto sm:w-96"
                 >
-                    <Card className="bg-white/90 backdrop-blur-sm shadow-lg border border-primary/10">
+                    <Card className="bg-white/90 backdrop-blur-xs shadow-lg border border-primary/10">
                         <CardContent className="p-3 sm:p-4">
                             <div className="flex justify-between items-start mb-2 sm:mb-4">
                                 <h3 className="text-base sm:text-lg font-semibold text-primary">Politica de Cookie-uri</h3>

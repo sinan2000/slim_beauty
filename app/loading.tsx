@@ -19,8 +19,8 @@ const LoadingDot = ({ delay }: { delay: number }) => (
 
 export default function LoadingPage() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#FDF8F5] to-[#F5EBE6] flex items-center justify-center p-4">
-            <Card className="w-full max-w-md bg-white/80 backdrop-blur-sm shadow-xl">
+        <div className="min-h-screen bg-linear-to-br from-[#FDF8F5] to-[#F5EBE6] flex items-center justify-center p-4">
+            <Card className="w-full max-w-md bg-white/80 backdrop-blur-xs shadow-xl">
                 <CardContent className="p-6">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
@@ -41,7 +41,7 @@ export default function LoadingPage() {
                             initial={{ width: 0 }}
                             animate={{ width: "100%" }}
                             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            className="h-1 bg-gradient-to-r from-primary to-secondary rounded-full"
+                            className="h-1 bg-linear-to-r from-primary to-secondary rounded-full"
                         />
                     </motion.div>
                 </CardContent>

@@ -44,7 +44,7 @@ export default function AHero() {
             {/* Image Section */}
             <div className="relative w-full lg:w-1/2 h-1/2 lg:h-full flex flex-col">
                 {/* Image Container */}
-                <div className="relative flex-grow bg-transparent">
+                <div className="relative grow bg-transparent">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentImage}
@@ -96,7 +96,7 @@ export default function AHero() {
             </div>
 
             {/* Content Section */}
-            <div className="w-full lg:w-1/2 flex flex-col justify-center items-start p-4 sm:p-6 lg:p-8 bg-[#F5EBE6] flex-grow lg:flex-grow-0">
+            <div className="w-full lg:w-1/2 flex flex-col justify-center items-start p-4 sm:p-6 lg:p-8 bg-[#F5EBE6] grow lg:grow-0">
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

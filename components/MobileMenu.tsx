@@ -44,7 +44,7 @@ export default function MobileMenu({ items }: { items: { name: string; href: str
                             <span className="sr-only">Închide meniul</span>
                         </Button>
                     </div>
-                    <nav className="flex-grow">
+                    <nav className="grow">
                         <ul className="space-y-6">
                             {items.map((item) => (
                                 <li key={item.name}>

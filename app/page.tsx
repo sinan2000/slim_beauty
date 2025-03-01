@@ -9,16 +9,6 @@ import Script from 'next/script'
 import dynamic from 'next/dynamic'
 import LoadingPage from './loading'
 
-const BookingForm = dynamic(() => import('@/components/landing_page/booking_form'), {
-  loading: () => <LoadingPage />,
-  ssr: false,
-})
-
-const Contact = dynamic(() => import('@/components/landing_page/contact'), {
-  loading: () => <LoadingPage />,
-  ssr: false,
-})
-
 export const metadata: Metadata = {
   title: "Remodelare Corporală în Dumbrăvița - Slim & Beauty",
   description: "Descoperă tratamente de remodelare corporală, masaj anticelulitic și bronzare organică la Slim & Beauty by MC, Dumbrăvița. Servicii dermato-cosmetice personalizate.",
@@ -118,16 +108,18 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FDF8F5]">
-      <main className="flex-grow">
+      <main className="grow">
         <AHero />
         <BodyCare />
         <FaceCare />
         <Testimonials />
         <FacebookPostsCarousel />
+        {/* 
         <div id="rezervare" className="py-5">
           <BookingForm />
         </div>
         <Contact />
+        */}
       </main>
       <Script
         id="first-page-json-ld"

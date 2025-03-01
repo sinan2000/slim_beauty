@@ -9,8 +9,8 @@ import Link from 'next/link'
 
 export default function NotFound() {
     return (
-        <div className="min-h-[calc(100vh-86px)] bg-gradient-to-br from-[#FDF8F5] to-[#F5EBE6] flex items-center justify-center p-4">
-            <Card className="w-full max-w-2xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden">
+        <div className="min-h-[calc(100vh-86px)] bg-linear-to-br from-[#FDF8F5] to-[#F5EBE6] flex items-center justify-center p-4">
+            <Card className="w-full max-w-2xl bg-white/80 backdrop-blur-xs shadow-xl overflow-hidden">
                 <CardContent className="p-6 md:p-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}

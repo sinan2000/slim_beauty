@@ -43,7 +43,7 @@ export default function BHero() {
             objectFit="cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F5EBE6]/90 via-[#F5EBE6]/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#F5EBE6]/90 via-[#F5EBE6]/70 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
@@ -83,7 +83,7 @@ export default function BHero() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="absolute bottom-8 left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8"
         >
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-4 flex flex-wrap justify-between items-center gap-4">
+          <div className="bg-white/80 backdrop-blur-xs rounded-lg shadow-lg p-4 flex flex-wrap justify-between items-center gap-4">
             <div className="flex items-center space-x-2">
               <Phone className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-gray-700">+40 733 407 329</span>
