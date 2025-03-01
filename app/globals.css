@@ -3,6 +3,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --font-sans: var(--font-inter);
   --font-playfair: var(--font-playfair);
 
   --color-background: hsl(var(--background));
