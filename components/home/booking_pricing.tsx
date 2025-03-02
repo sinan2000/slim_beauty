@@ -14,6 +14,7 @@ import { CalendarIcon, Clock } from 'lucide-react';
 import { services } from '@/lib/data';
 import { normalizeString } from '@/lib/utils';
 import Link from 'next/link';
+import { Textarea } from '../ui/textarea';
 
 const availableTimes: Record<number, string[]> = {
   1: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
@@ -157,28 +158,18 @@ export default function BookingPricing() {
 
                     {/* Right Column - Form */}
                     <div>
-                      <h3 className="font-semibold text-lg mb-4">Your Information</h3>
+                      <h3 className="font-semibold text-lg mb-4">Informațiile dvs.</h3>
 
                       <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="firstName">First Name</Label>
-                            <Input id="firstName" placeholder="Enter your first name" />
+                            <Label htmlFor="name">Numele</Label>
+                            <Input id="name" placeholder="Introduceți numele" />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="lastName">Last Name</Label>
-                            <Input id="lastName" placeholder="Enter your last name" />
+                            <Label htmlFor="phone">Telefon</Label>
+                            <Input id="phone" placeholder="Numărul de telefon" />
                           </div>
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="email">Email</Label>
-                          <Input id="email" type="email" placeholder="Enter your email" />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="phone">Phone</Label>
-                          <Input id="phone" placeholder="Enter your phone number" />
                         </div>
 
                         <div className="space-y-2">
@@ -195,7 +186,7 @@ export default function BookingPricing() {
                                   </div>
                                   {category.items.map((service) => (
                                     <SelectItem key={service.title} value={service.title}>
-                                      {service.title} ({service.price[0]})
+                                      {service.title}
                                     </SelectItem>
                                   ))}
                                 </div>
@@ -204,9 +195,14 @@ export default function BookingPricing() {
                           </Select>
                         </div>
 
+                        <div className="space-y-2">
+                          <Label htmlFor="message">Mesaj</Label>
+                          <Textarea id="message" placeholder="Introduceți un mesaj (opțional)" />
+                        </div>
+
                         <div className="pt-4">
                           <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white">
-                            Confirm Booking
+                            Confirmă Programarea
                           </Button>
                         </div>
                       </div>
