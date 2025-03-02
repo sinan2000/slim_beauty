@@ -15,10 +15,13 @@ import { services } from '@/lib/data';
 import { normalizeString } from '@/lib/utils';
 import Link from 'next/link';
 
-const timeSlots = [
-  "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
-  "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
-];
+const availableTimes: Record<number, string[]> = {
+  1: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+  2: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+  3: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
+  4: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+  5: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
+}
 
 export default function BookingPricing() {
   const [date, setDate] = useState<Date | undefined>(undefined);
@@ -27,6 +30,9 @@ export default function BookingPricing() {
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const selectedDay = date?.getDay() ?? null;
+  const timeSlots = selectedDay !== null && availableTimes[selectedDay] ? availableTimes[selectedDay] : [];
 
   return (
     <section id="pricing" className="py-20 bg-white">
@@ -104,7 +110,7 @@ export default function BookingPricing() {
                     <div>
                       <h3 className="font-semibold text-lg mb-4 flex items-center">
                         <CalendarIcon className="mr-2 h-5 w-5 text-pink-500" />
-                        Select Date & Time
+                        Alegeți data și ora
                       </h3>
 
                       <div className="mb-6">
@@ -112,13 +118,21 @@ export default function BookingPricing() {
                           mode="single"
                           selected={date}
                           onSelect={setDate}
-                          className="rounded-md border"
-                          disabled={{ before: new Date() }}
+                          className="rounded-md border w-full h-full flex"
+                          classNames={{
+                            months:
+                              "flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1",
+                            month: "space-y-4 w-full flex flex-col",
+                            table: "w-full h-full border-collapse space-y-1",
+                            head_row: "",
+                            row: "w-full mt-2",
+                          }}
+                          disabled={(date) => [0, 6].includes(date.getDay()) || date < new Date()}
                         />
                       </div>
 
                       <div className="mb-6">
-                        <Label htmlFor="time" className="mb-2 block">Select Time</Label>
+                        <Label htmlFor="time" className="mb-2 block">Ora programării</Label>
                         <div className="grid grid-cols-3 gap-2">
                           {timeSlots.map((time) => (
                             <Button
@@ -132,6 +146,11 @@ export default function BookingPricing() {
                               {time}
                             </Button>
                           ))}
+                          {timeSlots.length === 0 && (
+                            <div className="col-span-3 text-pink-500 text-sm">
+                              Selectați o dată pentru a vedea orele disponibile.
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
