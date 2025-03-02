@@ -11,36 +11,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CalendarIcon, Clock } from 'lucide-react';
-
-const services = [
-  {
-    category: "Body Treatments",
-    items: [
-      { name: "EMSlim Neo RF Body Contouring", price: "€150", duration: "45 min" },
-      { name: "Cryolipolysis Fat Reduction", price: "€180", duration: "75 min" },
-      { name: "Vacuum Therapy", price: "€90", duration: "30 min" },
-      { name: "Lymphatic Drainage Massage", price: "€110", duration: "60 min" }
-    ]
-  },
-  {
-    category: "Facial Treatments",
-    items: [
-      { name: "Hydrafacial Deluxe", price: "€120", duration: "60 min" },
-      { name: "Microdermabrasion", price: "€85", duration: "45 min" },
-      { name: "LED Light Therapy", price: "€70", duration: "30 min" },
-      { name: "Anti-Aging Facial", price: "€130", duration: "75 min" }
-    ]
-  },
-  {
-    category: "Packages",
-    items: [
-      { name: "Complete Body Transformation (6 sessions)", price: "€750", duration: "Various" },
-      { name: "Facial Rejuvenation Package (4 sessions)", price: "€400", duration: "Various" },
-      { name: "Bride-to-Be Package", price: "€350", duration: "180 min" },
-      { name: "Monthly Maintenance", price: "€200/month", duration: "Various" }
-    ]
-  }
-];
+import { services } from '@/lib/data';
+import { normalizeString } from '@/lib/utils';
+import Link from 'next/link';
 
 const timeSlots = [
   "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
@@ -80,7 +53,7 @@ export default function BookingPricing() {
               <TabsTrigger value="booking">Programări Online</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="pricing" className="border rounded-lg p-6 shadow-xs">
+            <TabsContent id="preturi" value="pricing" className="border rounded-lg p-6 shadow-xs">
               {services.map((category, index) => (
                 <div key={index} className="mb-8 last:mb-0">
                   <h3 className="font-playfair text-xl font-semibold text-gray-800 mb-4">
@@ -92,17 +65,24 @@ export default function BookingPricing() {
                       <AccordionItem key={serviceIndex} value={`${index}-${serviceIndex}`}>
                         <AccordionTrigger className="hover:no-underline">
                           <div className="flex justify-between w-full pr-4">
-                            <span>{service.name}</span>
-                            <span className="font-semibold text-pink-500">{service.price}</span>
+                            <span>{service.title}</span>
+                            <span className="font-semibold text-pink-500">{service.price[0] + " RON"}{service.price.length > 1 ? ' *' : ''}</span>
                           </div>
                         </AccordionTrigger>
                         <AccordionContent>
                           <div className="flex justify-between items-center">
                             <div>
-                              <p className="text-gray-600 mb-2">Durata unei ședințe: {service.duration}</p>
+                              {service.duration !== "" && (
+                                <p className="text-gray-600 mb-2">Durata unei ședințe: {service.duration}</p>
+                              )}
                               <p className="text-sm text-gray-500">
-                                Experience our premium {service.name.toLowerCase()} treatment, designed to deliver exceptional results.
+                                {service.shortDescription}
                               </p>
+                              {service.price.length > 1 && (
+                                <p className="text-sm text-pink-500 mt-2">
+                                  * Prețul afișat este pentru o singură ședințe. Puteți vedea prețurile pentru pachete accesând <Link href={`/servicii/${normalizeString(category.category)}/${normalizeString(service.title)}`} className="underline">această</Link> pagină.
+                                </p>
+                              )}
                             </div>
                             <Button className="bg-pink-500 hover:bg-pink-600 text-white">
                               Programare
@@ -195,8 +175,8 @@ export default function BookingPricing() {
                                     {category.category}
                                   </div>
                                   {category.items.map((service) => (
-                                    <SelectItem key={service.name} value={service.name}>
-                                      {service.name} ({service.price})
+                                    <SelectItem key={service.title} value={service.title}>
+                                      {service.title} ({service.price[0]})
                                     </SelectItem>
                                   ))}
                                 </div>
