@@ -6,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import logo from '@/assets/logo.png';
-import { logoBlurUrl } from '@/lib/blurUrls';
 import { socialData } from '@/lib/socials';
 
 const Navbar = () => {
@@ -42,7 +40,7 @@ const Navbar = () => {
             <div className="container mx-auto px-4 flex items-center justify-between">
                 <Link href="/" className="flex items-center">
                     <Image
-                        src='/logo.svg'
+                        src='/icons/logo.svg'
                         alt="Slim & Beauty by MC logo"
                         width={48}
                         height={18}
