@@ -4,12 +4,13 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { featured } from '@/lib/data2';
 import Link from 'next/link';
+import { getFeaturedServices } from '@/lib/utils';
 
 export default function FeaturedMotion() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const featured = getFeaturedServices();
 
   return (
     <motion.div

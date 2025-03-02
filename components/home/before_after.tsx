@@ -9,8 +9,6 @@ import before1 from "@/assets/before_after/before1.png";
 import after1 from "@/assets/before_after/after1.png";
 import before2 from "@/assets/before_after/before2.png";
 import after2 from "@/assets/before_after/after2.png";
-import before3 from "@/assets/before_after/before3.jpg";
-import after3 from "@/assets/before_after/after3.jpg";
 
 const beforeAfterImages = [
   {
@@ -26,14 +24,7 @@ const beforeAfterImages = [
     description: "Rezultate imediate după bronzare",
     before: before2,
     after: after2,
-  },
-  {
-    id: 3,
-    title: "Bronzare Organică cu DHA",
-    description: "Rezultate imediate după bronzare",
-    before: before3,
-    after: after3,
-  },
+  }
 ];
 
 export default function BeforeAfterGallery() {
@@ -124,10 +115,10 @@ export default function BeforeAfterGallery() {
 
               {/* Before/After Labels */}
               <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-xs">
-                Before
+                Înainte
               </div>
               <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-xs">
-                After
+                După
               </div>
             </div>
 

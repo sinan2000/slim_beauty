@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { services } from "./data"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -37,9 +38,23 @@ export function mapRomanianChars(input: string) {
   return input.replace(/[ăâîșțĂÂÎȘȚ]/g, match => romanianCharMap[match]);
 }
 
-export const normalizeString = (str: string) => {
+export function normalizeString(str: string) {
   return str
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/\s+/g, '-');
 };
+
+export function getFeaturedServices() {
+  return services.flatMap(category =>
+    category.items
+      .filter(item => item.featured === true)
+      .map(({ title, mediumDescription, media, price, duration }) => ({
+        name: title,
+        featuredDesc: mediumDescription,
+        image: media?.[0] ?? "/placeholder.jpg",
+        price: price,
+        duration: duration
+      }))
+  );
+}

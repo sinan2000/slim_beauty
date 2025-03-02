@@ -1,12 +1,8 @@
-refine all data for updated req
-
 Form submission - rate limiting and correct sendgtm event
 
 Booking System
 
 Change hero image and remove unsplash from next config
-
-smooth nav
 
 group all components better
 

@@ -60,10 +60,10 @@ export default function BookingPricing() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Pricing & Booking
+            Listă de prețuri și Programări Online
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            View our treatment prices and book your appointment online in just a few clicks.
+            Vezi prețurile tratamentelor noastre și programează-te simplu și rapid cu câteva click-uri.
           </p>
         </div>
 
@@ -76,8 +76,8 @@ export default function BookingPricing() {
         >
           <Tabs defaultValue="pricing" className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="pricing">Pricing</TabsTrigger>
-              <TabsTrigger value="booking">Book Appointment</TabsTrigger>
+              <TabsTrigger value="pricing">Listă de Prețuri</TabsTrigger>
+              <TabsTrigger value="booking">Programări Online</TabsTrigger>
             </TabsList>
 
             <TabsContent value="pricing" className="border rounded-lg p-6 shadow-xs">
@@ -99,13 +99,13 @@ export default function BookingPricing() {
                         <AccordionContent>
                           <div className="flex justify-between items-center">
                             <div>
-                              <p className="text-gray-600 mb-2">Duration: {service.duration}</p>
+                              <p className="text-gray-600 mb-2">Durata unei ședințe: {service.duration}</p>
                               <p className="text-sm text-gray-500">
                                 Experience our premium {service.name.toLowerCase()} treatment, designed to deliver exceptional results.
                               </p>
                             </div>
                             <Button className="bg-pink-500 hover:bg-pink-600 text-white">
-                              Book Now
+                              Programare
                             </Button>
                           </div>
                         </AccordionContent>

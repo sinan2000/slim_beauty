@@ -1,26 +1,26 @@
-import { Icon } from '@mdi/react'
-import {
-    mdiWaveform,
-    mdiSnowflakeAlert,
-    mdiArmFlex,
-    mdiWifi,
-    mdiVacuum,
-    mdiBloodBag,
-    mdiSignalVariant,
-    mdiRadioboxMarked,
-    mdiWhiteBalanceSunny,
-    mdiNeedle,
-    mdiWaterCircle,
-    mdiFaceWomanOutline
-} from '@mdi/js'
+import vshape1 from "@/assets/services/vshape/1.jpg";
+import vshape2 from "@/assets/services/vshape/2.jpg";
+import crio from "@/assets/services/crio/1.jpg";
+import emslim2 from "@/assets/services/emslim/1.jpg";
+import emslim3 from "@/assets/services/emslim/2.jpg";
+import preso from "@/assets/services/preso/1.jpg";
+import bronz1 from "@/assets/services/bronzare/1.jpg";
+import bronz2 from "@/assets/services/bronzare/2.jpg";
+import bronz3 from "@/assets/services/bronzare/3.jpg";
+import bronz4 from "@/assets/services/bronzare/4.jpg";
+import bronz5 from "@/assets/services/bronzare/5.jpg";
+import bronz6 from "@/assets/services/bronzare/6.jpg";
+import bronz7 from "@/assets/services/bronzare/7.jpg";
+import dermapen from "@/assets/services/dermapen/1.jpg";
 
 export const services = [
     {
         category: "Remodelare Corporală",
         items: [
             {
-                icon: <Icon path={mdiWaveform} size={2} className="text-primary mb-4" />,
                 title: "VShape Anticelulitic",
+                featured: true,
+                featuredDesc: "Combate celulita eficient utilizând tehnologie avansată.",
                 shortDescription: "Tratamente pentru reducerea celulitei.",
                 mediumDescription: "VShape Anticelulitic utilizează tehnologie avansată pentru a combate celulita eficient. Acest tratament non-invaziv stimulează producția de colagen, îmbunătățește circulația și reduce aspectul de coajă de portocală al pielii, oferind rezultate vizibile și de lungă durată pentru un contur corporal mai neted și mai ferm.",
                 longDescription: `VShape Anticelulitic este o soluție avansată pentru combaterea celulitei, utilizând tehnologii moderne de radiofrecvență pentru a trata în profunzime celulita și a îmbunătăți aspectul pielii. Acest tratament non-invaziv stimulează producția naturală de colagen și crește circulația sanguină, reducând semnificativ aspectul de "coajă de portocală".
@@ -64,10 +64,12 @@ Vrei să reduci celulita și să ai o piele mai fermă și mai netedă? VShape A
                     }
                 ],
                 price: [120, 600, 900],
+                media: [vshape1, vshape2],
+                duration: "30 - 60 min"
             },
             {
-                icon: <Icon path={mdiSnowflakeAlert} size={2} className="text-primary mb-4" />,
                 title: "Criolipoliză",
+                featured: false,
                 shortDescription: "Sculptură corporală cu tehnologie avansată de răcire.",
                 mediumDescription: "Criolipoliza este o metodă revoluționară de sculptare corporală care folosește tehnologia de răcire pentru a elimina celulele grase în mod natural. Acest tratament non-chirurgical vizează zonele specifice de grăsime rezistentă, oferind o reducere semnificativă a țesutului adipos și conturând corpul fără timp de recuperare.",
                 longDescription: `Criolipoliza este o tehnică non-invazivă și revoluționară pentru slăbirea localizată, care utilizează temperaturi scăzute pentru a elimina celulele grase rezistente la dietă și exerciții fizice. Acest tratament inovator de sculptare corporală funcționează prin răcirea țesutului adipos la o temperatură care declanșează procesul de descompunere naturală a celulelor grase, fără a afecta țesuturile înconjurătoare.
@@ -107,11 +109,12 @@ De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând 
                     }
                 ],
                 price: [280, 530, 700],
-                media: ['crio.jpg']
+                media: [crio],
+                duration: "35 - 60 min"
             },
             {
-                icon: <Icon path={mdiArmFlex} size={2} className="text-primary mb-4" />,
                 title: "EMSlim Neo RF",
+                featured: false,
                 shortDescription: "Tonifiere musculară și slăbire.",
                 mediumDescription: "EMSlim Neo RF combină stimularea electromagnetică cu radiofrecvența pentru a oferi rezultate remarcabile în tonifierea musculară și slăbire. Această tehnologie inovatoare induce contracții musculare puternice, echivalente cu mii de exerciții fizice, simultan cu topirea grăsimilor, rezultând într-o siluetă mai tonifiată și mai suplă.",
                 longDescription: `EMSlim Neo RF este un tratament revoluționar, special conceput pentru a ajuta la tonifierea musculară și slăbirea localizată. Acest tratament non-invaziv combină două tehnologii avansate: stimularea electromagnetică de intensitate mare și radiofrecvența. În timpul unei ședințe EMSlim Neo RF, tehnologia electromagnetică provoacă contracții musculare intense, echivalente cu mii de exerciții fizice. Simultan, radiofrecvența ajută la topirea grăsimilor, oferind astfel rezultate semnificative fără durere și fără perioadă de recuperare.
@@ -151,11 +154,12 @@ Tratamentul este perfect pentru cei care doresc să combine slăbirea localizat�
                     }
                 ],
                 price: [85, 450, 650],
-                media: ["emslim.mp4", "emslim.jpg"]
+                media: ["/emslim.mp4", emslim2, emslim3],
+                duration: "30 - 45 min"
             },
             {
-                icon: <Icon path={mdiWifi} size={2} className="text-primary mb-4" />,
                 title: "Radiofrecvență Bipolară",
+                featured: false,
                 shortDescription: "Lifting și regenerare celulară.",
                 mediumDescription: "Radiofrecvența Bipolară este un tratament avansat pentru lifting și regenerare celulară. Prin încălzirea controlată a țesuturilor profunde ale pielii, stimulează producția naturală de colagen și elastină, rezultând într-o piele mai fermă, mai netedă și cu un aspect mai tânăr, fără necesitatea intervențiilor chirurgicale.",
                 longDescription: `Radiofrecvența Bipolară este o tehnologie avansată și eficientă pentru tratarea pielii lăsate și stimularea regenerării celulare. Acest tratament non-invaziv funcționează prin încălzirea controlată a straturilor profunde ale pielii, ceea ce stimulează producția de colagen și elastină – două proteine esențiale pentru fermitatea și elasticitatea pielii. Radiofrecvența Bipolară este ideală pentru pacienții care caută o metodă sigură și fără durere pentru lifting-ul facial și corporal, fără a recurge la intervenții chirurgicale.
@@ -191,11 +195,12 @@ Radiofrecvența Bipolară este recunoscută pentru capacitatea sa de a oferi rez
                         answer: "Nu există efecte secundare majore asociate cu acest tratament. Pacienții pot observa o ușoară înroșire a pielii imediat după ședință, dar aceasta dispare rapid."
                     }
                 ],
-                price: [80, 450, 700]
+                price: [80, 450, 700],
+                duration: ""
             },
             {
-                icon: <Icon path={mdiVacuum} size={2} className="text-primary mb-4" />,
                 title: "Masaj Vacuum Anticelulitic",
+                featured: false,
                 shortDescription: "Reducerea celulitei și tonifierea pielii.",
                 mediumDescription: "Masajul Vacuum Anticelulitic este o tehnică eficientă pentru combaterea celulitei și tonifierea pielii. Prin stimularea circulației sanguine și limfatice, acest tratament ajută la eliminarea toxinelor, reducerea retenției de apă și îmbunătățirea texturii pielii, oferind un aspect mai neted și mai tonic zonelor predispuse la celulită.",
                 longDescription: `Masajul Vacuum Anticelulitic este un tratament inovator care ajută la reducerea aspectului celulitei și la îmbunătățirea fermității pielii. Acest tratament folosește un dispozitiv special care creează un efect de vacuum asupra pielii, stimulând circulația sanguină și limfatică. Prin aplicarea presiunii negative, masajul cu vacuum descompune grăsimile din țesuturile afectate de celulită și ajută la eliminarea acestora prin procese naturale, precum drenajul limfatic.
@@ -233,11 +238,13 @@ Tratamentul anticelulitic cu vacuum este non-invaziv și complet sigur, fără d
                         answer: "Nu există efecte secundare majore, însă pot apărea ușoare înroșiri ale pielii sau vânătăi temporare după tratament, care dispar rapid."
                     }
                 ],
-                price: [75, 400, 600]
+                price: [75, 400, 600],
+                duration: ""
             },
             {
-                icon: <Icon path={mdiBloodBag} size={2} className="text-primary mb-4" />,
                 title: "Presoterapie (Drenaj Limfatic)",
+                featured: true,
+                featuredDesc: "Un tratament de drenaj limfatic care utilizează presiune controlată pentru a stimula circulația limfatică.",
                 shortDescription: "Eliminarea toxinelor și reducerea retenției de apă.",
                 mediumDescription: "Presoterapia este un tratament de drenaj limfatic care utilizează presiune controlată pentru a stimula circulația limfatică. Acest proces ajută la eliminarea toxinelor, reduce retenția de apă și ameliorează senzația de picioare grele. Rezultatul este o îmbunătățire a circulației, reducerea edemelor și o senzație generală de ușurință și bună dispoziție.",
                 longDescription: `
@@ -285,11 +292,12 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                     }
                 ],
                 price: [70, 360, 550],
-                media: ["preso.jpg"]
+                media: [preso],
+                duration: "30 - 45 min"
             },
             {
-                icon: <Icon path={mdiSignalVariant} size={2} className="text-primary mb-4" />,
                 title: "Cavitatie",
+                featured: false,
                 shortDescription: "Ultrasunete pentru eliminarea celulitei.",
                 mediumDescription: "Cavitația utilizează tehnologia ultrasunetelor pentru a targeta și elimina celulele grase și celulita. Acest tratament non-invaziv creează microbule în țesutul adipos, care implodează și distrug celulele grase, permițând corpului să le elimine în mod natural. Rezultatul este o reducere vizibilă a circumferinței și o îmbunătățire a texturii pielii.",
                 longDescription: `Cavitația este o metodă non-invazivă de reducere a țesutului adipos, utilizând ultrasunete de joasă frecvență pentru a targeta și distruge celulele grase. Acest tratament corporal de slăbire localizată este ideal pentru persoanele care doresc să scape de grăsimea persistentă din anumite zone ale corpului, cum ar fi abdomenul, coapsele sau brațele.
@@ -325,11 +333,12 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                         answer: "Efectele secundare sunt minime și pot include o ușoară înroșire sau sensibilitate în zona tratată, dar acestea dispar rapid."
                     }
                 ],
-                price: [90, 480, 700]
+                price: [90, 480, 700],
+                duration: "30 - 60 min"
             },
             {
-                icon: <Icon path={mdiRadioboxMarked} size={2} className="text-primary mb-4" />,
                 title: "Împachetări Tunel IR",
+                featured: false,
                 shortDescription: "Tratament pentru detoxifiere și pierdere în greutate.",
                 mediumDescription: "Împachetările Tunel IR combină beneficiile termoterapiei cu acțiunea infraroșiilor pentru o detoxifiere profundă și pierdere în greutate. Acest tratament stimulează metabolismul, crește circulația sanguină și ajută la eliminarea toxinelor, rezultând într-o piele mai fermă, reducerea celulitei și o siluetă mai zveltă.",
                 longDescription: `Împachetările Tunel IR reprezintă un tratament inovator de detoxifiere și remodelare corporală, bazat pe acțiunea infraroșiilor. Acest tratament combină termoterapia cu infraroșii pentru a stimula metabolismul, a crește circulația sanguină și a ajuta la eliminarea toxinelor din corp. Prin aplicarea căldurii infraroșii, corpul este învelit într-un tunel special, ceea ce determină transpirația profundă și activarea proceselor naturale de detoxifiere.
@@ -365,11 +374,13 @@ De asemenea, împachetările IR ajută la ameliorarea durerilor musculare și ar
                         answer: "Da, căldura infraroșie stimulează descompunerea grăsimii din zonele afectate de celulită și îmbunătățește circulația, contribuind la reducerea aspectului de coajă de portocală."
                     }
                 ],
-                price: [75, 390, 600]
+                price: [75, 390, 600],
+                duration: ""
             },
             {
-                icon: <Icon path={mdiWhiteBalanceSunny} size={2} className="text-primary mb-4" />,
                 title: "Bronzare Organică cu DHA",
+                featured: true,
+                featuredDesc: "O alternativă sigură și sănătoasă la expunerea la soare sau la solariu.",
                 shortDescription: "Bronzare sănătoasă și naturală fără raze UV.",
                 mediumDescription: "Bronzarea Organică cu DHA oferă o alternativă sigură și sănătoasă la expunerea la soare sau la solariu. Utilizând ingrediente naturale și DHA (dihydroxyacetone), acest tratament oferă un bronz uniform și natural, fără riscurile asociate cu expunerea la raze UV. Rezultatul este o piele frumos bronzată, hidratată și protejată.",
                 longDescription: `Bronzarea Organică cu DHA reprezintă o metodă revoluționară de bronzare, care oferă o alternativă sigură la expunerea prelungită la soare sau la utilizarea solarului. Acest tratament utilizează DHA (dihydroxyacetone), un ingredient natural derivat din trestia de zahăr, care interacționează cu aminoacizii din stratul superficial al pielii pentru a crea un bronz temporar, uniform și sănătos.
@@ -410,7 +421,8 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
                     }
                 ],
                 price: [110],
-                media: ["organic.jpg"]
+                media: [bronz1, bronz2, bronz3, bronz4, bronz5, bronz6, bronz7],
+                duration: "10 - 20 min"
             }
         ]
     },
@@ -418,8 +430,8 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
         category: "Dermato Cosmetică",
         items: [
             {
-                icon: <Icon path={mdiNeedle} size={2} className="text-primary mb-4" />,
                 title: "Dermapen cu Microneedling",
+                featured: false,
                 shortDescription: "Rejuvenare și regenerare cutanată.",
                 mediumDescription: "Dermapen cu Microneedling este o tehnică avansată de rejuvenare a pielii care utilizează micro-ace fine pentru a stimula producția naturală de colagen și elastină. Acest tratament îmbunătățește textura pielii, reduce cicatricile și liniile fine, și promovează o piele mai luminoasă și mai tânără. Rezultatele includ o piele mai fermă, mai netedă și cu un aspect radiant.",
                 longDescription: `Dermapen cu Microneedling este un tratament avansat pentru rejuvenarea și regenerarea pielii, utilizând o tehnică inovatoare care implică micro-ace fine. Aceste ace penetrează stratul superficial al pielii, stimulând producția naturală de colagen și elastină, proteine esențiale pentru elasticitatea și fermitatea pielii.
@@ -458,10 +470,10 @@ Dermapen este un dispozitiv controlat electronic, care asigură o penetrare unif
                     }
                 ],
                 price: [250],
-                media: ["derma.mp4", "derma.jpg"]
+                media: ["/dermapen.mp4", dermapen],
+                duration: ""
             },
             {
-                icon: <Icon path={mdiWaterCircle} size={2} className="text-primary mb-4" />,
                 title: "Microdermabraziune",
                 shortDescription: "Exfoliere și curățare profundă a pielii.",
                 mediumDescription: "Microdermabraziunea este o procedură de exfoliere mecanică care îndepărtează delicat stratul superior al pielii moarte. Acest tratament stimulează reînnoirea celulară, îmbunătățește textura pielii și reduce aspectul porilor dilatați, al liniilor fine și al hiperpigmentării. Rezultatul este o piele mai netedă, mai luminoasă și cu un aspect mai tânăr.",
@@ -505,8 +517,8 @@ Această tehnică modernă este blândă, dar eficientă, și necesită un timp 
                 price: [170]
             },
             {
-                icon: <Icon path={mdiFaceWomanOutline} size={2} className="text-primary mb-4" />,
                 title: "Tratament Clasic de Curățire",
+                featured: false,
                 shortDescription: "Curățare facială în profunzime.",
                 mediumDescription: "Tratamentul Clasic de Curățire oferă o îngrijire completă a pielii, combinând curățarea profundă cu hidratarea intensivă. Acest tratament elimină impuritățile, desfundă porii și echilibrează producția de sebum, lăsând pielea curată, catifelată și revitalizată. Ideal pentru toate tipurile de piele, acest tratament oferă o bază perfectă pentru o rutină de îngrijire eficientă.",
                 longDescription: `Tratamentul Clasic de Curățire este esențial pentru menținerea unui ten sănătos și echilibrat. Acest tratament implică o combinație de curățare facială profundă și hidratare intensivă, fiind ideal pentru toate tipurile de piele. Prin curățarea profundă, sunt eliminate impuritățile, excesul de sebum și reziduurile acumulate în pori, prevenind formarea punctelor negre și a coșurilor.
@@ -540,7 +552,8 @@ Datorită formulării blânde, tratamentul este ideal pentru toate tipurile de p
                         answer: "Da, tratamentul este excelent pentru pielea grasă, deoarece desfundă porii și ajută la echilibrarea producției de sebum, prevenind apariția coșurilor și a punctelor negre."
                     }
                 ],
-                price: [200]
+                price: [200],
+                duration: ""
             }
         ]
     }
