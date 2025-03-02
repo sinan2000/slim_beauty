@@ -11,6 +11,7 @@ export default function Hero_B() {
           fill
           priority
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-pink-500/30 to-purple-500/30 backdrop-blur-sm"></div>
       </div>

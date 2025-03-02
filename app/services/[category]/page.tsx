@@ -150,6 +150,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
                       fill
                       style={{ objectFit: 'cover' }}
                       className="transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   </div>

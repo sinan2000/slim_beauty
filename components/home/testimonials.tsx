@@ -5,27 +5,30 @@ import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import Link from 'next/link';
+import review1 from "@/assets/reviews/1.jpg"
+import review2 from "@/assets/reviews/2.jpg"
+import review3 from "@/assets/reviews/3.jpg"
 
 const testimonials = [
   {
     url: 'https://www.facebook.com/rochiide.inchiriat.1/posts/pfbid026wEeoNRfMzHMTYhew6vdnwgVokvL2PhXWptjmHiW8tDyvMF2Vo4fbrmFivzsiphGl',
     name: 'Manuela Lucia Albu',
     imageAlt: 'Imagine de profil a Manuelei Lucia Albu, recenzie facebook Slim & Beauty by MC',
-    image: '/reviews/review1.jpg',
+    image: review1,
     quote: 'Personalul foarte prietenos si aparatura moderna,recomand cu mare drag'
   },
   {
     url: 'https://www.facebook.com/irina.brehui.1/posts%2Fpfbid0fN44vwNTB4FjUgFnpgyiEpZN1LCAietbzYpYRUn6QPFscjhbYo9aYrZ8Qk7WaWkul',
     name: 'Irina Brehui',
     imageAlt: 'Imagine de profil a Irinei Brehui, recenzie facebook Slim & Beauty by MC',
-    image: '/reviews/review2.jpg',
+    image: review2,
     quote: 'Un salon ff fain, cu atmosfera plăcută și personal prietenos, dar în același timp și foarte profi. Recomand cu cea mai mare caldura! 👌'
   },
   {
     url: 'https://www.facebook.com/adina.filip.9/posts/pfbid02JGTnX2RNHpRKMsvV8NQxdgENaXQxRF11F7wUqgNmUb8kBgtrvnc6encvhVEDYrrRl',
     name: 'Adina Filip',
     imageAlt: 'Imagine de profil a Adinei Filip, recenzie facebook Slim & Beauty by MC',
-    image: '/reviews/review3.jpg',
+    image: review3,
     quote: 'Oamenii sfințesc locul, iar locul arata minunat. Revin mereu cu drag la voi'
   }
 ]
@@ -100,6 +103,7 @@ const Testimonials = () => {
                               alt={testimonial.name}
                               fill
                               style={{ objectFit: 'cover' }}
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                           </div>
                         </div>

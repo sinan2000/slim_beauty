@@ -58,6 +58,7 @@ export default function WhyChooseUs() {
                 fill
                 style={{ objectFit: 'cover' }}
                 className="rounded-2xl"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-linear-to-t from-pink-900/30 to-transparent"></div>
             </div>

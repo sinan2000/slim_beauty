@@ -1,3 +1,9 @@
+import { socialData } from "@/lib/socials";
+import Image from "next/image";
+import Link from "next/link";
+import anpcSol from "@/assets/anpc-sol.png";
+import anpcSal from "@/assets/anpc-sal.png";
+
 export default function Footer() {
   return (
     <footer className="py-12">
@@ -6,77 +12,40 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-serif font-bold text-gray-800 mb-4">Slim & Beauty</h3>
             <p className="text-gray-600 mb-4">
-              Premium beauty and wellness treatments to enhance your natural beauty and boost your confidence.
+              Slim & Beauty by MC oferă servicii de înfrumusețare și remodelare corporală de înaltă calitate, folosind tehnologii avansate și produse premium. Hai să vorbim despre slăbit!
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-pink-600 hover:text-pink-700">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M17 2H7C4.23858 2 2 4.23858 2 7V17C2 19.7614 4.23858 22 7 22H17C19.7614 22 22 19.7614 22 17V7C22 4.23858 19.7614 2 17 2Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+              {socialData.map((item, index) => (
+                <Link key={`social-icon-footer-no-${index}`} href={item.link} target="_blank" className="text-gray-500 hover:text-pink-500">
+                  <Image
+                    src={item.icon}
+                    alt={item.alt}
+                    width={20}
+                    height={20}
                   />
-                  <path
-                    d="M16 11.37C16.1234 12.2022 15.9813 13.0522 15.5938 13.799C15.2063 14.5458 14.5931 15.1514 13.8416 15.5297C13.0901 15.9079 12.2384 16.0396 11.4078 15.9059C10.5771 15.7723 9.80976 15.3801 9.21484 14.7852C8.61991 14.1902 8.22773 13.4229 8.09406 12.5922C7.9604 11.7615 8.09206 10.9099 8.47032 10.1584C8.84858 9.40685 9.45418 8.79374 10.201 8.40624C10.9478 8.01874 11.7978 7.87659 12.63 8C13.4789 8.12588 14.2648 8.52146 14.8717 9.12831C15.4785 9.73515 15.8741 10.5211 16 11.37Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M17.5 6.5H17.51"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-              <a href="#" className="text-pink-600 hover:text-pink-700">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M23 3.00005C22.0424 3.67552 20.9821 4.19216 19.86 4.53005C19.2577 3.83756 18.4573 3.34674 17.567 3.12397C16.6767 2.90121 15.7395 2.95724 14.8821 3.2845C14.0247 3.61176 13.2884 4.19445 12.773 4.95376C12.2575 5.71308 11.9877 6.61238 12 7.53005V8.53005C10.2426 8.57561 8.50127 8.18586 6.93101 7.39549C5.36074 6.60513 4.01032 5.43868 3 4.00005C3 4.00005 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.50005C20.9991 7.2215 20.9723 6.94364 20.92 6.67005C21.9406 5.66354 22.6608 4.39276 23 3.00005Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-              <a href="#" className="text-pink-600 hover:text-pink-700">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
+                </Link>
+              ))}
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-serif font-bold text-gray-800 mb-4">Opening Hours</h3>
+            <h3 className="text-xl font-serif font-bold text-gray-800 mb-4">Programul nostru</h3>
             <ul className="space-y-2 text-gray-600">
               <li className="flex justify-between">
-                <span>Monday - Friday</span>
-                <span>9:00 - 20:00</span>
+                <span>Luni, marți, joi</span>
+                <span>13:00 - 21:00</span>
               </li>
               <li className="flex justify-between">
-                <span>Saturday</span>
-                <span>10:00 - 18:00</span>
+                <span>Miercuri, vineri</span>
+                <span>09:00 - 17:00</span>
               </li>
               <li className="flex justify-between">
-                <span>Sunday</span>
-                <span>Closed</span>
+                <span>Sâmbătă, duminică</span>
+                <span>Închis</span>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-serif font-bold text-gray-800 mb-4">Contact Us</h3>
+            <h3 className="text-xl font-serif font-bold text-gray-800 mb-4">Detalii de contact</h3>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start">
                 <svg
@@ -102,7 +71,7 @@ export default function Footer() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span>123 Beauty Street, Dumbrăvița, Romania</span>
+                <span>Strada Petőfi Sándor 101, Dumbrăvița 307160, Romania</span>
               </li>
               <li className="flex items-start">
                 <svg
@@ -121,40 +90,30 @@ export default function Footer() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span>+40 123 456 789</span>
-              </li>
-              <li className="flex items-start">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 mr-2 text-pink-600 mt-1"
-                >
-                  <path
-                    d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M22 6L12 13L2 6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span>info@slimandbeauty.com</span>
+                <span>+40 733 407 329</span>
               </li>
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-pink-200 text-center text-gray-600">
-          <p>© {new Date().getFullYear()} Slim & Beauty. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-pink-200 flex flex-col md:flex-row items-center justify-between text-gray-600 text-sm">
+          <p className="text-center md:text-left">© {new Date().getFullYear()} Slim & Beauty. All rights reserved.</p>
+          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+            <Link href="https://anpc.ro/ce-este-sal/" target="_blank" rel="nofollow">
+              <Image
+                src={anpcSal}
+                alt="ANPC SAL"
+                className="h-10 w-auto"
+              />
+            </Link>
+            <Link href="https://ec.europa.eu/consumers/odr" target="_blank" rel="nofollow">
+              <Image src={anpcSol}
+                alt="ANPC SOL"
+                className="h-10 w-auto"
+              />
+            </Link>
+          </div>
         </div>
+
       </div>
     </footer>
   );
