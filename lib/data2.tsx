@@ -5,7 +5,7 @@ import preso from "@/assets/preso.jpg";
 export const featured = [
   {
     name: "VShape Anticelulitic",
-    description: "VShape Anticelulitic utilizează tehnologie avansată pentru a combate celulita eficient.",
+    description: "Combate celulita eficient utilizând tehnologie avansată.",
     image: vshape,
     price: "120 RON",
     duration: "30 - 60 min"

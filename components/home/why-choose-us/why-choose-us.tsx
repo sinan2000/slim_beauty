@@ -2,30 +2,30 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Award, Star, Shield, Heart } from 'lucide-react';
 import Image from 'next/image';
 import salon from '@/assets/salon.jpg';
+import { Settings, BadgeCheck, Sparkles, UserCheck } from "lucide-react";
 
 const benefits = [
   {
-    icon: <Award className="h-8 w-8 text-pink-500" />,
-    title: "State-of-the-Art Equipment",
-    description: "We use only the latest, clinically proven technology for optimal results."
+    icon: <Settings className="h-8 w-8 text-pink-500" />,
+    title: "Tehnologie Modernă",
+    description: "Folosim echipamente de ultimă generație pentru remodelare corporală și dermato cosmetică."
   },
   {
-    icon: <Star className="h-8 w-8 text-pink-500" />,
-    title: "Certified Experts",
-    description: "Our team consists of highly trained professionals with years of experience."
+    icon: <BadgeCheck className="h-8 w-8 text-pink-500" />,
+    title: "Experiență de Peste 10 Ani",
+    description: `Cu peste ${new Date().getFullYear() - 2013} ani de experiență în domeniu, suntem alegerea sigură.`
   },
   {
-    icon: <Shield className="h-8 w-8 text-pink-500" />,
-    title: "Premium Skincare Products",
-    description: "We partner with leading brands to provide the highest quality treatments."
+    icon: <Sparkles className="h-8 w-8 text-pink-500" />,
+    title: "Rezultate Vizibile",
+    description: "Tratamentele noastre sunt concepute cu grijă, fără proceduri invazive."
   },
   {
-    icon: <Heart className="h-8 w-8 text-pink-500" />,
-    title: "Customized Treatments",
-    description: "Every service is tailored to your unique needs and beauty goals."
+    icon: <UserCheck className="h-8 w-8 text-pink-500" />,
+    title: "Tratamente Personalizate",
+    description: "Fiecare clientă are un tip de piele diferit, iar noi ne adaptăm pentru a oferi cele mai bune rezultate."
   }
 ];
 
@@ -66,10 +66,10 @@ export default function WhyChooseUs() {
           {/* Content side */}
           <div className="lg:w-1/2">
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-              Why Choose Slim & Beauty?
+              De Ce Slim & Beauty?
             </h2>
             <p className="text-gray-600 mb-8">
-              At Slim & Beauty, we're committed to helping you look and feel your absolute best. Our approach combines cutting-edge technology with personalized care to deliver exceptional results.
+              Ne dedicăm ție! La Slim & Beauty, combinăm tehnologie de ultimă generație cu grijă personalizată, pentru rezultate rapide și de lungă durată.
             </p>
 
             <motion.div

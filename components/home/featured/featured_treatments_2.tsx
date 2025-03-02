@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { featured } from '@/lib/data2';
+import Link from 'next/link';
 
 export default function FeaturedMotion() {
   const ref = useRef(null);
@@ -60,11 +61,13 @@ export default function FeaturedMotion() {
             <p className="text-white/80 text-sm mb-4">{service.description}</p>
             <div className="flex items-center justify-between">
               <span className="text-white/70 text-sm">{service.duration}</span>
-              <Button
-                className="bg-white text-pink-500 hover:bg-pink-50 rounded-full px-5 py-1 h-auto text-sm font-medium transition-all duration-300 transform group-hover:scale-105"
-              >
-                Book Now
-              </Button>
+              <Link href="#programare">
+                <Button
+                  className="bg-white text-pink-500 hover:bg-pink-50 rounded-full px-5 py-1 h-auto text-sm font-medium transition-all duration-300 transform group-hover:scale-105"
+                >
+                  Programare
+                </Button>
+              </Link>
             </div>
           </div>
         </motion.div>
