@@ -1,34 +1,38 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import { socialData } from '@/lib/socials';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { socialData } from '@/lib/socials';
 
 const Navbar = () => {
     const pathname = usePathname();
-    const [isScrolled, setIsScrolled] = useState(pathname !== '/');
+    const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const items = [
         { name: "Acasă", href: "/" },
         { name: "Servicii", href: "/servicii" },
-        { name: "Despre Noi", href: "/despre-noi" },
+        { name: "Prețuri", href: "/#preturi" },
         { name: "Contact", href: "/#contact" },
     ];
 
     useEffect(() => {
-        if (pathname !== "/") return;
+        if (pathname !== "/") {
+            setIsScrolled(true);
+            return;
+        }
 
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
         };
 
         window.addEventListener('scroll', handleScroll);
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, [pathname]);
 
@@ -37,7 +41,7 @@ const Navbar = () => {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
                 isScrolled
-                    ? "bg-white/90 backdrop-blur-md shadow-xs py-3"
+                    ? "bg-white/80 backdrop-blur-md shadow-xs py-3"
                     : "bg-transparent py-5"
             )}
         >
@@ -71,9 +75,11 @@ const Navbar = () => {
                             {item.name}
                         </Link>
                     ))}
-                    <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-6">
-                        Programări
-                    </Button>
+                    <Link href="/#programari">
+                        <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-6">
+                            Programări
+                        </Button>
+                    </Link>
                 </nav>
 
                 {/* Mobile Menu Button */}
@@ -131,7 +137,7 @@ const Navbar = () => {
                         style={{ animationDelay: `${items.length * 100 + 100}ms` }}
                     >
                         <div className="border-t border-gray-300 pt-4 flex flex-col items-center space-y-2">
-                            <span className="text-gray-500 text-sm">
+                            <span className="text-gray-500 text-sm pb-2">
                                 &copy; {new Date().getFullYear()} Slim & Beauty by M.C.
                             </span>
                             <div className="flex space-x-4">

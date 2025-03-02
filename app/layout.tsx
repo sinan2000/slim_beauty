@@ -16,13 +16,14 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="ro">
+    <html lang="ro" className="scroll-smooth">
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <GoogleTagManager gtmId="GTM-5L3ZD3KW" />
 
         <Navbar />
         {children}
         <Footer />
+
         <SNSFooter />
       </body>
     </html>
