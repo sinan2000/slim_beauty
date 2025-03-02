@@ -123,11 +123,7 @@ export default function BookAppointment() {
         try {
             await sendSms(payload);
 
-            const consent = Cookies.get('cookie_consent');
-
-            if (consent === 'accepted') {
-                sendGTMEvent({ event: 'conversion', send_to: 'AW-16731906773/QaB6CKeQrN8ZENXFsqo-' });
-            }
+            sendGTMEvent({ event: 'conversion', send_to: 'AW-16731906773/QaB6CKeQrN8ZENXFsqo-' });
 
             setSubmitSuccess(true);
             setSubmitMessage('Programarea a fost trimisă cu succes! Vă vom contacta pentru confirmare.');

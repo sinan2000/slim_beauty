@@ -4,10 +4,10 @@ import { homePagejsonLd } from '@/lib/jsonLds'
 import Hero from '@/components/home/hero'
 import FeaturedServices from '@/components/home/featured_treatments'
 import WhyChooseUs from '@/components/home/why-choose-us'
-import Testimonials from '@/components/home/testimonials2'
+import Testimonials from '@/components/home/testimonials'
 import BeforeAfterGallery from '@/components/home/before_after'
 import BookingPricing from '@/components/home/booking_pricing'
-import ContactLocation from '@/components/home/contact_location'
+import ContactLocation from '@/components/home/contact'
 
 export const metadata = homeMetadata
 
