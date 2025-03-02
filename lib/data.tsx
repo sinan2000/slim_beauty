@@ -17,6 +17,7 @@ export const services = [
     {
         category: "Remodelare Corporală",
         media: vshape1,
+        description: "Tratamente non-invazive pentru remodelarea corporală și eliminarea celulitei.",
         items: [
             {
                 title: "VShape Anticelulitic",
@@ -430,6 +431,7 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
     {
         category: "Dermato Cosmetică",
         media: dermapen,
+        description: "Tratamente avansate pentru îngrijirea pielii, care vizează corectarea imperfecțiunilor și îmbunătățirea texturii și aspectului tenului.",
         items: [
             {
                 title: "Dermapen cu Microneedling",

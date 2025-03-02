@@ -43,8 +43,10 @@ export function normalizeString(str: string) {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, '-');
-};
+    .replace(/[\s\[\](){}]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 export function getFeaturedServices() {
   return services.flatMap(category =>
@@ -58,4 +60,16 @@ export function getFeaturedServices() {
         duration: duration
       }))
   );
+}
+
+export function getFirstImage(media: any[] | undefined) {
+  if (!media) {
+    return "/placeholder.svg";
+  }
+  for (const item of media) {
+    if (typeof item !== "string") {
+      return item;
+    }
+  }
+  return "/placeholder.svg";
 }

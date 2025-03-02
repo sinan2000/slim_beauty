@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data";
 import { normalizeString } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export default function ServicesPage() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
@@ -14,7 +15,7 @@ export default function ServicesPage() {
     <div className="h-screen w-full flex flex-col md:flex-row">
       {services.map((service, index) => (
         <Link
-          href={`/servicii/${normalizeString(service.category)}`}
+          href={`/services/${normalizeString(service.category)}`}
           key={index}
           className="relative w-full h-1/2 md:h-full overflow-hidden cursor-pointer"
           onMouseEnter={() => setHoveredSection(normalizeString(service.category))}
