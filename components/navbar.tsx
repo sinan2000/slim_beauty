@@ -7,9 +7,11 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { socialData } from '@/lib/socials';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
+    const pathname = usePathname();
+    const [isScrolled, setIsScrolled] = useState(pathname !== '/');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const items = [
@@ -20,13 +22,15 @@ const Navbar = () => {
     ];
 
     useEffect(() => {
+        if (pathname !== "/") return;
+
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [pathname]);
 
     return (
         <header

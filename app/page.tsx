@@ -4,6 +4,7 @@ import { homePagejsonLd } from '@/lib/jsonLds'
 import Hero from '@/components/home/hero'
 import FeaturedServices from '@/components/home/featured_treatments'
 import WhyChooseUs from '@/components/home/why-choose-us'
+import Testimonials from '@/components/home/testimonials2'
 
 export const metadata = homeMetadata
 
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Hero />
       <FeaturedServices />
       <WhyChooseUs />
+      <Testimonials />
       {/* }
         <AHero />
         <BodyCare />
