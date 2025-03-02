@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import FancyHeader from './hero-text';
+import FancyHeader from './hero-client';
+import heroImage from '@/assets/hero.jpg'
 
 export default function Hero() {
     return (
@@ -8,8 +9,8 @@ export default function Hero() {
             className="relative h-screen flex items-center justify-center overflow-hidden"
         >
             <Image
-                src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                alt="Photo of Slim & Beauty's Salon"
+                src={heroImage}
+                alt="Photo of Facial Treatment"
                 fill
                 priority
                 loading="eager"

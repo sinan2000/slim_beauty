@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 
 export default function FancyHeader() {
   return (
@@ -14,17 +14,17 @@ export default function FancyHeader() {
           className="max-w-3xl mx-auto"
         >
           <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Enhance Your Beauty, Elevate Your Confidence
+            Remodelare Corporală & Tratamente Dermato-Cosmetice
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Premium body remodeling & dermato-cosmetic treatments in Dumbrăvița
+            Scapă de celulită și tonifică-ți corpul cu tehnologii avansate de estetică non-invazivă.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
-              Book a Consultation
+              Programează-te
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg">
-              Explore Services
+            <Button className="border border-white text-white bg-white/20 hover:bg-white/30 rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
+              Vezi Tratamentele
             </Button>
           </div>
         </motion.div>

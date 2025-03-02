@@ -1,7 +1,7 @@
 import Script from 'next/script'
 import { homeMetadata } from '@/lib/metadatas'
 import { homePagejsonLd } from '@/lib/jsonLds'
-import Hero from '@/components/home/hero'
+import Hero from '@/components/home/hero/hero'
 import FeaturedServices from '@/components/home/featured_treatments'
 import WhyChooseUs from '@/components/home/why-choose-us'
 import Testimonials from '@/components/home/testimonials'
