@@ -42,13 +42,16 @@ const Navbar = () => {
             <div className="container mx-auto px-4 flex items-center justify-between">
                 <Link href="/" className="flex items-center">
                     <Image
-                        src={logo}
+                        src='/logo.svg'
                         alt="Slim & Beauty by MC logo"
+                        width={48}
+                        height={18}
                         priority
                         loading="eager"
-                        placeholder='blur'
-                        blurDataURL={logoBlurUrl}
-                        className="w-32 h-auto md:w-40 lg:w-48"
+                        className={cn(
+                            "w-32 h-auto md:w-40 lg:w-48 transition-all",
+                            isScrolled ? "" : "filter brightness-0 invert"
+                        )}
                     />
                 </Link>
 
@@ -80,7 +83,7 @@ const Navbar = () => {
                     {isMobileMenuOpen ? (
                         <X className={cn("h-6 w-6", isScrolled ? "text-gray-800" : "text-white")} />
                     ) : (
-                        <Menu className={cn("h-6 w-6", isScrolled ? "text-gray-800" : "text-gray-800")} />
+                        <Menu className={cn("h-6 w-6", isScrolled ? "text-gray-800" : "text-white")} />
                     )}
                 </button>
             </div>

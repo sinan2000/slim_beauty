@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="ro" className={playfair.className}>
+    <html lang="ro">
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <GoogleTagManager gtmId="GTM-5L3ZD3KW" />
 
