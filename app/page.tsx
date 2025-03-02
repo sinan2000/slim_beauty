@@ -3,6 +3,7 @@ import { homeMetadata } from '@/lib/metadatas'
 import { homePagejsonLd } from '@/lib/jsonLds'
 import Hero from '@/components/home/hero'
 import FeaturedServices from '@/components/home/featured_treatments'
+import WhyChooseUs from '@/components/home/why-choose-us'
 
 export const metadata = homeMetadata
 
@@ -11,6 +12,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-background">
       <Hero />
       <FeaturedServices />
+      <WhyChooseUs />
       {/* }
         <AHero />
         <BodyCare />

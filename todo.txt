@@ -6,6 +6,12 @@ Booking System
 
 Change hero image and remove unsplash from next config
 
+smooth nav
+
+group all components better
+
+delete all redundant code
+
 meta pixel
 
 start ads - Ramadan edition xD
