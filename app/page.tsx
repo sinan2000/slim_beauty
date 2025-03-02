@@ -6,6 +6,8 @@ import FeaturedServices from '@/components/home/featured_treatments'
 import WhyChooseUs from '@/components/home/why-choose-us'
 import Testimonials from '@/components/home/testimonials2'
 import BeforeAfterGallery from '@/components/home/before_after'
+import BookingPricing from '@/components/home/booking_pricing'
+import ContactLocation from '@/components/home/contact_location'
 
 export const metadata = homeMetadata
 
@@ -17,18 +19,9 @@ export default function HomePage() {
       <WhyChooseUs />
       <Testimonials />
       <BeforeAfterGallery />
-      {/* }
-        <AHero />
-        <BodyCare />
-        <FaceCare />
-        <Testimonials />
-        <FacebookPostsCarousel />
-        {/* 
-        <div id="rezervare" className="py-5">
-          <BookingForm />
-        </div>
-        <Contact />
-        */}
+      <BookingPricing />
+      <ContactLocation />
+      
       <Script
         id="first-page-json-ld"
         type="application/ld+json"

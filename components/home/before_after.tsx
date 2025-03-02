@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import before1 from '@/assets/before_after/before1.png';
-import after1 from '@/assets/before_after/after1.png';
-import before2 from '@/assets/before_after/before2.png';
-import after2 from '@/assets/before_after/after2.png';
-import before3 from '@/assets/before_after/before3.jpg';
-import after3 from '@/assets/before_after/after3.jpg';
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import before1 from "@/assets/before_after/before1.png";
+import after1 from "@/assets/before_after/after1.png";
+import before2 from "@/assets/before_after/before2.png";
+import after2 from "@/assets/before_after/after2.png";
+import before3 from "@/assets/before_after/before3.jpg";
+import after3 from "@/assets/before_after/after3.jpg";
 
 const beforeAfterImages = [
   {
@@ -18,22 +18,22 @@ const beforeAfterImages = [
     title: "EMSlim Body Contouring",
     description: "Results after 6 sessions, 2 weeks apart",
     before: before1,
-    after: after1
+    after: after1,
   },
   {
     id: 2,
     title: "Cryolipolysis Treatment",
     description: "Results after 3 sessions, 3 weeks apart",
     before: before2,
-    after: after2
+    after: after2,
   },
   {
     id: 3,
     title: "Hydrafacial Results",
     description: "Results after a single treatment",
     before: before3,
-    after: after3
-  }
+    after: after3,
+  },
 ];
 
 export default function BeforeAfterGallery() {
@@ -46,7 +46,7 @@ export default function BeforeAfterGallery() {
     const container = e.currentTarget.getBoundingClientRect();
     let clientX;
 
-    if ('touches' in e) {
+    if ("touches" in e) {
       clientX = e.touches[0].clientX;
     } else {
       clientX = e.clientX;
@@ -88,38 +88,34 @@ export default function BeforeAfterGallery() {
           <div className="relative rounded-2xl overflow-hidden shadow-xl">
             {/* Before/After Slider */}
             <div
-              className="relative h-[500px] w-full cursor-grab active:cursor-grabbing"
+              className="relative h-[500px] w-full flex cursor-grab active:cursor-grabbing"
               onMouseMove={handleSliderChange}
               onTouchMove={handleSliderChange}
             >
-              {/* After Image (Full) */}
-              <div className="absolute inset-0">
-                <Image
-                  src={currentImage.after}
-                  alt={`After ${currentImage.title}`}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-
-              {/* Before Image (Partial) */}
-              <div
-                className="absolute inset-0 overflow-hidden"
-                style={{ width: `${sliderPosition}%` }}
-              >
+              {/* Before Image */}
+              <div className="relative overflow-hidden" style={{ width: `${sliderPosition}%` }}>
                 <Image
                   src={currentImage.before}
                   alt={`Before ${currentImage.title}`}
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                 />
-                <div className="absolute top-0 right-0 bottom-0 w-1 bg-white"></div>
+              </div>
+
+              {/* After Image */}
+              <div className="relative overflow-hidden" style={{ width: `${100 - sliderPosition}%` }}>
+                <Image
+                  src={currentImage.after}
+                  alt={`After ${currentImage.title}`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
               </div>
 
               {/* Slider Handle */}
               <div
                 className="absolute top-0 bottom-0 w-1 bg-white cursor-col-resize"
-                style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+                style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
               >
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 bg-white rounded-full shadow-lg flex items-center justify-center">
                   <div className="h-6 w-6 rounded-full bg-pink-500"></div>
@@ -175,7 +171,7 @@ export default function BeforeAfterGallery() {
                   src={image.after}
                   alt={image.title}
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                 />
               </button>
             ))}
@@ -184,4 +180,4 @@ export default function BeforeAfterGallery() {
       </div>
     </section>
   );
-};
+}
