@@ -80,7 +80,7 @@ const Navbar = () => {
                     {isMobileMenuOpen ? (
                         <X className={cn("h-6 w-6", isScrolled ? "text-gray-800" : "text-white")} />
                     ) : (
-                        <Menu className={cn("h-6 w-6", isScrolled ? "text-gray-800" : "text-white")} />
+                        <Menu className={cn("h-6 w-6", isScrolled ? "text-gray-800" : "text-gray-800")} />
                     )}
                 </button>
             </div>
@@ -113,12 +113,18 @@ const Navbar = () => {
                     </nav>
 
                     {/* Booking Button */}
-                    <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-3">
+                    <Button
+                        className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-3 opacity-0 animate-fade-in"
+                        style={{ animationDelay: `${items.length * 100}ms` }}
+                    >
                         Programări
                     </Button>
 
                     {/* Footer Section */}
-                    <div className="w-full px-6 text-center mt-6 mb-6">
+                    <div
+                        className="w-full px-6 text-center mt-6 mb-6 opacity-0 animate-fade-in"
+                        style={{ animationDelay: `${items.length * 100 + 100}ms` }}
+                    >
                         <div className="border-t border-gray-300 pt-4 flex flex-col items-center space-y-2">
                             <span className="text-gray-500 text-sm">
                                 &copy; {new Date().getFullYear()} Slim & Beauty by M.C.
@@ -126,7 +132,7 @@ const Navbar = () => {
                             <div className="flex space-x-4">
                                 {socialData.map((item, index) => (
                                     <Link key={`social-icon-mobile-menu-no-${index}`} href={item.link} target="_blank" className="text-gray-500 hover:text-pink-500">
-                                        <Image 
+                                        <Image
                                             src={item.icon}
                                             alt={item.alt}
                                             width={20}
