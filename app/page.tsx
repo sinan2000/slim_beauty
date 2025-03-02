@@ -5,6 +5,7 @@ import Hero from '@/components/home/hero'
 import FeaturedServices from '@/components/home/featured_treatments'
 import WhyChooseUs from '@/components/home/why-choose-us'
 import Testimonials from '@/components/home/testimonials2'
+import BeforeAfterGallery from '@/components/home/before_after'
 
 export const metadata = homeMetadata
 
@@ -15,6 +16,7 @@ export default function HomePage() {
       <FeaturedServices />
       <WhyChooseUs />
       <Testimonials />
+      <BeforeAfterGallery />
       {/* }
         <AHero />
         <BodyCare />
