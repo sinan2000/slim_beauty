@@ -68,10 +68,10 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">
-            What Our Clients Say
+            Ce spun clientele noastre
           </h2>
           <p className="text-white/80 max-w-2xl mx-auto">
-            Discover why our clients love Slim & Beauty and how our treatments have transformed their lives.
+            Află părerea clientelor noastre.
           </p>
         </div>
 

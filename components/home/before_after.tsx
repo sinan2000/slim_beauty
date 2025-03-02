@@ -15,22 +15,22 @@ import after3 from "@/assets/before_after/after3.jpg";
 const beforeAfterImages = [
   {
     id: 1,
-    title: "EMSlim Body Contouring",
-    description: "Results after 6 sessions, 2 weeks apart",
+    title: "Dermapen cu Microneedling",
+    description: "Rezultate după câteva zile de la tratament",
     before: before1,
     after: after1,
   },
   {
     id: 2,
-    title: "Cryolipolysis Treatment",
-    description: "Results after 3 sessions, 3 weeks apart",
+    title: "Bronzare Organică cu DHA",
+    description: "Rezultate imediate după bronzare",
     before: before2,
     after: after2,
   },
   {
     id: 3,
-    title: "Hydrafacial Results",
-    description: "Results after a single treatment",
+    title: "Bronzare Organică cu DHA",
+    description: "Rezultate imediate după bronzare",
     before: before3,
     after: after3,
   },
@@ -71,10 +71,10 @@ export default function BeforeAfterGallery() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Before & After Gallery
+            Rezultate Înainte & După
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            See the real results our clients have achieved with our premium treatments.
+            Vezi transformările spectaculoase realizate cu tratamentele noastre dermapen și bronzare!
           </p>
         </div>
 
