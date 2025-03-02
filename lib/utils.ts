@@ -49,11 +49,11 @@ export function getFeaturedServices() {
   return services.flatMap(category =>
     category.items
       .filter(item => item.featured === true)
-      .map(({ title, mediumDescription, media, price, duration }) => ({
+      .map(({ title, featuredDesc, media, price, duration }) => ({
         name: title,
-        featuredDesc: mediumDescription,
+        description: featuredDesc,
         image: media?.[0] ?? "/placeholder.jpg",
-        price: price,
+        price: price[0],
         duration: duration
       }))
   );

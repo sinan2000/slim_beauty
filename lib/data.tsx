@@ -69,7 +69,7 @@ Vrei să reduci celulita și să ai o piele mai fermă și mai netedă? VShape A
             },
             {
                 title: "Criolipoliză",
-                featured: false,
+                featured: false, featuredDesc: "",
                 shortDescription: "Sculptură corporală cu tehnologie avansată de răcire.",
                 mediumDescription: "Criolipoliza este o metodă revoluționară de sculptare corporală care folosește tehnologia de răcire pentru a elimina celulele grase în mod natural. Acest tratament non-chirurgical vizează zonele specifice de grăsime rezistentă, oferind o reducere semnificativă a țesutului adipos și conturând corpul fără timp de recuperare.",
                 longDescription: `Criolipoliza este o tehnică non-invazivă și revoluționară pentru slăbirea localizată, care utilizează temperaturi scăzute pentru a elimina celulele grase rezistente la dietă și exerciții fizice. Acest tratament inovator de sculptare corporală funcționează prin răcirea țesutului adipos la o temperatură care declanșează procesul de descompunere naturală a celulelor grase, fără a afecta țesuturile înconjurătoare.
@@ -114,7 +114,7 @@ De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând 
             },
             {
                 title: "EMSlim Neo RF",
-                featured: false,
+                featured: false, featuredDesc: "",
                 shortDescription: "Tonifiere musculară și slăbire.",
                 mediumDescription: "EMSlim Neo RF combină stimularea electromagnetică cu radiofrecvența pentru a oferi rezultate remarcabile în tonifierea musculară și slăbire. Această tehnologie inovatoare induce contracții musculare puternice, echivalente cu mii de exerciții fizice, simultan cu topirea grăsimilor, rezultând într-o siluetă mai tonifiată și mai suplă.",
                 longDescription: `EMSlim Neo RF este un tratament revoluționar, special conceput pentru a ajuta la tonifierea musculară și slăbirea localizată. Acest tratament non-invaziv combină două tehnologii avansate: stimularea electromagnetică de intensitate mare și radiofrecvența. În timpul unei ședințe EMSlim Neo RF, tehnologia electromagnetică provoacă contracții musculare intense, echivalente cu mii de exerciții fizice. Simultan, radiofrecvența ajută la topirea grăsimilor, oferind astfel rezultate semnificative fără durere și fără perioadă de recuperare.
@@ -159,7 +159,7 @@ Tratamentul este perfect pentru cei care doresc să combine slăbirea localizat�
             },
             {
                 title: "Radiofrecvență Bipolară",
-                featured: false,
+                featured: false, featuredDesc: "",
                 shortDescription: "Lifting și regenerare celulară.",
                 mediumDescription: "Radiofrecvența Bipolară este un tratament avansat pentru lifting și regenerare celulară. Prin încălzirea controlată a țesuturilor profunde ale pielii, stimulează producția naturală de colagen și elastină, rezultând într-o piele mai fermă, mai netedă și cu un aspect mai tânăr, fără necesitatea intervențiilor chirurgicale.",
                 longDescription: `Radiofrecvența Bipolară este o tehnologie avansată și eficientă pentru tratarea pielii lăsate și stimularea regenerării celulare. Acest tratament non-invaziv funcționează prin încălzirea controlată a straturilor profunde ale pielii, ceea ce stimulează producția de colagen și elastină – două proteine esențiale pentru fermitatea și elasticitatea pielii. Radiofrecvența Bipolară este ideală pentru pacienții care caută o metodă sigură și fără durere pentru lifting-ul facial și corporal, fără a recurge la intervenții chirurgicale.
@@ -200,7 +200,7 @@ Radiofrecvența Bipolară este recunoscută pentru capacitatea sa de a oferi rez
             },
             {
                 title: "Masaj Vacuum Anticelulitic",
-                featured: false,
+                featured: false, featuredDesc: "",
                 shortDescription: "Reducerea celulitei și tonifierea pielii.",
                 mediumDescription: "Masajul Vacuum Anticelulitic este o tehnică eficientă pentru combaterea celulitei și tonifierea pielii. Prin stimularea circulației sanguine și limfatice, acest tratament ajută la eliminarea toxinelor, reducerea retenției de apă și îmbunătățirea texturii pielii, oferind un aspect mai neted și mai tonic zonelor predispuse la celulită.",
                 longDescription: `Masajul Vacuum Anticelulitic este un tratament inovator care ajută la reducerea aspectului celulitei și la îmbunătățirea fermității pielii. Acest tratament folosește un dispozitiv special care creează un efect de vacuum asupra pielii, stimulând circulația sanguină și limfatică. Prin aplicarea presiunii negative, masajul cu vacuum descompune grăsimile din țesuturile afectate de celulită și ajută la eliminarea acestora prin procese naturale, precum drenajul limfatic.
@@ -297,7 +297,7 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
             },
             {
                 title: "Cavitatie",
-                featured: false,
+                featured: false, featuredDesc: "",
                 shortDescription: "Ultrasunete pentru eliminarea celulitei.",
                 mediumDescription: "Cavitația utilizează tehnologia ultrasunetelor pentru a targeta și elimina celulele grase și celulita. Acest tratament non-invaziv creează microbule în țesutul adipos, care implodează și distrug celulele grase, permițând corpului să le elimine în mod natural. Rezultatul este o reducere vizibilă a circumferinței și o îmbunătățire a texturii pielii.",
                 longDescription: `Cavitația este o metodă non-invazivă de reducere a țesutului adipos, utilizând ultrasunete de joasă frecvență pentru a targeta și distruge celulele grase. Acest tratament corporal de slăbire localizată este ideal pentru persoanele care doresc să scape de grăsimea persistentă din anumite zone ale corpului, cum ar fi abdomenul, coapsele sau brațele.
@@ -338,7 +338,7 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
             },
             {
                 title: "Împachetări Tunel IR",
-                featured: false,
+                featured: false, featuredDesc: "",
                 shortDescription: "Tratament pentru detoxifiere și pierdere în greutate.",
                 mediumDescription: "Împachetările Tunel IR combină beneficiile termoterapiei cu acțiunea infraroșiilor pentru o detoxifiere profundă și pierdere în greutate. Acest tratament stimulează metabolismul, crește circulația sanguină și ajută la eliminarea toxinelor, rezultând într-o piele mai fermă, reducerea celulitei și o siluetă mai zveltă.",
                 longDescription: `Împachetările Tunel IR reprezintă un tratament inovator de detoxifiere și remodelare corporală, bazat pe acțiunea infraroșiilor. Acest tratament combină termoterapia cu infraroșii pentru a stimula metabolismul, a crește circulația sanguină și a ajuta la eliminarea toxinelor din corp. Prin aplicarea căldurii infraroșii, corpul este învelit într-un tunel special, ceea ce determină transpirația profundă și activarea proceselor naturale de detoxifiere.
@@ -431,7 +431,7 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
         items: [
             {
                 title: "Dermapen cu Microneedling",
-                featured: false,
+                featured: false, featuredDesc: "",
                 shortDescription: "Rejuvenare și regenerare cutanată.",
                 mediumDescription: "Dermapen cu Microneedling este o tehnică avansată de rejuvenare a pielii care utilizează micro-ace fine pentru a stimula producția naturală de colagen și elastină. Acest tratament îmbunătățește textura pielii, reduce cicatricile și liniile fine, și promovează o piele mai luminoasă și mai tânără. Rezultatele includ o piele mai fermă, mai netedă și cu un aspect radiant.",
                 longDescription: `Dermapen cu Microneedling este un tratament avansat pentru rejuvenarea și regenerarea pielii, utilizând o tehnică inovatoare care implică micro-ace fine. Aceste ace penetrează stratul superficial al pielii, stimulând producția naturală de colagen și elastină, proteine esențiale pentru elasticitatea și fermitatea pielii.
@@ -518,7 +518,7 @@ Această tehnică modernă este blândă, dar eficientă, și necesită un timp 
             },
             {
                 title: "Tratament Clasic de Curățire",
-                featured: false,
+                featured: false, featuredDesc: "",
                 shortDescription: "Curățare facială în profunzime.",
                 mediumDescription: "Tratamentul Clasic de Curățire oferă o îngrijire completă a pielii, combinând curățarea profundă cu hidratarea intensivă. Acest tratament elimină impuritățile, desfundă porii și echilibrează producția de sebum, lăsând pielea curată, catifelată și revitalizată. Ideal pentru toate tipurile de piele, acest tratament oferă o bază perfectă pentru o rutină de îngrijire eficientă.",
                 longDescription: `Tratamentul Clasic de Curățire este esențial pentru menținerea unui ten sănătos și echilibrat. Acest tratament implică o combinație de curățare facială profundă și hidratare intensivă, fiind ideal pentru toate tipurile de piele. Prin curățarea profundă, sunt eliminate impuritățile, excesul de sebum și reziduurile acumulate în pori, prevenind formarea punctelor negre și a coșurilor.

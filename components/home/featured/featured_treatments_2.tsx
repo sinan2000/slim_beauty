@@ -56,7 +56,7 @@ export default function FeaturedMotion() {
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-playfair text-xl font-semibold">{service.name}</h3>
               <div className="bg-pink-500 text-white text-sm px-3 py-1 rounded-full">
-                {service.price}
+                {service.price + ' RON'}
               </div>
             </div>
             <p className="text-white/80 text-sm mb-4">{service.description}</p>
