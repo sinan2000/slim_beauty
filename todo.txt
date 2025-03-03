@@ -1,15 +1,17 @@
 Form submission - rate limiting and correct sendgtm event
 
-Booking System
+Booking System - Google Calendar
 
-Change hero image and remove unsplash from next config
-
-group all components better
-
-delete all redundant code
-
-meta pixel
-
-start ads - Ramadan edition xD
+remove unsplash from next config
 
 update sitemap
+
+make all seo optimizations
+
+DEPLOY
+
+meta pixel - start ads
+
+check performance - optimize components
+
+submit sitemap and ensure redirects from old url schema to new
