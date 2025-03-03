@@ -2,11 +2,17 @@ Form submission - rate limiting and correct sendgtm event
 
 Booking System - Google Calendar
 
+breadcrumbs
+
+fix navigation to form and prices
+
 remove unsplash from next config
 
 update sitemap
 
 make all seo optimizations
+
+README
 
 DEPLOY
 
