@@ -18,8 +18,8 @@ export default function FAQ({ faqs }: { faqs: { question: string; answer: string
       </h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <button
+          <details key={index} className="bg-white rounded-lg shadow-sm overflow-hidden">
+            <summary
               className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
               onClick={() => toggleAccordion(index)}
             >
@@ -29,13 +29,13 @@ export default function FAQ({ faqs }: { faqs: { question: string; answer: string
               ) : (
                 <ChevronDown className="h-5 w-5 text-gray-500" />
               )}
-            </button>
+            </summary>
             {activeAccordion === index && (
               <div className="px-6 pb-4">
                 <p className="text-gray-700">{faq.answer}</p>
               </div>
             )}
-          </div>
+          </details>
         ))}
       </div>
     </div>

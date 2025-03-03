@@ -24,7 +24,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
     notFound();
   }
 
-  const gallery_items = serviceData.media && serviceData.media.length > 0 ? serviceData.media : ['/placeholder.svg'];
+  const if_gallery = serviceData.media && serviceData.media.length > 0;
 
   const map_sedinta = ['1 ședință', '6 ședințe', '10 ședințe'];
 
@@ -47,18 +47,16 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
         {/* Medium Description */}
         <div className="max-w-3xl mx-auto text-center mb-12">
           <p className="text-lg text-gray-700">
-            Tratamentul nostru Slim & Beauty combină tehnologii avansate pentru a reduce celulita,
-            a tonifica pielea și a remodela silueta. O experiență relaxantă cu rezultate vizibile
-            chiar de la prima ședință.
+            {serviceData.mediumDescription}
           </p>
         </div>
 
         {/* Gallery Section */}
-        <MediaGalery media={gallery_items} />
+        {if_gallery && (<MediaGalery media={serviceData.media} />)}
 
         {/* Information Panel */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {serviceData.duration !== '' && (
+        <div className={`grid gap-8 mb-16 ${serviceData.duration ? "md:grid-cols-2" : "flex justify-center"}`}>
+          {serviceData.duration && (
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <div className="flex items-center mb-4">
                 <Clock className="h-6 w-6 text-pink-500 mr-2" />
@@ -78,7 +76,8 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
             </div>
           )}
 
-          <div className="bg-white p-6 rounded-xl shadow-sm">
+          {/* Pricing Table */}
+          <div className="bg-white p-6 rounded-xl shadow-sm w-full md:w-auto">
             <h3 className="font-serif text-xl font-semibold text-gray-900 mb-4">
               Lista de prețuri
             </h3>
@@ -98,24 +97,35 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {serviceData.price.map((price, index) => (
-                    <tr key={index}>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{map_sedinta[index]}</div>
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{price + " RON"}</div>
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <div className="text-sm text-gray-500 text-pink-600 font-medium">{index === 0 ? '-' : serviceData.price[0] / (price / (index === 1 ? 6 : 10))}</div>
-                      </td>
-                    </tr>
-                  ))}
+                  {serviceData.price.map((price, index) => {
+                    const sessions = index === 0 ? 1 : index === 1 ? 6 : 10;
+                    const discount = index === 0 ? "-" :
+                      `${Math.round(100 - (price / (serviceData.price[0] * sessions)) * 100)}%`;
+
+                    return (
+                      <tr key={index}>
+                        <td className="px-4 py-3 whitespace-nowrap">
+                          <div className="text-sm font-medium text-gray-900">
+                            {sessions} ședințe
+                          </div>
+                        </td>
+                        <td className="px-4 py-3 whitespace-nowrap">
+                          <div className="text-sm text-gray-900">{price} RON</div>
+                        </td>
+                        <td className="px-4 py-3 whitespace-nowrap">
+                          <div className={`text-sm font-medium ${index === 0 ? "text-gray-500" : "text-pink-600"}`}>
+                            {discount}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
+
 
         {/* Long Description */}
         <div className="max-w-4xl mx-auto mb-16">

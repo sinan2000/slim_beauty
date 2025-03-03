@@ -474,7 +474,7 @@ Dermapen este un dispozitiv controlat electronic, care asigură o penetrare unif
                     }
                 ],
                 price: [250],
-                media: ["/dermapen.mp4", dermapen],
+                media: ["/derma.mp4", dermapen],
                 duration: ""
             },
             {
@@ -518,7 +518,8 @@ Această tehnică modernă este blândă, dar eficientă, și necesită un timp 
                         answer: "Da, microdermabraziunea este un tratament blând și sigur pentru toate tipurile de piele, inclusiv pielea sensibilă. Tratamentul poate fi ajustat în funcție de sensibilitatea pielii fiecărui pacient."
                     }
                 ],
-                price: [170]
+                price: [170],
+                duration: ""
             },
             {
                 title: "Tratament Clasic de Curățire",
