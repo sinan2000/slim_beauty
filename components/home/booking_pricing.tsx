@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -28,12 +28,27 @@ export default function BookingPricing() {
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [selectedService, setSelectedService] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
+  const [activeTab, setActiveTab] = useState<"pricing" | "booking">("pricing");
 
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const selectedDay = date?.getDay() ?? null;
   const timeSlots = selectedDay !== null && availableTimes[selectedDay] ? availableTimes[selectedDay] : [];
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash === "#programari") {
+        setActiveTab("booking");
+      } else if (hash === "#preturi") {
+        setActiveTab("pricing");
+      }
+      if (hash === "#programari" || hash === "#preturi") {
+        ref.current?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
 
   return (
     <section className="py-20 bg-white">
@@ -54,7 +69,7 @@ export default function BookingPricing() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <Tabs defaultValue="pricing" className="w-full">
+          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "pricing" | "booking")} className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="pricing">Listă de Prețuri</TabsTrigger>
               <TabsTrigger value="booking">Programări Online</TabsTrigger>
