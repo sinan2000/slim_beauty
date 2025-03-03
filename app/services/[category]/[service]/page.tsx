@@ -24,7 +24,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
       {/* Hero Section */}
       <div className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${serviceData.media[0].src})` }}>
+          style={{ backgroundImage: `url(${typeof serviceData?.media?.[0] === 'object' ? serviceData.media[0].src : serviceData?.media?.[0] || '/placeholder.svg'})` }}>
         </div>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
@@ -108,7 +108,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
         </div>
 
         {/* Gallery */}
-        <ImageGallery media={serviceData.media} />
+        <ImageGallery media={serviceData.media ? serviceData.media : []} />
 
         {/* Benefits */}
         {serviceData.benefits && serviceData.benefits.length > 0 && (
