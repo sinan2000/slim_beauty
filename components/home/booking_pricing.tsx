@@ -36,7 +36,7 @@ export default function BookingPricing() {
   const timeSlots = selectedDay !== null && availableTimes[selectedDay] ? availableTimes[selectedDay] : [];
 
   return (
-    <section id="pricing" className="py-20 bg-white">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-4">
@@ -60,7 +60,7 @@ export default function BookingPricing() {
               <TabsTrigger value="booking">Programări Online</TabsTrigger>
             </TabsList>
 
-            <TabsContent id="preturi" value="pricing" className="border rounded-lg p-6 shadow-xs">
+            <TabsContent value="pricing" className="border rounded-lg p-6 shadow-xs">
               {services.map((category, index) => (
                 <div key={index} className="mb-8 last:mb-0">
                   <h3 className="font-playfair text-xl font-semibold text-gray-800 mb-4">

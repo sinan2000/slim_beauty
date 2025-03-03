@@ -27,7 +27,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Link
-            href="/services"
+            href="/servicii"
             className="inline-flex items-center text-white/80 hover:text-white mb-4 transition-colors"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -49,7 +49,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             {cat.items.map((service, index) => (
               <Link
                 key={index}
-                href={`/services/${category}/${normalizeString(service.title)}`}
+                href={`/servicii/${category}/${normalizeString(service.title)}`}
                 className="group"
               >
                 <div className="h-full rounded-2xl overflow-hidden shadow-lg border border-pink-100 transition-all duration-300 hover:shadow-xl hover:border-pink-200">

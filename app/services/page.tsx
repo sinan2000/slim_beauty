@@ -14,7 +14,7 @@ export default function ServicesPage() {
     <div className="min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] w-full flex flex-col md:flex-row">
       {services.map((service, index) => (
         <Link
-          href={`/services/${normalizeString(service.category)}`}
+          href={`/servicii/${normalizeString(service.category)}`}
           key={index}
           className="relative w-full h-1/2 md:h-full overflow-hidden cursor-pointer"
           onMouseEnter={() => setHoveredSection(normalizeString(service.category))}
