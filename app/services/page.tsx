@@ -6,13 +6,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data";
 import { normalizeString } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 export default function ServicesPage() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
-
+  
   return (
-    <div className="h-screen w-full flex flex-col md:flex-row">
+    <div className="min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] w-full flex flex-col md:flex-row">
       {services.map((service, index) => (
         <Link
           href={`/services/${normalizeString(service.category)}`}
@@ -22,7 +21,7 @@ export default function ServicesPage() {
           onMouseLeave={() => setHoveredSection(null)}
         >
           <motion.div
-            className="absolute inset-0 bg-cover bg-center"
+            className="relative bg-cover min-h-[calc(50vh-40px)] md:min-h-[calc(100vh-96px)] bg-center"
             style={{ backgroundImage: `url(${service.media.src})` }}
             animate={{
               scale: hoveredSection === normalizeString(service.category) ? 1.05 : 1,
