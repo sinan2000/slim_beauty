@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, Clock, Check, Plus, Minus, Info } from "lucide-react";
 import { notFound } from "next/navigation";
 import { services } from "@/lib/data";
 import { normalizeString } from "@/lib/utils";
+import ImageGallery from "@/components/gallery";
 
 export default async function ServicePage({ params }: { params: Promise<{ category: string; service: string }> }) {
   const { category, service } = await params;
@@ -59,17 +59,56 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
               ))}
             </div>
 
-            {serviceData.fact && (
-              <div className="bg-pink-50 border border-pink-200 rounded-lg p-6 h-fit">
-                <div className="flex items-start mb-3">
-                  <Info className="h-5 w-5 text-pink-500 mr-2 mt-1 flex-shrink-0" />
-                  <h3 className="font-medium text-lg text-gray-800">Știați că?</h3>
+            <div className="space-y-8">
+              {/* Fact Card */}
+              {serviceData.fact && (
+                <div className="bg-pink-50 border border-pink-200 rounded-lg p-6">
+                  <div className="flex items-start mb-3">
+                    <Info className="h-5 w-5 text-pink-500 mr-2 mt-1 flex-shrink-0" />
+                    <h3 className="font-medium text-lg text-gray-800">Știați că?</h3>
+                  </div>
+                  <p className="text-gray-700">{serviceData.fact}</p>
                 </div>
-                <p className="text-gray-700">{serviceData.fact}</p>
+              )}
+
+              {/* Pricing and Duration for non-mobile */}
+              <div className="hidden lg:block">
+                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div className="p-4 border-b bg-gray-50">
+                    <h3 className="text-lg font-semibold text-gray-800">Informații rapide</h3>
+                  </div>
+                  <div className="p-4">
+                    {/* Duration */}
+                    {serviceData.duration && (
+                      <div className="flex items-center mb-4 pb-4 border-b border-gray-100">
+                        <Clock className="h-5 w-5 text-pink-500 mr-3" />
+                        <div>
+                          <h4 className="text-sm font-medium text-gray-500 uppercase">Durată</h4>
+                          <p className="text-lg text-gray-800">{serviceData.duration}</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Price Preview */}
+                    <div>
+                      <h4 className="text-sm font-medium text-gray-500 uppercase mb-2">Preț</h4>
+                      {Array.isArray(serviceData.price) ? (
+                        <p className="text-lg text-gray-800">
+                          De la <span className="font-bold text-xl">{serviceData.price[0]} RON</span>
+                        </p>
+                      ) : (
+                        <p className="text-lg font-bold text-gray-800">{serviceData.price} RON</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
+
+        {/* Gallery */}
+        <ImageGallery media={serviceData.media} />
 
         {/* Benefits */}
         {serviceData.benefits && serviceData.benefits.length > 0 && (
@@ -89,8 +128,8 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
           </div>
         )}
 
-        {/* Pricing */}
-        <div className="mb-16">
+        {/* Pricing - Mobile and tablet view */}
+        <div className="mb-16 lg:hidden">
           <h2 className="text-3xl font-serif font-bold mb-8">Prețuri</h2>
 
           <div className="flex flex-col md:flex-row md:items-start gap-8">
@@ -147,6 +186,60 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
           </div>
         </div>
 
+        {/* Detailed Pricing - Desktop view */}
+        <div className="hidden lg:block mb-16">
+          <h2 className="text-3xl font-serif font-bold mb-8">Detalii de preț</h2>
+
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            {Array.isArray(serviceData.price) ? (
+              <div>
+                <div className="p-6 border-b">
+                  <h3 className="text-xl font-semibold mb-2">Pachete disponibile</h3>
+                </div>
+                <table className="w-full">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pachet</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Preț (RON)</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Economie</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="bg-pink-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1 sesiune</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-xl text-gray-800">{serviceData.price[0]}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-500">-</td>
+                    </tr>
+                    {serviceData.price[1] && (
+                      <tr className="bg-white">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3 sesiuni</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-xl text-gray-800">{serviceData.price[1]}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-green-600">
+                          {Math.round((1 - serviceData.price[1] / (serviceData.price[0] * 3)) * 100)}%
+                        </td>
+                      </tr>
+                    )}
+                    {serviceData.price[2] && (
+                      <tr className="bg-pink-50">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">5 sesiuni</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-xl text-gray-800">{serviceData.price[2]}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-green-600">
+                          {Math.round((1 - serviceData.price[2] / (serviceData.price[0] * 5)) * 100)}%
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">Preț standard</h3>
+                <p className="text-3xl font-bold text-gray-800">{serviceData.price} RON</p>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* FAQ */}
         {serviceData.faq && serviceData.faq.length > 0 && (
           <div className="mb-16">
@@ -170,7 +263,6 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
             Rezervă o programare
           </Link>
         </div>
-
       </div>
     </div>
   );
