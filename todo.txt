@@ -2,7 +2,7 @@ make all seo optimizations
 
 contact form
 
-DEPLOY
+add envs to vercel & DEPLOY
 
 submit sitemap
 

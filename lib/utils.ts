@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { services } from "./data"
+import { StaticImageData } from "next/image";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -47,7 +48,7 @@ export function getFeaturedServices() {
   );
 }
 
-export function getFirstImage(media: any[] | undefined) {
+export function getFirstImage(media: (string | StaticImageData)[] | undefined) {
   if (!media) {
     return "/placeholder.svg";
   }

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import { ro } from "date-fns/locale";
+import { IconProps } from "@radix-ui/react-icons/dist/types"
 
 function Calendar({
   className,
@@ -62,12 +63,13 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ className, ...props }) => (
+        IconLeft: ({ className, ...props }: Omit<IconProps, 'children'>) => (
           <ChevronLeftIcon className={cn("size-4", className)} {...props} />
         ),
-        IconRight: ({ className, ...props }) => (
+        IconRight: ({ className, ...props }: Omit<IconProps, 'children'>) => (
           <ChevronRightIcon className={cn("size-4", className)} {...props} />
         ),
+        
       }}
       {...props}
     />
