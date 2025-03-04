@@ -1,7 +1,7 @@
 'use client';
 import dynamic from "next/dynamic";
 
-const FeaturedMotion = dynamic(() => import("./featured_treatments_2"), {
+const FeaturedMotion = dynamic(() => import("./featured-client"), {
   ssr: false,
 });
 

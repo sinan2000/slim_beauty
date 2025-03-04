@@ -60,12 +60,15 @@ const Testimonials = () => {
     <section
       id="testimonials"
       className="py-20 relative overflow-hidden"
-      style={{
-        backgroundImage: `url('${bgpict.src}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
     >
+      <Image 
+        src={bgpict}
+        alt="Slim & Beauty Tanning Creams Picture"
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-pink-900/70 backdrop-blur-xs"></div>
 
@@ -102,9 +105,9 @@ const Testimonials = () => {
                             <Image
                               src={testimonial.image}
                               alt={testimonial.name}
-                              fill
+                              width={96}
+                              height={96}
                               style={{ objectFit: 'cover' }}
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                           </div>
                         </div>

@@ -62,8 +62,15 @@ export default function FeaturedMotion() {
             </div>
             <p className="text-white/80 text-sm mb-4">{service.description}</p>
             <div className="flex items-center justify-between">
-              <span className="text-white/70 text-sm">{service.duration}</span>
-              <Link href="#programare">
+              <span className="flex items-center gap-1 text-white/70 text-sm">
+                {/* Clock Icon */}
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3.5A8.5 8.5 0 1 0 20.5 12 8.51 8.51 0 0 0 12 3.5Zm0 15A6.5 6.5 0 1 1 18.5 12 6.51 6.51 0 0 1 12 18.5ZM12 7a1 1 0 0 1 1 1v3.59l2.7 2.7a1 1 0 1 1-1.42 1.42l-3-3A1 1 0 0 1 11 12V8a1 1 0 0 1 1-1Z" />
+                </svg>
+                {service.duration + " min"}
+              </span>
+
+              <Link href="?tab=booking">
                 <Button
                   className="bg-white text-pink-500 hover:bg-pink-50 rounded-full px-5 py-1 h-auto text-sm font-medium transition-all duration-300 transform group-hover:scale-105"
                 >

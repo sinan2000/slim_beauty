@@ -1,6 +1,8 @@
 import vshape1 from "@/assets/services/vshape/1.jpg";
 import vshape2 from "@/assets/services/vshape/2.jpg";
 import crio from "@/assets/services/crio/1.jpg";
+import crio2 from "@/assets/services/crio/2.jpg";
+import crio3 from "@/assets/services/crio/3.jpg";
 import emslim2 from "@/assets/services/emslim/1.jpg";
 import emslim3 from "@/assets/services/emslim/2.jpg";
 import preso from "@/assets/services/preso/1.jpg";
@@ -67,11 +69,12 @@ Vrei să reduci celulita și să ai o piele mai fermă și mai netedă? VShape A
                 ],
                 price: [120, 600, 900],
                 media: [vshape1, vshape2],
-                duration: "30 - 60 min"
+                duration: 30
             },
             {
                 title: "Criolipoliză",
-                featured: false, featuredDesc: "",
+                featured: true,
+                featuredDesc: "Elimină celulele grase rezistente cu tehnologia de răcire la -10 °C.",
                 shortDescription: "Sculptură corporală cu tehnologie avansată de răcire.",
                 mediumDescription: "Criolipoliza este o metodă revoluționară de sculptare corporală care folosește tehnologia de răcire pentru a elimina celulele grase în mod natural. Acest tratament non-chirurgical vizează zonele specifice de grăsime rezistentă, oferind o reducere semnificativă a țesutului adipos și conturând corpul fără timp de recuperare.",
                 longDescription: `Criolipoliza este o tehnică non-invazivă și revoluționară pentru slăbirea localizată, care utilizează temperaturi scăzute pentru a elimina celulele grase rezistente la dietă și exerciții fizice. Acest tratament inovator de sculptare corporală funcționează prin răcirea țesutului adipos la o temperatură care declanșează procesul de descompunere naturală a celulelor grase, fără a afecta țesuturile înconjurătoare.
@@ -111,8 +114,8 @@ De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând 
                     }
                 ],
                 price: [280, 530, 700],
-                media: [crio],
-                duration: "35 - 60 min"
+                media: [crio, crio2, crio3],
+                duration: 40
             },
             {
                 title: "EMSlim Neo RF",
@@ -157,7 +160,7 @@ Tratamentul este perfect pentru cei care doresc să combine slăbirea localizat�
                 ],
                 price: [85, 450, 650],
                 media: ["/emslim.mp4", emslim2, emslim3],
-                duration: "30 - 45 min"
+                duration: 30
             },
             {
                 title: "Radiofrecvență Bipolară",
@@ -198,7 +201,7 @@ Radiofrecvența Bipolară este recunoscută pentru capacitatea sa de a oferi rez
                     }
                 ],
                 price: [80, 450, 700],
-                duration: ""
+                duration: 30
             },
             {
                 title: "Masaj Vacuum Anticelulitic",
@@ -241,11 +244,11 @@ Tratamentul anticelulitic cu vacuum este non-invaziv și complet sigur, fără d
                     }
                 ],
                 price: [75, 400, 600],
-                duration: ""
+                duration: 30
             },
             {
                 title: "Presoterapie (Drenaj Limfatic)",
-                featured: true,
+                featured: false,
                 featuredDesc: "Un tratament de drenaj limfatic care utilizează presiune controlată pentru a stimula circulația limfatică.",
                 shortDescription: "Eliminarea toxinelor și reducerea retenției de apă.",
                 mediumDescription: "Presoterapia este un tratament de drenaj limfatic care utilizează presiune controlată pentru a stimula circulația limfatică. Acest proces ajută la eliminarea toxinelor, reduce retenția de apă și ameliorează senzația de picioare grele. Rezultatul este o îmbunătățire a circulației, reducerea edemelor și o senzație generală de ușurință și bună dispoziție.",
@@ -295,7 +298,7 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                 ],
                 price: [70, 360, 550],
                 media: [preso],
-                duration: "30 - 45 min"
+                duration: 45
             },
             {
                 title: "Cavitatie",
@@ -336,7 +339,7 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                     }
                 ],
                 price: [90, 480, 700],
-                duration: "30 - 60 min"
+                duration: 30
             },
             {
                 title: "Împachetări Tunel IR",
@@ -377,7 +380,7 @@ De asemenea, împachetările IR ajută la ameliorarea durerilor musculare și ar
                     }
                 ],
                 price: [75, 390, 600],
-                duration: ""
+                duration: 45
             },
             {
                 title: "Bronzare Organică cu DHA",
@@ -424,7 +427,7 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
                 ],
                 price: [110],
                 media: [bronz1, bronz2, bronz3, bronz4, bronz5, bronz6, bronz7],
-                duration: "10 - 20 min"
+                duration: 20
             }
         ]
     },
@@ -475,7 +478,7 @@ Dermapen este un dispozitiv controlat electronic, care asigură o penetrare unif
                 ],
                 price: [250],
                 media: ["/derma.mp4", dermapen],
-                duration: ""
+                duration: 45
             },
             {
                 title: "Microdermabraziune",
@@ -519,7 +522,7 @@ Această tehnică modernă este blândă, dar eficientă, și necesită un timp 
                     }
                 ],
                 price: [170],
-                duration: ""
+                duration: 60
             },
             {
                 title: "Tratament Clasic de Curățire",
@@ -558,7 +561,7 @@ Datorită formulării blânde, tratamentul este ideal pentru toate tipurile de p
                     }
                 ],
                 price: [200],
-                duration: ""
+                duration: 75
             }
         ]
     }
