@@ -1,34 +1,33 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import Booking from './booking';
 import Pricing from './pricing';
+import { useSearchParams } from 'next/navigation';
 
 export default function BookingPricing() {
   const [activeTab, setActiveTab] = useState<"pricing" | "booking">("pricing");
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab === "booking" || tab === "pricing") {
+      setActiveTab(tab as "pricing" | "booking");
+      
+      setTimeout(() => {
+        document.getElementById('tabs')?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [searchParams]);
 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hash = window.location.hash;
-      if (hash === "#programari") {
-        setActiveTab("booking");
-      } else if (hash === "#preturi") {
-        setActiveTab("pricing");
-      }
-      if (hash === "#programari" || hash === "#preturi") {
-        ref.current?.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, []);
-
   return (
-    <section className="py-20 bg-white">
+    <section id="tabs" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-4">
@@ -46,7 +45,11 @@ export default function BookingPricing() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "pricing" | "booking")} className="w-full">
+          <Tabs
+            value={activeTab}
+            onValueChange={(value) => setActiveTab(value as "pricing" | "booking")}
+            className="w-full"
+          >
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="pricing">Listă de Prețuri</TabsTrigger>
               <TabsTrigger value="booking">Programări Online</TabsTrigger>

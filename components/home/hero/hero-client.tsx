@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function FancyHeader() {
   return (
@@ -20,12 +21,16 @@ export default function FancyHeader() {
             Scapă de celulită și tonifică-ți corpul cu tehnologii avansate de estetică non-invazivă.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
-              Programează-te
-            </Button>
-            <Button className="border border-white text-white bg-white/20 hover:bg-white/30 rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
-              Vezi Tratamentele
-            </Button>
+            <Link href="/?tab=booking">
+              <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
+                Programează-te
+              </Button>
+            </Link>
+            <Link href="/servicii">
+              <Button className="border border-white text-white bg-white/20 hover:bg-white/30 rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
+                Vezi Tratamentele
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>

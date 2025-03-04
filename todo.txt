@@ -1,7 +1,3 @@
-breadcrumbs
-
-fix navigation to form and prices
-
 remove unsplash from next config
 
 update sitemap

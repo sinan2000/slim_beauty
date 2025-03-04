@@ -1,117 +1,64 @@
-import TempPage from './temp';
-import { services } from '@/lib/data'
-import type { Metadata } from 'next';
-import { WithContext, LocalBusiness, Offer } from 'schema-dts';
-import Script from 'next/script'
-import { normalizeString } from '@/lib/utils';
+"use client";
 
-export const metadata: Metadata = {
-  title: "Servicii de Remodelare Corporală și Dermato-Cosmetică - Slim & Beauty",
-  description: "Descoperă servicii de remodelare corporală și dermato-cosmetică la Slim & Beauty by MC: VShape, Criolipoliză, EMSlim Neo RF și multe altele pentru un corp tonifiat.",
-  keywords: ['Slim & Beauty by MC', 'remodelare corporală', 'tratament anticelulitic', 'criopoliză', 'dermato-cosmetică', 'tratament facial', 'îngrijire piele Dumbrăvița', 'Timișoara tratamente estetice', 'EMSlim Neo RF'],
-  authors: [{ name: "Slim & Beauty by MC", url: "https://www.slimandbeauty.ro" }],
-  openGraph: {
-    title: "Servicii de Remodelare Corporală și Dermato-Cosmetică - Slim & Beauty",
-    description: "Descoperă servicii de remodelare corporală și dermato-cosmetică la Slim & Beauty by MC: VShape, Criolipoliză, EMSlim Neo RF și multe altele pentru un corp tonifiat.",
-    url: "https://www.slimandbeauty.ro/servicii",
-    siteName: "Slim & Beauty by MC",
-    images: [
-      {
-        url: "https://www.slimandbeauty.ro/logo.jpg",
-        alt: "Logo Slim & Beauty by MC",
-      }
-    ],
-    locale: "ro_RO",
-    type: "website",
-  },
-  robots: {
-    follow: true,
-    index: true,
-  }
-}
+import { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { services } from "@/lib/data";
+import { normalizeString } from "@/lib/utils";
 
 export default function ServicesPage() {
-  const offer = services.flatMap((category) =>
-    category.items.map((item) => ({
-      '@context': 'https://schema.org',
-      '@type': 'Offer',
-      name: item.title,
-      description: item.shortDescription,
-      priceCurrency: 'RON',
-      price: item.price[0],
-      priceRange: '$$',
-      url: `https://www.slimandbeauty.ro/servicii/${normalizeString(category.category)}/${normalizeString(item.title)}`,
-      availability: 'https://schema.org/InStock',
-    })));
-  const jsonLd: WithContext<LocalBusiness> = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: 'Slim & Beauty by MC',
-    image: 'https://www.slimandbeauty.ro/logo.jpg',
-    '@id': 'https://www.slimandbeauty.ro',
-    url: 'https://www.slimandbeauty.ro',
-    telephone: '+40733407329',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Strada Petőfi Sándor 101',
-      addressLocality: 'Dumbrăvița',
-      postalCode: '307160',
-      addressCountry: 'RO'
-    },
-    description: 'Descoperă tratamente inovative pentru îngrijirea pielii și remodelare corporală la Slim & Beauty by MC. Oferim servicii precum Criolipoliză, EMSlim Neo RF și VShape Anticelulitic.',
-    currenciesAccepted: 'RON',
-    paymentAccepted: 'Cash',
-    priceRange: '$$',
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: [
-          'Monday',
-          'Tuesday',
-          'Thursday',
-        ],
-        opens: '12:00',
-        closes: '20:00'
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: [
-          'Wednesday',
-          'Friday',
-        ],
-        opens: '09:00',
-        closes: '17:00'
-      }
-    ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.7',
-      reviewCount: '15'
-    },
-    areaServed: {
-      '@type': 'Place',
-      name: 'Dumbrăvița, Timișoara, România',
-    },
-    brand: {
-      '@type': 'Brand',
-      name: 'Slim & Beauty by MC'
-    },
-    makesOffer: offer as WithContext<Offer>[],
-    sameAs: [
-      "https://www.facebook.com/SalonSlimBeautyByMc",
-      "https://www.instagram.com/slimandbeautybymc/"
-    ]
-  }
-
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+  
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#FDF8F5] via-[#F5EBE6] to-[#FDF8F5] py-16 px-4 sm:px-6 lg:px-8">
-      <TempPage />
+    <div className="min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] w-full flex flex-col md:flex-row">
+      {services.map((service, index) => (
+        <Link
+          href={`/servicii/${normalizeString(service.category)}`}
+          key={index}
+          className="relative w-full h-1/2 md:h-full overflow-hidden cursor-pointer"
+          onMouseEnter={() => setHoveredSection(normalizeString(service.category))}
+          onMouseLeave={() => setHoveredSection(null)}
+        >
+          <motion.div
+            className="relative bg-cover min-h-[calc(50vh-40px)] md:min-h-[calc(100vh-96px)] bg-center"
+            style={{ backgroundImage: `url(${service.media.src})` }}
+            animate={{
+              scale: hoveredSection === normalizeString(service.category) ? 1.05 : 1,
+            }}
+            transition={{ duration: 0.5 }}
+          />
+          <div className="absolute inset-0 bg-black/40 hover:bg-black/30 transition-colors duration-300" />
 
-      <Script
-        id="services-page-json-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+            <motion.div
+              animate={{
+                y: hoveredSection === normalizeString(service.category) ? -10 : 0,
+                opacity: hoveredSection === normalizeString(service.category) ? 1 : 0.9,
+              }}
+              transition={{ duration: 0.3 }}
+              className="text-center"
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 tracking-wide">
+                {service.category}
+              </h2>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{
+                  opacity: hoveredSection === normalizeString(service.category) ? 1 : 0,
+                  y: hoveredSection === normalizeString(service.category) ? 0 : 20,
+                }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                className="flex items-center justify-center mt-4"
+              >
+                <span className="text-lg mr-2">Descoperă serviciile</span>
+                <ArrowRight className="h-5 w-5" />
+              </motion.div>
+            </motion.div>
+          </div>
+        </Link>
+      ))}
     </div>
-  )
+  );
 }

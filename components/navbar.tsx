@@ -17,7 +17,7 @@ const Navbar = () => {
     const items = [
         { name: "Acasă", href: "/" },
         { name: "Servicii", href: "/servicii" },
-        { name: "Prețuri", href: "/#preturi" },
+        { name: "Prețuri", href: "/?tab=pricing" },
         { name: "Contact", href: "/#contact" },
     ];
 
@@ -75,7 +75,7 @@ const Navbar = () => {
                             {item.name}
                         </Link>
                     ))}
-                    <Link href="/#programari">
+                    <Link href="/?tab=booking">
                         <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-6">
                             Programări
                         </Button>
