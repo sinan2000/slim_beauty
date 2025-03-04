@@ -6,8 +6,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { cn, normalizeString } from '@/lib/utils';
 import { socialData } from '@/lib/socials';
+import { ChevronDown } from 'lucide-react';
+import { services } from '@/lib/data';
 
 const Navbar = () => {
     const pathname = usePathname();
@@ -15,10 +17,10 @@ const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const items = [
-        { name: "Acasă", href: "/" },
-        { name: "Servicii", href: "/servicii" },
-        { name: "Prețuri", href: "/?tab=pricing" },
-        { name: "Contact", href: "/#contact" },
+        { name: "Acasă", href: "/", dropdown: false },
+        { name: "Servicii", href: "/servicii", dropdown: true },
+        { name: "Prețuri", href: "/?tab=pricing", dropdown: false },
+        { name: "Contact", href: "/#contact", dropdown: false },
     ];
 
     useEffect(() => {
@@ -64,17 +66,46 @@ const Navbar = () => {
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center space-x-8">
                     {items.map((item) => (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            className={cn(
-                                "font-medium hover:text-pink-500 transition-colors",
-                                isScrolled ? "text-gray-700" : "text-white"
-                            )}
-                        >
-                            {item.name}
-                        </Link>
-                    ))}
+                        item.dropdown ? (
+                            <div key={item.name} className="relative group">
+                                <Link
+                                    href={item.href}
+                                    className={cn(
+                                        "font-medium flex items-center gap-1 hover:text-pink-500 transition-colors",
+                                        isScrolled ? "text-gray-700" : "text-white"
+                                    )}
+                                >
+                                    {item.name}
+                                    <ChevronDown
+                                        className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
+                                    />
+                                </Link>
+
+                                {/* Dropdown (Visible only on Desktop) */}
+                                <div className="absolute left-0 mt-2 w-48 bg-white shadow-md rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                                    {services.map((cat) => (
+                                        <Link
+                                            key={cat.category}
+                                            href={`/servicii/${normalizeString(cat.category)}`}
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                        >
+                                            {cat.category}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        ) : (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                className={cn(
+                                    "font-medium hover:text-pink-500 transition-colors",
+                                    isScrolled ? "text-gray-700" : "text-white"
+                                )}
+                            >
+                                {item.name}
+                            </Link>
+                        )))}
                     <Link href="/?tab=booking">
                         <Button className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-6">
                             Programări

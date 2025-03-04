@@ -4,8 +4,6 @@ contact form
 
 refactor timezone by modularizing with functions
 
-add envs to vercel & DEPLOY
-
 submit sitemap
 
 meta pixel - start ads
