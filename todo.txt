@@ -1,5 +1,3 @@
-remove unsplash from next config
-
 update sitemap
 
 make all seo optimizations

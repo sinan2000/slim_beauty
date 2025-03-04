@@ -8,6 +8,7 @@ import Link from 'next/link';
 import review1 from "@/assets/reviews/1.jpg"
 import review2 from "@/assets/reviews/2.jpg"
 import review3 from "@/assets/reviews/3.jpg"
+import bgpict from "@/assets/testimonials.jpg"
 
 const testimonials = [
   {
@@ -60,7 +61,7 @@ const Testimonials = () => {
       id="testimonials"
       className="py-20 relative overflow-hidden"
       style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
+        backgroundImage: `url('${bgpict.src}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
