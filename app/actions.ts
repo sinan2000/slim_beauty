@@ -7,6 +7,9 @@ import { z } from 'zod';
 import { google } from 'googleapis';
 import { format, parseISO, startOfMonth, endOfMonth } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
+import { kv } from "@vercel/kv";
+
+const RATE_LIMIT_DURATION = 60 * 60 * 24; // 24 hours
 
 const schema = z.object({
     name: z.string({
@@ -49,7 +52,7 @@ const schema = z.object({
         .or(z.literal("")),
 });
 
-export async function bookAppointment(formData: FormData) {
+export async function bookAppointment(formData: FormData, clientIp: string) {
     const validated = schema.safeParse(Object.fromEntries(formData));
 
     if (!validated.success) {
@@ -60,6 +63,17 @@ export async function bookAppointment(formData: FormData) {
             success: false
         };
     }
+
+    const didBook = await kv.get(clientIp);
+    if (didBook) {
+        return {
+            success: false,
+            message: `Numărul maxim de programări este de una pe zi. Între timp ne puteti suna la ${process.env.PHONE_NUMBER}`
+        };
+    }
+
+    const RATE_LIMIT_KEY = `slimBeauty:rateLimit:${clientIp}`;
+    await kv.set(RATE_LIMIT_KEY, "booked", { ex: RATE_LIMIT_DURATION });
 
     const { name, phone, service, date, time, message } = validated.data;
 

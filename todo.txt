@@ -23,3 +23,5 @@ submit sitemap
 meta pixel - start ads
 
 check performance - optimize components
+
+refactor timezone by modularizing with functions
