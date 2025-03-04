@@ -76,7 +76,7 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <Link href="/?tab=booking">
-                        <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-6">
+                        <Button className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-6">
                             Programări
                         </Button>
                     </Link>
