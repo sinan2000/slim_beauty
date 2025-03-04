@@ -12,12 +12,14 @@ update sitemap
 
 make all seo optimizations
 
+update sitemap generation and ensure redirects from old url schema to new
+
 README
 
 DEPLOY
 
+submit sitemap
+
 meta pixel - start ads
 
 check performance - optimize components
-
-submit sitemap and ensure redirects from old url schema to new

@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import { Card, CardContent } from '@/components/ui/card';
@@ -6,9 +7,11 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { CalendarIcon, Clock } from 'lucide-react';
 import { Textarea } from '../ui/textarea';
 import { services } from '@/lib/data';
+import { useActionState } from 'react';
+import { bookAppointment } from '@/app/actions';
+import { useFormStatus } from 'react-dom';
 
 const availableTimes: Record<number, string[]> = {
   1: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
@@ -16,6 +19,15 @@ const availableTimes: Record<number, string[]> = {
   3: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
   4: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
   5: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"],
+};
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" disabled={pending} className="w-full bg-pink-500 hover:bg-pink-600 text-white">
+      {pending ? "Booking..." : "Confirmă Programarea"}
+    </Button>
+  );
 }
 
 export default function Booking() {
@@ -26,17 +38,18 @@ export default function Booking() {
   const selectedDay = date?.getDay() ?? null;
   const timeSlots = selectedDay !== null && availableTimes[selectedDay] ? availableTimes[selectedDay] : [];
 
+  const initialState = { message: "", success: true };
+  const [state, formAction] = useActionState(async (_prevState: { message: string, success: boolean }, formData: FormData) => {
+    return await bookAppointment(formData);
+  }, initialState);
 
   return (
     <Card>
       <CardContent className="pt-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <form action={formAction} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Column - Calendar */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 flex items-center">
-              <CalendarIcon className="mr-2 h-5 w-5 text-pink-500" />
-              Alegeți data și ora
-            </h3>
+            <h3 className="font-semibold text-lg mb-4">Alegeți data și ora</h3>
 
             <div className="mb-6">
               <Calendar
@@ -54,6 +67,7 @@ export default function Booking() {
                 }}
                 disabled={(date) => [0, 6].includes(date.getDay()) || date < new Date()}
               />
+              <input type="hidden" name="date" value={date ? date.toISOString() : ""} />
             </div>
 
             <div className="mb-6">
@@ -67,15 +81,10 @@ export default function Booking() {
                     className={selectedTime === time ? "bg-pink-500 hover:bg-pink-600" : ""}
                     onClick={() => setSelectedTime(time)}
                   >
-                    <Clock className="mr-2 h-4 w-4" />
                     {time}
                   </Button>
                 ))}
-                {timeSlots.length === 0 && (
-                  <div className="col-span-3 text-pink-500 text-sm">
-                    Selectați o dată pentru a vedea orele disponibile.
-                  </div>
-                )}
+                <input type="hidden" name="time" value={selectedTime} />
               </div>
             </div>
           </div>
@@ -88,26 +97,24 @@ export default function Booking() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Numele</Label>
-                  <Input id="name" placeholder="Introduceți numele" />
+                  <Input name="name" placeholder="Introduceți numele" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Telefon</Label>
-                  <Input id="phone" placeholder="Numărul de telefon" />
+                  <Input name="phone" placeholder="Numărul de telefon" required />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="service">Select Service</Label>
-                <Select value={selectedService} onValueChange={setSelectedService}>
+                <Select name="service" value={selectedService} onValueChange={setSelectedService} required>
                   <SelectTrigger>
                     <SelectValue placeholder="Choose a treatment" />
                   </SelectTrigger>
                   <SelectContent>
                     {services.map((category) => (
                       <div key={category.category}>
-                        <div className="px-2 py-1.5 text-sm font-semibold text-gray-500">
-                          {category.category}
-                        </div>
+                        <div className="px-2 py-1.5 text-sm font-semibold text-gray-500">{category.category}</div>
                         {category.items.map((service) => (
                           <SelectItem key={service.title} value={service.title}>
                             {service.title}
@@ -121,18 +128,18 @@ export default function Booking() {
 
               <div className="space-y-2">
                 <Label htmlFor="message">Mesaj</Label>
-                <Textarea id="message" placeholder="Introduceți un mesaj (opțional)" />
+                <Textarea name="message" placeholder="Introduceți un mesaj (opțional)" />
               </div>
 
+              {state?.message && <p className={`${state.success === true ? 'text-green-500' : 'text-red-500'} text-sm`}>{state.message}</p>}
+
               <div className="pt-4">
-                <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white">
-                  Confirmă Programarea
-                </Button>
+                <SubmitButton />
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </CardContent>
     </Card>
-  )
+  );
 }
