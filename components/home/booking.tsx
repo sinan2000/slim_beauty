@@ -37,7 +37,15 @@ function SubmitButton() {
 
 export default function Booking({ service }: { service: string | null }) {
   const [date, setDate] = useState<Date | undefined>(undefined);
-  const [selectedService, setSelectedService] = useState("");
+  const [selectedService, setSelectedService] = useState<string>(() => {
+    if (service) {
+      const foundService = services
+        .flatMap((category) => category.items)
+        .find((item) => normalizeString(item.title) === service);
+      return foundService?.title || "";
+    }
+    return "";
+  });
   const [selectedTime, setSelectedTime] = useState("");
   const [bookedTimesByDay, setBookedTimesByDay] = useState<{ [day: string]: string[] }>({});
 
@@ -77,20 +85,6 @@ export default function Booking({ service }: { service: string | null }) {
     }
     fetchBookings();
   }, [selectedYear, selectedMonth]);
-
-  useEffect(() => {
-    console.log("1. FOUND", service);
-    if (service) {
-      const foundService = services.flatMap((category) => category.items).find((item) => normalizeString(item.title) === service);
-      console.log("2. FOUND", foundService);
-      if (foundService) {
-        setSelectedService(foundService.title);
-        console.log("3. SET", foundService.title);
-      }
-      console.log(selectedService);
-      console.log("4.TEST", selectedService);
-    }
-  }, [service]);
 
   // Helper to get booked times for the currently selected day
   const getBookedTimesForSelectedDay = (): string[] => {
