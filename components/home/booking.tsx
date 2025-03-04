@@ -13,6 +13,9 @@ import { useActionState } from 'react';
 import { bookAppointment, getEventsForMonth } from '@/app/actions';
 import { useFormStatus } from 'react-dom';
 import { format, getMonth, getYear } from 'date-fns';
+import { formatInTimeZone, toZonedTime } from "date-fns-tz";
+
+const timeZone = "Europe/Bucharest";
 
 const availableTimes: Record<number, string[]> = {
   1: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
@@ -35,31 +38,66 @@ export default function Booking() {
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [selectedService, setSelectedService] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const [bookedTimes, setBookedTimes] = useState<string[]>([]);
+  const [bookedTimesByDay, setBookedTimesByDay] = useState<{ [day: string]: string[] }>({});
 
-  const selectedYear = date ? getYear(date) : getYear(new Date());
-  const selectedMonth = date ? getMonth(date) + 1 : getMonth(new Date()) + 1;
+  const selectedYear = date
+    ? getYear(toZonedTime(date, timeZone))
+    : getYear(toZonedTime(new Date(), timeZone));
+
+  const selectedMonth = date
+    ? getMonth(toZonedTime(date, timeZone)) + 1
+    : getMonth(toZonedTime(new Date(), timeZone)) + 1;
+
+  const formattedSelectedDate = date ? format(date, "yyyy-MM-dd") : "";
 
   const selectedDay = date?.getDay() ?? null;
-  const timeSlots = selectedDay !== null && availableTimes[selectedDay] ? availableTimes[selectedDay] : [];
-
-  const initialState = { message: "", success: true };
-  const [state, formAction] = useActionState(async (_prevState: { message: string, success: boolean }, formData: FormData) => {
-    return await bookAppointment(formData);
-  }, initialState);
+  const timeSlots = selectedDay !== null && availableTimes[selectedDay]
+    ? availableTimes[selectedDay]
+    : [];
 
   useEffect(() => {
     async function fetchBookings() {
       const response = await getEventsForMonth(selectedYear, selectedMonth);
       console.log(response.events);
       if (response.success) {
-        //const times = response.events.map(event => format(new Date(event.start), "HH:mm"));
-        //setBookedTimes(times);
+        const bookings: { [day: string]: string[] } = {};
+        response.events.forEach(event => {
+          if (event.start) {
+            const eventDay = formatInTimeZone(new Date(event.start as string), timeZone, "yyyy-MM-dd");
+            const eventTime = formatInTimeZone(new Date(event.start as string), timeZone, "HH:mm");
+            if (!bookings[eventDay]) {
+              bookings[eventDay] = [];
+            }
+            bookings[eventDay].push(eventTime);
+          }
+        });
+        setBookedTimesByDay(bookings);
       }
     }
-
     fetchBookings();
   }, [selectedYear, selectedMonth]);
+
+  // Helper to get booked times for the currently selected day
+  const getBookedTimesForSelectedDay = (): string[] => {
+    if (!formattedSelectedDate) return [];
+    return bookedTimesByDay[formattedSelectedDate] || [];
+  };
+
+  const initialState = { message: "", success: true };
+  const [state, formAction] = useActionState(
+    async (_prevState: { message: string; success: boolean }, formData: FormData) => {
+      const result = await bookAppointment(formData);
+
+      if (result.success && formattedSelectedDate && selectedTime) {
+        setBookedTimesByDay(prev => ({
+          ...prev,
+          [formattedSelectedDate]: [...(prev[formattedSelectedDate] || []), selectedTime],
+        }));
+      }
+      return result;
+    },
+    initialState
+  );
 
   return (
     <Card>
@@ -83,7 +121,10 @@ export default function Booking() {
                   head_row: "",
                   row: "w-full mt-2",
                 }}
-                disabled={(date) => [0, 6].includes(date.getDay()) || date < new Date()}
+                disabled={(date) => {
+                  const nowInBucharest = toZonedTime(new Date(), timeZone);
+                  return [0, 6].includes(date.getDay()) || date < nowInBucharest;
+                }}
               />
               <input type="hidden" name="date" value={date ? date.toISOString() : ""} />
             </div>
@@ -91,18 +132,21 @@ export default function Booking() {
             <div className="mb-6">
               <Label htmlFor="time" className="mb-2 block">Ora programării</Label>
               <div className="grid grid-cols-3 gap-2">
-                {timeSlots.map((time) => (
-                  <Button
-                    key={time}
-                    type="button"
-                    variant={selectedTime === time ? "default" : "outline"}
-                    className={selectedTime === time ? "bg-pink-500 hover:bg-pink-600" : ""}
-                    onClick={() => setSelectedTime(time)}
-                    disabled={bookedTimes.includes(time)}
-                  >
-                    {time}
-                  </Button>
-                ))}
+                {timeSlots.map((time) => {
+                  const bookedForDay = getBookedTimesForSelectedDay();
+                  return (
+                    <Button
+                      key={time}
+                      type="button"
+                      variant={selectedTime === time ? "default" : "outline"}
+                      className={selectedTime === time ? "bg-pink-500 hover:bg-pink-600" : ""}
+                      onClick={() => setSelectedTime(time)}
+                      disabled={bookedForDay.includes(time)}
+                    >
+                      {time}
+                    </Button>
+                  );
+                })}
                 <input type="hidden" name="time" value={selectedTime} />
               </div>
             </div>
