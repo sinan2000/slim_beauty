@@ -207,7 +207,11 @@ export async function sendSms(data: sensSmsProps) {
     const cleanText = mapRomanianChars(text);
 
     try {
-        await vonage.sms.send({ to: process.env.PHONE_NUMBER as string, from, text: cleanText });
+        await vonage.sms.send({
+            to: process.env.PHONE_NUMBER as string,
+            from,
+            text: cleanText
+        });
         console.log('SMS sent');
     } catch (error) {
         console.error(error);

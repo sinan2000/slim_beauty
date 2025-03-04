@@ -38,6 +38,9 @@ importers:
       '@vercel/kv':
         specifier: ^3.0.0
         version: 3.0.0
+      '@vonage/auth':
+        specifier: ^1.12.0
+        version: 1.12.0
       '@vonage/server-sdk':
         specifier: ^3.20.0
         version: 3.20.0
