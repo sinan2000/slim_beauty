@@ -94,26 +94,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             Dorești mai multe informații?
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Echipa noastră de specialiști îți stă la dispoziție pentru a răspunde la orice întrebare și a te ajuta să alegi tratamentul potrivit.
+            Îți stăm la dispoziție pentru a răspunde la orice întrebare și a te ajuta să alegi tratamentul potrivit.
           </p>
-          <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-6 text-lg">
-            Contactează-ne
-          </Button>
-        </div>
-      </section>
-
-
-      <section className="py-16 bg-pink-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="font-playfair text-3xl font-bold text-gray-800 mb-4">
-            Nu ești sigur ce tratament ți se potrivește?
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Programează o consultație gratuită și te vom ajuta să alegi tratamentele potrivite pentru nevoile tale.
-          </p>
-          <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-6 text-lg">
-            Programează Consultație
-          </Button>
+          <Link href="/#contact">
+            <Button className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-6 text-lg">
+              Contactează-ne
+            </Button>
+          </Link>
         </div>
       </section>
 

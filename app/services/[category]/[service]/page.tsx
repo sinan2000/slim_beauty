@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import { normalizeString } from '@/lib/utils';
 import { services } from '@/lib/data';
 import Link from 'next/link';
+import Breadcrumbs from '@/components/breadcrumbs';
 
 export default async function ServicePage({ params }: { params: Promise<{ category: string; service: string }> }) {
   const { category, service } = await params;
@@ -24,12 +25,14 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
     notFound();
   }
 
-  const if_gallery = serviceData.media && serviceData.media.length > 0;
+  const hasMedia = serviceData.media && serviceData.media.length > 0;
 
-  const map_sedinta = ['1 ședință', '6 ședințe', '10 ședințe'];
+  const map_sedinta = ['o ședință', '6 ședințe', '10 ședințe'];
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Breadcrumbs category={categoryData.category} service={serviceData.title} />
+
       <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
 
         {/* Header Section */}
@@ -52,7 +55,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
         </div>
 
         {/* Gallery Section */}
-        {if_gallery && (<MediaGalery media={serviceData.media} />)}
+        {hasMedia && (<MediaGalery media={serviceData.media} />)}
 
         {/* Information Panel */}
         <div className={`grid gap-8 mb-16 ${serviceData.duration ? "md:grid-cols-2" : "flex justify-center"}`}>
@@ -106,7 +109,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
                       <tr key={index}>
                         <td className="px-4 py-3 whitespace-nowrap">
                           <div className="text-sm font-medium text-gray-900">
-                            {sessions} ședințe
+                            {map_sedinta[index]}
                           </div>
                         </td>
                         <td className="px-4 py-3 whitespace-nowrap">

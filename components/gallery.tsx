@@ -26,27 +26,30 @@ export default function MediaGalery({ media }: Props) {
 
   const activeMedia = media[activeImageIndex];
 
+  const isVideo = (mediaItem: Media): mediaItem is string => 
+    typeof mediaItem === "string";  
+
   return (
     <div className="mb-16 bg-white rounded-xl shadow-sm overflow-hidden">
       <div className="relative h-[400px] md:h-[500px] flex items-center justify-center bg-gray-100">
         {/* Handle Placeholder Image */}
-        {typeof activeMedia === "string" && activeMedia.endsWith(".mp4") ? (
-            <video
-              src={activeMedia}
-              controls
-              className="w-full h-full object-contain bg-gray-100"
-            >
-              Dispozitivul dvs. nu suportă redarea video.
-            </video>
-          ) : (
-            // Handle Normal Images
-            <Image
-              src={activeMedia}
-              alt="Slim & Beauty Treatment"
-              fill
-              className="object-contain"
-            />
-          )}
+        {isVideo(activeMedia) ? (
+          <video
+            src={activeMedia}
+            controls
+            className="w-full h-full object-contain bg-gray-100"
+          >
+            Dispozitivul dvs. nu suportă redarea video.
+          </video>
+        ) : (
+          // Handle Normal Images
+          <Image
+            src={activeMedia}
+            alt="Slim & Beauty Treatment"
+            fill
+            className="object-contain"
+          />
+        )}
 
         {/* Navigation Arrows */}
         <button
