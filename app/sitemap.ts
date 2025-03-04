@@ -3,13 +3,20 @@ import { services } from "@/lib/data";
 import { normalizeString } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://www.slimandbeauty.ro";
+    const baseUrl = process.env.NEXT_PUBLIC_URL!;
+
+    const categoryPages = services.map(category => ({
+        url: `${baseUrl}/servicii/${normalizeString(category.category)}`,
+        lastModified: new Date(),
+        changeFrequency: "yearly" as const,
+        priority: 0.8,
+    }));
 
     const servicePages = services.flatMap(category =>
         category.items.map(service => ({
             url: `${baseUrl}/servicii/${normalizeString(category.category)}/${normalizeString(service.title)}`,
             lastModified: new Date(),
-            changeFrequency: "yearly" as const,
+            changeFrequency: "monthly" as const,
             priority: 0.7,
         }))
     )
@@ -18,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: baseUrl,
             lastModified: new Date(),
-            changeFrequency: "yearly",
+            changeFrequency: "monthly",
             priority: 1,
         },
         {
@@ -27,12 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "yearly",
             priority: 0.9,
         },
-        {
-            url: `${baseUrl}/despre-noi`,
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.6,
-        },
+        ...categoryPages,
         ...servicePages,
     ]
 }

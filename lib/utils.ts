@@ -48,6 +48,13 @@ export function normalizeString(str: string) {
     .replace(/^-+|-+$/g, '');
 }
 
+export const oldNormalizer = (str: string) => {
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-');
+};
+
 export function getFeaturedServices() {
   return services.flatMap(category =>
     category.items
