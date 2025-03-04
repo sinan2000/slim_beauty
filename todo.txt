@@ -1,8 +1,6 @@
 make all seo optimizations
 
-update sitemap generation and ensure redirects from old url schema to new
-
-README
+contact form
 
 DEPLOY
 
@@ -17,3 +15,5 @@ refactor timezone by modularizing with functions
 for ads, make reservation action send gtm event for marking conversions
 
 sitemap include media?
+
+rate limiting for calendar switch (eg 10 per one week) to prevent excessive fetching
