@@ -2,7 +2,7 @@
 
 import { Vonage } from '@vonage/server-sdk';
 import { Auth } from '@vonage/auth';
-import { serviceMap, mapRomanianChars } from '@/lib/utils';
+import { mapRomanianChars } from '@/lib/utils';
 import { z } from 'zod';
 import { google } from 'googleapis';
 import { format, parseISO, startOfMonth, endOfMonth } from 'date-fns';
@@ -107,8 +107,14 @@ export async function bookAppointment(formData: FormData) {
         return { success: false, message: "A apărut o eroare. Vă rugăm să încercați mai târziu." };
     }
 
-    // Save to DB (example)
-    console.log("Booking received:", validated.data);
+    sendSms({
+        name,
+        phone,
+        service,
+        date: format(eventDate, "dd/MM/yyyy"),
+        time,
+        message: message || ""
+    });
 
     return { message: "Programare confirmată, vă mulțumim!", success: true };
 }
@@ -188,7 +194,6 @@ interface sensSmsProps {
 
 export async function sendSms(data: sensSmsProps) {
     const { name, phone, service, date, time, message } = data;
-    const serviceText = serviceMap[service];
 
     const vonage = new Vonage(
         new Auth({
@@ -198,7 +203,7 @@ export async function sendSms(data: sensSmsProps) {
     );
 
     const from = 'Website';
-    const text = `Rezervare noua de la ${name}, cu numărul de telefon ${phone}, pentru serviciul de ${serviceText}, pe data de ${date} la ora ${time}. ${message && '\nMesaj: ' + message}`;
+    const text = `Rezervare noua de la ${name}, cu numărul de telefon ${phone}, pentru serviciul de ${service}, pe data de ${date} la ora ${time}. ${message && '\nMesaj: ' + message}`;
     const cleanText = mapRomanianChars(text);
 
     try {

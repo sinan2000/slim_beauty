@@ -6,21 +6,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const serviceMap: { [key: string]: string } = {
-  vshape: "VShape Anticelulitic",
-  criolipoliza: "Criolipoliză",
-  emslim: "EMSlim Neo RF",
-  radiofrecventa: "Radiofrecvență Bipolară",
-  masaj: "Masaj Vacuum Anticelulitic",
-  presoterapie: "Presoterapie (Drenaj Limfatic)",
-  cavitatie: "Cavitatie",
-  impachetari: "Împachetări Tunel IR",
-  bronzare: "Bronzare Organică cu DHA",
-  dermapen: "Dermapen cu Microneedling",
-  microdermabraziune: "Microdermabraziune",
-  tratament: "Tratament Clasic de Curățire"
-}
-
 const romanianCharMap: { [key: string]: string } = {
   'ă': 'a',
   'â': 'a',
