@@ -26,21 +26,21 @@ export default function Pricing() {
                   <AccordionContent>
                     <div className="flex justify-between items-center">
                       <div>
-                        {service.duration !== "" && (
-                          <p className="text-gray-600 mb-2">Durata unei ședințe: {service.duration}</p>
-                        )}
+                        <p className="text-gray-600 mb-2">Durata unei ședințe: {service.duration + " minute"}</p>
                         <p className="text-sm text-gray-500">
                           {service.shortDescription}
                         </p>
                         {service.price.length > 1 && (
                           <p className="text-sm text-pink-500 mt-2">
-                            * Prețul afișat este pentru o singură ședințe. Puteți vedea prețurile pentru pachete accesând <Link href={`/servicii/${normalizeString(category.category)}/${normalizeString(service.title)}`} className="underline">această</Link> pagină.
+                            * Prețul afișat este pentru o singură ședință. Puteți vedea prețurile pentru pachete accesând <Link href={`/servicii/${normalizeString(category.category)}/${normalizeString(service.title)}`} className="underline">această</Link> pagină.
                           </p>
                         )}
                       </div>
-                      <Button className="bg-pink-500 hover:bg-pink-600 text-white">
-                        Programare
-                      </Button>
+                      <Link href={`?tab=booking&service=${normalizeString(service.title)}`}>
+                        <Button className="bg-pink-500 hover:bg-pink-600 text-white">
+                          Programare
+                        </Button>
+                      </Link>
                     </div>
                   </AccordionContent>
                 </AccordionItem>

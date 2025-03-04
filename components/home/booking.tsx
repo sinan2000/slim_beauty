@@ -14,6 +14,7 @@ import { bookAppointment, getEventsForMonth } from '@/app/actions';
 import { useFormStatus } from 'react-dom';
 import { format, getMonth, getYear } from 'date-fns';
 import { formatInTimeZone, toZonedTime } from "date-fns-tz";
+import { normalizeString } from '@/lib/utils';
 
 const timeZone = "Europe/Bucharest";
 
@@ -34,7 +35,7 @@ function SubmitButton() {
   );
 }
 
-export default function Booking() {
+export default function Booking({ service }: { service: string | null }) {
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [selectedService, setSelectedService] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -76,6 +77,20 @@ export default function Booking() {
     }
     fetchBookings();
   }, [selectedYear, selectedMonth]);
+
+  useEffect(() => {
+    console.log("1. FOUND", service);
+    if (service) {
+      const foundService = services.flatMap((category) => category.items).find((item) => normalizeString(item.title) === service);
+      console.log("2. FOUND", foundService);
+      if (foundService) {
+        setSelectedService(foundService.title);
+        console.log("3. SET", foundService.title);
+      }
+      console.log(selectedService);
+      console.log("4.TEST", selectedService);
+    }
+  }, [service]);
 
   // Helper to get booked times for the currently selected day
   const getBookedTimesForSelectedDay = (): string[] => {
@@ -169,15 +184,22 @@ export default function Booking() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="service">Select Service</Label>
-                <Select name="service" value={selectedService} onValueChange={setSelectedService} required>
+                <Label htmlFor="service">Alege Serviciul</Label>
+                <Select
+                  name="service"
+                  value={selectedService}
+                  onValueChange={setSelectedService}
+                  required
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Choose a treatment" />
                   </SelectTrigger>
                   <SelectContent>
                     {services.map((category) => (
                       <div key={category.category}>
-                        <div className="px-2 py-1.5 text-sm font-semibold text-gray-500">{category.category}</div>
+                        <div className="px-2 py-1.5 text-sm font-semibold text-gray-500">
+                          {category.category}
+                        </div>
                         {category.items.map((service) => (
                           <SelectItem key={service.title} value={service.title}>
                             {service.title}

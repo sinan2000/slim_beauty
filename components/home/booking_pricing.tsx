@@ -10,6 +10,7 @@ import { useSearchParams } from 'next/navigation';
 
 export default function BookingPricing() {
   const [activeTab, setActiveTab] = useState<"pricing" | "booking">("pricing");
+  const [service, setService] = useState<string | null>(null);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -20,6 +21,11 @@ export default function BookingPricing() {
       setTimeout(() => {
         document.getElementById('tabs')?.scrollIntoView({ behavior: "smooth" });
       }, 100);
+    }
+
+    const service = searchParams.get("service");
+    if (service) {
+      setService(service);
     }
   }, [searchParams]);
 
@@ -60,7 +66,7 @@ export default function BookingPricing() {
             </TabsContent>
 
             <TabsContent value="booking">
-              <Booking />
+              <Booking service={service}/>
             </TabsContent>
           </Tabs>
         </motion.div>
