@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Home } from 'lucide-react';
 import { normalizeString } from "@/lib/utils";
 
 interface BreadcrumbsProps {
@@ -9,18 +9,37 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ category, service }: BreadcrumbsProps) {
   return (
-    <nav className="text-sm text-gray-600 flex items-center space-x-2">
-      <Link href="/servicii" className="hover:text-pink-500 transition-colors">Servicii</Link>
-      <ChevronRight className="h-4 w-4 text-gray-400" />
-      <Link href={`/servicii/${normalizeString(category)}`} className="hover:text-pink-500 transition-colors capitalize">
+    <nav className="flex items-center text-sm md:text-base px-4 pt-2 sm:pt-4 text-black/90 mb-6">
+      <Link
+        href="/"
+        className="flex items-center hover:text-pink-300 transition-colors"
+      >
+        <Home className="h-4 w-4 mr-1" />
+        <span className="hidden sm:inline">Acasă</span>
+      </Link>
+
+      <ChevronRight className="h-4 w-4 mx-2 text-black/70" />
+
+      <Link
+        href="/servicii"
+        className="hover:text-pink-300 transition-colors"
+      >
+        Servicii
+      </Link>
+
+      <ChevronRight className="h-4 w-4 mx-2 text-black/70" />
+
+      <Link
+        href={`/servicii/${normalizeString(category)}`}
+        className={`hover:text-pink-300 transition-colors capitalize ${service ? '' : 'font-medium'}`}
+      >
         {category}
       </Link>
+
       {service && (
         <>
-          <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-800 font-semibold capitalize">
-            {service}
-          </span>
+          <ChevronRight className="h-4 w-4 mx-2 text-black/70" />
+          <span className="text-pink-300 font-medium capitalize truncate">{service}</span>
         </>
       )}
     </nav>

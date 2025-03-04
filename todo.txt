@@ -1,7 +1,3 @@
-Form submission - rate limiting and correct sendgtm event
-
-Booking System - Google Calendar
-
 breadcrumbs
 
 fix navigation to form and prices
@@ -25,3 +21,5 @@ meta pixel - start ads
 check performance - optimize components
 
 refactor timezone by modularizing with functions
+
+for ads, make reservation action send gtm event for marking conversions
