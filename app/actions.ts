@@ -5,44 +5,13 @@ import { Auth } from '@vonage/auth';
 import { serviceMap, mapRomanianChars } from '@/lib/utils';
 import { z } from 'zod';
 
-interface sensSmsProps {
-    name: string;
-    phone: string;
-    service: string;
-    date: string;
-    time: string;
-    message: string;
-}
-
-export async function sendSms(data: sensSmsProps) {
-    const { name, phone, service, date, time, message } = data;
-    const serviceText = serviceMap[service];
-
-    const vonage = new Vonage(
-        new Auth({
-            apiKey: process.env.VONAGE_API_KEY,
-            apiSecret: process.env.VONAGE_API_SECRET
-        })
-    );
-
-    const from = 'Website';
-    const text = `Rezervare noua de la ${name}, cu numărul de telefon ${phone}, pentru serviciul de ${serviceText}, pe data de ${date} la ora ${time}. ${message && 'Mesaj: ' + message}`;
-    const cleanText = mapRomanianChars(text);
-
-    try {
-        await vonage.sms.send({ to: process.env.PHONE_NUMBER as string, from, text: cleanText });
-        console.log('SMS sent');
-    } catch (error) {
-        console.error(error);
-        throw new Error('SMS failed to send: ' + error);
-    }
-}
-
 const schema = z.object({
     name: z.string({
         required_error: "Vă rugăm să introduceți numele dvs.",
     }).min(2, {
         message: "Numele trebuie să conțină cel puțin 2 caractere.",
+    }).max(30, {
+        message: "Numele nu poate depăși 30 de caractere.",
     }),
 
     phone: z.string({
@@ -69,10 +38,13 @@ const schema = z.object({
         message: "Trebuie să alegeți un serviciu.",
     }),
 
-    message: z.string().optional(),
+    message: z.string()
+        .max(100, {
+            message: "Mesajul nu poate avea mai mult de 100 de caractere.",
+        })
+        .optional()
+        .or(z.literal("")),
 });
-
-type ZodError = z.ZodError<typeof schema>;
 
 export async function bookAppointment(formData: FormData) {
     const validated = schema.safeParse(Object.fromEntries(formData));
@@ -90,4 +62,38 @@ export async function bookAppointment(formData: FormData) {
     console.log("Booking received:", validated.data);
 
     return { message: "Programare confirmată, vă mulțumim!", success: true };
+}
+
+
+interface sensSmsProps {
+    name: string;
+    phone: string;
+    service: string;
+    date: string;
+    time: string;
+    message: string;
+}
+
+export async function sendSms(data: sensSmsProps) {
+    const { name, phone, service, date, time, message } = data;
+    const serviceText = serviceMap[service];
+
+    const vonage = new Vonage(
+        new Auth({
+            apiKey: process.env.VONAGE_API_KEY,
+            apiSecret: process.env.VONAGE_API_SECRET
+        })
+    );
+
+    const from = 'Website';
+    const text = `Rezervare noua de la ${name}, cu numărul de telefon ${phone}, pentru serviciul de ${serviceText}, pe data de ${date} la ora ${time}. ${message && '\nMesaj: ' + message}`;
+    const cleanText = mapRomanianChars(text);
+
+    try {
+        await vonage.sms.send({ to: process.env.PHONE_NUMBER as string, from, text: cleanText });
+        console.log('SMS sent');
+    } catch (error) {
+        console.error(error);
+        throw new Error('SMS failed to send: ' + error);
+    }
 }
