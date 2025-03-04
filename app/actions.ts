@@ -8,6 +8,7 @@ import { google } from 'googleapis';
 import { format, parseISO, startOfMonth, endOfMonth } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import { kv } from "@vercel/kv";
+import { headers } from 'next/headers';
 
 const RATE_LIMIT_DURATION = 60 * 60 * 24; // 24 hours
 
@@ -52,7 +53,13 @@ const schema = z.object({
         .or(z.literal("")),
 });
 
-export async function bookAppointment(formData: FormData, clientIp: string) {
+export async function bookAppointment(formData: FormData) {
+    const ip = (await headers()).get("x-forwarded-for")?.split(",")[0] || (await headers()).get("remote-addr");
+
+    if (!ip) {
+        return { success: false, message: "Could not determine your IP address." };
+    }
+
     const validated = schema.safeParse(Object.fromEntries(formData));
 
     if (!validated.success) {
@@ -64,7 +71,7 @@ export async function bookAppointment(formData: FormData, clientIp: string) {
         };
     }
 
-    const didBook = await kv.get(clientIp);
+    const didBook = await kv.get(ip);
     if (didBook) {
         return {
             success: false,
@@ -72,7 +79,7 @@ export async function bookAppointment(formData: FormData, clientIp: string) {
         };
     }
 
-    const RATE_LIMIT_KEY = `slimBeauty:rateLimit:${clientIp}`;
+    const RATE_LIMIT_KEY = `slimBeauty:rateLimit:${ip}`;
     await kv.set(RATE_LIMIT_KEY, "booked", { ex: RATE_LIMIT_DURATION });
 
     const { name, phone, service, date, time, message } = validated.data;
