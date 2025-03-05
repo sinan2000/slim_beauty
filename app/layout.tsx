@@ -5,7 +5,7 @@ import { GoogleTagManager } from '@next/third-parties/google';
 import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
 import { SNSFooter } from '@/components/sns/footer';
-import type { Metadata } from "next";
+import { rootMeta } from "@/lib/metadatas";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
@@ -31,17 +31,4 @@ export default function RootLayout({
   );
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://www.slimandbeauty.ro"),
-  robots: {
-    index: true,
-    follow: true,
-    "max-image-preview": "large",
-    "max-snippet": -1,
-    "max-video-preview": -1,
-    googleBot: "index, follow",
-  },
-  authors: [{ name: "Slim & Beauty by MC" }],
-  creator: "Slim & Beauty",
-  publisher: "Slim & Beauty",
-}
+export const metadata = rootMeta;

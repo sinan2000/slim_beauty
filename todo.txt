@@ -17,16 +17,3 @@ for ads, make reservation action send gtm event for marking conversions
 sitemap include media?
 
 rate limiting for calendar switch (eg 10 per one week) to prevent excessive fetching
-
-
-IDEAS FOR CONTENT:
-hero section:
-1. Remodelare Corporală și Îngrijire Facială – Frumusețea Ta, Prioritatea Noastră
-Simte-te bine în pielea ta! La Slim & Beauty, te ajutăm să scapi de celulită, să îți tonifiezi corpul și să îți îngrijești tenul cu tratamente profesionale, într-un mediu relaxant.
-
-2. Remodelare Corporală & Tratamente Faciale – Ai Grijă de Tine!
-Corpul și tenul tău merită atenție! La Slim & Beauty, îți oferim tratamente personalizate pentru o piele fermă, un corp tonifiat și un plus de încredere în tine.
-
-3. Un Moment de Răsfăț – Remodelare Corporală & Îngrijire Profesională
-Dă-ți un moment doar pentru tine! La Slim & Beauty, te așteptăm cu tratamente pentru fermitate, relaxare și îngrijirea pielii, într-o atmosferă plăcută și prietenoasă.
-
