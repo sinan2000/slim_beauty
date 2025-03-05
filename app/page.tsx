@@ -1,5 +1,5 @@
 import Script from 'next/script'
-import { homeMetadata } from '@/lib/metadatas'
+import { homePageMeta } from '@/lib/metadatas'
 import { homePagejsonLd } from '@/lib/jsonLds'
 import Hero from '@/components/home/hero/hero'
 import FeaturedServices from '@/components/home/featured/featured_treatments'
@@ -9,7 +9,7 @@ import BeforeAfterGallery from '@/components/home/before_after'
 import BookingPricing from '@/components/home/booking_pricing'
 import ContactLocation from '@/components/home/contact'
 
-export const metadata = homeMetadata
+export const metadata = homePageMeta
 
 export default function HomePage() {
   return (
