@@ -4,9 +4,11 @@ import {
   SiteNavigationElement,
   BreadcrumbList,
   WithContext,
+  Service,
   ListItem
 } from "schema-dts";
 import { normalizeString } from "./utils";
+import { services } from "./data";
 
 export const webSiteSchema: WithContext<WebSite> = {
   "@context": "https://schema.org",
@@ -149,6 +151,66 @@ export const generateBreadcrumbsSchema = (category: string, service?: string): W
       "name": service,
       "item": `https://www.slimandbeauty.ro/servicii/${normalizeString(category)}/${normalizeString(service)}`
     })
+  }
+
+  return schema;
+}
+
+export const serviceSchema: WithContext<Service> = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Servicii Slim & Beauty",
+  "description": "Descoperă serviciile Slim & Beauty - remodelare corporală și tratamente dermato-cosmetice pentru un corp tonifiat și un ten sănătos.",
+  "url": "https://www.slimandbeauty.ro/servicii",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Slim & Beauty",
+    "url": "https://www.slimandbeauty.ro"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Categorii de Servicii",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "name": "Remodelare Corporală",
+        "url": "https://www.slimandbeauty.ro/servicii/remodelare-corporala",
+        "description": "Tratamente non-invazive pentru remodelarea corporală și eliminarea celulitei."
+      },
+      {
+        "@type": "Service",
+        "name": "Dermato Cosmetică",
+        "url": "https://www.slimandbeauty.ro/servicii/dermato-cosmetica",
+        "description": "Tratamente avansate pentru îngrijirea pielii, corectarea imperfecțiunilor și îmbunătățirea aspectului tenului."
+      }
+    ]
+  }
+}
+
+export const generateCategorySchema = (category: 0 | 1): WithContext<Service> => {
+  const cat = services[category];
+
+  const schema: WithContext<Service> = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": cat.category,
+    "description": cat.description,
+    "url": `https://www.slimandbeauty.ro/servicii/${normalizeString(cat.category)}`,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Slim & Beauty",
+      "url": "https://www.slimandbeauty.ro"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `Tratamente pentru ${cat.category}`,
+      "itemListElement": cat.items.map((item) => ({
+        "@type": "Service",
+        "name": item.title,
+        "url": `https://www.slimandbeauty.ro/servicii/${normalizeString(cat.category)}/${normalizeString(item.title)}`,
+        "description": item.mediumDescription
+      }))
+    }
   }
 
   return schema;

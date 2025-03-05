@@ -7,7 +7,7 @@ import { services } from '@/lib/data';
 import { getFirstImage, normalizeString } from '@/lib/utils';
 import Breadcrumbs from '@/components/breadcrumbs';
 import { categoryPageMeta } from '@/lib/metadatas';
-import { Metadata } from 'next';
+import { generateCategorySchema } from '@/lib/jsonLds';
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
@@ -20,6 +20,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
   return (
     <main className="min-h-screen bg-background">
+      <script
+        id="category-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateCategorySchema(category === 'remodelare-corporala' ? 0 : 1)) }}
+      />
+
       {/* Page Header */}
       <Breadcrumbs category={cat.category} />
 
