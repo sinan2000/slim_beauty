@@ -5,7 +5,8 @@ import {
   BreadcrumbList,
   WithContext,
   Service,
-  ListItem
+  ListItem,
+  FAQPage
 } from "schema-dts";
 import { normalizeString } from "./utils";
 import { services } from "./data";
@@ -219,7 +220,7 @@ export const generateCategorySchema = (category: 0 | 1): WithContext<Service> =>
 export const generateServiceSchema = (category: 0 | 1, service: string): WithContext<Service> => {
   const cat = services[category];
 
-  const item = cat.items.find((item) => normalizeString(item.title) === service);
+  const item = cat.items.find((item) => item.title === service);
 
   if (!item) {
     throw new Error("Service not found");
@@ -252,6 +253,24 @@ export const generateServiceSchema = (category: 0 | 1, service: string): WithCon
         "url": "https://www.slimandbeauty.ro"
       }
     }
+  }
+
+  return schema;
+}
+
+
+export const generateFAQSchema = (faq: { question: string; answer: string }[]): WithContext<FAQPage> => {
+  const schema: WithContext<FAQPage> = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
   }
 
   return schema;

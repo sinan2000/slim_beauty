@@ -11,7 +11,7 @@ import { services } from '@/lib/data';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/breadcrumbs';
 import { detailPageMeta } from '@/lib/metadatas';
-import { generateServiceSchema } from '@/lib/jsonLds';
+import { generateFAQSchema, generateServiceSchema } from '@/lib/jsonLds';
 
 export default async function ServicePage({ params }: { params: Promise<{ category: string; service: string }> }) {
   const { category, service } = await params;
@@ -37,6 +37,12 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
         id="individual-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceSchema(category === "remodelare-corporala" ? 0 : 1, serviceData.title)) }}
+      />
+
+      <script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(serviceData.faq)) }}
       />
 
       <Breadcrumbs category={categoryData.category} service={serviceData.title} />
