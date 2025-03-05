@@ -215,3 +215,44 @@ export const generateCategorySchema = (category: 0 | 1): WithContext<Service> =>
 
   return schema;
 }
+
+export const generateServiceSchema = (category: 0 | 1, service: string): WithContext<Service> => {
+  const cat = services[category];
+
+  const item = cat.items.find((item) => normalizeString(item.title) === service);
+
+  if (!item) {
+    throw new Error("Service not found");
+  }
+
+  const schema: WithContext<Service> = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": item.title,
+    "description": item.mediumDescription,
+    "url": `https://www.slimandbeauty.ro/servicii/${normalizeString(cat.category)}/${normalizeString(item.title)}`,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Slim & Beauty",
+      "url": "https://www.slimandbeauty.ro"
+    },
+    "serviceType": cat.category,
+    "areaServed": {
+      "@type": "Place",
+      "name": "Timișoara, Romania"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "RON",
+      "price": item.price[0],
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "LocalBusiness",
+        "name": "Slim & Beauty",
+        "url": "https://www.slimandbeauty.ro"
+      }
+    }
+  }
+
+  return schema;
+}
