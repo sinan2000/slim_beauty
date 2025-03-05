@@ -6,6 +6,8 @@ import { notFound } from 'next/navigation';
 import { services } from '@/lib/data';
 import { getFirstImage, normalizeString } from '@/lib/utils';
 import Breadcrumbs from '@/components/breadcrumbs';
+import { categoryPageMeta } from '@/lib/metadatas';
+import { Metadata } from 'next';
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
@@ -106,4 +108,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
     </main>
   );
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {
+  return categoryPageMeta({ params });
 }

@@ -19,6 +19,8 @@ export const services = [
     {
         category: "Remodelare Corporală",
         media: vshape1,
+        metaTitle: "Scapă de Celulită cu Remodelare Corporală | Slim & Beauty",
+        metaDesc: "Descoperă tratamente de remodelare corporală pentru un corp tonifiat, reducerea celulitei și slăbire localizată. Programează-te la Slim & Beauty!",
         description: "Tratamente non-invazive pentru remodelarea corporală și eliminarea celulitei.",
         items: [
             {
@@ -434,6 +436,8 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
     {
         category: "Dermato Cosmetică",
         media: dermapen,
+        metaTitle: "Tratamente de Îngrijire a Pielii | Slim & Beauty",
+        metaDesc: "Vrei un ten perfect? Tratamentele noastre dermato-cosmetice îți oferă hidratare, fermitate și o piele mai sănătoasă. Programează-te acum!",
         description: "Tratamente avansate pentru îngrijirea pielii, care vizează corectarea imperfecțiunilor și îmbunătățirea texturii și aspectului tenului.",
         items: [
             {

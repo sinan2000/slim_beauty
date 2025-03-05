@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { services } from "./data";
+import { getMetadataImage, normalizeString } from "./utils";
+import { notFound } from "next/navigation";
 
 export const rootMeta: Metadata = {
   metadataBase: new URL("https://www.slimandbeauty.ro"),
@@ -18,7 +21,7 @@ export const rootMeta: Metadata = {
     siteName: "Slim & Beauty by MC",
     images: [
       {
-        url: "https://www.slimandbeauty.ro/logo.jpg",
+        url: "https://www.slimandbeauty.ro/logo-og.png",
         alt: "Logo Slim & Beauty by MC Logo",
         width: 1200,
         height: 629
@@ -52,5 +55,67 @@ export const servicesPageMeta: Metadata = {
     title: "Tratamente Corporale & Faciale | Slim & Beauty Timișoara",
     description: "La Slim & Beauty Timișoara, oferim remodelare corporală și tratamente dermato-cosmetice personalizate pentru un corp și un ten sănătos.",
     url: "https://www.slimandbeauty.ro/servicii",
+  }
+}
+
+export async function categoryPageMeta({ params }: { params: Promise<{ category: string }> }) {
+  const { category } = await params;
+
+  const cat = services.find((i) => normalizeString(i.category) === category);
+
+  if (!cat) {
+    notFound();
+  }
+
+  return {
+    title: cat.metaTitle,
+    description: cat.metaDesc,
+    openGraph: {
+      title: cat.metaTitle,
+      description: cat.metaDesc,
+      url: `https://www.slimandbeauty.ro/servicii/${category}`,
+      images: [
+        {
+          url: `https://www.slimandbeauty.ro${cat.media.src}`,
+          alt: "Photo of " + cat.category,
+        },
+        {
+          url: "https://www.slimandbeauty.ro/logo-og.png",
+          alt: "Logo Slim & Beauty by MC Logo",
+          width: 1200,
+          height: 629
+        }
+      ],
+    }
+  }
+}
+
+export async function detailPageMeta({ params }: { params: Promise<{ category: string; service: string }> }) {
+  const { category, service } = await params;
+
+  const categoryData = services.find((item) => normalizeString(item.category) === category);
+  if (!categoryData) {
+    notFound();
+  }
+
+  const serviceData = categoryData.items.find((item) => normalizeString(item.title) === service);
+
+  if (!serviceData) {
+    notFound();
+  }
+
+  return {
+    title: `${serviceData.title} - ${categoryData.category} | Slim & Beauty`,
+    description: serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!",
+    openGraph: {
+      title: `${serviceData.title} - ${categoryData.category} | Slim & Beauty`,
+      description: serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!",
+      images: [
+        {
+          url: getMetadataImage(serviceData.media),
+          alt: "Photo of " + serviceData.title,
+        }
+      ]
+    }
   }
 }

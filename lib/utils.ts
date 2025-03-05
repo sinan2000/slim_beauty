@@ -59,3 +59,17 @@ export function getFirstImage(media: (string | StaticImageData)[] | undefined) {
   }
   return "/placeholder.svg";
 }
+
+export function getMetadataImage(media: (string | StaticImageData)[] | undefined) {
+  if (!media || media.length === 0) {
+    return '/logo-og.png';
+  }
+
+  for (const item of media) {
+    if (typeof item !== "string") {
+      return item.src;
+    }
+  }
+
+  return '/logo-og.png';
+}

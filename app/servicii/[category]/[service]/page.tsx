@@ -10,6 +10,7 @@ import { normalizeString } from '@/lib/utils';
 import { services } from '@/lib/data';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/breadcrumbs';
+import { detailPageMeta } from '@/lib/metadatas';
 
 export default async function ServicePage({ params }: { params: Promise<{ category: string; service: string }> }) {
   const { category, service } = await params;
@@ -182,4 +183,8 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ category: string; service: string }> }) {
+  return detailPageMeta({ params });
 }
