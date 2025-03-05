@@ -201,3 +201,18 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
 export async function generateMetadata({ params }: { params: Promise<{ category: string; service: string }> }) {
   return detailPageMeta({ params });
 }
+
+export async function generateStaticParams({ params }: { params: Promise<{ category: string }> }) {
+  const { category } = await params;
+
+  const categoryData = services.find((item) => normalizeString(item.category) === category);
+  if (!categoryData) {
+    notFound();
+  }
+
+  return categoryData.items.map((service) => ({
+    category,
+    service: normalizeString(service.title),
+  }));
+
+}

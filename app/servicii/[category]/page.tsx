@@ -119,3 +119,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {
   return categoryPageMeta({ params });
 }
+
+export async function generateStaticParams() {
+  return services.map((service) => ({
+    category: normalizeString(service.category),
+  }));
+};
