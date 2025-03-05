@@ -30,9 +30,17 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       <Breadcrumbs category={cat.category} />
 
       <section
-        className="pt-32 pb-16 bg-cover bg-center relative"
-        style={{ backgroundImage: `url('${cat.media.src}')` }}
+        className="pt-16 sm:pt-20 md:pt-32 pb-16 relative"
       >
+        <Image
+          src={cat.media}
+          alt={`Photo of ${cat.category}`}
+          fill
+          priority
+          loading="eager"
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Link
