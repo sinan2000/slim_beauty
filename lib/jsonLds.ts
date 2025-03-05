@@ -2,8 +2,11 @@ import {
   WebSite,
   LocalBusiness,
   SiteNavigationElement,
-  WithContext
+  BreadcrumbList,
+  WithContext,
+  ListItem
 } from "schema-dts";
+import { normalizeString } from "./utils";
 
 export const webSiteSchema: WithContext<WebSite> = {
   "@context": "https://schema.org",
@@ -115,4 +118,38 @@ export const navSchema: WithContext<SiteNavigationElement> = {
       "url": "https://www.slimandbeauty.ro/#contact"
     }
   ]
+}
+
+export const generateBreadcrumbsSchema = (category: string, service?: string): WithContext<BreadcrumbList> => {
+  const schema: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Acasă",
+      "item": "https://www.slimandbeauty.ro"
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Servicii",
+      "item": "https://www.slimandbeauty.ro/servicii"
+    }, {
+      "@type": "ListItem",
+      "position": 3,
+      "name": category,
+      "item": `https://www.slimandbeauty.ro/servicii/${normalizeString(category)}`
+    }] as ListItem[]
+  };
+
+  if (service && schema.itemListElement) {
+    (schema.itemListElement as ListItem[]).push({
+      "@type": "ListItem",
+      "position": 4,
+      "name": service,
+      "item": `https://www.slimandbeauty.ro/servicii/${normalizeString(category)}/${normalizeString(service)}`
+    })
+  }
+
+  return schema;
 }

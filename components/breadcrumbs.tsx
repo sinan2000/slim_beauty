@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ChevronRight, Home } from "lucide-react"
 import { normalizeString } from "@/lib/utils"
+import { generateBreadcrumbsSchema } from "@/lib/jsonLds"
 
 interface BreadcrumbsProps {
   category: string
@@ -8,8 +9,16 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ category, service }: BreadcrumbsProps) {
+  console.log(generateBreadcrumbsSchema(category, service))
+
   return (
     <nav className="flex flex-wrap items-center text-sm md:text-base px-4 pt-2 sm:pt-4 text-black/90 mb-6">
+      <script
+        id="breadcrumbs-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbsSchema(category, service)) }}
+      />
+
       <Link href="/" className="flex items-center hover:text-pink-500 transition-colors mr-2 mb-1">
         <Home className="h-4 w-4 mr-1 flex-shrink-0" />
         <span className="hidden sm:inline">Acasă</span>
