@@ -1,5 +1,4 @@
 import {
-  Clock,
   Lightbulb,
   Check,
 } from 'lucide-react';
