@@ -26,8 +26,10 @@ export default function MediaGalery({ media }: Props) {
 
   const activeMedia = media[activeImageIndex];
 
-  const isVideo = (mediaItem: Media): mediaItem is string => 
-    typeof mediaItem === "string";  
+  const hasMultipleImages = media.length > 1;
+
+  const isVideo = (mediaItem: Media): mediaItem is string =>
+    typeof mediaItem === "string";
 
   return (
     <div className="mb-16 bg-white rounded-xl shadow-sm overflow-hidden">
@@ -45,40 +47,43 @@ export default function MediaGalery({ media }: Props) {
           // Handle Normal Images
           <Image
             src={activeMedia}
-            alt="Slim & Beauty Treatment"
+            alt={`Image ${activeImageIndex + 1}`}
             fill
-            className="object-contain"
+            style={{ objectFit: 'contain' }}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         )}
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevImage}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
-          aria-label="Previous image"
-        >
-          <ChevronLeft className="h-6 w-6 text-gray-700" />
-        </button>
-        <button
-          onClick={nextImage}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
-          aria-label="Next image"
-        >
-          <ChevronRight className="h-6 w-6 text-gray-700" />
-        </button>
-
-        {/* Image Indicators */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-          {media.map((_, index) => (
+        {hasMultipleImages && (
+          <>
             <button
-              key={index}
-              onClick={() => setActiveImageIndex(index)}
-              className={`w-2.5 h-2.5 rounded-full ${index === activeImageIndex ? 'bg-pink-500' : 'bg-gray-300'
-                }`}
-              aria-label={`Go to image ${index + 1}`}
-            />
-          ))}
-        </div>
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-6 w-6 text-gray-700" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-6 w-6 text-gray-700" />
+            </button>
+
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+              {media.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveImageIndex(index)}
+                  className={`w-2.5 h-2.5 rounded-full ${index === activeImageIndex ? 'bg-pink-500' : 'bg-gray-300'
+                    }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
