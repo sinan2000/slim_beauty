@@ -1,6 +1,4 @@
-import Script from 'next/script'
 import { homePageMeta } from '@/lib/metadatas'
-import { homePagejsonLd } from '@/lib/jsonLds'
 import Hero from '@/components/home/hero/hero'
 import FeaturedServices from '@/components/home/featured/featured_treatments'
 import WhyChooseUs from '@/components/home/why-choose-us/why-choose-us'
@@ -21,12 +19,6 @@ export default function HomePage() {
       <BeforeAfterGallery />
       <BookingPricing />
       <ContactLocation />
-      
-      <Script
-        id="first-page-json-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePagejsonLd) }}
-      />
     </main>
   )
 }
