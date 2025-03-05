@@ -1,6 +1,7 @@
 import {
   WebSite,
   LocalBusiness,
+  SiteNavigationElement,
   WithContext
 } from "schema-dts";
 
@@ -73,4 +74,45 @@ export const localBusinessSchema: WithContext<LocalBusiness> = {
     "name": "Timișoara, Romania"
   },
   "email": "cevikermihaela@gmail.com"
+}
+
+export const navSchema: WithContext<SiteNavigationElement> = {
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "name": "Main Navigation",
+  "description": "Principal navigation links",
+  "hasPart": [
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Acasă",
+      "url": "https://www.slimandbeauty.ro"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Servicii",
+      "url": "https://www.slimandbeauty.ro/servicii",
+      "hasPart": [
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Remodelare Corporală",
+          "url": "https://www.slimandbeauty.ro/servicii/remodelare-corporala"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Dermato Cosmetică",
+          "url": "https://www.slimandbeauty.ro/servicii/dermato-cosmetica"
+        }
+      ]
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Prețuri",
+      "url": "https://www.slimandbeauty.ro/?tab=pricing"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Contact",
+      "url": "https://www.slimandbeauty.ro/#contact"
+    }
+  ]
 }
