@@ -4,8 +4,9 @@ import {
   ChevronUp
 } from 'lucide-react';
 import { useState } from 'react';
+import { faqs } from '@/lib/data';
 
-export default function FAQ({ faqs }: { faqs: { question: string; answer: string }[] }) {
+export default function FAQ() {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {

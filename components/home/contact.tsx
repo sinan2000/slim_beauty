@@ -8,21 +8,6 @@ const ContactLocation = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const faqs = [
-    {
-      question: "Cum pot face o programare?",
-      answer: `Poți face o programare online direct pe site-ul nostru, accesând secțiunea "Programări", sau ne poți suna la +40 733 407 329.`
-    },
-    {
-      question: "Ce tratament mi se potrivește cel mai bine?",
-      answer: "Fiecare corp este diferit. Dacă nu știi ce tratament să alegi, ne poți contacta telefonic pentru a primi recomandările noastre."
-    },
-    {
-      question: "Care sunt orele de funcționare ale salonului?",
-      answer: "Salonul nostru este deschis de luni până vineri. Luni, marți și joi între orele 13:00 - 21:00, miercuri și vineri între orele 9:00 - 17:00."
-    }
-  ]
-
   return (
     <section id="contact" className="py-20 bg-pink-50">
       <div className="container mx-auto px-4">
@@ -44,7 +29,7 @@ const ContactLocation = () => {
         >
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col h-full">
-            <FAQ faqs={faqs}/>
+            <FAQ />
           </div>
 
           {isInView && (

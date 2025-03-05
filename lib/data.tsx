@@ -570,3 +570,18 @@ Datorită formulării blânde, tratamentul este ideal pentru toate tipurile de p
         ]
     }
 ]
+
+export const faqs = [
+    {
+        question: "Cum pot face o programare?",
+        answer: `Poți face o programare online direct pe site-ul nostru, accesând secțiunea "Programări", sau ne poți suna la +40 733 407 329.`
+    },
+    {
+        question: "Ce tratament mi se potrivește cel mai bine?",
+        answer: "Fiecare corp este diferit. Dacă nu știi ce tratament să alegi, ne poți contacta telefonic pentru a primi recomandările noastre."
+    },
+    {
+        question: "Care sunt orele de funcționare ale salonului?",
+        answer: "Salonul nostru este deschis de luni până vineri. Luni, marți și joi între orele 13:00 - 21:00, miercuri și vineri între orele 9:00 - 17:00."
+    }
+]

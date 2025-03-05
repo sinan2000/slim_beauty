@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data";
 import { normalizeString } from "@/lib/utils";
-import { serviceSchema } from "@/lib/jsonLds";
 import Image from "next/image";
 
 export default function ServicesClient() {
@@ -14,11 +13,6 @@ export default function ServicesClient() {
 
   return (
     <div className="min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] w-full flex flex-col md:flex-row">
-      <script
-        id="services-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
       {services.map((service, index) => (
         <Link
           href={`/servicii/${normalizeString(service.category)}`}

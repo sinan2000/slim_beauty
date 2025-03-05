@@ -10,7 +10,6 @@ import { cn, normalizeString } from '@/lib/utils';
 import { socialData } from '@/lib/socials';
 import { ChevronDown } from 'lucide-react';
 import { services } from '@/lib/data';
-import { navSchema } from '@/lib/jsonLds';
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -48,11 +47,6 @@ export default function Navbar() {
                     : "bg-transparent py-5"
             )}
         >
-            <script
-                id="nav-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(navSchema) }}
-            />
             <div className="container mx-auto px-4 flex items-center justify-between">
                 <Link href="/" className="flex items-center">
                     <Image
