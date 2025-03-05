@@ -1,5 +1,3 @@
-make all seo optimizations
-
 not found design
 
 contact form
@@ -18,4 +16,4 @@ for ads, make reservation action send gtm event for marking conversions
 
 sitemap include media?
 
-rate limiting for calendar switch (eg 10 per one week) to prevent excessive fetching
+rate limiting for calendar switch (eg 10 months per day) to prevent excessive fetching
