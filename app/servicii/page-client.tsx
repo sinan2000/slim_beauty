@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/data";
 import { normalizeString } from "@/lib/utils";
 import { serviceSchema } from "@/lib/jsonLds";
+import Image from "next/image";
 
 export default function ServicesClient() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
@@ -28,12 +29,20 @@ export default function ServicesClient() {
         >
           <motion.div
             className="relative bg-cover min-h-[calc(50vh-40px)] md:min-h-[calc(100vh-96px)] bg-center"
-            style={{ backgroundImage: `url(${service.media.src})` }}
             animate={{
               scale: hoveredSection === normalizeString(service.category) ? 1.05 : 1,
             }}
             transition={{ duration: 0.5 }}
-          />
+          >
+            <Image
+              src={service.media}
+              alt={`Photo of ${service.category}`}
+              fill
+              priority
+              loading="eager"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-black/40 hover:bg-black/30 transition-colors duration-300" />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">

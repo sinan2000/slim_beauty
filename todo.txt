@@ -1,8 +1,6 @@
 contact form
 
-refactor timezone by modularizing with functions
-
-submit sitemap
+refactor timezone by modularizing with functions. as much as possible server side
 
 meta pixel - start ads
 
