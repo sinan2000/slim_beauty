@@ -1,6 +1,9 @@
 import BackButton from '@/components/back-button';
+import { notFoundMeta } from '@/lib/metadatas';
 import { Home } from 'lucide-react';
 import Link from 'next/link';
+
+export const metadata = notFoundMeta;
 
 export default function NotFoundPage() {
     return (

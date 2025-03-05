@@ -9,7 +9,6 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ category, service }: BreadcrumbsProps) {
-  console.log(generateBreadcrumbsSchema(category, service))
 
   return (
     <nav className="flex flex-wrap items-center text-sm md:text-base px-4 pt-2 sm:pt-4 text-black/90 mb-6">

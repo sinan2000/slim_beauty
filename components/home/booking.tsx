@@ -67,7 +67,6 @@ export default function Booking({ service }: { service: string | null }) {
   useEffect(() => {
     async function fetchBookings() {
       const response = await getEventsForMonth(selectedYear, selectedMonth);
-      console.log(response.events);
       if (response.success) {
         const bookings: { [day: string]: string[] } = {};
         response.events.forEach(event => {

@@ -28,10 +28,10 @@ export default function Hero() {
                     <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
                         Un Moment de Răsfăț – Remodelare Corporală & Dermato Cosmetică
                     </h1>
-                    <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-slide-up delay-150">
+                    <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-slide-up">
                         Simte-te bine în pielea ta! La Slim & Beauty, te ajutăm să scapi de celulită, să îți tonifiezi corpul și să îți îngrijești tenul cu tratamente profesionale, într-un mediu relaxant.
                     </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up animation-delay-3000">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up">
                         <Link href="/?tab=booking">
                             <Button className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
                                 Programează-te

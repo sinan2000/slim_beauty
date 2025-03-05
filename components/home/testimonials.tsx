@@ -124,7 +124,7 @@ const Testimonials = () => {
                           </blockquote>
 
                           <div>
-                            <h4 className="font-semibold text-white text-lg">{testimonial.name}</h4>
+                            <h3 className="font-semibold text-white text-lg">{testimonial.name}</h3>
                             <Link target="_blank" href={testimonial.url} className="flex items-center gap-2 text-pink-200">
                               <p>Vezi pe </p>
                               <Image

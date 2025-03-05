@@ -119,3 +119,16 @@ export async function detailPageMeta({ params }: { params: Promise<{ category: s
     }
   }
 }
+
+export const notFoundMeta: Metadata = {
+  title: "404 - Pagina nu a fost găsită | Slim & Beauty",
+  description: "Pagina pe care o căutați nu a fost găsită. Vă rugăm să verificați URL-ul și să încercați din nou.",
+  openGraph: {
+    title: "404 - Pagina nu a fost găsită | Slim & Beauty",
+    description: "Pagina pe care o căutați nu a fost găsită. Vă rugăm să verificați URL-ul și să încercați din nou.",
+  },
+  robots: {
+    index: false,
+    follow: false,
+  }
+}
