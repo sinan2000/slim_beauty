@@ -4,7 +4,7 @@ import { GoogleTagManager } from '@next/third-parties/google';
 
 import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
-import { SNSFooter } from '@/components/sns/footer';
+import SNSFooter from '@/components/sns/footer';
 import { rootMeta } from "@/lib/metadatas";
 import { localBusinessSchema, webSiteSchema } from "@/lib/jsonLds";
 
