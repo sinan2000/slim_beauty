@@ -174,3 +174,9 @@ export function getDisabledTimeSlots(timeSlots: string[], eventsForDay: string[]
 
   return disabled;
 }
+
+export function toRomanianDate(date: string) {
+  return DateTime.fromISO(date, { zone: timeZone })
+    .setLocale("ro")
+    .toLocaleString(DateTime.DATETIME_FULL);
+}

@@ -2,13 +2,11 @@
 
 import { Vonage } from '@vonage/server-sdk';
 import { Auth } from '@vonage/auth';
-import { formatFormTime, getMonthStartEnd, getServiceDuration, mapRomanianChars, processEvents } from '@/lib/utils';
+import { formatFormTime, getMonthStartEnd, getServiceDuration, mapRomanianChars, processEvents, toRomanianDate } from '@/lib/utils';
 import { z } from 'zod';
 import { google } from 'googleapis';
 import { kv } from "@vercel/kv";
 import { headers } from 'next/headers';
-
-const RATE_LIMIT_DURATION = 60 * 60 * 24; // 24 hours
 
 const schema = z.object({
     name: z.string({
@@ -51,20 +49,23 @@ const schema = z.object({
         .or(z.literal("")),
 });
 
-async function isRateLimited() {
+function getRateLimit(key: "book" | "switchMonth" = "book") {
+    return key === "book" ? 1 : 10;
+}
+
+async function isRateLimited(action: "book" | "switchMonth" = "book") {
     const ip = (await headers()).get("x-forwarded-for")?.split(",")[0] || (await headers()).get("remote-addr");
 
-    if (!ip) {
-        return true;
-    }
+    const RATE_LIMIT_KEY = `slimBeauty:rateLimit:${action}:${ip}`;
+    const count = parseInt((await kv.get(RATE_LIMIT_KEY)) as string, 10) || 0;
 
-    const didBook = await kv.get(ip);
-    if (didBook) {
+    if (count >= getRateLimit(action)) {
         return true;
-    }
+    };
 
-    const RATE_LIMIT_KEY = `slimBeauty:rateLimit:${ip}`;
-    await kv.set(RATE_LIMIT_KEY, "booked", { ex: RATE_LIMIT_DURATION });
+    const RATE_LIMIT_DURATION = 60 * 60 * 24; // 24 hours
+    await kv.set(RATE_LIMIT_KEY, count + 1, { ex: RATE_LIMIT_DURATION });
+
     return false;
 }
 
@@ -107,16 +108,14 @@ export async function bookAppointment(formData: FormData) {
         return { success: false, message: "A apărut o eroare. Vă rugăm să încercați mai târziu." };
     }
 
-    {/**
     sendSms({
         name,
         phone,
         service,
-        date: format(eventDate, "dd/MM/yyyy"),
-        time,
+        date: toRomanianDate(date),
         message: message || ""
     });
- */}
+
     return { message: "Programare confirmată, vă mulțumim!", success: true };
 }
 
@@ -156,6 +155,10 @@ export async function addEventToCalendar(eventDetails: {
 
 export async function getEventsForMonth(year: number, month: number) {
     try {
+        if (await isRateLimited("switchMonth")) {
+            return { success: false, events: [] };
+        }
+
         const { timeMin, timeMax } = getMonthStartEnd(year, month);
 
         const response = await calendar.events.list({
@@ -174,8 +177,6 @@ export async function getEventsForMonth(year: number, month: number) {
             end: event.end?.dateTime as string,
         })) || [];
 
-        console.log(events);
-
         return { success: true, events: processEvents(events) };
     } catch (error) {
         console.error("Error fetching events from Google Calendar:", error);
@@ -188,12 +189,11 @@ interface sensSmsProps {
     phone: string;
     service: string;
     date: string;
-    time: string;
     message: string;
 }
 
 export async function sendSms(data: sensSmsProps) {
-    const { name, phone, service, date, time, message } = data;
+    const { name, phone, service, date, message } = data;
 
     const vonage = new Vonage(
         new Auth({
@@ -203,7 +203,7 @@ export async function sendSms(data: sensSmsProps) {
     );
 
     const from = 'Website';
-    const text = `Rezervare noua de la ${name}, cu numărul de telefon ${phone}, pentru serviciul de ${service}, pe data de ${date} la ora ${time}. ${message && '\nMesaj: ' + message}`;
+    const text = `Rezervare noua de la ${name}, cu numărul de telefon ${phone}, pentru serviciul de ${service}, pe ${date}. ${message && '\nMesaj: ' + message}`;
     const cleanText = mapRomanianChars(text);
 
     try {

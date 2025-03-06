@@ -2,12 +2,13 @@ programmatically index on build (just for prod)
 
 redirects
 
+for ads, make reservation action form submission and send gtm event for marking conversions
+
 meta pixel - start ads
 
 hero2 - a/b testing
 
-for ads, make reservation action send gtm event for marking conversions
-
 sitemap include media?
 
-rate limiting for calendar switch (eg 10 months per day) to prevent excessive fetching
+- EDGE CASE: select time for booking BEFORE EXISTING EVENT,
+but that exceeds with service time offset over an already existing next event... 

@@ -12,7 +12,7 @@ import { services } from '@/lib/data';
 import { useActionState } from 'react';
 import { bookAppointment, getEventsForMonth } from '@/app/actions';
 import { useFormStatus } from 'react-dom';
-import { getDisabledTimeSlots, getMonthStartEnd, GroupedEvents, isPastDate, normalizeString } from '@/lib/utils';
+import { getDisabledTimeSlots, GroupedEvents, isPastDate, normalizeString } from '@/lib/utils';
 
 const availableTimes: Record<number, string[]> = {
   1: ["13:00", "14:15", "15:00", "15:45", "16:30", "17:15", "18:00", "18:45", "19:30"],
@@ -22,16 +22,17 @@ const availableTimes: Record<number, string[]> = {
   5: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:15", "15:00", "15:45"],
 };
 
-function SubmitButton() {
+function SubmitButton({ hasRateError }: { hasRateError: boolean }) {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} className="w-full bg-pink-500 hover:bg-pink-600 text-white">
+    <Button type="submit" disabled={pending || hasRateError} className="w-full bg-pink-500 hover:bg-pink-600 text-white">
       {pending ? "Booking..." : "Confirmă Programarea"}
     </Button>
   );
 }
 
 export default function Booking({ service }: { service: string | null }) {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [selectedService, setSelectedService] = useState<string>(() => {
     if (service) {
       const foundService = services
@@ -73,6 +74,7 @@ export default function Booking({ service }: { service: string | null }) {
         setEvents(fetchedEvents);
       } else {
         setEvents([]);
+        setErrorMessage("Ați făcut prea multe solicitări. Vă rugăm să încercați din nou mai târziu.");
       }
     };
     fetchEvents();
@@ -184,9 +186,10 @@ export default function Booking({ service }: { service: string | null }) {
               </div>
 
               {state?.message && <p className={`${state.success === true ? 'text-green-500' : 'text-red-500'} text-sm`}>{state.message}</p>}
+              {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
 
               <div className="pt-4">
-                <SubmitButton />
+                <SubmitButton hasRateError={errorMessage !== null} />
               </div>
             </div>
           </div>
