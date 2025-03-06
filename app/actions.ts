@@ -2,7 +2,7 @@
 
 import { Vonage } from '@vonage/server-sdk';
 import { Auth } from '@vonage/auth';
-import { mapRomanianChars } from '@/lib/utils';
+import { formatFormTime, getServiceDuration, mapRomanianChars } from '@/lib/utils';
 import { z } from 'zod';
 import { google } from 'googleapis';
 import { kv } from "@vercel/kv";
@@ -89,33 +89,25 @@ export async function bookAppointment(formData: FormData) {
 
     const { name, phone, service, date, time, message } = validated.data;
 
-    console.log(date, time);
+    const startDateTime = formatFormTime(date, time, 0);
+    const endDateTime = formatFormTime(date, time, getServiceDuration(service));
 
-    {/**
-
-    const timeZone = 'Europe/Bucharest';
-
-    const bucharestDateStr = formatInTimeZone(parseISO(date), timeZone, "yyyy-MM-dd");
-    const eventDateTimeWithoutOffset = `${bucharestDateStr}T${time}:00`;
-    const bucharestOffset = formatInTimeZone(parseISO(eventDateTimeWithoutOffset), timeZone, "xxx");
-    const finalEventDateTime = `${eventDateTimeWithoutOffset}${bucharestOffset}`;
-
-    // Convert to ISO format while keeping the correct local timezone
-    const eventDate = new Date(finalEventDateTime);
-    const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000);
-    const finalEndDateTime = formatInTimeZone(endDate, timeZone, "yyyy-MM-dd'T'HH:mm:ssXXX");
+    if (!startDateTime || !endDateTime) {
+        return { success: false, message: "Data sau ora selectată nu este validă." };
+    }
 
     const calendarResponse = await addEventToCalendar({
         summary: `${service} - ${name}`,
         description: `Clientă: ${name}\nTelefon: ${phone}\nMesaj: ${message || "Niciun mesaj."}`,
-        startDateTime: finalEventDateTime,
-        endDateTime: finalEndDateTime,
+        startDateTime,
+        endDateTime,
     })
 
     if (!calendarResponse.success) {
         return { success: false, message: "A apărut o eroare. Vă rugăm să încercați mai târziu." };
     }
 
+    {/**
     sendSms({
         name,
         phone,

@@ -78,12 +78,30 @@ export function getMetadataImage(media: (string | StaticImageData)[] | undefined
 const timeZone = "Europe/Bucharest";
 
 export function isPastDate(date: Date) {
-  console.log(date);
-
   const nowTime = DateTime.now().setZone(timeZone).startOf('day');
   const selectedTime = DateTime.fromJSDate(date).setZone(timeZone).startOf('day');
 
-  console.log(nowTime, selectedTime);
-
   return selectedTime < nowTime;
+}
+
+export function formatFormTime(dateISO: string, time: string, duration: number = 0) {
+  let date = DateTime.fromISO(dateISO, { zone: "utc" }).setZone(timeZone);
+
+  const [hours, minutes] = time.split(":").map(Number);
+
+  date = date.set({ hour: hours, minute: minutes, second: 0 });
+
+  if (duration) {
+    date = date.plus({ minutes: duration });
+  }
+
+  return date.toISO({ includeOffset: true });
+}
+
+export function getServiceDuration(serviceName: string) {
+  const foundService = services
+    .flatMap(category => category.items)
+    .find(item => item.title === serviceName);
+
+  return foundService?.duration || 0;
 }
