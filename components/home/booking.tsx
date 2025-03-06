@@ -163,7 +163,7 @@ export default function Booking({ service }: { service: string | null }) {
                   required
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Choose a treatment" />
+                    <SelectValue placeholder="Alege tratamentul" />
                   </SelectTrigger>
                   <SelectContent>
                     {services.map((category) => (
