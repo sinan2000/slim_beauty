@@ -1,7 +1,3 @@
-programmatically index on build (just for prod)
-
-redirects
-
 for ads, make reservation action form submission and send gtm event for marking conversions
 
 meta pixel - start ads

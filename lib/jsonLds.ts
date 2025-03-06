@@ -1,6 +1,6 @@
 import {
   WebSite,
-  LocalBusiness,
+  BeautySalon,
   SiteNavigationElement,
   BreadcrumbList,
   WithContext,
@@ -19,11 +19,12 @@ export const webSiteSchema: WithContext<WebSite> = {
   "description": "Slim & Beauty - Salon de înfrumusețare specializat în remodelare corporală și dermato cosmetică în Timișoara și Dumbrăvița.",
   "sameAs": [
     "https://www.facebook.com/SalonSlimBeautyByMc/",
-    "https://www.instagram.com/slimandbeautybymc/"
+    "https://www.instagram.com/slimandbeautybymc/",
+    "https://www.tiktok.com/@slimandbeautymc/"
   ]
 }
 
-export const localBusinessSchema: WithContext<LocalBusiness> = {
+export const BeautySalonSchema: WithContext<BeautySalon> = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
   "name": "Slim & Beauty",
@@ -73,7 +74,8 @@ export const localBusinessSchema: WithContext<LocalBusiness> = {
   "sameAs": [
     "https://www.facebook.com/SalonSlimBeautyByMc/",
     "https://www.instagram.com/slimandbeautybymc/",
-    "https://www.slimandbeauty.ro"
+    "https://www.slimandbeauty.ro",
+    "https://www.tiktok.com/@slimandbeautymc/"
   ],
   "areaServed": {
     "@type": "Place",
@@ -164,9 +166,8 @@ export const serviceSchema: WithContext<Service> = {
   "description": "Descoperă serviciile Slim & Beauty - remodelare corporală și tratamente dermato-cosmetice pentru un corp tonifiat și un ten sănătos.",
   "url": "https://www.slimandbeauty.ro/servicii",
   "provider": {
-    "@type": "LocalBusiness",
-    "name": "Slim & Beauty",
-    "url": "https://www.slimandbeauty.ro"
+    "@type": "BeautySalon",
+    "@id": "https://www.slimandbeauty.ro",
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -198,9 +199,8 @@ export const generateCategorySchema = (category: 0 | 1): WithContext<Service> =>
     "description": cat.description,
     "url": `https://www.slimandbeauty.ro/servicii/${normalizeString(cat.category)}`,
     "provider": {
-      "@type": "LocalBusiness",
-      "name": "Slim & Beauty",
-      "url": "https://www.slimandbeauty.ro"
+      "@type": "BeautySalon",
+      "@id": "https://www.slimandbeauty.ro",
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -233,9 +233,8 @@ export const generateServiceSchema = (category: 0 | 1, service: string): WithCon
     "description": item.mediumDescription,
     "url": `https://www.slimandbeauty.ro/servicii/${normalizeString(cat.category)}/${normalizeString(item.title)}`,
     "provider": {
-      "@type": "LocalBusiness",
-      "name": "Slim & Beauty",
-      "url": "https://www.slimandbeauty.ro"
+      "@type": "BeautySalon",
+      "@id": "https://www.slimandbeauty.ro",
     },
     "serviceType": cat.category,
     "areaServed": {
@@ -248,7 +247,7 @@ export const generateServiceSchema = (category: 0 | 1, service: string): WithCon
       "price": item.price[0],
       "availability": "https://schema.org/InStock",
       "seller": {
-        "@type": "LocalBusiness",
+        "@type": "BeautySalon",
         "name": "Slim & Beauty",
         "url": "https://www.slimandbeauty.ro"
       }

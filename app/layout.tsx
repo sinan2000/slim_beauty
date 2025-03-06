@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
 import SNSFooter from '@/components/sns/footer';
 import { rootMeta } from "@/lib/metadatas";
-import { localBusinessSchema, webSiteSchema, navSchema } from "@/lib/jsonLds";
+import { BeautySalonSchema, webSiteSchema, navSchema } from "@/lib/jsonLds";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
@@ -30,7 +30,7 @@ export default function RootLayout({
         <script
           id="business-schema"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(BeautySalonSchema) }}
         />
 
         <script

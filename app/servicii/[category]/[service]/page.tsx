@@ -4,8 +4,8 @@ import {
 } from 'lucide-react';
 import FAQ from '@/components/faq-detail';
 import MediaGalery from '@/components/gallery';
-import { notFound } from 'next/navigation';
-import { normalizeString } from '@/lib/utils';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { normalizeString, oldSlug } from '@/lib/utils';
 import { services } from '@/lib/data';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/breadcrumbs';
@@ -17,6 +17,13 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
 
   const categoryData = services.find((item) => normalizeString(item.category) === category);
   if (!categoryData) {
+    const old_cat = services.find((i) => oldSlug(i.category) === category);
+    if (old_cat) {
+      const old_serv = old_cat.items.find((i) => oldSlug(i.title) === service);
+      if (old_serv) {
+        permanentRedirect(`/servicii/${normalizeString(old_cat.category)}/${normalizeString(old_serv.title)}`);
+      }
+    }
     notFound();
   }
 
@@ -190,7 +197,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
         </div>
 
         {/* FAQ Section */}
-        <FAQ faqs={serviceData.faq} />
+        <FAQ />
       </div>
     </div>
   );
