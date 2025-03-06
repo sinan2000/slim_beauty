@@ -32,7 +32,6 @@ function SubmitButton() {
 }
 
 export default function Booking({ service }: { service: string | null }) {
-  const [date, setDate] = useState<Date | undefined>(undefined);
   const [selectedService, setSelectedService] = useState<string>(() => {
     if (service) {
       const foundService = services
@@ -43,6 +42,12 @@ export default function Booking({ service }: { service: string | null }) {
     return "";
   });
   const [selectedTime, setSelectedTime] = useState("");
+  const [date, setDate] = useState<Date | undefined>(undefined);
+
+  const selectedDay = date?.getDay() ?? null;
+  const timeSlots = selectedDay !== null && availableTimes[selectedDay]
+    ? availableTimes[selectedDay]
+    : [];
 
   const initialState = { message: "", success: true };
   const [state, formAction] = useActionState(
@@ -53,15 +58,6 @@ export default function Booking({ service }: { service: string | null }) {
     },
     initialState
   );
-
-  const selectedDay = date?.getDay() ?? null;
-  const timeSlots = selectedDay !== null && availableTimes[selectedDay]
-    ? availableTimes[selectedDay]
-    : [];
-
-  useEffect(() => {
-    console.log(date);
-  }, [date]);
 
   return (
     <Card>
@@ -93,23 +89,27 @@ export default function Booking({ service }: { service: string | null }) {
             </div>
 
             <div className="mb-6">
-              <Label htmlFor="time" className="mb-2 block">Ora programării</Label>
-              <div className="grid grid-cols-3 gap-2">
-                {timeSlots.map((time) => {
-                  return (
-                    <Button
-                      key={time}
-                      type="button"
-                      variant={selectedTime === time ? "default" : "outline"}
-                      className={selectedTime === time ? "bg-pink-500 hover:bg-pink-600" : ""}
-                      onClick={() => setSelectedTime(time)}
-                    >
-                      {time}
-                    </Button>
-                  );
-                })}
-                <input type="hidden" name="time" value={selectedTime} />
-              </div>
+              <Label htmlFor="time" className="mb-2 block text-md">Ora programării</Label>
+              {selectedDay ? (
+                <div className="grid grid-cols-3 gap-2">
+                  {timeSlots.map((time) => {
+                    return (
+                      <Button
+                        key={time}
+                        type="button"
+                        variant={selectedTime === time ? "default" : "outline"}
+                        className={selectedTime === time ? "bg-pink-500 hover:bg-pink-600" : ""}
+                        onClick={() => setSelectedTime(time)}
+                      >
+                        {time}
+                      </Button>
+                    );
+                  })}
+                  <input type="hidden" name="time" value={selectedTime} />
+                </div>
+              ) : (
+                <p className="text-sm text-gray-500">Selectați o dată pentru a vedea orele disponibile</p>
+              )}
             </div>
           </div>
 
