@@ -1,5 +1,9 @@
 refactor timezone by modularizing with functions. as much as possible server side
 
+programmatically index on build (just for prod)
+
+redirects
+
 meta pixel - start ads
 
 check performance - optimize components

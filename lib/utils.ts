@@ -2,6 +2,7 @@ import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { services } from "./data"
 import { StaticImageData } from "next/image";
+import { DateTime } from "luxon";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -72,4 +73,17 @@ export function getMetadataImage(media: (string | StaticImageData)[] | undefined
   }
 
   return '/logo-og.png';
+}
+
+const timeZone = "Europe/Bucharest";
+
+export function isPastDate(date: Date) {
+  console.log(date);
+
+  const nowTime = DateTime.now().setZone(timeZone).startOf('day');
+  const selectedTime = DateTime.fromJSDate(date).setZone(timeZone).startOf('day');
+
+  console.log(nowTime, selectedTime);
+
+  return selectedTime < nowTime;
 }

@@ -10,13 +10,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '../ui/textarea';
 import { services } from '@/lib/data';
 import { useActionState } from 'react';
-import { bookAppointment, getEventsForMonth } from '@/app/actions';
+import { bookAppointment } from '@/app/actions';
 import { useFormStatus } from 'react-dom';
-import { format, getMonth, getYear } from 'date-fns';
-import { formatInTimeZone, toZonedTime } from "date-fns-tz";
-import { normalizeString } from '@/lib/utils';
-
-const timeZone = "Europe/Bucharest";
+import { isPastDate, normalizeString } from '@/lib/utils';
 
 const availableTimes: Record<number, string[]> = {
   1: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
@@ -47,17 +43,16 @@ export default function Booking({ service }: { service: string | null }) {
     return "";
   });
   const [selectedTime, setSelectedTime] = useState("");
-  const [bookedTimesByDay, setBookedTimesByDay] = useState<{ [day: string]: string[] }>({});
 
-  const selectedYear = date
-    ? getYear(toZonedTime(date, timeZone))
-    : getYear(toZonedTime(new Date(), timeZone));
-
-  const selectedMonth = date
-    ? getMonth(toZonedTime(date, timeZone)) + 1
-    : getMonth(toZonedTime(new Date(), timeZone)) + 1;
-
-  const formattedSelectedDate = date ? format(date, "yyyy-MM-dd") : "";
+  const initialState = { message: "", success: true };
+  const [state, formAction] = useActionState(
+    async (_prevState: { message: string; success: boolean }, formData: FormData) => {
+      console.log(formData);
+      const result = await bookAppointment(formData);
+      return result;
+    },
+    initialState
+  );
 
   const selectedDay = date?.getDay() ?? null;
   const timeSlots = selectedDay !== null && availableTimes[selectedDay]
@@ -65,47 +60,9 @@ export default function Booking({ service }: { service: string | null }) {
     : [];
 
   useEffect(() => {
-    async function fetchBookings() {
-      const response = await getEventsForMonth(selectedYear, selectedMonth);
-      if (response.success) {
-        const bookings: { [day: string]: string[] } = {};
-        response.events.forEach(event => {
-          if (event.start) {
-            const eventDay = formatInTimeZone(new Date(event.start as string), timeZone, "yyyy-MM-dd");
-            const eventTime = formatInTimeZone(new Date(event.start as string), timeZone, "HH:mm");
-            if (!bookings[eventDay]) {
-              bookings[eventDay] = [];
-            }
-            bookings[eventDay].push(eventTime);
-          }
-        });
-        setBookedTimesByDay(bookings);
-      }
-    }
-    fetchBookings();
-  }, [selectedYear, selectedMonth]);
-
-  // Helper to get booked times for the currently selected day
-  const getBookedTimesForSelectedDay = (): string[] => {
-    if (!formattedSelectedDate) return [];
-    return bookedTimesByDay[formattedSelectedDate] || [];
-  };
-
-  const initialState = { message: "", success: true };
-  const [state, formAction] = useActionState(
-    async (_prevState: { message: string; success: boolean }, formData: FormData) => {
-      const result = await bookAppointment(formData);
-
-      if (result.success && formattedSelectedDate && selectedTime) {
-        setBookedTimesByDay(prev => ({
-          ...prev,
-          [formattedSelectedDate]: [...(prev[formattedSelectedDate] || []), selectedTime],
-        }));
-      }
-      return result;
-    },
-    initialState
-  );
+    console.log(date);
+    isPastDate(date);
+  }, [date]);
 
   return (
     <Card>
@@ -130,8 +87,7 @@ export default function Booking({ service }: { service: string | null }) {
                   row: "w-full mt-2",
                 }}
                 disabled={(date) => {
-                  const nowInBucharest = toZonedTime(new Date(), timeZone);
-                  return [0, 6].includes(date.getDay()) || date < nowInBucharest;
+                  return [0, 6].includes(date.getDay()) || isPastDate(date);
                 }}
               />
               <input type="hidden" name="date" value={date ? date.toISOString() : ""} />
@@ -141,7 +97,6 @@ export default function Booking({ service }: { service: string | null }) {
               <Label htmlFor="time" className="mb-2 block">Ora programării</Label>
               <div className="grid grid-cols-3 gap-2">
                 {timeSlots.map((time) => {
-                  const bookedForDay = getBookedTimesForSelectedDay();
                   return (
                     <Button
                       key={time}
@@ -149,7 +104,6 @@ export default function Booking({ service }: { service: string | null }) {
                       variant={selectedTime === time ? "default" : "outline"}
                       className={selectedTime === time ? "bg-pink-500 hover:bg-pink-600" : ""}
                       onClick={() => setSelectedTime(time)}
-                      disabled={bookedForDay.includes(time)}
                     >
                       {time}
                     </Button>

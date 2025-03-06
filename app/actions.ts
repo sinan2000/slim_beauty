@@ -5,8 +5,6 @@ import { Auth } from '@vonage/auth';
 import { mapRomanianChars } from '@/lib/utils';
 import { z } from 'zod';
 import { google } from 'googleapis';
-import { format, parseISO, startOfMonth, endOfMonth } from 'date-fns';
-import { formatInTimeZone } from 'date-fns-tz';
 import { kv } from "@vercel/kv";
 import { headers } from 'next/headers';
 
@@ -53,13 +51,24 @@ const schema = z.object({
         .or(z.literal("")),
 });
 
-export async function bookAppointment(formData: FormData) {
+async function isRateLimited() {
     const ip = (await headers()).get("x-forwarded-for")?.split(",")[0] || (await headers()).get("remote-addr");
 
     if (!ip) {
-        return { success: false, message: "Could not determine your IP address." };
+        return true;
     }
 
+    const didBook = await kv.get(ip);
+    if (didBook) {
+        return true;
+    }
+
+    const RATE_LIMIT_KEY = `slimBeauty:rateLimit:${ip}`;
+    await kv.set(RATE_LIMIT_KEY, "booked", { ex: RATE_LIMIT_DURATION });
+    return false;
+}
+
+export async function bookAppointment(formData: FormData) {
     const validated = schema.safeParse(Object.fromEntries(formData));
 
     if (!validated.success) {
@@ -71,18 +80,18 @@ export async function bookAppointment(formData: FormData) {
         };
     }
 
-    const didBook = await kv.get(ip);
-    if (didBook) {
+    if (await isRateLimited()) {
         return {
-            success: false,
-            message: `Numărul maxim de programări este de una pe zi. Între timp ne puteti suna la ${process.env.PHONE_NUMBER}`
+            message: "Ați atins limita de programări pentru astăzi. Vă rugăm să reveniți mâine.",
+            success: false
         };
     }
 
-    const RATE_LIMIT_KEY = `slimBeauty:rateLimit:${ip}`;
-    await kv.set(RATE_LIMIT_KEY, "booked", { ex: RATE_LIMIT_DURATION });
-
     const { name, phone, service, date, time, message } = validated.data;
+
+    console.log(date, time);
+
+    {/**
 
     const timeZone = 'Europe/Bucharest';
 
@@ -115,10 +124,9 @@ export async function bookAppointment(formData: FormData) {
         time,
         message: message || ""
     });
-
+ */}
     return { message: "Programare confirmată, vă mulțumim!", success: true };
 }
-
 
 const auth = new google.auth.JWT(
     process.env.GOOGLE_CALENDAR_CLIENT_EMAIL,
@@ -153,7 +161,7 @@ export async function addEventToCalendar(eventDetails: {
         return { success: false, error: "Could not add event to calendar." };
     }
 }
-
+{/* 
 export async function getEventsForMonth(year: number, month: number) {
     try {
         const startDate = format(startOfMonth(new Date(year, month - 1)), "yyyy-MM-dd'T'00:00:00XXX");
@@ -181,7 +189,7 @@ export async function getEventsForMonth(year: number, month: number) {
         return { success: false, events: [] };
     }
 }
-
+*/}
 
 interface sensSmsProps {
     name: string;
