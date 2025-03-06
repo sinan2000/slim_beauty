@@ -62,6 +62,8 @@ export default function Booking({ service }: { service: string | null }) {
   const [state, formAction] = useActionState(
     async (_prevState: { message: string; success: boolean }, formData: FormData) => {
       const result = await bookAppointment(formData);
+      setSelectedTime("");
+      setDate(undefined);
       return result;
     },
     initialState

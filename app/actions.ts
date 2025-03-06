@@ -112,9 +112,9 @@ export async function bookAppointment(formData: FormData) {
         name,
         phone,
         service,
-        date: toRomanianDate(date),
+        date: toRomanianDate(startDateTime),
         message: message || ""
-    });
+    }).catch(console.error);
 
     return { message: "Programare confirmată, vă mulțumim!", success: true };
 }
@@ -205,6 +205,8 @@ export async function sendSms(data: sensSmsProps) {
     const from = 'Website';
     const text = `Rezervare noua de la ${name}, cu numărul de telefon ${phone}, pentru serviciul de ${service}, pe ${date}. ${message && '\nMesaj: ' + message}`;
     const cleanText = mapRomanianChars(text);
+
+    console.log(cleanText);
 
     try {
         await vonage.sms.send({
