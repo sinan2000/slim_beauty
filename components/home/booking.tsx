@@ -10,9 +10,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '../ui/textarea';
 import { services } from '@/lib/data';
 import { useActionState } from 'react';
-import { bookAppointment } from '@/app/actions';
+import { bookAppointment, getEventsForMonth } from '@/app/actions';
 import { useFormStatus } from 'react-dom';
-import { isPastDate, normalizeString } from '@/lib/utils';
+import { getDisabledTimeSlots, getMonthStartEnd, GroupedEvents, isPastDate, normalizeString } from '@/lib/utils';
 
 const availableTimes: Record<number, string[]> = {
   1: ["13:00", "14:15", "15:00", "15:45", "16:30", "17:15", "18:00", "18:45", "19:30"],
@@ -43,21 +43,41 @@ export default function Booking({ service }: { service: string | null }) {
   });
   const [selectedTime, setSelectedTime] = useState("");
   const [date, setDate] = useState<Date | undefined>(undefined);
+  const [events, setEvents] = useState<GroupedEvents>([]);
 
-  const selectedDay = date?.getDay() ?? null;
+  const currentDate = date ?? new Date();
+  const selectedDay = date?.getDay() || null;
+  const selectedDate = currentDate.getDate();
+  const selectedMonth = currentDate.getMonth() + 1;
+  const selectedYear = currentDate.getFullYear();
+
   const timeSlots = selectedDay !== null && availableTimes[selectedDay]
     ? availableTimes[selectedDay]
     : [];
 
+  const disabledSlots = events[selectedDate] ? getDisabledTimeSlots(timeSlots, events[selectedDate]) : new Set();
+
   const initialState = { message: "", success: true };
   const [state, formAction] = useActionState(
     async (_prevState: { message: string; success: boolean }, formData: FormData) => {
-      console.log(formData);
       const result = await bookAppointment(formData);
       return result;
     },
     initialState
   );
+
+  useEffect(() => {
+    async function fetchEvents() {
+      const { success, events: fetchedEvents } = await getEventsForMonth(selectedYear, selectedMonth);
+      if (success) {
+        setEvents(fetchedEvents);
+      } else {
+        setEvents([]);
+      }
+    };
+    fetchEvents();
+
+  }, [selectedMonth, selectedYear]);
 
   return (
     <Card>
@@ -100,6 +120,7 @@ export default function Booking({ service }: { service: string | null }) {
                         variant={selectedTime === time ? "default" : "outline"}
                         className={selectedTime === time ? "bg-pink-500 hover:bg-pink-600" : ""}
                         onClick={() => setSelectedTime(time)}
+                        disabled={disabledSlots.has(time)}
                       >
                         {time}
                       </Button>

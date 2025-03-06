@@ -105,3 +105,72 @@ export function getServiceDuration(serviceName: string) {
 
   return foundService?.duration || 0;
 }
+
+export function getMonthStartEnd(year: number, month: number) {
+  const startOfMonth = DateTime.fromObject({ year, month, day: 1 }, { zone: timeZone })
+    .set({ hour: 0, minute: 0, second: 0 });
+
+  const endOfMonth = startOfMonth.endOf("month").set({ hour: 23, minute: 59, second: 59 });
+
+  return {
+    timeMin: startOfMonth.toFormat("yyyy-MM-dd'T'00:00:00ZZ"),
+    timeMax: endOfMonth.toFormat("yyyy-MM-dd'T'23:59:59ZZ"),
+  };
+}
+
+export type CalendarEvent = {
+  id: string;
+  summary: string;
+  start: string;
+  end: string;
+}
+
+export type GroupedEvents = {
+  [day: number]: string[];
+}
+
+export function processEvents(events: CalendarEvent[]): GroupedEvents {
+  return events.reduce((acc, event) => {
+    const start = DateTime.fromISO(event.start).setZone(timeZone);
+    const end = DateTime.fromISO(event.end).setZone(timeZone);
+
+    const day = start.day;
+
+    const startTime = start.toFormat("HH:mm");
+    const endTime = end.toFormat("HH:mm");
+
+    const timeslot = `${startTime}-${endTime}`;
+
+    if (!acc[day]) {
+      acc[day] = [];
+    }
+    acc[day].push(timeslot);
+
+    return acc;
+  }, {} as GroupedEvents);
+}
+
+export function getDisabledTimeSlots(timeSlots: string[], eventsForDay: string[]) {
+  const parseTimeToMinutes = (time: string): number => {
+    const [hours, minutes] = time.split(":").map(Number);
+    return hours * 60 + minutes;
+  }
+
+  const disabled = new Set<string>();
+
+  for (let i = 0; i < timeSlots.length - 1; i++) {
+    const slotStart = parseTimeToMinutes(timeSlots[i]);
+    const slotEnd = parseTimeToMinutes(timeSlots[i + 1]);
+
+    for (const eventSlot of eventsForDay) {
+      const [start, end] = eventSlot.split("-").map(parseTimeToMinutes);
+
+      if (slotStart < end && start < slotEnd) {
+        disabled.add(timeSlots[i]);
+        break;
+      }
+    }
+  }
+
+  return disabled;
+}

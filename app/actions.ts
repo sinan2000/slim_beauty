@@ -2,7 +2,7 @@
 
 import { Vonage } from '@vonage/server-sdk';
 import { Auth } from '@vonage/auth';
-import { formatFormTime, getServiceDuration, mapRomanianChars } from '@/lib/utils';
+import { formatFormTime, getMonthStartEnd, getServiceDuration, mapRomanianChars, processEvents } from '@/lib/utils';
 import { z } from 'zod';
 import { google } from 'googleapis';
 import { kv } from "@vercel/kv";
@@ -153,35 +153,35 @@ export async function addEventToCalendar(eventDetails: {
         return { success: false, error: "Could not add event to calendar." };
     }
 }
-{/* 
+
 export async function getEventsForMonth(year: number, month: number) {
     try {
-        const startDate = format(startOfMonth(new Date(year, month - 1)), "yyyy-MM-dd'T'00:00:00XXX");
-        const endDate = format(endOfMonth(new Date(year, month - 1)), "yyyy-MM-dd'T'23:59:59XXX");
+        const { timeMin, timeMax } = getMonthStartEnd(year, month);
 
         const response = await calendar.events.list({
             auth,
             calendarId: process.env.GOOGLE_CALENDAR_ID!,
-            timeMin: startDate,
-            timeMax: endDate,
+            timeMin,
+            timeMax,
             singleEvents: true,
             orderBy: "startTime",
         });
 
         const events = response.data.items?.map(event => ({
-            id: event.id,
-            summary: event.summary,
-            start: event.start?.dateTime,
-            end: event.end?.dateTime,
+            id: event.id as string,
+            summary: event.summary as string,
+            start: event.start?.dateTime as string,
+            end: event.end?.dateTime as string,
         })) || [];
 
-        return { success: true, events };
+        console.log(events);
+
+        return { success: true, events: processEvents(events) };
     } catch (error) {
         console.error("Error fetching events from Google Calendar:", error);
         return { success: false, events: [] };
     }
 }
-*/}
 
 interface sensSmsProps {
     name: string;
