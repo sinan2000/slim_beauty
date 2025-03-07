@@ -1,35 +1,36 @@
-"use client";
+"use client"
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Settings, BadgeCheck, Sparkles, UserCheck } from "lucide-react";
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
+import { Settings, BadgeCheck, Sparkles, UserCheck } from "lucide-react"
 
 const benefits = [
   {
     icon: <Settings className="h-8 w-8 text-pink-500" />,
     title: "Tehnologie Modernă",
-    description: "Folosim echipamente de ultimă generație pentru remodelare corporală și dermato cosmetică."
+    description: "Folosim echipamente de ultimă generație pentru remodelare corporală și dermato cosmetică.",
   },
   {
     icon: <BadgeCheck className="h-8 w-8 text-pink-500" />,
     title: "Experiență de Peste 10 Ani",
-    description: `Cu peste ${new Date().getFullYear() - 2013} ani de experiență în domeniu, suntem alegerea sigură.`
+    description: `Cu peste ${new Date().getFullYear() - 2013} ani de experiență în domeniu, suntem alegerea sigură.`,
   },
   {
     icon: <Sparkles className="h-8 w-8 text-pink-500" />,
     title: "Rezultate Vizibile",
-    description: "Tratamentele noastre sunt concepute cu grijă, fără proceduri invazive."
+    description: "Tratamentele noastre sunt concepute cu grijă, fără proceduri invazive.",
   },
   {
     icon: <UserCheck className="h-8 w-8 text-pink-500" />,
     title: "Tratamente Personalizate",
-    description: "Fiecare clientă are un tip de piele diferit, iar noi ne adaptăm pentru a oferi cele mai bune rezultate."
-  }
-];
+    description:
+      "Fiecare clientă are un tip de piele diferit, iar noi ne adaptăm pentru a oferi cele mai bune rezultate.",
+  },
+]
 
 export default function WhyChooseUs() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
     <section id="about" className="py-20 bg-pink-50 relative overflow-hidden">
@@ -44,27 +45,35 @@ export default function WhyChooseUs() {
           >
             <div className="relative aspect-[9/16] w-[90%] md:w-[70%] lg:w-[60%] h-auto max-h-[600px] rounded-2xl overflow-hidden">
               <video
-                src={'/about-us.mp4'}
+                src={"/about-us.mp4"}
                 autoPlay
                 playsInline
                 controls
                 className="w-full h-full object-contain rounded-2xl"
               />
             </div>
-            {/* Founder Text */}
-            <div className="text-center mt-4">
-              <h3 className="text-xl font-bold text-gray-800">Mihaela Ceviker</h3>
-              <p className="text-pink-600 font-medium">Fondatoarea salonului Slim & Beauty by MC</p>
-            </div>
+
+            {/* Founder Attribution */}
+            <motion.div
+              className="mt-6 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="relative inline-block">
+                <h3 className="font-playfair text-2xl md:text-3xl font-bold text-gray-800">Mihaela Ceviker</h3>
+                <div className="h-1 w-1/2 bg-gradient-to-r from-pink-300 to-pink-500 rounded-full mx-auto mt-2"></div>
+              </div>
+              <p className="text-gray-600 mt-2 italic">fondatoarea salonului Slim & Beauty by MC</p>
+            </motion.div>
           </motion.div>
 
           {/* Content Side */}
           <div className="lg:w-1/2">
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-              De Ce Slim & Beauty?
-            </h2>
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-6">De Ce Slim & Beauty?</h2>
             <p className="text-gray-600 mb-8">
-              Ne dedicăm ție! La Slim & Beauty, combinăm tehnologie de ultimă generație cu grijă personalizată, pentru rezultate rapide și de lungă durată.
+              Ne dedicăm ție! La Slim & Beauty, combinăm tehnologie de ultimă generație cu grijă personalizată, pentru
+              rezultate rapide și de lungă durată.
             </p>
 
             <motion.div
@@ -77,9 +86,9 @@ export default function WhyChooseUs() {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.1
-                  }
-                }
+                    staggerChildren: 0.1,
+                  },
+                },
               }}
             >
               {benefits.map((benefit, index) => (
@@ -91,13 +100,11 @@ export default function WhyChooseUs() {
                     visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { duration: 0.5 }
-                    }
+                      transition: { duration: 0.5 },
+                    },
                   }}
                 >
-                  <div className="p-3 bg-white rounded-full shadow-xs">
-                    {benefit.icon}
-                  </div>
+                  <div className="p-3 bg-white rounded-full shadow-xs">{benefit.icon}</div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">{benefit.title}</h3>
                     <p className="text-gray-600 text-sm">{benefit.description}</p>
@@ -109,5 +116,6 @@ export default function WhyChooseUs() {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
+
