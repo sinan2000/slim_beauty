@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Video Side */}
           <motion.div
-            className="w-full lg:w-1/2 flex justify-center"
+            className="w-full lg:w-1/2 flex flex-col items-center"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
@@ -46,11 +46,15 @@ export default function WhyChooseUs() {
               <video
                 src={'/about-us.mp4'}
                 autoPlay
-                loop
                 playsInline
                 controls
                 className="w-full h-full object-contain rounded-2xl"
               />
+            </div>
+            {/* Founder Text */}
+            <div className="text-center mt-4">
+              <h3 className="text-xl font-bold text-gray-800">Mihaela Ceviker</h3>
+              <p className="text-pink-600 font-medium">Fondatoarea salonului Slim & Beauty by MC</p>
             </div>
           </motion.div>
 
