@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative aspect-[9/16] w-[90%] md:w-[70%] lg:w-[60%] h-auto max-h-[600px] rounded-2xl shadow-xl overflow-hidden">
+            <div className="relative aspect-[9/16] w-[90%] md:w-[70%] lg:w-[60%] h-auto max-h-[600px] rounded-2xl overflow-hidden">
               <video
                 src={'/about-us.mp4'}
                 autoPlay
