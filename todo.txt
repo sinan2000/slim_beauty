@@ -1,3 +1,7 @@
+- create 'servicii similare' in service detail page;
+
+- blog pages
+
 for ads, make reservation action form submission and send gtm event for marking conversions
 
 meta pixel - start ads

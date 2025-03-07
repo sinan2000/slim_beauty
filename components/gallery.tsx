@@ -39,6 +39,7 @@ export default function MediaGalery({ media }: Props) {
           <video
             src={activeMedia}
             controls
+            playsInline
             className="w-full h-full object-contain bg-gray-100"
           >
             Dispozitivul dvs. nu suportă redarea video.

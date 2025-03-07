@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-pink-200 flex flex-col md:flex-row items-center justify-between text-gray-600 text-sm">
-          <p className="text-center md:text-left">© {new Date().getFullYear()} Slim & Beauty. All rights reserved.</p>
+          <p className="text-center md:text-left">© {new Date().getFullYear()} Slim & Beauty. Toate drepturile rezervate.</p>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
             <Link href="https://anpc.ro/ce-este-sal/" target="_blank" rel="nofollow">
               <Image

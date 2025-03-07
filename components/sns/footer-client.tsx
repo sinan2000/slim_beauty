@@ -30,7 +30,7 @@ export default function ClientFooter() {
                             target="_blank"
                             className="group flex items-center gap-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors"
                         >
-                            You need a website or a mobile app?
+                            Ai nevoie de un site web sau o aplicatie mobilă?
                             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </Link>
                     </div>
