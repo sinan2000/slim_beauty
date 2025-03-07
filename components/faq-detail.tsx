@@ -6,8 +6,18 @@ import {
 import { useState } from 'react';
 import { faqs } from '@/lib/data';
 
-export default function FAQ() {
+type Item = {
+  question: string;
+  answer: string;
+}
+
+interface FAQProps {
+  input?: Item[]
+}
+
+export default function FAQ({ input = [] }: FAQProps) {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
+  const items = input.length > 0 ? input : faqs;
 
   const toggleAccordion = (index: number) => {
     setActiveAccordion(activeAccordion === index ? null : index);
@@ -18,7 +28,7 @@ export default function FAQ() {
         Întrebări Frecvente
       </h2>
       <div className="space-y-4">
-        {faqs.map((faq, index) => (
+        {items.map((faq, index) => (
           <details key={index} className="bg-white rounded-lg shadow-sm overflow-hidden">
             <summary
               className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"

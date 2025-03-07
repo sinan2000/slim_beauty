@@ -385,16 +385,16 @@ De asemenea, împachetările IR ajută la ameliorarea durerilor musculare și ar
                 duration: 45
             },
             {
-                title: "Bronzare Organică cu DHA",
+                title: "Bronzare Organică DHA",
                 featured: true,
-                featuredDesc: "O alternativă sigură și sănătoasă la expunerea la soare sau la solariu.",
+                featuredDesc: "Pentru un bronz natural și uniform, fără expunere la raze UV.",
                 shortDescription: "Bronzare sănătoasă și naturală fără raze UV.",
-                mediumDescription: "Bronzarea Organică cu DHA oferă o alternativă sigură și sănătoasă la expunerea la soare sau la solariu. Utilizând ingrediente naturale și DHA (dihydroxyacetone), acest tratament oferă un bronz uniform și natural, fără riscurile asociate cu expunerea la raze UV. Rezultatul este o piele frumos bronzată, hidratată și protejată.",
-                longDescription: `Bronzarea Organică cu DHA reprezintă o metodă revoluționară de bronzare, care oferă o alternativă sigură la expunerea prelungită la soare sau la utilizarea solarului. Acest tratament utilizează DHA (dihydroxyacetone), un ingredient natural derivat din trestia de zahăr, care interacționează cu aminoacizii din stratul superficial al pielii pentru a crea un bronz temporar, uniform și sănătos.
+                mediumDescription: "Bronzarea Organică DHA oferă o alternativă sigură și sănătoasă la expunerea la soare sau la solariu. Utilizând ingrediente naturale și DHA (dihydroxyacetone), acest tratament oferă un bronz uniform și natural, fără riscurile asociate cu expunerea la raze UV. Rezultatul este o piele frumos bronzată, hidratată și protejată.",
+                longDescription: `Bronzarea Organică DHA reprezintă o metodă revoluționară de bronzare, care oferă o alternativă sigură la expunerea prelungită la soare sau la utilizarea solarului. Acest tratament utilizează DHA (dihydroxyacetone), un ingredient natural derivat din trestia de zahăr, care interacționează cu aminoacizii din stratul superficial al pielii pentru a crea un bronz temporar, uniform și sănătos.
 
 Spre deosebire de metodele tradiționale de bronzare care expun pielea la razele UV dăunătoare, bronzarea organică nu prezintă riscuri pentru sănătatea pielii. Procedura este rapidă și non-invazivă, iar bronzul rezultat arată natural și se menține timp de câteva zile. De asemenea, tratamentul ajută la hidratarea pielii, prevenind deshidratarea și protejând împotriva factorilor de mediu.
 
-Fie că te pregătești pentru un eveniment special sau dorești să obții un bronz frumos și sănătos în mod regulat, bronzarea organică cu DHA este soluția perfectă pentru tine. Este un tratament potrivit pentru toate tipurile de piele, inclusiv pentru persoanele cu piele sensibilă, și oferă rezultate vizibile fără riscuri.`,
+Fie că te pregătești pentru un eveniment special sau dorești să obții un bronz frumos și sănătos în mod regulat, bronzarea organică DHA este soluția perfectă pentru tine. Este un tratament potrivit pentru toate tipurile de piele, inclusiv pentru persoanele cu piele sensibilă, și oferă rezultate vizibile fără riscuri.`,
                 fact: "DHA este derivat din trestie de zahăr și reacționează cu aminoacizii din piele pentru a produce un bronz temporar fără riscuri UV.",
                 benefits: [
                     "Fără expunere la UV: Oferă un bronz natural și uniform fără expunere la raze UV dăunătoare, prevenind astfel îmbătrânirea prematură a pielii.",
@@ -407,23 +407,23 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
                 ],
                 faq: [
                     {
-                        question: "Ce este bronzarea organică cu DHA?",
-                        answer: "Bronzarea organică cu DHA este un tratament care utilizează dihydroxyacetone, un ingredient natural, pentru a crea un bronz temporar și uniform, fără expunere la raze UV."
+                        question: "Ce este bronzarea organică DHA?",
+                        answer: "Bronzarea organică DHA este un tratament care utilizează dihydroxyacetone, un ingredient natural, pentru a crea un bronz temporar și uniform, fără expunere la raze UV."
                     },
                     {
-                        question: "Cât durează bronzul obținut prin bronzarea organică cu DHA?",
-                        answer: "Bronzul obținut prin bronzarea organică cu DHA durează în general între 7 și 10 zile, în funcție de tipul de piele și de îngrijirea post-tratament."
+                        question: "Cât durează bronzul obținut prin bronzarea organică DHA?",
+                        answer: "Bronzul obținut prin bronzarea organică DHA durează în general între 7 și 10 zile, în funcție de tipul de piele și de îngrijirea post-tratament."
                     },
                     {
-                        question: "Este bronzarea organică cu DHA sigură pentru pielea sensibilă?",
-                        answer: "Da, bronzarea organică cu DHA este potrivită pentru toate tipurile de piele, inclusiv pentru pielea sensibilă, deoarece nu implică expunerea la raze UV sau utilizarea unor substanțe chimice agresive."
+                        question: "Este bronzarea organică DHA sigură pentru pielea sensibilă?",
+                        answer: "Da, bronzarea organică DHA este potrivită pentru toate tipurile de piele, inclusiv pentru pielea sensibilă, deoarece nu implică expunerea la raze UV sau utilizarea unor substanțe chimice agresive."
                     },
                     {
                         question: "Cât timp durează sesiunea de bronzare organică?",
-                        answer: "O sesiune de bronzare organică cu DHA durează, în medie, între 10 și 20 de minute, fiind o procedură rapidă și eficientă.",
+                        answer: "O sesiune de bronzare organică DHA durează, în medie, între 10 și 20 de minute, fiind o procedură rapidă și eficientă.",
                     },
                     {
-                        question: "Cum funcționează bronzarea organică cu DHA?",
+                        question: "Cum funcționează bronzarea organică DHA?",
                         answer: "DHA, ingredientul activ, reacționează cu aminoacizii din stratul superficial al pielii, creând un bronz natural care apare în câteva ore după tratament."
                     }
                 ],
