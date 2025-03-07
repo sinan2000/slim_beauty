@@ -3,7 +3,6 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Settings, BadgeCheck, Sparkles, UserCheck } from "lucide-react"
-
 const benefits = [
   {
     icon: <Settings className="h-8 w-8 text-pink-500" />,
@@ -36,16 +35,20 @@ export default function WhyChooseUs() {
     <section id="about" className="py-20 bg-pink-50 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
+
           {/* Video Side */}
           <div className="w-full lg:w-1/2 flex flex-col items-center">
-            <div className="relative aspect-[9/16] w-[90%] md:w-[70%] lg:w-[60%] h-auto max-h-[600px] rounded-2xl overflow-hidden">
-              <video
-                src={"/about-us.mp4"}
-                playsInline
-                controls
-                className="w-full h-full object-contain rounded-2xl"
-              />
-            </div>
+            {/* Add Video Here */}
+            <motion.div
+              className="relative rounded-lg overflow-hidden shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8 }}
+            >
+              <video className="w-full" autoPlay loop controls playsInline>
+                <source src="/about-us.mp4" type="video/mp4" />
+              </video>
+            </motion.div>
 
             {/* Founder Attribution */}
             <motion.div
