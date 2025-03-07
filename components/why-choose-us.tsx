@@ -37,16 +37,10 @@ export default function WhyChooseUs() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Video Side */}
-          <motion.div
-            className="w-full lg:w-1/2 flex flex-col items-center"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="w-full lg:w-1/2 flex flex-col items-center">
             <div className="relative aspect-[9/16] w-[90%] md:w-[70%] lg:w-[60%] h-auto max-h-[600px] rounded-2xl overflow-hidden">
               <video
                 src={"/about-us.mp4"}
-                autoPlay
                 playsInline
                 controls
                 className="w-full h-full object-contain rounded-2xl"
@@ -66,7 +60,7 @@ export default function WhyChooseUs() {
               </div>
               <p className="text-gray-600 mt-2 italic">fondatoarea salonului Slim & Beauty by MC</p>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Content Side */}
           <div className="lg:w-1/2">
