@@ -29,7 +29,7 @@ const benefits = [
 
 export default function WhyChooseUs() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <section id="about" className="py-20 bg-pink-50 relative overflow-hidden">
@@ -39,16 +39,20 @@ export default function WhyChooseUs() {
           {/* Video Side */}
           <div className="w-full lg:w-1/2 flex flex-col items-center">
             {/* Add Video Here */}
-            <motion.div
-              className="relative rounded-lg overflow-hidden shadow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
+            <div
+              className="relative rounded-lg overflow-hidden shadow-sm bg-pink-100 w-full flex justify-center items-center"
             >
-              <video className="w-full" autoPlay loop controls playsInline>
-                <source src="/about-us.mp4" type="video/mp4" />
-              </video>
-            </motion.div>
+              <div className="aspect-[9/16] max-h-[70vh] lg:max-h-[500px] flex justify-center items-center">
+                <video
+                  className="w-full h-full object-contain"
+                  controls
+                  playsInline
+                  poster="/about-us-poster.png"
+                >
+                  <source src="/about-us.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
 
             {/* Founder Attribution */}
             <motion.div
