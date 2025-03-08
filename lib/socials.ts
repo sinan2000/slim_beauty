@@ -1,3 +1,6 @@
+const whatsAppMessage = encodeURIComponent("Bună ziua! Sunt interesată de serviciile dvs. de remodelare corporală.");
+const whatsAppLink = `https://api.whatsapp.com/send?phone=40733407329&text=${whatsAppMessage}`;
+
 export const socialData = [
   {
     link: "https://www.facebook.com/SalonSlimBeautyByMC",
@@ -15,7 +18,7 @@ export const socialData = [
     alt: "TikTok Page of Salon Slim & Beauty by M.C."
   },
   {
-    link: "https://wa.me/40733407329",
+    link: whatsAppLink,
     icon: "/icons/whatsapp.svg",
     alt: "WhatsApp Chat with Salon Slim & Beauty by M.C."
   }
