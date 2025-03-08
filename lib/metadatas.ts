@@ -3,6 +3,25 @@ import { services } from "./data";
 import { getMetadataImage, normalizeString } from "./utils";
 import { notFound } from "next/navigation";
 
+function generateOG(title: string, description: string, url?: string, photo?: string, alt?: string) {
+  return {
+    siteName: "Slim & Beauty by MC",
+    title,
+    description,
+    url: url || "https://www.slimandbeauty.ro",
+    locale: "ro_RO",
+    type: "website",
+    images: [
+      {
+        url: photo || "https://www.slimandbeauty.ro/logo-og.png",
+        alt: alt ? "Photo of " + alt : "Logo Slim & Beauty by MC Logo",
+        width: 1200,
+        height: 629
+      }
+    ]
+  }
+}
+
 export const rootMeta: Metadata = {
   metadataBase: new URL("https://www.slimandbeauty.ro"),
   keywords: ['remodelare corporală Timișoara', 'remodelare corporală Dumbrăvița', 'tratament anticelulitic Timișoara', 'masaj anticelulitic', 'bronzare organică', 'dermato-cosmetică profesională', 'tratament facial Timisoara', 'slabire localizata', 'salon remodelare corporala Timisoara'],
@@ -17,19 +36,6 @@ export const rootMeta: Metadata = {
   authors: [{ name: "Slim & Beauty by MC", url: "https://www.slimandbeauty.ro" }],
   creator: "Slim & Beauty",
   publisher: "Slim & Beauty",
-  openGraph: {
-    siteName: "Slim & Beauty by MC",
-    images: [
-      {
-        url: "https://www.slimandbeauty.ro/logo-og.png",
-        alt: "Logo Slim & Beauty by MC Logo",
-        width: 1200,
-        height: 629
-      }
-    ],
-    locale: "ro_RO",
-    type: "website",
-  },
   applicationName: "Salon Remodelare Corporală Slim & Beauty by MC",
   appleWebApp: {
     title: "Salon Remodelare Corporală Slim & Beauty by MC",
@@ -41,11 +47,10 @@ export const rootMeta: Metadata = {
 export const homePageMeta: Metadata = {
   title: "Remodelare Corporală Timișoara & Dumbrăvița | Slim & Beauty",
   description: "Remodelare corporală în Timișoara și Dumbrăvița! Slim & Beauty oferă tratamente avansate de slăbire localizată, masaj anticelulitic și dermato-cosmetică.",
-  openGraph: {
-    title: "Remodelare Corporală Timișoara & Dumbrăvița | Slim & Beauty",
-    description: "Remodelare corporală în Timișoara și Dumbrăvița! Slim & Beauty oferă tratamente avansate de slăbire localizată, masaj anticelulitic și dermato-cosmetică.",
-    url: "https://www.slimandbeauty.ro",
-  },
+  openGraph: generateOG(
+    "Remodelare Corporală Timișoara & Dumbrăvița | Slim & Beauty",
+    "Remodelare corporală în Timișoara și Dumbrăvița! Slim & Beauty oferă tratamente avansate de slăbire localizată, masaj anticelulitic și dermato-cosmetică."
+  ),
   alternates: {
     canonical: "https://www.slimandbeauty.ro",
   }
@@ -54,11 +59,11 @@ export const homePageMeta: Metadata = {
 export const servicesPageMeta: Metadata = {
   title: "Tratamente Corporale & Faciale | Slim & Beauty Timișoara",
   description: "La Slim & Beauty Timișoara, oferim remodelare corporală și tratamente dermato-cosmetice personalizate pentru un corp și un ten sănătos.",
-  openGraph: {
-    title: "Tratamente Corporale & Faciale | Slim & Beauty Timișoara",
-    description: "La Slim & Beauty Timișoara, oferim remodelare corporală și tratamente dermato-cosmetice personalizate pentru un corp și un ten sănătos.",
-    url: "https://www.slimandbeauty.ro/servicii",
-  }
+  openGraph: generateOG(
+    "Tratamente Corporale & Faciale | Slim & Beauty Timișoara",
+    "La Slim & Beauty Timișoara, oferim remodelare corporală și tratamente dermato-cosmetice personalizate pentru un corp și un ten sănătos.",
+    "https://www.slimandbeauty.ro/servicii"
+  )
 }
 
 export async function categoryPageMeta({ params }: { params: Promise<{ category: string }> }) {
@@ -73,23 +78,13 @@ export async function categoryPageMeta({ params }: { params: Promise<{ category:
   return {
     title: cat.metaTitle,
     description: cat.metaDesc,
-    openGraph: {
-      title: cat.metaTitle,
-      description: cat.metaDesc,
-      url: `https://www.slimandbeauty.ro/servicii/${category}`,
-      images: [
-        {
-          url: `https://www.slimandbeauty.ro${cat.media.src}`,
-          alt: "Photo of " + cat.category,
-        },
-        {
-          url: "https://www.slimandbeauty.ro/logo-og.png",
-          alt: "Logo Slim & Beauty by MC Logo",
-          width: 1200,
-          height: 629
-        }
-      ],
-    }
+    openGraph: generateOG(
+      cat.metaTitle,
+      cat.metaDesc,
+      `https://www.slimandbeauty.ro/servicii/${category}`,
+      `https://www.slimandbeauty.ro${cat.media.src}`,
+      cat.category
+    ),
   }
 }
 
@@ -106,32 +101,34 @@ export async function detailPageMeta({ params }: { params: Promise<{ category: s
   if (!serviceData) {
     notFound();
   }
-
   return {
     title: `${serviceData.title} - ${categoryData.category} | Slim & Beauty`,
-    description: serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!",
-    openGraph: {
-      title: `${serviceData.title} - ${categoryData.category} | Slim & Beauty`,
-      description: serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!",
-      images: [
-        {
-          url: getMetadataImage(serviceData.media),
-          alt: "Photo of " + serviceData.title,
-        }
-      ]
-    }
+    description: truncate(serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!"),
+    openGraph: generateOG(
+      `${serviceData.title} - ${categoryData.category} | Slim & Beauty`,
+      truncate(serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!"),
+      `https://www.slimandbeauty.ro/servicii/${category}/${service}`,
+      getMetadataImage(serviceData.media),
+      serviceData.title
+    )
   }
 }
 
 export const notFoundMeta: Metadata = {
   title: "404 - Pagina nu a fost găsită | Slim & Beauty",
   description: "Pagina pe care o căutați nu a fost găsită. Vă rugăm să verificați URL-ul și să încercați din nou.",
-  openGraph: {
-    title: "404 - Pagina nu a fost găsită | Slim & Beauty",
-    description: "Pagina pe care o căutați nu a fost găsită. Vă rugăm să verificați URL-ul și să încercați din nou.",
-  },
+  openGraph: generateOG(
+    "404 - Pagina nu a fost găsită | Slim & Beauty",
+    "Pagina pe care o căutați nu a fost găsită. Vă rugăm să verificați URL-ul și să încercați din nou."
+  ),
   robots: {
     index: false,
     follow: false,
   }
+}
+
+function truncate(text: string) {
+  return text.length > 160
+    ? text.slice(0, 160 - 3) + "..."
+    : text;
 }
