@@ -13,6 +13,8 @@ export default function ServicesClient() {
 
   return (
     <div className="min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] w-full flex flex-col md:flex-row">
+      <h1 className="sr-only">Servicii Slim & Beauty - valabile în Timișoara și Dumbrăvița</h1>
+
       {services.map((service, index) => (
         <Link
           href={`/servicii/${normalizeString(service.category)}`}
