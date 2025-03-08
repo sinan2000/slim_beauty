@@ -1,7 +1,6 @@
 import { socialData } from "@/lib/socials";
 import Image from "next/image";
 import Link from "next/link";
-import anpcSol from "@/assets/anpc-sol.png";
 import anpcSal from "@/assets/anpc-sal.png";
 
 export default function Footer() {
