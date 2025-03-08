@@ -46,6 +46,9 @@ export const homePageMeta: Metadata = {
     description: "Remodelare corporală în Timișoara și Dumbrăvița! Slim & Beauty oferă tratamente avansate de slăbire localizată, masaj anticelulitic și dermato-cosmetică.",
     url: "https://www.slimandbeauty.ro",
   },
+  alternates: {
+    canonical: "https://www.slimandbeauty.ro",
+  }
 }
 
 export const servicesPageMeta: Metadata = {
