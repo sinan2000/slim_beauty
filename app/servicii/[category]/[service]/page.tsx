@@ -11,6 +11,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/breadcrumbs';
 import { detailPageMeta } from '@/lib/metadatas';
 import { generateFAQSchema, generateServiceSchema } from '@/lib/jsonLds';
+import { sessions } from '@/lib/utils';
 
 export default async function ServicePage({ params }: { params: Promise<{ category: string; service: string }> }) {
   const { category, service } = await params;
@@ -36,6 +37,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
   const hasMedia = serviceData.media && serviceData.media.length > 0;
 
   const map_sedinta = ['o ședință', '6 ședințe', '10 ședințe'];
+  const map_sedinta_2 = ['o ședință', '2 ședințe', '3 ședințe'];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -112,15 +114,22 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {serviceData.price.map((price, index) => {
-                    const sessions = index === 0 ? 1 : index === 1 ? 6 : 10;
-                    const discount = index === 0 ? "-" :
-                      `${Math.round(100 - (price / (serviceData.price[0] * sessions)) * 100)}%`;
+                    const isCrio = serviceData.title === 'Criolipoliză';
+                    const basePrice = serviceData.price[0];
+                    const sessionCount = sessions(index, isCrio);
+                    const perSessionPrice = price / sessionCount;
+
+                    console.log(isCrio, price, sessionCount, perSessionPrice, basePrice);
+
+                    const discount = index === 0
+                      ? "-"
+                      : `${Math.round(100 - (perSessionPrice / basePrice) * 100)}%`;
 
                     return (
                       <tr key={index}>
                         <td className="px-4 py-3 whitespace-nowrap">
                           <div className="text-sm font-medium text-gray-900">
-                            {map_sedinta[index]}
+                            {!isCrio ? map_sedinta[index] : map_sedinta_2[index]}
                           </div>
                         </td>
                         <td className="px-4 py-3 whitespace-nowrap">

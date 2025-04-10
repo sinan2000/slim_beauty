@@ -185,3 +185,14 @@ export function getDisabledTimeSlots(timeSlots: string[], eventsForDay: string[]
 export function toRomanianDate(date: string) {
   return DateTime.fromISO(date, { setZone: true }).setLocale("ro").toFormat("EEEE, d MMMM HH:mm");
 }
+
+export const sessions = (index: number, isCrio: boolean) =>
+  index === 0
+    ? 1
+    : index === 1
+      ? isCrio
+        ? 2
+        : 6
+      : isCrio
+        ? 3
+        : 10;
