@@ -574,7 +574,7 @@ Datorită formulării blânde, tratamentul este ideal pentru toate tipurile de p
 export const faqs = [
     {
         question: "Cum pot face o programare?",
-        answer: `Poți face o programare online direct pe site-ul nostru, accesând secțiunea "Programări", sau ne poți suna la +40 733 407 329.`
+        answer: `Poți face o programare sunând la +40 733 407 329.`
     },
     {
         question: "Ce tratament mi se potrivește cel mai bine?",

@@ -7,7 +7,6 @@ import MediaGalery from '@/components/gallery';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { normalizeString, oldSlug } from '@/lib/utils';
 import { services } from '@/lib/data';
-import Link from 'next/link';
 import Breadcrumbs from '@/components/breadcrumbs';
 import { detailPageMeta } from '@/lib/metadatas';
 import { generateFAQSchema, generateServiceSchema } from '@/lib/jsonLds';
@@ -119,8 +118,6 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
                     const sessionCount = sessions(index, isCrio);
                     const perSessionPrice = price / sessionCount;
 
-                    console.log(isCrio, price, sessionCount, perSessionPrice, basePrice);
-
                     const discount = index === 0
                       ? "-"
                       : `${Math.round(100 - (perSessionPrice / basePrice) * 100)}%`;
@@ -147,12 +144,6 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
               </table>
             </div>
 
-            <Link
-              href={`/?tab=booking&service=${service}`}
-              className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-lg transition-colors shadow-md"
-            >
-              Rezervă o programare
-            </Link>
           </div>
 
           {/* Interesting Fact Panel */}

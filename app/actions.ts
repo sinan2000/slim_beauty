@@ -206,8 +206,6 @@ export async function sendSms(data: sensSmsProps) {
     const text = `Rezervare noua de la ${name}, cu numărul de telefon ${phone}, pentru serviciul de ${service}, pe ${date}. ${message && '\nMesaj: ' + message}`;
     const cleanText = mapRomanianChars(text);
 
-    console.log(cleanText);
-
     try {
         await vonage.sms.send({
             to: process.env.PHONE_NUMBER as string,

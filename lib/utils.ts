@@ -51,7 +51,7 @@ export function getFeaturedServices() {
         description: featuredDesc,
         image: media?.[0] ?? "/placeholder.jpg",
         price: price[0],
-        duration: duration
+        duration: duration,
       }))
   );
 }

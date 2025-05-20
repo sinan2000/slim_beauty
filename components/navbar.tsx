@@ -19,7 +19,6 @@ export default function Navbar() {
     const items = [
         { name: "Acasă", href: "/", dropdown: false },
         { name: "Servicii", href: "/servicii", dropdown: true },
-        { name: "Prețuri", href: "/?tab=pricing", dropdown: false },
         { name: "Contact", href: "/#contact", dropdown: false },
     ];
 
@@ -106,9 +105,9 @@ export default function Navbar() {
                                 {item.name}
                             </Link>
                         )))}
-                    <Link href="/?tab=booking">
+                    <Link href="/#preturi">
                         <Button className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-6">
-                            Programări
+                            Prețuri
                         </Button>
                     </Link>
                 </nav>
@@ -153,14 +152,6 @@ export default function Navbar() {
                             </Link>
                         ))}
                     </nav>
-
-                    {/* Booking Button */}
-                    <Button
-                        className="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-8 py-3 opacity-0 animate-fade-in"
-                        style={{ animationDelay: `${items.length * 100}ms` }}
-                    >
-                        Programări
-                    </Button>
 
                     {/* Footer Section */}
                     <div

@@ -3,8 +3,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import { getFeaturedServices } from '@/lib/utils';
 
 export default function FeaturedMotion() {
@@ -70,13 +68,6 @@ export default function FeaturedMotion() {
                 {service.duration + " min"}
               </span>
 
-              <Link href="?tab=booking">
-                <Button
-                  className="bg-white text-pink-500 hover:bg-pink-50 rounded-full px-5 py-1 h-auto text-sm font-medium transition-all duration-300 transform group-hover:scale-105"
-                >
-                  Programare
-                </Button>
-              </Link>
             </div>
           </div>
         </motion.div>

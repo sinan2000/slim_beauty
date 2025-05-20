@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
           <div className="w-full lg:w-1/2 flex flex-col items-center">
             {/* Add Video Here */}
             <div
-              className="relative rounded-lg overflow-hidden shadow-sm bg-pink-100 w-full flex justify-center items-center"
+              className="relative overflow-hidden w-full flex justify-center items-center"
             >
               <div className="aspect-[9/16] max-h-[70vh] lg:max-h-[500px] flex justify-center items-center">
                 <video

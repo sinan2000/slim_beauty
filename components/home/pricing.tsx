@@ -1,5 +1,4 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Button } from '@/components/ui/button';
 import { normalizeString } from '@/lib/utils';
 import { services } from '@/lib/data';
 import Link from 'next/link';
@@ -36,11 +35,6 @@ export default function Pricing() {
                           </p>
                         )}
                       </div>
-                      <Link href={`?tab=booking&service=${normalizeString(service.title)}`}>
-                        <Button className="bg-pink-500 hover:bg-pink-600 text-white">
-                          Programare
-                        </Button>
-                      </Link>
                     </div>
                   </AccordionContent>
                 </AccordionItem>

@@ -32,13 +32,8 @@ export default function Hero() {
                         Simte-te bine în pielea ta! La Slim & Beauty, te ajutăm să scapi de celulită, să îți tonifiezi corpul și să îți îngrijești tenul cu tratamente profesionale, într-un mediu relaxant.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up">
-                        <Link href="/?tab=booking">
-                            <Button className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
-                                Programează-te
-                            </Button>
-                        </Link>
                         <Link href="/servicii">
-                            <Button className="border border-white text-white bg-white/20 hover:bg-white/30 rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
+                            <Button  className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
                                 Descoperă Tratamentele
                             </Button>
                         </Link>
