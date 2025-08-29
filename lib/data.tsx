@@ -427,7 +427,7 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
                         answer: "DHA, ingredientul activ, reacționează cu aminoacizii din stratul superficial al pielii, creând un bronz natural care apare în câteva ore după tratament."
                     }
                 ],
-                price: [110],
+                price: [120],
                 media: [bronz1, bronz2, bronz3, bronz4, bronz5, bronz6, bronz7],
                 duration: 20
             }
