@@ -44,7 +44,10 @@ export default function RootLayout({
         <Footer />
 
         <SNSFooter />
-      </body>
+      {/* impeccable-live-start */}
+<script src="http://localhost:8400/live.js?token=f5bb8fe8-5185-4801-9ef1-91ea79bf70c2"></script>
+{/* impeccable-live-end */}
+</body>
     </html>
   );
 }

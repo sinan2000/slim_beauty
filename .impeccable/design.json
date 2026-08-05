@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-05T00:00:00.000Z",
+  "title": "Design System: Slim & Beauty by MC",
+  "extensions": {
+    "colorMeta": {
+      "signature-pink": {
+        "role": "primary",
+        "displayName": "Signature Pink",
+        "canonical": "oklch(65.6% 0.241 354.308)",
+        "tonalRamp": ["#500724", "#831843", "#9d174d", "#be185d", "#db2777", "#ec4899", "#f9a8d4", "#fdf2f8"]
+      },
+      "pink-deep": {
+        "role": "primary",
+        "displayName": "Pink Deep",
+        "canonical": "oklch(59.2% 0.249 0.584)",
+        "tonalRamp": ["#500724", "#831843", "#9d174d", "#be185d", "#db2777", "#ec4899", "#f472b6", "#fbcfe8"]
+      },
+      "pink-pressed": {
+        "role": "primary",
+        "displayName": "Pink Pressed",
+        "canonical": "oklch(52.5% 0.223 3.958)",
+        "tonalRamp": ["#500724", "#831843", "#9d174d", "#be185d", "#db2777", "#ec4899", "#f472b6", "#fce7f3"]
+      },
+      "pink-wash": {
+        "role": "secondary",
+        "displayName": "Pink Wash",
+        "canonical": "oklch(97.1% 0.014 343.198)",
+        "tonalRamp": ["#831843", "#9d174d", "#be185d", "#ec4899", "#f9a8d4", "#fbcfe8", "#fce7f3", "#fdf2f8"]
+      },
+      "pink-border": {
+        "role": "secondary",
+        "displayName": "Pink Border",
+        "canonical": "oklch(89.9% 0.061 343.231)",
+        "tonalRamp": ["#831843", "#9d174d", "#be185d", "#ec4899", "#f472b6", "#f9a8d4", "#fbcfe8", "#fdf2f8"]
+      },
+      "pink-scrim": {
+        "role": "tertiary",
+        "displayName": "Pink Scrim",
+        "canonical": "oklch(40.8% 0.153 2.432)",
+        "tonalRamp": ["#500724", "#831843", "#9d174d", "#be185d", "#db2777", "#ec4899", "#f9a8d4", "#fce7f3"]
+      },
+      "purple-scrim": {
+        "role": "tertiary",
+        "displayName": "Purple Scrim",
+        "canonical": "oklch(43.8% 0.218 303.724)",
+        "tonalRamp": ["#3b0764", "#581c87", "#6b21a8", "#7e22ce", "#9333ea", "#a855f7", "#c084fc", "#f3e8ff"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#111827", "#374151", "#6b7280", "#9ca3af", "#d1d5db", "#e5e7eb", "#f9fafb", "#ffffff"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(27.8% 0.033 256.848)",
+        "tonalRamp": ["#030712", "#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#f9fafb"]
+      },
+      "body": {
+        "role": "neutral",
+        "displayName": "Body",
+        "canonical": "oklch(44.6% 0.03 256.802)",
+        "tonalRamp": ["#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db", "#f9fafb"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "oklch(55.1% 0.027 264.364)",
+        "tonalRamp": ["#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#e5e7eb", "#ffffff"]
+      },
+      "nav-ink": {
+        "role": "neutral",
+        "displayName": "Nav Ink",
+        "canonical": "oklch(37.3% 0.034 259.733)",
+        "tonalRamp": ["#030712", "#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#d1d5db", "#ffffff"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(92.8% 0.006 264.531)",
+        "tonalRamp": ["#374151", "#6b7280", "#9ca3af", "#d1d5db", "#e5e7eb", "#f3f4f6", "#f9fafb", "#ffffff"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page-level H1 only, once per page, always white over a scrimmed photograph." },
+      "headline": { "displayName": "Headline", "purpose": "Centered section titles. Always followed by a max-w-2xl body subhead." },
+      "title": { "displayName": "Title", "purpose": "Card titles, price-list category headings, founder attribution." },
+      "body": { "displayName": "Body", "purpose": "All paragraph copy. Capped at max-w-2xl when centered." },
+      "body-lead": { "displayName": "Body Lead", "purpose": "Hero subhead and primary button labels — the one step above body." },
+      "label": { "displayName": "Label", "purpose": "Navigation, durations, price chips, meta, captions. The workhorse size." }
+    },
+    "shadows": [
+      { "name": "chrome", "value": "0 1px 2px rgba(0,0,0,0.05)", "purpose": "Scrolled header, bordered price panel, benefit icon circles. A hairline of separation." },
+      { "name": "detached", "value": "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1)", "purpose": "Elements that leave the page plane — nav dropdown, gallery arrows." },
+      { "name": "lifted", "value": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)", "purpose": "Media cards and the map frame. Marks a destination block." },
+      { "name": "panel", "value": "0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1)", "purpose": "Heaviest in the system. Spent on the contact card and testimonial glass only." }
+    ],
+    "overlays": [
+      { "name": "brand-gradient", "value": "linear-gradient(to right, rgba(131,24,67,0.6), rgba(88,28,135,0.4))", "purpose": "Homepage hero only." },
+      { "name": "neutral-wash", "value": "rgba(0,0,0,0.5)", "purpose": "Category and service page headers, where the photograph varies." },
+      { "name": "bottom-fade", "value": "linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4), transparent)", "purpose": "Media cards, so title and price sit readably over the lower third." },
+      { "name": "brand-scrim", "value": "rgba(131,24,67,0.7); backdrop-filter: blur(4px)", "purpose": "Testimonials — turns a photograph into a colored room." }
+    ],
+    "motion": [
+      { "name": "transition-standard", "value": "300ms ease-out", "purpose": "Color and transform state changes on buttons, links, and chrome." },
+      { "name": "image-scale", "value": "500ms ease-out", "purpose": "Media card image scale to 1.1 on group hover, inside a fixed frame." },
+      { "name": "fade-hero-in", "value": "fadeHeroIn 0.8s ease-out forwards", "purpose": "Hero content entry from 0.2 opacity." },
+      { "name": "slide-up", "value": "slideUp 0.8s ease-out forwards", "purpose": "Hero headline and subhead rise 20px on load." },
+      { "name": "reveal-in", "value": "reveal-in linear both; animation-timeline: view(); animation-range: entry 0% cover 30%", "purpose": "Scroll-driven below-fold reveal, rising 30px. CSS-only so served HTML never contains opacity:0 — crawlers still see content. Gated on prefers-reduced-motion." },
+      { "name": "accordion", "value": "0.2s ease-out", "purpose": "Radix accordion height open/close." },
+      { "name": "menu-stagger", "value": "fadeIn 0.5s ease-out forwards, 100ms per item", "purpose": "Mobile overlay menu item entry." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ],
+    "measures": [
+      { "name": "prose", "value": "672px", "purpose": "max-w-2xl — centered body copy under a section headline." },
+      { "name": "hero", "value": "768px", "purpose": "max-w-3xl — hero copy block." },
+      { "name": "table", "value": "1024px", "purpose": "max-w-5xl — the price table." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The hero-scale call to action. A soft pink pill that looks pleasant to press.",
+      "html": "<button class=\"ds-btn-primary\">Descoperă Tratamentele</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #db2777; color: #fff; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; font-weight: 500; line-height: 1.4; padding: 24px 32px; border: none; border-radius: 9999px; cursor: pointer; transition: background 300ms ease-out, transform 300ms ease-out; } .ds-btn-primary:hover { background: #be185d; transform: scale(1.05); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(236,72,153,0.5); } .ds-btn-primary:active { background: #be185d; transform: scale(1.02); }"
+    },
+    {
+      "name": "Primary Button (Compact)",
+      "kind": "button",
+      "refersTo": "button-primary-compact",
+      "description": "The navigation-scale action. Same fill and pill, label typography.",
+      "html": "<button class=\"ds-btn-compact\">Prețuri</button>",
+      "css": ".ds-btn-compact { display: inline-flex; align-items: center; justify-content: center; height: 36px; background: #db2777; color: #fff; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; padding: 8px 24px; border: none; border-radius: 9999px; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: background 300ms ease-out; } .ds-btn-compact:hover { background: #be185d; } .ds-btn-compact:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(236,72,153,0.5); }"
+    },
+    {
+      "name": "Back Button",
+      "kind": "button",
+      "refersTo": "button-back",
+      "description": "The only outlined button in the system. White fill, pink label, warm hairline border.",
+      "html": "<a class=\"ds-btn-back\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 12H5\"/><path d=\"m12 19-7-7 7-7\"/></svg>Înapoi la Servicii</a>",
+      "css": ".ds-btn-back { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: #be185d; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; padding: 12px 24px; border: 1px solid #fbcfe8; border-radius: 9999px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: background 300ms ease-out; } .ds-btn-back:hover { background: #fdf2f8; } .ds-btn-back:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(236,72,153,0.5); }"
+    },
+    {
+      "name": "Price Chip",
+      "kind": "chip",
+      "refersTo": "price-chip",
+      "description": "The highest-value non-button use of the accent. Price stated without apology, always with the RON unit.",
+      "html": "<span class=\"ds-chip-price\">120 RON</span>",
+      "css": ".ds-chip-price { display: inline-flex; align-items: center; background: #db2777; color: #fff; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; line-height: 1.4; padding: 4px 12px; border-radius: 9999px; white-space: nowrap; }"
+    },
+    {
+      "name": "Media Card",
+      "kind": "card",
+      "refersTo": "card-media",
+      "description": "The featured-treatment card. Full-bleed photograph under a bottom fade, caption pinned to the lower edge, image scales inside a fixed frame on hover.",
+      "html": "<a class=\"ds-card-media\" href=\"#\"><div class=\"ds-card-media__frame\"><div class=\"ds-card-media__img\"></div><div class=\"ds-card-media__fade\"></div></div><div class=\"ds-card-media__body\"><div class=\"ds-card-media__row\"><h3 class=\"ds-card-media__title\">VShape Anticelulitic</h3><span class=\"ds-chip-price\">120 RON</span></div><p class=\"ds-card-media__desc\">Combate celulita eficient utilizând tehnologie avansată.</p><span class=\"ds-card-media__meta\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 3.5A8.5 8.5 0 1 0 20.5 12 8.51 8.51 0 0 0 12 3.5Zm0 15A6.5 6.5 0 1 1 18.5 12 6.51 6.51 0 0 1 12 18.5ZM12 7a1 1 0 0 1 1 1v3.59l2.7 2.7a1 1 0 1 1-1.42 1.42l-3-3A1 1 0 0 1 11 12V8a1 1 0 0 1 1-1Z\"/></svg>30 min</span></div></a>",
+      "css": ".ds-card-media { position: relative; display: block; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); text-decoration: none; } .ds-card-media__frame { position: relative; height: 400px; width: 100%; overflow: hidden; } .ds-card-media__img { position: absolute; inset: 0; background: linear-gradient(135deg, #f9a8d4, #831843); transition: transform 500ms ease-out; } .ds-card-media:hover .ds-card-media__img { transform: scale(1.1); } .ds-card-media__fade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4), transparent); } .ds-card-media__body { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; color: #fff; } .ds-card-media__row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; } .ds-card-media__title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; font-weight: 600; margin: 0; } .ds-card-media__desc { font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; color: rgba(255,255,255,0.8); margin: 0 0 16px; } .ds-card-media__meta { display: inline-flex; align-items: center; gap: 4px; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; color: rgba(255,255,255,0.7); } .ds-chip-price { display: inline-flex; background: #db2777; color: #fff; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; padding: 4px 12px; border-radius: 9999px; }"
+    },
+    {
+      "name": "Panel Card",
+      "kind": "card",
+      "refersTo": "card-panel",
+      "description": "A block that is a destination in its own right — the contact/FAQ panel. Carries the heaviest shadow in the system.",
+      "html": "<div class=\"ds-card-panel\"><h3 class=\"ds-card-panel__title\">Întrebări Frecvente</h3><p class=\"ds-card-panel__body\">Fiecare corp este diferit. Dacă nu știi ce tratament să alegi, ne poți contacta telefonic pentru a primi recomandările noastre.</p></div>",
+      "css": ".ds-card-panel { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); } .ds-card-panel__title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; font-weight: 600; color: #1f2937; margin: 0 0 8px; } .ds-card-panel__body { font-family: Inter, system-ui, sans-serif; font-size: 1rem; line-height: 1.6; color: #4b5563; margin: 0; }"
+    },
+    {
+      "name": "Price Row (Accordion)",
+      "kind": "custom",
+      "refersTo": "card-bordered",
+      "description": "The price table row. Treatment name left, accent-pink price right, details disclosed on open. Deliberately the plainest container in the system.",
+      "html": "<details class=\"ds-price-row\" open><summary class=\"ds-price-row__trigger\"><span>Criolipoliză</span><span class=\"ds-price-row__price\">280 RON *</span></summary><div class=\"ds-price-row__content\"><p class=\"ds-price-row__meta\">Durata unei ședințe: 40 minute</p><p class=\"ds-price-row__desc\">Sculptură corporală cu tehnologie avansată de răcire.</p></div></details>",
+      "css": ".ds-price-row { border-bottom: 1px solid #e5e7eb; font-family: Inter, system-ui, sans-serif; } .ds-price-row:last-child { border-bottom: none; } .ds-price-row__trigger { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 16px 16px 0; font-size: 0.875rem; font-weight: 500; color: #1f2937; cursor: pointer; list-style: none; transition: color 200ms ease-out; } .ds-price-row__trigger::-webkit-details-marker { display: none; } .ds-price-row__trigger:hover { text-decoration: underline; } .ds-price-row__trigger:focus-visible { outline: none; border-radius: 6px; box-shadow: 0 0 0 3px rgba(236,72,153,0.5); } .ds-price-row__price { font-weight: 600; color: #db2777; white-space: nowrap; } .ds-price-row__content { padding-bottom: 16px; } .ds-price-row__meta { font-size: 1rem; color: #4b5563; margin: 0 0 8px; } .ds-price-row__desc { font-size: 0.875rem; color: #6b7280; margin: 0; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Transparent fill, hairline border, ring on focus. 16px text on mobile so iOS does not zoom on focus.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Numele dvs.\" />",
+      "css": ".ds-input { display: flex; width: 100%; height: 36px; background: transparent; color: #1f2937; font-family: Inter, system-ui, sans-serif; font-size: 1rem; padding: 4px 12px; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); outline: none; transition: color 200ms, box-shadow 200ms; } .ds-input::placeholder { color: #6b7280; } .ds-input:focus-visible { border-color: #ec4899; box-shadow: 0 0 0 3px rgba(236,72,153,0.5); } .ds-input[aria-invalid=\"true\"] { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.2); } @media (min-width: 768px) { .ds-input { font-size: 0.875rem; } }"
+    },
+    {
+      "name": "Navigation (Solid State)",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "The scrolled/interior-page state: 80% white with a backdrop blur, ink links hovering to accent pink, compact pill action at the end.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-nav__logo\">Slim &amp; Beauty</span><nav class=\"ds-nav__links\"><a class=\"ds-nav__link\" href=\"#\">Acasă</a><a class=\"ds-nav__link\" href=\"#\">Servicii<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m6 9 6 6 6-6\"/></svg></a><a class=\"ds-nav__link\" href=\"#\">Contact</a><button class=\"ds-btn-compact\">Prețuri</button></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 12px 16px; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: all 300ms ease-out; } .ds-nav__logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #1f2937; } .ds-nav__links { display: flex; align-items: center; gap: 32px; } .ds-nav__link { display: inline-flex; align-items: center; gap: 4px; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; color: #374151; text-decoration: none; transition: color 300ms ease-out; } .ds-nav__link:hover { color: #db2777; } .ds-nav__link:focus-visible { outline: none; border-radius: 6px; box-shadow: 0 0 0 3px rgba(236,72,153,0.5); } .ds-btn-compact { height: 36px; background: #db2777; color: #fff; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; padding: 8px 24px; border: none; border-radius: 9999px; cursor: pointer; transition: background 300ms ease-out; } .ds-btn-compact:hover { background: #be185d; }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "The most-repeated pattern on the site. Centered headline, 16px gap, max-w-2xl subhead, 64px of air below. Its uniformity is what makes a long page navigable.",
+      "html": "<div class=\"ds-section-header\"><h2 class=\"ds-section-header__title\">Tratamentele Noastre Populare</h2><p class=\"ds-section-header__sub\">Descoperă cele mai eficiente tratamente pentru remodelare corporală și întinerirea pielii.</p></div>",
+      "css": ".ds-section-header { text-align: center; margin-bottom: 64px; } .ds-section-header__title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.875rem, 3.5vw, 2.25rem); font-weight: 700; line-height: 1.2; color: #1f2937; margin: 0 0 16px; } .ds-section-header__sub { font-family: Inter, system-ui, sans-serif; font-size: 1rem; line-height: 1.6; color: #4b5563; max-width: 672px; margin: 0 auto; }"
+    },
+    {
+      "name": "Before/After Comparator",
+      "kind": "custom",
+      "refersTo": "card-panel",
+      "description": "The signature component and the only interactive proof element. A draggable divider with a white handle carrying an accent dot — the one place the accent is allowed inside a photograph, because the handle must be findable against arbitrary image content.",
+      "html": "<div class=\"ds-compare\"><div class=\"ds-compare__after\"></div><div class=\"ds-compare__before\"></div><div class=\"ds-compare__divider\"><div class=\"ds-compare__handle\"><span class=\"ds-compare__dot\"></span></div></div></div>",
+      "css": ".ds-compare { position: relative; width: 100%; height: 320px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); user-select: none; } .ds-compare__after { position: absolute; inset: 0; background: linear-gradient(135deg, #fbcfe8, #ec4899); } .ds-compare__before { position: absolute; inset: 0; width: 50%; background: linear-gradient(135deg, #6b7280, #1f2937); } .ds-compare__divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: #fff; cursor: col-resize; } .ds-compare__handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 40px; width: 40px; background: #fff; border-radius: 9999px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; } .ds-compare__dot { height: 24px; width: 24px; border-radius: 9999px; background: #ec4899; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Treatment Room",
+    "overview": "The system behaves like the room a client is actually walking into: white, quiet, warmed by pink light, and unhurried. Nothing about it hurries or shouts. Surfaces are clean and mostly empty; the color that appears does so in small, deliberate places; and every heading is set in a serif that reads as cared for rather than engineered. The visitor arriving here is deciding whether to trust this salon with her body, and the room she lands in has to feel calm before it feels persuasive.\n\nDepth in this world never comes from stacked shadows. It comes from photography — real treatment rooms, real products, real results — held under a tinted scrim so type can sit on top of it. The page alternates between two states: a white room (services, prices) and a pink-washed room (about, gallery, contact), with occasional immersive moments where a photograph takes the whole viewport and the copy floats over it in white. That three-state rhythm is the spatial signature of the site, and it does more structural work than any border or shadow does.\n\nThe one thing this system must never become is a cold medical clinic. The technology is clinical — cryolipolysis, radiofrequency, microneedling — and the temptation to signal credibility with blue-white sterility, hard rules, and clinical stock photography is exactly the trap. The pink warmth is not decoration; it is the argument that this equipment is being operated by a person, in a comfortable room, on someone who will be looked after.",
+    "keyCharacteristics": [
+      "One accent color, used sparingly, on a near-white ground",
+      "Playfair Display serif for every heading, Inter for everything else — no third voice",
+      "Full-bleed photography under a tinted overlay as the primary source of depth",
+      "Pill-shaped buttons and softly rounded panels; nothing hard-edged",
+      "Alternating white / pink-wash section rhythm at a consistent 80px vertical cadence",
+      "Motion is entry-only: fade and rise on scroll, never looping or attention-seeking"
+    ],
+    "rules": [
+      { "name": "The One Loud Thing Rule", "body": "Signature Pink covers no more than ~5% of any viewport. It marks the price, the action, or the single most important glyph — never a background, never a large block, never two competing elements in the same view. Its scarcity is what makes a price feel like an answer instead of an ad.", "section": "colors" },
+      { "name": "The Two Rooms Rule", "body": "Sections alternate between white and Pink Wash. Two consecutive sections never share a background, and no third section background exists. If a new section needs to feel distinct beyond that, it earns a photograph, not a new color.", "section": "colors" },
+      { "name": "The Cold Ban", "body": "No blue, no gray-blue, no clinical teal anywhere in the interface. The technology is clinical; the room is not. Credibility is carried by specificity — real device names, real durations, real prices — never by sterile color.", "section": "colors" },
+      { "name": "The Serif Ceiling Rule", "body": "Playfair is for headings and card titles only. It never sets a paragraph, a button, a label, a nav item, or a price. If a piece of type is something the visitor reads rather than lands on, it is Inter.", "section": "typography" },
+      { "name": "The Centered Header Rule", "body": "Every section opens the same way: centered Headline, 16px below it a centered Body subhead capped at max-w-2xl, then 64px of air before the content. The consistency is load-bearing — it is what makes a long scrolling page feel navigable.", "section": "typography" },
+      { "name": "The Eighty Rule", "body": "Every top-level section is 80px of vertical padding. Not 72, not 96. When a section needs to feel larger, it gets a photograph or a background change — not extra padding.", "section": "layout" },
+      { "name": "The Reduced-Motion Rule", "body": "Every scroll-triggered animation lives inside @supports (animation-timeline: view()) and @media (prefers-reduced-motion: no-preference). A visitor who has asked for stillness gets a completely static, fully legible page. No exceptions, and no JavaScript fallback that reintroduces the movement.", "section": "layout" },
+      { "name": "The Photograph-Not-Shadow Rule", "body": "When a block needs to feel important, it gets real photography under a scrim — not a bigger shadow. Elevation above Lifted requires a reason that already exists in this document.", "section": "elevation" },
+      { "name": "The Legible Scrim Rule", "body": "White type never sits on an unscrimmed photograph. Every full-bleed image carries one of the four named overlays, and body-scale text over imagery drops no lower than 80% white.", "section": "elevation" },
+      { "name": "The No Hard Corner Rule", "body": "Nothing in this interface has a 0 radius except full-bleed sections and images that reach the viewport edge. If a box has an edge the visitor can see, that edge is rounded.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep Signature Pink (#ec4899) under ~5% of any viewport — the One Loud Thing Rule. One accented element per view, and prefer that it be the price or the action.",
+      "Do alternate section backgrounds between white and Pink Wash (#fdf2f8), never twice in a row, and never introduce a third section background.",
+      "Do set every heading in Playfair Display and everything else in Inter. Two voices, no more.",
+      "Do open every section with the centered Headline + max-w-2xl subhead + 64px gap pattern.",
+      "Do use 80px vertical section padding (64px on interior pages). Stay inside the 4 / 8 / 16 / 24 / 32 / 48 / 80 spacing set.",
+      "Do put one of the four named overlays under any white type sitting on a photograph.",
+      "Do make buttons fully rounded pills and containers softly rounded (6–16px, scaling with block size).",
+      "Do wrap every scroll animation in both @supports (animation-timeline: view()) and prefers-reduced-motion: no-preference.",
+      "Do serve every image through next/image with an explicit sizes attribute and Romanian alt text that names the treatment and the salon.",
+      "Do keep input text at 16px on mobile so iOS does not zoom on focus."
+    ],
+    "donts": [
+      "Don't introduce blue, gray-blue, or clinical teal anywhere. The Cold Ban is the brand's core visual commitment — a cold medical clinic is the stated anti-reference.",
+      "Don't use Purple Scrim (#581c87) as anything but the second stop of the hero gradient. It is not a palette color.",
+      "Don't set body copy, buttons, labels, or prices in Playfair. The Serif Ceiling Rule.",
+      "Don't reach for a heavier shadow to signal importance. Use photography under a scrim instead; Panel shadow is spent on the contact card and the testimonial glass and should stay that way.",
+      "Don't put a sharp-cornered box in the interface, and don't put two filled pink buttons in the same viewport.",
+      "Don't add a third heading font, a second accent hue, or an illustration style. The system has no room for a third voice.",
+      "Don't treat the shadcn zinc token block in app/globals.css as this project's palette. It is inert scaffolding that the Radix primitives reference for focus rings and borders only; the real system is the documented one, and there is no dark mode.",
+      "Don't loop, bounce, or auto-play anything for attention. Motion is entry-only. The hero's scroll chevron is the single exception and it is not to be joined by another.",
+      "Don't invent proof. Three real reviews and two real before/after pairs exist; the visual system must work at that scale rather than assuming a wall of testimonials or a filled results grid."
+    ]
+  }
+}

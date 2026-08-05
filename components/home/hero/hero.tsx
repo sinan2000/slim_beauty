@@ -42,8 +42,8 @@ export default function Hero() {
             </div>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center animate-bounce">
-                <div className="text-pink-300 opacity-80">
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center hero-cue">
+                <div className="text-pink-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-8 w-8" viewBox="0 0 24 24">
                         <path d="M12 18.5a1 1 0 0 1-.71-.29l-6-6a1 1 0 1 1 1.42-1.42L12 16.08l5.29-5.29a1 1 0 1 1 1.42 1.42l-6 6a1 1 0 0 1-.71.29Z" />
                     </svg>

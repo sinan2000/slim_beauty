@@ -259,6 +259,47 @@
   }
 }
 
+/*
+  Hero scroll cue.
+
+  Deliberately NOT Tailwind's built-in bounce utility, which pairs
+  cubic-bezier(0.8, 0, 1, 1) on the way down with cubic-bezier(0, 0, 0.2, 1) on
+  the way up - a gravity/elastic snap that reads as cartoonish against a calm
+  salon hero. This is a slow symmetric sine drift with no overshoot: it still
+  says "there is more below" without yanking the eye back every second.
+
+  Animates `transform` rather than `translate` on purpose - the element is
+  centred with `-translate-x-1/2`, which sets the standalone `translate`
+  property, so the two compose instead of clobbering each other.
+
+  Resting opacity lives on the element, not only in the keyframe, so a
+  reduced-motion visitor gets a still chevron at the same weight rather than
+  whatever frame the animation would have started on.
+*/
+.hero-cue {
+  opacity: 0.7;
+}
+
+@keyframes hero-cue {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-cue {
+    animation: hero-cue 2.8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  }
+}
+
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {

@@ -70,7 +70,7 @@ export default function Navbar() {
                                 <Link
                                     href={item.href}
                                     className={cn(
-                                        "font-medium flex items-center gap-1 hover:text-pink-500 transition-colors",
+                                        "font-medium flex items-center gap-1 hover:text-pink-600 transition-colors",
                                         isScrolled ? "text-gray-700" : "text-white"
                                     )}
                                 >
@@ -98,7 +98,7 @@ export default function Navbar() {
                                 key={item.name}
                                 href={item.href}
                                 className={cn(
-                                    "font-medium hover:text-pink-500 transition-colors",
+                                    "font-medium hover:text-pink-600 transition-colors",
                                     isScrolled ? "text-gray-700" : "text-white"
                                 )}
                             >
@@ -144,7 +144,7 @@ export default function Navbar() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-gray-800 text-xl font-medium hover:text-pink-500 transition-all opacity-0 animate-fade-in"
+                                className="text-gray-800 text-xl font-medium hover:text-pink-600 transition-all opacity-0 animate-fade-in"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
@@ -164,7 +164,7 @@ export default function Navbar() {
                             </span>
                             <div className="flex space-x-4">
                                 {socialData.map((item, index) => (
-                                    <Link key={`social-icon-mobile-menu-no-${index}`} href={item.link} target="_blank" className="text-gray-500 hover:text-pink-500">
+                                    <Link key={`social-icon-mobile-menu-no-${index}`} href={item.link} target="_blank" className="text-gray-500 hover:text-pink-600">
                                         <Image
                                             src={item.icon}
                                             alt={item.alt}

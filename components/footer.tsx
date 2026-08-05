@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-serif font-bold text-gray-800 mb-4">Slim & Beauty</h3>
+            <h3 className="text-xl font-playfair font-bold text-gray-800 mb-4">Slim & Beauty</h3>
             <p className="text-gray-600 mb-4">
               Slim & Beauty by MC oferă servicii de înfrumusețare și remodelare corporală de înaltă calitate, folosind tehnologii avansate și produse premium. Hai să vorbim despre slăbit!
             </p>
@@ -27,7 +27,7 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-serif font-bold text-gray-800 mb-4">Programul nostru</h3>
+            <h3 className="text-xl font-playfair font-bold text-gray-800 mb-4">Programul nostru</h3>
             <ul className="space-y-2 text-gray-600">
               <li className="flex justify-between">
                 <span>Luni, marți, joi</span>
@@ -44,7 +44,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-serif font-bold text-gray-800 mb-4">Detalii de contact</h3>
+            <h3 className="text-xl font-playfair font-bold text-gray-800 mb-4">Detalii de contact</h3>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start">
                 <svg

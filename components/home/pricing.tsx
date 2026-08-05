@@ -19,7 +19,7 @@ export default function Pricing() {
                   <AccordionTrigger className="hover:no-underline">
                     <div className="flex justify-between w-full pr-4">
                       <span>{service.title}</span>
-                      <span className="font-semibold text-pink-500">{service.price[0] + " RON"}{service.price.length > 1 ? ' *' : ''}</span>
+                      <span className="font-semibold text-pink-600">{service.price[0] + " RON"}{service.price.length > 1 ? ' *' : ''}</span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
@@ -30,7 +30,7 @@ export default function Pricing() {
                           {service.shortDescription}
                         </p>
                         {service.price.length > 1 && (
-                          <p className="text-sm text-pink-500 mt-2">
+                          <p className="text-sm text-pink-600 mt-2">
                             * Prețul afișat este pentru o singură ședință. Puteți vedea prețurile pentru pachete accesând <Link href={`/servicii/${normalizeString(category.category)}/${normalizeString(service.title)}`} className="underline">această</Link> pagină.
                           </p>
                         )}
