@@ -11,7 +11,7 @@ export default function Hero() {
         >
             <Image
                 src={heroImage}
-                alt="Photo of Facial Treatment"
+                alt="Tratament facial într-un salon de remodelare corporală și dermato cosmetică din Timișoara"
                 fill
                 priority
                 loading="eager"

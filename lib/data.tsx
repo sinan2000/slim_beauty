@@ -69,7 +69,7 @@ Vrei să reduci celulita și să ai o piele mai fermă și mai netedă? VShape A
                         answer: "VShape poate fi aplicat pe coapse, abdomen, brațe, fese și alte zone predispuse la acumularea de celulită."
                     }
                 ],
-                price: [120, 600, 900],
+                price: [120, 660, 1000],
                 media: [vshape1, vshape2],
                 duration: 30
             },
@@ -160,7 +160,7 @@ Tratamentul este perfect pentru cei care doresc să combine slăbirea localizat�
                         answer: "Tratamentul EMSlim Neo RF este considerat sigur și nu are efecte secundare semnificative. Unii pacienți pot resimți o ușoară senzație de oboseală musculară după ședință, similară unui antrenament intens."
                     }
                 ],
-                price: [85, 450, 650],
+                price: [85, 480, 700],
                 media: ["/emslim.mp4", emslim2, emslim3],
                 duration: 30
             },
@@ -202,7 +202,7 @@ Radiofrecvența Bipolară este recunoscută pentru capacitatea sa de a oferi rez
                         answer: "Nu există efecte secundare majore asociate cu acest tratament. Pacienții pot observa o ușoară înroșire a pielii imediat după ședință, dar aceasta dispare rapid."
                     }
                 ],
-                price: [80, 450, 700],
+                price: [90, 510, 750],
                 duration: 30
             },
             {
@@ -298,7 +298,7 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                         answer: "Efectele secundare sunt rare, însă unele persoane pot simți o ușoară senzație de oboseală sau o nevoie mai frecventă de a urina, deoarece corpul elimină lichidele și toxinele."
                     }
                 ],
-                price: [70, 360, 550],
+                price: [80, 450, 700],
                 media: [preso],
                 duration: 45
             },
@@ -340,7 +340,7 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                         answer: "Efectele secundare sunt minime și pot include o ușoară înroșire sau sensibilitate în zona tratată, dar acestea dispar rapid."
                     }
                 ],
-                price: [90, 480, 700],
+                price: [90, 510, 750],
                 duration: 30
             },
             {
@@ -381,7 +381,7 @@ De asemenea, împachetările IR ajută la ameliorarea durerilor musculare și ar
                         answer: "Da, căldura infraroșie stimulează descompunerea grăsimii din zonele afectate de celulită și îmbunătățește circulația, contribuind la reducerea aspectului de coajă de portocală."
                     }
                 ],
-                price: [75, 390, 600],
+                price: [80, 450, 700],
                 duration: 45
             },
             {

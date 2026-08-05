@@ -1,7 +1,3 @@
-"use client"
-
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
 import { Settings, BadgeCheck, Sparkles, UserCheck } from "lucide-react"
 const benefits = [
   {
@@ -12,7 +8,9 @@ const benefits = [
   {
     icon: <BadgeCheck className="h-8 w-8 text-pink-500" />,
     title: "Experiență de Peste 10 Ani",
-    description: `Cu peste ${new Date().getFullYear() - 2013} ani de experiență în domeniu, suntem alegerea sigură.`,
+    // Deliberately not computed from `new Date()`: this section is prerendered at
+    // build time, so a runtime year would hydrate differently after a New Year.
+    description: "Cu peste 10 ani de experiență în domeniu, suntem alegerea sigură.",
   },
   {
     icon: <Sparkles className="h-8 w-8 text-pink-500" />,
@@ -28,9 +26,6 @@ const benefits = [
 ]
 
 export default function WhyChooseUs() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   return (
     <section id="about" className="py-20 bg-pink-50 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
@@ -55,18 +50,13 @@ export default function WhyChooseUs() {
             </div>
 
             {/* Founder Attribution */}
-            <motion.div
-              className="mt-6 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
+            <div className="reveal mt-6 text-center">
               <div className="relative inline-block">
                 <h3 className="font-playfair text-2xl md:text-3xl font-bold text-gray-800">Mihaela Ceviker</h3>
                 <div className="h-1 w-1/2 bg-gradient-to-r from-pink-300 to-pink-500 rounded-full mx-auto mt-2"></div>
               </div>
               <p className="text-gray-600 mt-2 italic">fondatoarea salonului Slim & Beauty by MC</p>
-            </motion.div>
+            </div>
           </div>
 
           {/* Content Side */}
@@ -77,42 +67,17 @@ export default function WhyChooseUs() {
               rezultate rapide și de lungă durată.
             </p>
 
-            <motion.div
-              ref={ref}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1,
-                  },
-                },
-              }}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-start gap-4"
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.5 },
-                    },
-                  }}
-                >
+                <div key={index} className="reveal flex items-start gap-4">
                   <div className="p-3 bg-white rounded-full shadow-xs">{benefit.icon}</div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">{benefit.title}</h3>
                     <p className="text-gray-600 text-sm">{benefit.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

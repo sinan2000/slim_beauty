@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -30,8 +29,6 @@ const beforeAfterImages = [
 export default function BeforeAfterGallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sliderPosition, setSliderPosition] = useState(50);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
   const handleSliderChange = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     const container = e.currentTarget.getBoundingClientRect();
@@ -69,13 +66,7 @@ export default function BeforeAfterGallery() {
           </p>
         </div>
 
-        <motion.div
-          ref={ref}
-          className="max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="reveal max-w-4xl mx-auto">
           <div className="relative rounded-2xl overflow-hidden shadow-xl">
             {/* Before/After Slider */}
             <div
@@ -87,7 +78,7 @@ export default function BeforeAfterGallery() {
               <div className="relative overflow-hidden" style={{ width: `${sliderPosition}%` }}>
                 <Image
                   src={currentImage.before}
-                  alt={`Before ${currentImage.title}`}
+                  alt={`Înainte de tratamentul ${currentImage.title} la Slim & Beauty by MC`}
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -98,7 +89,7 @@ export default function BeforeAfterGallery() {
               <div className="relative overflow-hidden" style={{ width: `${100 - sliderPosition}%` }}>
                 <Image
                   src={currentImage.after}
-                  alt={`After ${currentImage.title}`}
+                  alt={`După tratamentul ${currentImage.title} la Slim & Beauty by MC`}
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -134,7 +125,7 @@ export default function BeforeAfterGallery() {
             <button
               onClick={prevImage}
               className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-xs transition-all"
-              aria-label="Previous image"
+              aria-label="Rezultatul anterior"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
@@ -142,7 +133,7 @@ export default function BeforeAfterGallery() {
             <button
               onClick={nextImage}
               className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-xs transition-all"
-              aria-label="Next image"
+              aria-label="Rezultatul următor"
             >
               <ChevronRight className="h-6 w-6" />
             </button>
@@ -158,11 +149,11 @@ export default function BeforeAfterGallery() {
                   "h-16 w-24 relative rounded-md overflow-hidden transition-all",
                   index === currentIndex ? "ring-2 ring-pink-500 ring-offset-2" : "opacity-70"
                 )}
-                aria-label={`View ${image.title}`}
+                aria-label={`Vezi rezultatele pentru ${image.title}`}
               >
                 <Image
                   src={image.after}
-                  alt={image.title}
+                  alt={`Rezultat după tratamentul ${image.title}`}
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -170,7 +161,7 @@ export default function BeforeAfterGallery() {
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

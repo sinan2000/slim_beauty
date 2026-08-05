@@ -11,9 +11,10 @@ type Media = string | StaticImageData;
 
 interface Props {
   media: Media[];
+  title: string;
 }
 
-export default function MediaGalery({ media }: Props) {
+export default function MediaGalery({ media, title }: Props) {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const nextImage = () => {
@@ -48,7 +49,7 @@ export default function MediaGalery({ media }: Props) {
           // Handle Normal Images
           <Image
             src={activeMedia}
-            alt={`Image ${activeImageIndex + 1}`}
+            alt={`${title} la Slim & Beauty by MC - imaginea ${activeImageIndex + 1} din ${media.length}`}
             fill
             style={{ objectFit: 'contain' }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -60,14 +61,14 @@ export default function MediaGalery({ media }: Props) {
             <button
               onClick={prevImage}
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
-              aria-label="Previous image"
+              aria-label="Imaginea anterioară"
             >
               <ChevronLeft className="h-6 w-6 text-gray-700" />
             </button>
             <button
               onClick={nextImage}
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
-              aria-label="Next image"
+              aria-label="Imaginea următoare"
             >
               <ChevronRight className="h-6 w-6 text-gray-700" />
             </button>
@@ -79,7 +80,7 @@ export default function MediaGalery({ media }: Props) {
                   onClick={() => setActiveImageIndex(index)}
                   className={`w-2.5 h-2.5 rounded-full ${index === activeImageIndex ? 'bg-pink-500' : 'bg-gray-300'
                     }`}
-                  aria-label={`Go to image ${index + 1}`}
+                  aria-label={`Mergi la imaginea ${index + 1}`}
                 />
               ))}
             </div>

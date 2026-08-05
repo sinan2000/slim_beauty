@@ -1,29 +1,55 @@
 import type { Metadata } from "next";
+import type { StaticImageData } from "next/image";
 import { services } from "./data";
 import { getMetadataImage, normalizeString } from "./utils";
 import { notFound } from "next/navigation";
 
-function generateOG(title: string, description: string, url?: string, photo?: string, alt?: string) {
+const SITE_NAME = "Slim & Beauty by MC";
+
+const defaultOgImage = {
+  url: "/logo-og.png",
+  alt: "Logo Slim & Beauty by MC",
+  width: 1200,
+  height: 629,
+};
+
+/**
+ * `path` and image urls are left relative on purpose - Next resolves them
+ * against `metadataBase` (see rootMeta), so the domain lives in one place.
+ */
+function generateOG(
+  title: string,
+  description: string,
+  path: string = "/",
+  photo?: StaticImageData,
+  alt?: string
+) {
   return {
-    siteName: "Slim & Beauty by MC",
+    siteName: SITE_NAME,
     title,
     description,
-    url: url || "https://www.slimandbeauty.ro",
+    url: path,
     locale: "ro_RO",
     type: "website",
     images: [
-      {
-        url: photo || "https://www.slimandbeauty.ro/logo-og.png",
-        alt: alt ? "Photo of " + alt : "Logo Slim & Beauty by MC Logo",
-        width: 1200,
-        height: 629
-      }
-    ]
-  }
+      photo
+        ? {
+          url: photo.src,
+          alt: alt ? `${alt} la Slim & Beauty by MC` : defaultOgImage.alt,
+          width: photo.width,
+          height: photo.height,
+        }
+        : defaultOgImage,
+    ],
+  };
 }
 
 export const rootMeta: Metadata = {
   metadataBase: new URL("https://www.slimandbeauty.ro"),
+  title: {
+    default: "Remodelare Corporală Timișoara & Dumbrăvița | Slim & Beauty",
+    template: "%s",
+  },
   keywords: ['remodelare corporală Timișoara', 'remodelare corporală Dumbrăvița', 'tratament anticelulitic Timișoara', 'masaj anticelulitic', 'bronzare organică', 'dermato-cosmetică profesională', 'tratament facial Timisoara', 'slabire localizata', 'salon remodelare corporala Timisoara'],
   robots: {
     index: true,
@@ -52,7 +78,7 @@ export const homePageMeta: Metadata = {
     "Remodelare corporală în Timișoara și Dumbrăvița! Slim & Beauty oferă tratamente avansate de slăbire localizată, masaj anticelulitic și dermato-cosmetică."
   ),
   alternates: {
-    canonical: "https://www.slimandbeauty.ro",
+    canonical: "/",
   }
 }
 
@@ -62,11 +88,14 @@ export const servicesPageMeta: Metadata = {
   openGraph: generateOG(
     "Tratamente Corporale & Faciale | Slim & Beauty Timișoara",
     "La Slim & Beauty Timișoara, oferim remodelare corporală și tratamente dermato-cosmetice personalizate pentru un corp și un ten sănătos.",
-    "https://www.slimandbeauty.ro/servicii"
-  )
+    "/servicii"
+  ),
+  alternates: {
+    canonical: "/servicii",
+  }
 }
 
-export async function categoryPageMeta({ params }: { params: Promise<{ category: string }> }) {
+export async function categoryPageMeta({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
   const { category } = await params;
 
   const cat = services.find((i) => normalizeString(i.category) === category);
@@ -81,14 +110,17 @@ export async function categoryPageMeta({ params }: { params: Promise<{ category:
     openGraph: generateOG(
       cat.metaTitle,
       cat.metaDesc,
-      `https://www.slimandbeauty.ro/servicii/${category}`,
-      `https://www.slimandbeauty.ro${cat.media.src}`,
+      `/servicii/${category}`,
+      cat.media,
       cat.category
     ),
+    alternates: {
+      canonical: `/servicii/${category}`,
+    },
   }
 }
 
-export async function detailPageMeta({ params }: { params: Promise<{ category: string; service: string }> }) {
+export async function detailPageMeta({ params }: { params: Promise<{ category: string; service: string }> }): Promise<Metadata> {
   const { category, service } = await params;
 
   const categoryData = services.find((item) => normalizeString(item.category) === category);
@@ -101,16 +133,23 @@ export async function detailPageMeta({ params }: { params: Promise<{ category: s
   if (!serviceData) {
     notFound();
   }
+
+  const title = `${serviceData.title} - ${categoryData.category} | Slim & Beauty`;
+  const description = truncate(serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!");
+
   return {
-    title: `${serviceData.title} - ${categoryData.category} | Slim & Beauty`,
-    description: truncate(serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!"),
+    title,
+    description,
     openGraph: generateOG(
-      `${serviceData.title} - ${categoryData.category} | Slim & Beauty`,
-      truncate(serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!"),
-      `https://www.slimandbeauty.ro/servicii/${category}/${service}`,
+      title,
+      description,
+      `/servicii/${category}/${service}`,
       getMetadataImage(serviceData.media),
       serviceData.title
-    )
+    ),
+    alternates: {
+      canonical: `/servicii/${category}/${service}`,
+    },
   }
 }
 

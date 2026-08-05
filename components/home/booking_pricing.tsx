@@ -9,25 +9,24 @@ import Pricing from './pricing';
 import { useSearchParams } from 'next/navigation';
 
 export default function BookingPricing() {
-  const [activeTab, setActiveTab] = useState<"pricing" | "booking">("pricing");
-  const [service, setService] = useState<string | null>(null);
   const searchParams = useSearchParams();
+  const service = searchParams.get("service");
+  const tabParam = searchParams.get("tab");
+
+  // The tab comes from the URL until the visitor picks one themselves.
+  const [selectedTab, setSelectedTab] = useState<"pricing" | "booking" | null>(null);
+  const activeTab =
+    selectedTab ?? (tabParam === "booking" || tabParam === "pricing" ? tabParam : "pricing");
 
   useEffect(() => {
-    const tab = searchParams.get("tab");
-    if (tab === "booking" || tab === "pricing") {
-      setActiveTab(tab as "pricing" | "booking");
-      
-      setTimeout(() => {
-        document.getElementById('tabs')?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
+    if (tabParam !== "booking" && tabParam !== "pricing") return;
 
-    const service = searchParams.get("service");
-    if (service) {
-      setService(service);
-    }
-  }, [searchParams]);
+    const timeout = setTimeout(() => {
+      document.getElementById('tabs')?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, [tabParam]);
 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -53,7 +52,7 @@ export default function BookingPricing() {
         >
           <Tabs
             value={activeTab}
-            onValueChange={(value) => setActiveTab(value as "pricing" | "booking")}
+            onValueChange={(value) => setSelectedTab(value as "pricing" | "booking")}
             className="w-full"
           >
             <TabsList className="grid w-full grid-cols-2 mb-8">

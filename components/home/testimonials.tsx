@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import Link from 'next/link';
@@ -36,8 +35,6 @@ const testimonials = [
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -63,7 +60,7 @@ const Testimonials = () => {
     >
       <Image 
         src={bgpict}
-        alt="Slim & Beauty Tanning Creams Picture"
+        alt="Creme de bronzare organică folosite la salonul Slim & Beauty by MC"
         fill
         style={{ objectFit: 'cover', objectPosition: 'center' }}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -82,13 +79,7 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <motion.div
-          ref={ref}
-          className="max-w-4xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="reveal max-w-4xl mx-auto">
           <div className="relative">
             {/* Testimonial Slider */}
             <div className="overflow-hidden">
@@ -104,7 +95,7 @@ const Testimonials = () => {
                           <div className="relative h-20 w-20 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-pink-300">
                             <Image
                               src={testimonial.image}
-                              alt={testimonial.name}
+                              alt={testimonial.imageAlt}
                               width={96}
                               height={96}
                               style={{ objectFit: 'cover' }}
@@ -129,7 +120,7 @@ const Testimonials = () => {
                               <p>Vezi pe </p>
                               <Image
                                 src='/icons/facebook.svg'
-                                alt="Facebook logo"
+                                alt="Logo Facebook"
                                 width={16}
                                 height={16}
                               />
@@ -147,7 +138,7 @@ const Testimonials = () => {
             <button
               onClick={prevTestimonial}
               className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 md:-translate-x-0 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 backdrop-blur-xs transition-all"
-              aria-label="Previous testimonial"
+              aria-label="Recenzia anterioară"
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
@@ -155,7 +146,7 @@ const Testimonials = () => {
             <button
               onClick={nextTestimonial}
               className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 md:translate-x-0 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 backdrop-blur-xs transition-all"
-              aria-label="Next testimonial"
+              aria-label="Recenzia următoare"
             >
               <ChevronRight className="h-6 w-6" />
             </button>
@@ -169,11 +160,11 @@ const Testimonials = () => {
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2.5 rounded-full transition-all ${index === currentIndex ? "w-8 bg-white" : "w-2.5 bg-white/40"
                   }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`Mergi la recenzia ${index + 1}`}
               />
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

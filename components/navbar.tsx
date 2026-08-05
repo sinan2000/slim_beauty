@@ -13,8 +13,11 @@ import { services } from '@/lib/data';
 
 export default function Navbar() {
     const pathname = usePathname();
-    const [isScrolled, setIsScrolled] = useState(false);
+    const [isScrolledPastTop, setIsScrolledPastTop] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Off the homepage the navbar is always in its solid state.
+    const isScrolled = pathname !== "/" || isScrolledPastTop;
 
     const items = [
         { name: "Acasă", href: "/", dropdown: false },
@@ -23,13 +26,10 @@ export default function Navbar() {
     ];
 
     useEffect(() => {
-        if (pathname !== "/") {
-            setIsScrolled(true);
-            return;
-        }
+        if (pathname !== "/") return;
 
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
+            setIsScrolledPastTop(window.scrollY > 10);
         };
 
         window.addEventListener('scroll', handleScroll);

@@ -1,6 +1,11 @@
 import { homePageMeta } from '@/lib/metadatas'
 import Hero from '@/components/home/hero/hero'
-import HomeRest from './page-client'
+import FeaturedServices from '@/components/home/featured/featured_treatments'
+import WhyChooseUs from '@/components/why-choose-us'
+import Testimonials from '@/components/home/testimonials'
+import BeforeAfterGallery from '@/components/home/before_after'
+import NoBookingPricing from '@/components/home/pricing_no_booking'
+import ContactLocation from '@/components/home/contact'
 import { generateFAQSchema } from '@/lib/jsonLds'
 import { faqs } from '@/lib/data'
 
@@ -16,7 +21,12 @@ export default function HomePage() {
       />
 
       <Hero />
-      <HomeRest />
+      <FeaturedServices />
+      <WhyChooseUs />
+      <Testimonials />
+      <BeforeAfterGallery />
+      <NoBookingPricing />
+      <ContactLocation />
     </main>
   )
 }

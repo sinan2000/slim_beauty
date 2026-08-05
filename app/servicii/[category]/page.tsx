@@ -34,7 +34,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       >
         <Image
           src={cat.media}
-          alt={`Photo of ${cat.category}`}
+          alt={`Tratamente de ${cat.category} la Slim & Beauty by MC`}
           fill
           priority
           loading="eager"
@@ -74,7 +74,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                   <div className="relative h-64 w-full overflow-hidden">
                     <Image
                       src={getFirstImage(service.media)}
-                      alt={'Photo of ' + service.title}
+                      alt={`Tratament ${service.title} la Slim & Beauty by MC`}
                       fill
                       style={{ objectFit: 'cover' }}
                       className="transition-transform duration-500 group-hover:scale-105"

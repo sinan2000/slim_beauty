@@ -99,11 +99,11 @@ export default function Booking({ service }: { service: string | null }) {
                 className="rounded-md border w-full h-full flex"
                 classNames={{
                   months:
-                    "flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1",
+                    "flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1 relative",
                   month: "space-y-4 w-full flex flex-col",
-                  table: "w-full h-full border-collapse space-y-1",
-                  head_row: "",
-                  row: "w-full mt-2",
+                  month_grid: "w-full h-full border-collapse space-y-1",
+                  weekdays: "flex justify-between",
+                  week: "flex w-full justify-between mt-2",
                 }}
                 disabled={(date) => {
                   return [0, 6].includes(date.getDay()) || isPastDate(date);

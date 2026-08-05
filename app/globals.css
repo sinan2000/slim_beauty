@@ -214,3 +214,57 @@
     @apply bg-background text-foreground;
   }
 }
+
+/*
+  Scroll reveal.
+
+  Deliberately CSS-only and scroll-timeline driven rather than JS driven. The
+  hidden state exists *only* inside the keyframe, so the served HTML never
+  contains `opacity: 0` - crawlers and text extractors that do not run scripts
+  still see the content. Browsers without `animation-timeline` support simply
+  render everything visible, which is the correct fallback.
+*/
+/* Loading fallback animations - CSS so the root loading UI pulls no JS. */
+@keyframes loading-dot {
+
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loading-bar {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+  }
+}

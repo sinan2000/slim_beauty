@@ -76,7 +76,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
         </div>
 
         {/* Gallery Section */}
-        {hasMedia && (<MediaGalery media={serviceData.media} />)}
+        {hasMedia && (<MediaGalery media={serviceData.media} title={serviceData.title} />)}
 
         {/* Information Panel */}
         <div className="grid gap-8 mb-16 md:grid-cols-2">

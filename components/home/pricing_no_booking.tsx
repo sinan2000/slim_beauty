@@ -1,14 +1,6 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-
 import Pricing from "./pricing";
 
 export default function NoBookingPricing() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   return (
     <section id="preturi" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -21,17 +13,11 @@ export default function NoBookingPricing() {
           </p>
         </div>
 
-        <motion.div
-          ref={ref}
-          className="max-w-5xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="reveal max-w-5xl mx-auto">
           <div className="border rounded-lg p-6 shadow-xs bg-white w-full">
             <Pricing />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

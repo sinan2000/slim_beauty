@@ -32,7 +32,7 @@ export default function ServicesClient() {
           >
             <Image
               src={service.media}
-              alt={`Photo of ${service.category}`}
+              alt={`Tratamente de ${service.category} la Slim & Beauty by MC`}
               fill
               priority
               loading="eager"

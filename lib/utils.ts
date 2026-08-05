@@ -52,6 +52,7 @@ export function getFeaturedServices() {
         image: media?.[0] ?? "/placeholder.jpg",
         price: price[0],
         duration: duration,
+        href: `/servicii/${normalizeString(category.category)}/${normalizeString(title)}`,
       }))
   );
 }
@@ -68,18 +69,19 @@ export function getFirstImage(media: (string | StaticImageData)[] | undefined) {
   return "/placeholder.svg";
 }
 
+/** Returns the first real image (skipping video paths) so OG tags can carry its true dimensions. */
 export function getMetadataImage(media: (string | StaticImageData)[] | undefined) {
   if (!media || media.length === 0) {
-    return '/logo-og.png';
+    return undefined;
   }
 
   for (const item of media) {
     if (typeof item !== "string") {
-      return item.src;
+      return item;
     }
   }
 
-  return '/logo-og.png';
+  return undefined;
 }
 
 const timeZone = "Europe/Bucharest";
