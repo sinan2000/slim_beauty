@@ -7,7 +7,7 @@ export default function Hero() {
     return (
         <section
             id="home"
-            className="relative h-screen flex items-center justify-center overflow-hidden"
+            className="relative h-screen flex items-center justify-center overflow-hidden bg-pink-950"
         >
             <Image
                 src={heroImage}
@@ -19,8 +19,8 @@ export default function Hero() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-linear-to-r from-pink-900/60 to-purple-900/40 z-10"></div>
+            {/* Gradient Overlay — brand scrim, weighted so white type clears 4.5:1 over the brightest part of the photograph */}
+            <div className="absolute inset-0 bg-linear-to-r from-pink-900/80 via-pink-950/75 to-purple-900/72 z-10"></div>
 
             {/* Content */}
             <div className="container mx-auto px-4 relative z-20 text-center animate-fade-hero-in">
