@@ -2,6 +2,7 @@ import { socialData } from "@/lib/socials";
 import Image from "next/image";
 import Link from "next/link";
 import anpcSal from "@/assets/anpc-sal.png";
+import { SnsCredit } from "@/components/sns/sns-credit";
 
 export default function Footer() {
   return (
@@ -106,7 +107,9 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-
+        <div className="mt-6 flex justify-center text-gray-600">
+          <SnsCredit lang="ro" site="slim-beauty" />
+        </div>
       </div>
     </footer>
   );
