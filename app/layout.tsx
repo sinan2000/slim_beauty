@@ -4,7 +4,6 @@ import { GoogleTagManager } from '@next/third-parties/google';
 
 import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
-import SNSFooter from '@/components/sns/footer';
 import { rootMeta } from "@/lib/metadatas";
 import { BeautySalonSchema, webSiteSchema, navSchema } from "@/lib/jsonLds";
 
@@ -42,12 +41,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-
-        <SNSFooter />
-      {/* impeccable-live-start */}
-<script src="http://localhost:8400/live.js?token=f5bb8fe8-5185-4801-9ef1-91ea79bf70c2"></script>
-{/* impeccable-live-end */}
-</body>
+      </body>
     </html>
   );
 }
