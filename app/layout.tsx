@@ -4,6 +4,7 @@ import { GoogleTagManager } from '@next/third-parties/google';
 
 import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
+import { LaunchAnnouncement } from '@/components/launch-announcement';
 import { rootMeta } from "@/lib/metadatas";
 import { BeautySalonSchema, webSiteSchema, navSchema } from "@/lib/jsonLds";
 
@@ -41,6 +42,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <LaunchAnnouncement />
       </body>
     </html>
   );

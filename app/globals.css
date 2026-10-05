@@ -309,3 +309,45 @@
     }
   }
 }
+
+/*
+  Launch announcement (components/launch-announcement.tsx).
+
+  Entry-only: the dialog rises in once when it opens and never moves again.
+  Closing is instant on purpose. Page scroll is held while the modal is open.
+*/
+html:has(.announcement[open]) {
+  overflow: hidden;
+}
+
+@keyframes announcement-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes announcement-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .announcement[open] {
+    animation: announcement-in 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .announcement[open]::backdrop {
+    animation: announcement-backdrop-in 450ms ease-out both;
+  }
+}

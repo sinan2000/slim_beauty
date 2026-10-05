@@ -14,6 +14,8 @@ import bronz5 from "@/assets/services/bronzare/5.jpg";
 import bronz6 from "@/assets/services/bronzare/6.jpg";
 import bronz7 from "@/assets/services/bronzare/7.jpg";
 import dermapen from "@/assets/services/dermapen/1.jpg";
+import laser from "@/assets/services/laser/1.jpg";
+import laserPhoto from "@/assets/services/laser/announce.jpg";
 
 export const services = [
     {
@@ -440,6 +442,47 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
         metaDesc: "Vrei un ten perfect? Tratamentele noastre dermato-cosmetice îți oferă hidratare, fermitate și o piele mai sănătoasă. Programează-te acum!",
         description: "Tratamente avansate pentru îngrijirea pielii, care vizează corectarea imperfecțiunilor și îmbunătățirea texturii și aspectului tenului.",
         items: [
+            {
+                title: "Epilare Definitivă cu Laser Diodă",
+                featured: false, featuredDesc: "",
+                isNew: true,
+                shortDescription: "Piele fină, mai puține fire de păr și confort pe termen lung.",
+                mediumDescription: "Epilarea cu laser diodă profesional este o metodă modernă de reducere progresivă și de lungă durată a părului nedorit. Energia laserului este absorbită de pigmentul firului de păr și transmisă către folicul, acționând cu eficiență în special asupra firelor aflate în faza activă de creștere.",
+                longDescription: `La Slim & Beauty by MC, fiecare ședință este personalizată în funcție de fototipul pielii, culoarea, grosimea și densitatea firului de păr, precum și zona tratată. Parametrii aparatului sunt adaptați individual, iar sistemul de răcire contribuie la confortul pielii pe parcursul procedurii.
+
+Fiecare piele este diferită. De aceea, și tratamentul trebuie să fie personalizat. Epilare definitivă cu laser diodă profesional – tratament personalizat pentru o piele fină și îngrijită.
+
+Programează-te pentru evaluare și află care este protocolul potrivit pentru tine.`,
+                fact: "Firele de păr nu se află toate în aceeași fază de creștere în același timp. Laserul acționează cel mai eficient asupra firelor aflate în faza activă, motiv pentru care sunt necesare mai multe ședințe, efectuate la intervale regulate.",
+                benefits: [
+                    "Reducerea progresivă și de lungă durată a pilozității",
+                    "Firele de păr devin treptat mai rare și mai fine",
+                    "Piele mai fină și mai netedă",
+                    "Poate contribui la diminuarea firelor crescute sub piele",
+                    "Reduce nevoia utilizării frecvente a metodelor clasice de epilare",
+                    "Tratamentul este personalizat în funcție de piele, fir și zona tratată"
+                ],
+                faq: [
+                    {
+                        question: "De ce sunt necesare mai multe ședințe?",
+                        answer: "Firele de păr nu se află toate în aceeași fază de creștere în același timp. Laserul acționează cel mai eficient asupra firelor aflate în faza activă, motiv pentru care sunt necesare mai multe ședințe, efectuate la intervale regulate."
+                    },
+                    {
+                        question: "Câte ședințe de epilare cu laser diodă sunt necesare?",
+                        answer: "În general, un protocol complet poate cuprinde aproximativ 8–10 ședințe, însă numărul acestora diferă de la o persoană la alta, în funcție de zona tratată, caracteristicile firului de păr, particularitățile individuale și răspunsul la tratament. Ulterior, pot fi recomandate ședințe de întreținere."
+                    },
+                    {
+                        question: "Cum mă pregătesc înainte de ședință?",
+                        answer: "Zona care urmează să fie tratată se rade cu lama conform recomandărilor primite înainte de programare. Între ședințe se evită metodele care smulg firul din rădăcină, precum ceara, epilatorul sau penseta. În ziua procedurii, pielea trebuie să fie curată, fără creme, uleiuri, deodorant sau alte produse cosmetice pe zona tratată. De asemenea, este importantă evitarea bronzării și a expunerii intense la soare sau solar înaintea procedurii, conform recomandărilor primite."
+                    },
+                    {
+                        question: "Ce se întâmplă înainte de prima ședință?",
+                        answer: "Înainte de începerea tratamentului se realizează o evaluare și se stabilesc parametrii potriviți. Este important să fie comunicate eventualele afecțiuni ale pielii, tratamente medicamentoase, sensibilități, alunițe sau zone pigmentare, precum și orice alte informații relevante pentru efectuarea procedurii în condiții de siguranță."
+                    }
+                ],
+                price: [] as number[],
+                media: [laserPhoto, laser],
+            },
             {
                 title: "Dermapen cu Microneedling",
                 featured: false, featuredDesc: "",

@@ -268,17 +268,20 @@ export const generateServiceSchema = (
       "@type": "Place",
       name: "Timișoara, Romania",
     },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "RON",
-      price: item.price[0],
-      availability: "https://schema.org/InStock",
-      seller: {
-        "@type": "BeautySalon",
-        name: "Slim & Beauty",
-        url: "https://www.slimandbeauty.ro",
+    // Services priced after an evaluation publish no Offer rather than an empty price.
+    ...(item.price.length > 0 && {
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "RON",
+        price: item.price[0],
+        availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "BeautySalon",
+          name: "Slim & Beauty",
+          url: "https://www.slimandbeauty.ro",
+        },
       },
-    },
+    }),
   };
 
   return schema;

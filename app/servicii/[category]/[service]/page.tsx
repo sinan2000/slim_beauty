@@ -1,6 +1,8 @@
 import {
   Lightbulb,
   Check,
+  Sparkles,
+  Phone,
 } from 'lucide-react';
 import FAQ from '@/components/faq-detail';
 import MediaGalery from '@/components/gallery';
@@ -66,6 +68,12 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
               PREFERAT DE CLIENTELE NOASTRE
             </div>
           )}
+          {serviceData.isNew && (
+            <div className="inline-flex items-center gap-1.5 bg-pink-100 text-pink-600 px-4 py-1 rounded-full text-sm font-medium">
+              <Sparkles className="h-4 w-4" aria-hidden="true" />
+              NOU LA SLIM & BEAUTY
+            </div>
+          )}
         </div>
 
         {/* Medium Description */}
@@ -80,7 +88,34 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
 
         {/* Information Panel */}
         <div className="grid gap-8 mb-16 md:grid-cols-2">
-          {/* Pricing Table */}
+          {/* Pricing Table, or an evaluation card for services priced after consultation */}
+          {serviceData.price.length === 0 ? (
+          <div className="bg-white p-6 rounded-xl shadow-sm w-full md:w-auto flex flex-col">
+            <h3 className="font-serif text-xl font-semibold text-gray-900 mb-2">
+              Preț personalizat
+            </h3>
+            <p className="text-gray-700 mb-6">
+              Programează-te pentru evaluare și află care este protocolul potrivit pentru tine. Pentru detalii despre preț, te rugăm să ne contactezi.
+            </p>
+            <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a
+                href="tel:+40733407329"
+                className="inline-flex items-center gap-2 bg-pink-600 hover:bg-pink-700 text-white rounded-full px-6 py-2.5 text-sm font-medium transition-colors"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                Sună pentru evaluare
+              </a>
+              <a
+                href={`https://api.whatsapp.com/send?phone=40733407329&text=${encodeURIComponent(`Bună ziua! Aș dori o evaluare pentru ${serviceData.title}.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-pink-600 hover:text-pink-700 underline underline-offset-4"
+              >
+                sau scrie-ne pe WhatsApp
+              </a>
+            </div>
+          </div>
+          ) : (
           <div className="bg-white p-6 rounded-xl shadow-sm w-full md:w-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-serif text-xl font-semibold text-gray-900">
@@ -145,6 +180,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
             </div>
 
           </div>
+          )}
 
           {/* Interesting Fact Panel */}
           <div className="bg-pink-50 rounded-xl p-6 mb-16 shadow-sm">
@@ -189,7 +225,11 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
               return (
                 <div key={index} className="flex items-start bg-white p-5 rounded-lg shadow-sm">
                   <Check className="h-5 w-5 text-pink-500 mt-0.5 flex-shrink-0" />
-                  <span className="ml-3 text-gray-700"><strong>{boldText}:</strong>{normalText}</span>
+                  {normalText === undefined ? (
+                    <span className="ml-3 text-gray-700">{boldText}</span>
+                  ) : (
+                    <span className="ml-3 text-gray-700"><strong>{boldText}:</strong>{normalText}</span>
+                  )}
                 </div>
               );
             })}

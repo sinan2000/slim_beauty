@@ -81,6 +81,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    {service.isNew && (
+                      <span className="absolute top-4 left-4 bg-pink-600 text-white text-xs font-semibold tracking-wide px-3 py-1 rounded-full">
+                        NOU
+                      </span>
+                    )}
                   </div>
 
                   {/* Service Info */}
