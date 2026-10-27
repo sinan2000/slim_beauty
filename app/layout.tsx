@@ -5,6 +5,7 @@ import { CookieConsent } from '@/components/cookie-consent';
 import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
 import { LaunchAnnouncement } from '@/components/launch-announcement';
+import { SiteChromeGate } from '@/components/site-chrome-gate';
 import { rootMeta } from "@/lib/metadatas";
 import { BeautySalonSchema, webSiteSchema, navSchema } from "@/lib/jsonLds";
 
@@ -37,9 +38,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(navSchema) }}
         />
 
-        <Navbar />
+        <SiteChromeGate>
+          <Navbar />
+        </SiteChromeGate>
         {children}
-        <Footer />
+        <SiteChromeGate>
+          <Footer />
+        </SiteChromeGate>
         <LaunchAnnouncement />
         <CookieConsent />
       </body>

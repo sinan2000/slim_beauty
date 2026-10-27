@@ -1,18 +1,29 @@
-import {
-  Lightbulb,
-  Check,
-  Sparkles,
-  Phone,
-} from 'lucide-react';
-import FAQ from '@/components/faq-detail';
-import MediaGalery from '@/components/gallery';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { normalizeString, oldSlug } from '@/lib/utils';
 import { services } from '@/lib/data';
-import Breadcrumbs from '@/components/breadcrumbs';
 import { detailPageMeta } from '@/lib/metadatas';
 import { generateFAQSchema, generateServiceSchema } from '@/lib/jsonLds';
-import { sessions } from '@/lib/utils';
+import { allServices, contact, priceFrom, relatedServices, ron, serviceImage, whatsappFor } from '@/lib/site-content';
+import { BronzShell } from '@/components/bronz/shell';
+import { PageHero } from '@/components/bronz/page-hero';
+import { BronzBreadcrumbs } from '@/components/bronz/breadcrumbs';
+import { BronzContact } from '@/components/bronz/contact';
+import { Frame } from '@/components/bronz/frame';
+import { FaqList, MediaGallery, RelatedServices, TierTable } from '@/components/bronz/service-parts';
+
+/** Emphasis for the hero title: a parenthetical, else the last word, in gold italic. */
+function heroTitle(title: string) {
+  const paren = title.indexOf(' (');
+  if (paren > 0) return [title.slice(0, paren), title.slice(paren + 1)] as const;
+  const space = title.lastIndexOf(' ');
+  return space > 0 ? ([title.slice(0, space), title.slice(space + 1)] as const) : ([title, ''] as const);
+}
+
+/** The first sentence of the medium description, as the hero's lead. */
+function lead(text: string) {
+  const end = text.indexOf('. ');
+  return end > 0 ? text.slice(0, end + 1) : text;
+}
 
 export default async function ServicePage({ params }: { params: Promise<{ category: string; service: string }> }) {
   const { category, service } = await params;
@@ -35,13 +46,17 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
     notFound();
   }
 
-  const hasMedia = serviceData.media && serviceData.media.length > 0;
-
-  const map_sedinta = ['o ședință', '6 ședințe', '10 ședințe'];
-  const map_sedinta_2 = ['o ședință', '2 ședințe', '3 ședințe'];
+  const s = allServices.find((x) => x.categorySlug === category && x.slug === service)!;
+  const media = serviceData.media ?? [];
+  const from = priceFrom(s);
+  const whatsapp = whatsappFor(serviceData.title);
+  const [titleMain, titleAccent] = heroTitle(serviceData.title);
+  const fact = serviceData.fact.replace(/^Știați că\s+/, '');
+  const factText = fact.charAt(0).toUpperCase() + fact.slice(1);
+  const secondPhoto = media.find((m) => typeof m !== 'string' && m !== serviceImage(s));
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <BronzShell whatsapp={whatsapp}>
       <script
         id="individual-schema"
         type="application/ld+json"
@@ -54,192 +69,203 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(serviceData.faq)) }}
       />
 
-      <Breadcrumbs category={categoryData.category} service={serviceData.title} />
-
-      <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-            {serviceData.title}
-          </h1>
-          {serviceData.featured && (
-            <div className="inline-block bg-pink-100 text-pink-600 px-4 py-1 rounded-full text-sm font-medium">
-              PREFERAT DE CLIENTELE NOASTRE
+      <main>
+        <PageHero
+          photo={serviceImage(s)}
+          alt={`${serviceData.title} la Slim & Beauty by MC`}
+          top={<BronzBreadcrumbs category={categoryData.category} service={serviceData.title} />}
+          title={
+            <h1 data-hero-title className="f-display max-w-[15ch] text-[clamp(2.8rem,7.4vw,6.2rem)] leading-[0.98] font-normal tracking-[-0.028em] text-(--cream)">
+              <span className="block">{titleMain}</span>
+              {titleAccent ? <span className="block italic text-(--gold)">{titleAccent}</span> : null}
+            </h1>
+          }
+        >
+          <p className="text-lg leading-relaxed text-(--cream-dim) md:text-xl">{lead(serviceData.mediumDescription)}</p>
+          <dl className="num flex flex-wrap gap-x-10 gap-y-4 border-y border-(--line) py-5">
+            {s.isNew ? (
+              <div>
+                <dt className="text-xs tracking-[0.2em] text-(--muted) uppercase">Nou</dt>
+                <dd className="f-display mt-1 text-2xl text-(--gold) italic">la Slim &amp; Beauty</dd>
+              </div>
+            ) : null}
+            <div>
+              <dt className="text-xs tracking-[0.2em] text-(--muted) uppercase">Preț</dt>
+              <dd className="f-display mt-1 text-2xl text-(--cream)">{from === null ? 'La evaluare' : `de la ${ron(from)}`}</dd>
             </div>
-          )}
-          {serviceData.isNew && (
-            <div className="inline-flex items-center gap-1.5 bg-pink-100 text-pink-600 px-4 py-1 rounded-full text-sm font-medium">
-              <Sparkles className="h-4 w-4" aria-hidden="true" />
-              NOU LA SLIM & BEAUTY
+            {s.duration ? (
+              <div>
+                <dt className="text-xs tracking-[0.2em] text-(--muted) uppercase">Durată</dt>
+                <dd className="f-display mt-1 text-2xl text-(--cream)">{s.duration} min</dd>
+              </div>
+            ) : null}
+            {s.tiers.length > 1 ? (
+              <div>
+                <dt className="text-xs tracking-[0.2em] text-(--muted) uppercase">Pachete</dt>
+                <dd className="f-display mt-1 text-2xl text-(--cream)">
+                  până la <span className="text-(--gold)">−{s.tiers[s.tiers.length - 1].saving}%</span>
+                </dd>
+              </div>
+            ) : null}
+          </dl>
+          <div className="flex flex-wrap gap-3">
+            <a href={contact.phoneHref} className="btn-gold h-14 px-8 text-base">
+              Sună <span className="num font-normal opacity-80">{contact.phone}</span>
+            </a>
+            <a href={whatsapp} target="_blank" rel="noopener" className="btn-ghost h-14 px-8 text-base">
+              Scrie-ne pe WhatsApp
+            </a>
+          </div>
+        </PageHero>
+
+        {/* What it is, in one breath, and what it costs */}
+        <section id="preturi" aria-labelledby="pret" className="scroll-mt-20">
+          <div className="mx-auto grid max-w-[1400px] gap-16 px-5 py-24 md:grid-cols-12 md:gap-10 md:px-10 md:py-36">
+            <div className="md:col-span-6">
+              <p data-scrub-words className="f-display text-[clamp(1.4rem,2.8vw,2.5rem)] leading-[1.25] tracking-[-0.01em] text-(--cream)">
+                {serviceData.mediumDescription}
+              </p>
+              {secondPhoto && typeof secondPhoto !== 'string' ? (
+                <Frame
+                  src={secondPhoto}
+                  alt={`${serviceData.title} în salonul Slim & Beauty by MC`}
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                  reveal="side"
+                  className="mt-14 aspect-[4/3]"
+                />
+              ) : null}
             </div>
-          )}
-        </div>
+            <div className="md:col-span-5 md:col-start-8">
+              <div className="md:sticky md:top-28">
+                {s.tiers.length === 0 ? (
+                  <>
+                    <h2 id="pret" data-split className="f-display text-[clamp(2.4rem,4.6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-(--cream)">
+                      Preț <span className="italic text-(--gold)">după evaluare</span>
+                    </h2>
+                    <p className="mt-6 max-w-[44ch] text-lg leading-relaxed">
+                      Programează-te pentru evaluare și află care este protocolul potrivit pentru tine. Pentru detalii despre preț, sună-ne sau scrie-ne pe WhatsApp.
+                    </p>
+                    <div className="mt-10 flex flex-wrap gap-3">
+                      <a href={contact.phoneHref} className="btn-gold h-12 px-7">Sună pentru evaluare</a>
+                      <a href={whatsapp} target="_blank" rel="noopener" className="btn-ghost h-12 px-7">WhatsApp</a>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h2 id="pret" data-split className="f-display text-[clamp(2.4rem,4.6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-(--cream)">
+                      {s.tiers.length > 1 ? (
+                        <>
+                          Mai multe ședințe, <span className="italic text-(--gold)">preț mai mic</span>
+                        </>
+                      ) : (
+                        <>
+                          Prețul, <span className="italic text-(--gold)">la vedere</span>
+                        </>
+                      )}
+                    </h2>
+                    <p className="mt-6 mb-10 max-w-[44ch] text-base leading-relaxed text-(--muted)">
+                      {s.tiers.length > 1
+                        ? 'Cu un pachet, fiecare ședință te costă mai puțin. Plata se face cash, în lei.'
+                        : 'Prețul este pentru o ședință. Plata se face cash, în lei.'}
+                    </p>
+                    <TierTable tiers={s.tiers} duration={s.duration} />
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
 
-        {/* Medium Description */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-lg text-gray-700">
-            {serviceData.mediumDescription}
-          </p>
-        </div>
-
-        {/* Gallery Section */}
-        {hasMedia && (<MediaGalery media={serviceData.media} title={serviceData.title} />)}
-
-        {/* Information Panel */}
-        <div className="grid gap-8 mb-16 md:grid-cols-2">
-          {/* Pricing Table, or an evaluation card for services priced after consultation */}
-          {serviceData.price.length === 0 ? (
-          <div className="bg-white p-6 rounded-xl shadow-sm w-full md:w-auto flex flex-col">
-            <h3 className="font-serif text-xl font-semibold text-gray-900 mb-2">
-              Preț personalizat
-            </h3>
-            <p className="text-gray-700 mb-6">
-              Programează-te pentru evaluare și află care este protocolul potrivit pentru tine. Pentru detalii despre preț, te rugăm să ne contactezi.
+        {/* Did you know: one striking moment */}
+        <section aria-labelledby="stiai" className="grain relative isolate overflow-hidden border-y border-(--line) bg-(--espresso-3)">
+          <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+            <h2 id="stiai" className="f-display text-[clamp(2rem,3.6vw,3rem)] leading-none text-(--gold) italic">
+              Știai că…
+            </h2>
+            <p data-split className="f-display mt-8 max-w-[32ch] text-[clamp(1.7rem,3.6vw,3.2rem)] leading-[1.12] tracking-[-0.015em] text-(--cream)">
+              {factText}
             </p>
-            <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a
-                href="tel:+40733407329"
-                className="inline-flex items-center gap-2 bg-pink-600 hover:bg-pink-700 text-white rounded-full px-6 py-2.5 text-sm font-medium transition-colors"
-              >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                Sună pentru evaluare
-              </a>
-              <a
-                href={`https://api.whatsapp.com/send?phone=40733407329&text=${encodeURIComponent(`Bună ziua! Aș dori o evaluare pentru ${serviceData.title}.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-pink-600 hover:text-pink-700 underline underline-offset-4"
-              >
-                sau scrie-ne pe WhatsApp
-              </a>
+          </div>
+        </section>
+
+        {/* The full story, as a comfortable read */}
+        <section aria-labelledby="despre" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+          <div className="grid gap-12 md:grid-cols-12 md:gap-10">
+            <h2 id="despre" data-split className="f-display text-[clamp(2.4rem,4.6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-(--cream) md:col-span-4">
+              Despre <span className="italic text-(--gold)">{serviceData.title}</span>
+            </h2>
+            <div className="prose-bz max-w-[65ch] text-lg leading-[1.75] md:col-span-7 md:col-start-6">
+              {serviceData.longDescription.split('\n\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
           </div>
-          ) : (
-          <div className="bg-white p-6 rounded-xl shadow-sm w-full md:w-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="font-serif text-xl font-semibold text-gray-900">
-                Lista de prețuri
-              </h3>
+        </section>
 
-              <span className="flex items-center gap-1 text-gray-500 text-sm">
-                {/* Clock Icon */}
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 3.5A8.5 8.5 0 1 0 20.5 12 8.51 8.51 0 0 0 12 3.5Zm0 15A6.5 6.5 0 1 1 18.5 12 6.51 6.51 0 0 1 12 18.5ZM12 7a1 1 0 0 1 1 1v3.59l2.7 2.7a1 1 0 1 1-1.42 1.42l-3-3A1 1 0 0 1 11 12V8a1 1 0 0 1 1-1Z" />
-                </svg>
-                {serviceData.duration} min/ ședință
-              </span>
-
-            </div>
-            <div className="overflow-x-auto mb-2">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead>
-                  <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Pachet
-                    </th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Preț
-                    </th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Economie
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {serviceData.price.map((price, index) => {
-                    const isCrio = serviceData.title === 'Criolipoliză';
-                    const basePrice = serviceData.price[0];
-                    const sessionCount = sessions(index, isCrio);
-                    const perSessionPrice = price / sessionCount;
-
-                    const discount = index === 0
-                      ? "-"
-                      : `${Math.round(100 - (perSessionPrice / basePrice) * 100)}%`;
-
-                    return (
-                      <tr key={index}>
-                        <td className="px-4 py-3 whitespace-nowrap">
-                          <div className="text-sm font-medium text-gray-900">
-                            {!isCrio ? map_sedinta[index] : map_sedinta_2[index]}
-                          </div>
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">{price} RON</div>
-                        </td>
-                        <td className="px-4 py-3 whitespace-nowrap">
-                          <div className={`text-sm font-medium ${index === 0 ? "text-gray-500" : "text-pink-600"}`}>
-                            {discount}
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-
+        {/* Benefits */}
+        <section aria-labelledby="beneficii" className="border-t border-(--line)">
+          <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+            <h2 id="beneficii" data-split className="f-display max-w-[18ch] text-[clamp(2.4rem,4.6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-(--cream)">
+              Beneficiile <span className="italic text-(--gold)">tratamentului</span>
+            </h2>
+            <dl className="mt-14 border-t border-(--gold)/50 md:mt-20">
+              {serviceData.benefits.map((benefit) => {
+                const colon = benefit.indexOf(':');
+                const head = colon > 0 ? benefit.slice(0, colon) : benefit;
+                const text = colon > 0 ? benefit.slice(colon + 1).trim() : '';
+                return (
+                  <div key={benefit} data-row className="grid gap-2 border-b border-(--line) py-7 md:grid-cols-12 md:gap-10 md:py-9">
+                    <dt className="f-display text-[clamp(1.4rem,2.4vw,2rem)] leading-tight text-(--cream) md:col-span-5">{head}</dt>
+                    {text ? <dd className="max-w-[60ch] text-base leading-relaxed md:col-span-7 md:pt-1.5 md:text-lg">{text}</dd> : null}
+                  </div>
+                );
+              })}
+            </dl>
           </div>
-          )}
+        </section>
 
-          {/* Interesting Fact Panel */}
-          <div className="bg-pink-50 rounded-xl p-6 mb-16 shadow-sm">
-            <div className="flex items-start">
-              <div className="flex-shrink-0 mt-1">
-                <Lightbulb className="h-6 w-6 text-pink-500" />
-              </div>
-              <div className="ml-4">
-                <h3 className="font-serif text-xl font-semibold text-gray-900 mb-2">
-                  Știați că...?
-                </h3>
-                <p className="text-gray-700">
-                  {serviceData.fact}
-                </p>
-              </div>
+        {/* Gallery */}
+        {media.length > 0 ? (
+          <section aria-labelledby="galerie" className="bg-(--espresso-2)">
+            <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+              <h2 id="galerie" data-split className="f-display mb-14 text-[clamp(2.4rem,4.6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-(--cream) md:mb-20">
+                {serviceData.title} <span className="italic text-(--gold)">în imagini</span>
+              </h2>
+              <MediaGallery media={media} title={serviceData.title} />
+            </div>
+          </section>
+        ) : null}
+
+        {/* FAQ */}
+        <section aria-labelledby="intrebari" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+          <div className="grid gap-12 md:grid-cols-12 md:gap-10">
+            <div className="md:col-span-4">
+              <h2 id="intrebari" data-split className="f-display text-[clamp(2.4rem,4.6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-(--cream)">
+                Întrebări <span className="italic text-(--gold)">frecvente</span>
+              </h2>
+              <p className="mt-6 max-w-[36ch] text-base leading-relaxed text-(--muted)">
+                Nu găsești răspunsul? Sună-ne la <a href={contact.phoneHref} className="link-u num text-(--cream) hover:text-(--gold)">{contact.phone}</a>.
+              </p>
+            </div>
+            <div className="md:col-span-8">
+              <FaqList items={serviceData.faq} />
             </div>
           </div>
+        </section>
 
-        </div>
-
-
-        {/* Long Description */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6 text-center">
-            Despre {serviceData.title}
-          </h2>
-          <div className="prose prose-lg max-w-none text-gray-700">
-            {serviceData.longDescription.split('\n\n').map((paragraph, index) => (
-              <p key={index} className="mb-4">{paragraph}</p>
-            ))}
+        {/* Similar services */}
+        <section aria-labelledby="similare" className="border-t border-(--line)">
+          <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+            <h2 id="similare" data-split className="f-display mb-14 text-[clamp(2.4rem,4.6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-(--cream) md:mb-20">
+              Servicii <span className="italic text-(--gold)">similare</span>
+            </h2>
+            <RelatedServices items={relatedServices(s)} />
           </div>
-        </div>
+        </section>
 
-        {/* Benefits Section */}
-        <div className="mb-16">
-          <h2 className="font-serif text-3xl font-bold text-gray-900 mb-8 text-center">
-            Beneficiile Tratamentului
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {serviceData.benefits.map((benefit, index) => {
-              const [boldText, normalText] = benefit.split(':');
-              return (
-                <div key={index} className="flex items-start bg-white p-5 rounded-lg shadow-sm">
-                  <Check className="h-5 w-5 text-pink-500 mt-0.5 flex-shrink-0" />
-                  {normalText === undefined ? (
-                    <span className="ml-3 text-gray-700">{boldText}</span>
-                  ) : (
-                    <span className="ml-3 text-gray-700"><strong>{boldText}:</strong>{normalText}</span>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* FAQ Section */}
-        <FAQ input={serviceData.faq} />
-      </div>
-    </div>
+        <BronzContact whatsapp={whatsapp} />
+      </main>
+    </BronzShell>
   );
 }
 
