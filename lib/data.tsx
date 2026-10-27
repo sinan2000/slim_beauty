@@ -305,7 +305,7 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
                 duration: 45
             },
             {
-                title: "Cavitatie",
+                title: "Cavitație",
                 featured: false, featuredDesc: "",
                 shortDescription: "Ultrasunete pentru eliminarea celulitei.",
                 mediumDescription: "Cavitația utilizează tehnologia ultrasunetelor pentru a targeta și elimina celulele grase și celulita. Acest tratament non-invaziv creează microbule în țesutul adipos, care implodează și distrug celulele grase, permițând corpului să le elimine în mod natural. Rezultatul este o reducere vizibilă a circumferinței și o îmbunătățire a texturii pielii.",

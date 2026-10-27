@@ -7,7 +7,8 @@ import { normalizeString } from "@/lib/utils";
  * Using `new Date()` here would tell Google every page changed on every deploy,
  * which makes <lastmod> worthless as a crawl signal.
  */
-const LAST_MODIFIED = new Date("2026-08-05");
+const LAST_MODIFIED = new Date("2026-10-27");
+const LEGAL_LAST_MODIFIED = new Date("2026-10-27");
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = process.env.NEXT_PUBLIC_URL ?? "https://www.slimandbeauty.ro";
@@ -28,6 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }))
     )
 
+    const legalPages = ["politica-de-confidentialitate", "termeni-si-conditii", "politica-cookies"].map(path => ({
+        url: `${baseUrl}/${path}`,
+        lastModified: LEGAL_LAST_MODIFIED,
+        changeFrequency: "yearly" as const,
+        priority: 0.2,
+    }));
+
     return [
         {
             url: baseUrl,
@@ -43,5 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         ...categoryPages,
         ...servicePages,
+        ...legalPages,
     ]
 }

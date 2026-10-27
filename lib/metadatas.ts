@@ -10,7 +10,7 @@ const defaultOgImage = {
   url: "/logo-og.png",
   alt: "Logo Slim & Beauty by MC",
   width: 1200,
-  height: 629,
+  height: 630,
 };
 
 /**
@@ -134,7 +134,7 @@ export async function detailPageMeta({ params }: { params: Promise<{ category: s
     notFound();
   }
 
-  const title = `${serviceData.title} - ${categoryData.category} | Slim & Beauty`;
+  const title = serviceTitle(serviceData.title, categoryData.category);
   const description = truncate(serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!");
 
   return {
@@ -166,8 +166,32 @@ export const notFoundMeta: Metadata = {
   }
 }
 
+export function legalPageMeta(title: string, description: string, path: string): Metadata {
+  return {
+    title,
+    description,
+    openGraph: generateOG(title, description, path),
+    alternates: {
+      canonical: path,
+    },
+  }
+}
+
+const MAX_TITLE = 60;
+const MAX_DESCRIPTION = 155;
+
+/** Drops the category from the title when keeping it would push past ~60 characters. */
+function serviceTitle(service: string, category: string) {
+  const full = `${service} - ${category} | Slim & Beauty`;
+  return full.length <= MAX_TITLE ? full : `${service} | Slim & Beauty`;
+}
+
+/** Cuts on a word boundary so the snippet never ends mid-word. */
 function truncate(text: string) {
-  return text.length > 160
-    ? text.slice(0, 160 - 3) + "..."
-    : text;
+  if (text.length <= MAX_DESCRIPTION) {
+    return text;
+  }
+
+  const cut = text.slice(0, MAX_DESCRIPTION - 1);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s,.;:!-]+$/, "") + "…";
 }

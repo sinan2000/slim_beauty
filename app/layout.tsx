@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter, Playfair_Display } from 'next/font/google';
-import { GoogleTagManager } from '@next/third-parties/google';
+import { CookieConsent } from '@/components/cookie-consent';
 
 import Navbar from "@/components/navbar";
 import Footer from '@/components/footer';
@@ -20,8 +20,6 @@ export default function RootLayout({
   return (
     <html lang="ro" className="scroll-smooth">
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
-        <GoogleTagManager gtmId="GTM-5L3ZD3KW" />
-
         <script
           id="website-schema"
           type="application/ld+json"
@@ -43,6 +41,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <LaunchAnnouncement />
+        <CookieConsent />
       </body>
     </html>
   );

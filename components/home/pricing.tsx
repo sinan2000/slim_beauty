@@ -2,6 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { normalizeString } from '@/lib/utils';
 import { services } from '@/lib/data';
 import Link from 'next/link';
+import { company } from '@/lib/company';
 
 export default function Pricing() {
   return (
@@ -59,6 +60,9 @@ export default function Pricing() {
           </div>
         ))
       }
+      <p className="mt-6 text-sm text-gray-500">
+        Prețurile sunt în lei (RON). {company.legalName} nu este plătitoare de TVA.
+      </p>
     </>
   )
 }

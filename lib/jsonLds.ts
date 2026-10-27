@@ -29,6 +29,8 @@ export const BeautySalonSchema: WithContext<BeautySalon> = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
   name: "Slim & Beauty",
+  legalName: "SLIM & BEAUTY BY MC SRL",
+  taxID: "30926241",
   image: "https://www.slimandbeauty.ro/logo-jsonld.png",
   "@id": "https://www.slimandbeauty.ro",
   url: "https://www.slimandbeauty.ro",
@@ -40,8 +42,9 @@ export const BeautySalonSchema: WithContext<BeautySalon> = {
   paymentAccepted: "Cash",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Petofi Sandor 101",
-    addressLocality: "Dumbravita",
+    streetAddress: "Strada Petőfi Sándor 101",
+    addressLocality: "Dumbrăvița",
+    addressRegion: "Timiș",
     postalCode: "307160",
     addressCountry: "RO",
   },
@@ -54,8 +57,8 @@ export const BeautySalonSchema: WithContext<BeautySalon> = {
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Thursday"],
-      opens: "12:00",
-      closes: "20:00",
+      opens: "13:00",
+      closes: "21:00",
     },
     {
       "@type": "OpeningHoursSpecification",

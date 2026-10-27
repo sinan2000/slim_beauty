@@ -13,6 +13,7 @@ import { useActionState } from 'react';
 import { bookAppointment, getEventsForMonth } from '@/app/actions';
 import { useFormStatus } from 'react-dom';
 import { getDisabledTimeSlots, GroupedEvents, isPastDate, normalizeString } from '@/lib/utils';
+import Link from 'next/link';
 
 const availableTimes: Record<number, string[]> = {
   1: ["13:00", "14:15", "15:00", "15:45", "16:30", "17:15", "18:00", "18:45", "19:30"],
@@ -190,7 +191,15 @@ export default function Booking({ service }: { service: string | null }) {
               {state?.message && <p className={`${state.success === true ? 'text-green-500' : 'text-red-500'} text-sm`}>{state.message}</p>}
               {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
 
-              <div className="pt-4">
+              <p className="text-xs text-gray-500">
+                Folosim numele, telefonul și mesajul tău doar pentru a gestiona programarea. Detalii în{" "}
+                <Link href="/politica-de-confidentialitate" className="text-pink-600 underline">
+                  Politica de confidențialitate
+                </Link>
+                .
+              </p>
+
+              <div className="pt-2">
                 <SubmitButton hasRateError={errorMessage !== null} />
               </div>
             </div>

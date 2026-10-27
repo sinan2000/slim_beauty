@@ -3,6 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import anpcSal from "@/assets/anpc-sal.png";
 import { SnsCredit } from "@/components/sns/sns-credit";
+import { CookieSettingsButton } from "@/components/cookie-consent";
+import { company } from "@/lib/company";
+
+const legalLinks = [
+  { href: "/politica-de-confidentialitate", label: "Politica de confidențialitate" },
+  { href: "/termeni-si-conditii", label: "Termeni și condiții" },
+  { href: "/politica-cookies", label: "Politica de cookies" },
+];
 
 export default function Footer() {
   return (
@@ -96,8 +104,21 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-pink-200 flex flex-col md:flex-row items-center justify-between text-gray-600 text-sm">
-          <p className="text-center md:text-left">© {new Date().getFullYear()} Slim & Beauty. Toate drepturile rezervate.</p>
-          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+          <div className="text-center md:text-left space-y-2">
+            <p>© {new Date().getFullYear()} {company.legalName}. Toate drepturile rezervate.</p>
+            <p>
+              CUI {company.cui} · Nr. Reg. Com. {company.regCom} · Sediu: {company.address}
+            </p>
+            <nav aria-label="Informații legale" className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1">
+              {legalLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="hover:text-pink-500 underline-offset-2 hover:underline">
+                  {link.label}
+                </Link>
+              ))}
+              <CookieSettingsButton className="hover:text-pink-500 underline-offset-2 hover:underline" />
+            </nav>
+          </div>
+          <div className="flex items-center space-x-6 mt-6 md:mt-0 md:ml-8 shrink-0">
             <Link href="https://reclamatiisal.anpc.ro/" target="_blank" rel="nofollow">
               <Image
                 src={anpcSal}

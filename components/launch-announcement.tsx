@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Check, Phone, X } from "lucide-react";
 import laserPhoto from "@/assets/services/laser/announce.jpg";
+import { CONSENT_CHANGE_EVENT, readConsent } from "@/lib/consent";
 
 const SERVICE_HREF = "/servicii/dermato-cosmetica/epilare-definitiva-cu-laser-dioda";
 
@@ -55,14 +56,27 @@ export function LaunchAnnouncement() {
       return;
     }
 
-    const timer = window.setTimeout(() => {
-      shownThisVisit = true;
-      dialogRef.current?.showModal();
-      // Start on the title rather than the close button, which would otherwise open with a focus ring.
-      titleRef.current?.focus();
-    }, OPEN_DELAY_MS);
+    let timer: number | undefined;
+    const schedule = () => {
+      timer = window.setTimeout(() => {
+        shownThisVisit = true;
+        dialogRef.current?.showModal();
+        // Start on the title rather than the close button, which would otherwise open with a focus ring.
+        titleRef.current?.focus();
+      }, OPEN_DELAY_MS);
+    };
 
-    return () => window.clearTimeout(timer);
+    // A modal dialog makes the cookie banner inert, so wait until the visitor has answered it.
+    if (readConsent()) {
+      schedule();
+    } else {
+      window.addEventListener(CONSENT_CHANGE_EVENT, schedule, { once: true });
+    }
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener(CONSENT_CHANGE_EVENT, schedule);
+    };
   }, [pathname]);
 
   const close = () => dialogRef.current?.close();
