@@ -1,0 +1,5 @@
+# pnpm 11+ reads its settings here, not from package.json.
+# Packages allowed to run install scripts; anything else with one fails the install (strictDepBuilds).
+allowBuilds:
+  # postinstall runs napi-postinstall to pick the native binding for this platform.
+  unrs-resolver: true

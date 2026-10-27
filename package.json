@@ -2,7 +2,7 @@
   "name": "slim_beauty",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.34.7",
+  "packageManager": "pnpm@12.14.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,12 +11,6 @@
   },
   "engines": {
     "node": "24.x"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "sharp",
-      "unrs-resolver"
-    ]
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.3.1",
