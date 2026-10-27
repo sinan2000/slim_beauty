@@ -5,7 +5,7 @@ import { legalPageMeta } from "@/lib/metadatas";
 
 export const metadata = legalPageMeta(
   "Politica de confidențialitate | Slim & Beauty",
-  "Cum prelucrează Slim & Beauty by MC datele tale personale când faci o programare online sau vizitezi site-ul și ce drepturi ai conform GDPR.",
+  "Cum prelucrează Slim & Beauty by MC datele tale personale când vizitezi site-ul sau ne contactezi pentru o programare și ce drepturi ai conform GDPR.",
   "/politica-de-confidentialitate"
 );
 
@@ -13,8 +13,8 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalPage title="Politica de confidențialitate">
       <p>
-        Această politică explică ce date personale prelucrăm când vizitezi site-ul www.slimandbeauty.ro sau faci o
-        programare online, de ce le prelucrăm, cât timp le păstrăm și ce drepturi ai, conform Regulamentului (UE)
+        Această politică explică ce date personale prelucrăm când vizitezi site-ul www.slimandbeauty.ro sau ne
+        contactezi pentru o programare, de ce le prelucrăm, cât timp le păstrăm și ce drepturi ai, conform Regulamentului (UE)
         2016/679 (GDPR).
       </p>
 
@@ -31,26 +31,27 @@ export default function PrivacyPolicyPage() {
 
       <h2>2. Ce date prelucrăm și de ce</h2>
 
-      <h3>Programarea online</h3>
       <p>
-        Când trimiți formularul de programare colectăm: numele, numărul de telefon, serviciul ales, data și ora
-        programării și mesajul opțional. Le folosim pentru a înregistra programarea, pentru a te contacta în legătură
-        cu ea și pentru a-ți oferi serviciul solicitat.
+        Site-ul nu are formulare și nu îți cere date personale. Programările se fac telefonic sau prin mesaj.
+      </p>
+
+      <h3>Programări și mesaje</h3>
+      <p>
+        Când ne suni, ne scrii pe e-mail, pe WhatsApp sau pe rețelele sociale pentru o programare, folosim datele pe
+        care ni le dai (de obicei numele, numărul de telefon și serviciul dorit) ca să stabilim programarea, să te
+        contactăm în legătură cu ea și să îți oferim serviciul. Temeiul legal este încheierea și executarea
+        contractului de prestări servicii, la cererea ta (art. 6 alin. (1) lit. b) GDPR).
       </p>
       <p>
-        Temeiul legal este încheierea și executarea contractului de prestări servicii, la cererea ta (art. 6 alin. (1)
-        lit. b) GDPR). Fără aceste date nu putem confirma programarea.
-      </p>
-      <p>
-        Te rugăm să nu incluzi în mesaj informații despre sănătatea ta. Dacă un tratament necesită o evaluare, o
+        Te rugăm să nu ne trimiți în scris informații despre sănătatea ta. Dacă un tratament necesită o evaluare, o
         discutăm la salon.
       </p>
 
-      <h3>Protecția formularului</h3>
+      <h3>Funcționarea site-ului</h3>
       <p>
-        Pentru a limita programările false, păstrăm temporar adresa IP de la care este trimis formularul, împreună cu
-        numărul de încercări. Temeiul este interesul nostru legitim de a proteja serviciul de programări (art. 6 alin.
-        (1) lit. f) GDPR). Adresa IP se șterge automat după 24 de ore.
+        Ca orice site, serverul primește tehnic adresa IP și tipul browserului tău pentru a afișa paginile și a le
+        proteja de abuzuri. Temeiul este interesul nostru legitim de a avea un site funcțional și sigur (art. 6 alin. (1)
+        lit. f) GDPR).
       </p>
 
       <h3>Statistici de vizitare (doar cu acordul tău)</h3>
@@ -61,27 +62,15 @@ export default function PrivacyPolicyPage() {
         <Link href="/politica-cookies">Politica de cookies</Link>.
       </p>
 
-      <h3>Când ne contactezi direct</h3>
-      <p>
-        Dacă ne suni, ne scrii pe e-mail sau pe rețelele sociale, folosim datele pe care ni le trimiți doar pentru a-ți
-        răspunde.
-      </p>
-
       <h2>3. Cui transmitem datele</h2>
       <p>Nu vindem datele tale. Le transmitem doar furnizorilor care ne ajută să funcționăm, în calitate de împuterniciți:</p>
       <ul>
         <li>
-          <strong>Google</strong> (Google Calendar, unde se înregistrează programările; Google Analytics și Google Tag
-          Manager, doar cu acordul tău; Google Maps, doar dacă alegi să afișezi harta);
+          <strong>Google</strong> (Google Analytics și Google Tag Manager, doar cu acordul tău; Google Maps, doar dacă
+          alegi să afișezi harta);
         </li>
         <li>
-          <strong>Vonage</strong>, care ne trimite un SMS de notificare cu detaliile programării;
-        </li>
-        <li>
-          <strong>Vercel</strong>, furnizorul de găzduire al site-ului;
-        </li>
-        <li>
-          <strong>Upstash</strong>, unde se păstrează temporar contorul de programări per adresă IP.
+          <strong>Vercel</strong>, furnizorul de găzduire al site-ului.
         </li>
       </ul>
       <p>
@@ -95,10 +84,8 @@ export default function PrivacyPolicyPage() {
 
       <h2>4. Cât timp păstrăm datele</h2>
       <ul>
-        <li>Datele programărilor: cel mult 3 ani de la ultima programare, apoi le ștergem.</li>
-        <li>Adresa IP folosită pentru protecția formularului: 24 de ore.</li>
+        <li>Datele programărilor și mesajele: cât este necesar pentru programare și pentru a-ți răspunde.</li>
         <li>Datele Google Analytics: cel mult 14 luni.</li>
-        <li>Mesajele primite direct: cât este necesar pentru a-ți răspunde.</li>
       </ul>
       <p>Putem păstra datele mai mult doar dacă o lege ne obligă.</p>
 
@@ -128,16 +115,11 @@ export default function PrivacyPolicyPage() {
 
       <h2>6. Securitatea datelor</h2>
       <p>
-        Site-ul folosește conexiune criptată (HTTPS), iar accesul la programări este limitat la personalul salonului.
+        Site-ul folosește conexiune criptată (HTTPS), iar datele programărilor sunt accesibile doar personalului
+        salonului.
       </p>
 
-      <h2>7. Minori</h2>
-      <p>
-        Programările online sunt destinate persoanelor de peste 16 ani. Pentru minori, programarea se face de către
-        părinte sau tutore.
-      </p>
-
-      <h2>8. Modificări</h2>
+      <h2>7. Modificări</h2>
       <p>
         Putem actualiza această politică. Data ultimei actualizări este afișată la începutul paginii.
       </p>

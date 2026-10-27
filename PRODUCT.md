@@ -50,11 +50,9 @@ This means price is not something to hide behind a "contact us for a quote". Tra
 
 **Content model:** all services live in a single hand-authored file, `lib/data.tsx` — two categories (Remodelare Corporală, Dermato Cosmetică) holding 12 treatments. Each treatment carries short/medium/long descriptions, a "did you know" fact, a benefits list, its own FAQ set, price tiers, duration, and images. There is no CMS; the owner does not edit content, the developer does.
 
-**Routes:** `/` (home), `/servicii` (all services), `/servicii/[category]`, `/servicii/[category]/[service]`.
+**Routes:** `/` (home), `/servicii` (all services), `/servicii/[category]`, `/servicii/[category]/[service]`, and the legal pages `/politica-de-confidentialitate`, `/termeni-si-conditii`, `/politica-cookies`.
 
-**Booking — currently paused, intended to return.** The salon previously ran an on-site booking form backed by Google Calendar availability, Vonage SMS confirmation, and Upstash Redis rate limiting. That flow is switched off: the homepage renders the no-booking pricing section and the FAQ tells visitors to call. The implementation is still in the repo (`app/actions.ts`, `components/home/booking.tsx`, `components/home/booking_pricing.tsx`) and is **not** dead code to be deleted. Design and information architecture should stay compatible with online booking coming back as a primary CTA.
-
-**Known open issue blocking its return** (from `todo.txt`): a booking whose service duration overruns into an already-scheduled next event is not correctly rejected.
+**No online booking.** The client decided (October 2026) not to have booking on the website. The old booking form (Google Calendar availability, Vonage SMS, Upstash Redis rate limiting) has been removed along with its packages; it survives only in git history (last present in commit `58eada2`). Appointments are made by phone or message, and the site collects no personal data through forms.
 
 **Undecided / not established:** whether blog pages will exist (on the roadmap, not committed); "servicii similare" cross-linking on service detail pages; whether the site will ever be multilingual.
 
@@ -74,7 +72,7 @@ Real, usable, and already in the repository:
 - **Aggregate rating 4.7 from 15 reviews**, declared in the business JSON-LD.
 - **Two before/after pairs** (`assets/before_after/`) — real client results, and the only visual proof of outcome the site has.
 - **Real pricing** for every treatment, including multi-session package tiers.
-- **Real treatment durations** (30–75 minutes), used by the booking logic.
+- **Real treatment durations** (30–75 minutes), shown on the pricing list and service pages.
 - **Salon and owner photography.**
 
 - **"Peste 10 ani de experiență"** — the 10+ years figure is an existing claim already published on the homepage (`components/why-choose-us.tsx`). It is deliberately hardcoded rather than computed from `new Date()`, because the section is prerendered at build time and a runtime year would hydrate inconsistently after New Year.
@@ -88,4 +86,4 @@ Absences that future work must not fabricate: there are no case studies, no clin
 3. **Proof is scarce, so spend it well.** Three real reviews and two before/after pairs are the entire evidence budget. Place them where the decision is actually made, and never pad them with invented material.
 4. **Reassure before you sell.** This audience is skeptical of body-treatment claims. Non-invasiveness, no downtime, and what the session is actually like matter more than superlatives.
 5. **Mobile Romanian search traffic is the visitor.** Assume a phone, assume arrival from Google or Instagram — often onto a service detail page rather than the homepage — and never regress the existing SEO structure.
-6. **Design for booking's return.** The site is in a paused state, not a final one; do not architect anything that would have to be torn out when online booking comes back.
+6. **Contact, not booking.** The client chose not to take bookings online. Calls to action lead to the phone, WhatsApp or a DM; do not reintroduce a booking form without the owner.

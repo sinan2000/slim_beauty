@@ -5,7 +5,7 @@ import { legalPageMeta } from "@/lib/metadatas";
 
 export const metadata = legalPageMeta(
   "Termeni și condiții | Slim & Beauty",
-  "Termenii de utilizare a site-ului Slim & Beauty by MC: programări online, prețuri, tratamente, reclamații și soluționarea alternativă a litigiilor.",
+  "Termenii de utilizare a site-ului Slim & Beauty by MC: programări, prețuri, tratamente, reclamații și soluționarea alternativă a litigiilor.",
   "/termeni-si-conditii"
 );
 
@@ -13,8 +13,7 @@ export default function TermsPage() {
   return (
     <LegalPage title="Termeni și condiții">
       <p>
-        Folosind site-ul www.slimandbeauty.ro accepți termenii de mai jos. Te rugăm să îi citești înainte de a face o
-        programare.
+        Folosind site-ul www.slimandbeauty.ro accepți termenii de mai jos.
       </p>
 
       <h2>1. Cine suntem</h2>
@@ -24,14 +23,10 @@ export default function TermsPage() {
         e-mail: <a href={`mailto:${company.email}`}>{company.email}</a>.
       </p>
 
-      <h2>2. Programări online</h2>
+      <h2>2. Programări</h2>
       <p>
-        Prin formularul de pe site poți solicita o programare pentru unul dintre serviciile salonului. Programarea este
-        gratuită și nu presupune nicio plată online. Este înregistrată după ce primești pe ecran mesajul de confirmare.
-      </p>
-      <p>
-        Dacă este nevoie, te putem contacta telefonic pentru a confirma, muta sau completa programarea. Te rugăm să
-        introduci un număr de telefon corect.
+        Programările se fac telefonic, la <a href={company.phoneHref}>{company.phone}</a>, sau prin mesaj. Site-ul nu
+        permite programări sau plăți online.
       </p>
       <p>
         Dacă nu poți ajunge, te rugăm să ne anunți telefonic cât mai din timp, ca să putem oferi intervalul altei

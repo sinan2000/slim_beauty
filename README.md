@@ -4,7 +4,7 @@
 
 # 💄 Slim & Beauty by MC – Beauty Salon Web App
 
-**Slim & Beauty by MC** is a modern, high-performance web app designed for a beauty salon based in **Timisoara, Romania**. This website is built for seamless **booking, scheduling, and SEO optimization**, ensuring it ranks high on search engines for relevant beauty and wellness services.
+**Slim & Beauty by MC** is a modern, high-performance web app designed for a beauty salon based in **Timisoara, Romania**. This website presents the salon's treatments and prices and is built for **SEO optimization**, ensuring it ranks high on search engines for relevant beauty and wellness services.
 
 🔗 **Visit Us:** [www.snsautomation.tech](https://www.snsautomation.tech)
 
@@ -12,13 +12,9 @@
 
 ## 🌟 Features  
 
-- 📆 **Online Booking Form** – Visitors can book appointments effortlessly  
-- 📆 **Google Calendar Integration** – Automatically syncs appointments for easy schedule management  
-- 📩 **SMS Notifications** - The customer receives a SMS notification upon booking form submission 
 - 🔒 **Performance Optimized** – Fast loading speeds and efficient architecture  
-- 📂 **Rate Limiting with Redis KV** – Protects against spam and excessive requests  
 - 📈 **SEO-Optimized** – Implements JSON-LD and metadata to enhance search engine visibility  
-- 📊 **Google Analytics & Tag Manager** – Provides insights into visitor interactions
+- 📊 **Google Analytics & Tag Manager** – Loaded only after cookie consent
 - 🌐 **Responsive & Mobile-Friendly** – Flawless experience on all devices
 - ⚡ **Optimized Hosting** - Hosted on Vercel's infrastructure for low latency and CDN
 
@@ -27,7 +23,7 @@
 ## 🛠️ Tech Stack  
 
 - **Frontend:** Next.js + Tailwind CSS
-- **Backend:** Node.js + Redis KV
+- **Hosting:** Vercel
 
 ---
 
@@ -46,20 +42,20 @@ git clone https://github.com/sinan2000/slim-beauty.git
 ### 3. Install Dependencies
 ```sh
 cd slim_beauty
-npm install
+pnpm install
 ```
 
 ### 4. Set Up Environment Variables
-Make sure to include environment variables for google calendar api, vonage for sms sending and redis kv.
+Only `NEXT_PUBLIC_URL` is read (optional; the sitemap falls back to `https://www.slimandbeauty.ro`).
 
 ### 5. Run in Development Mode
 ```sh
-npm run dev
+pnpm dev
 ```
 
 ### 5. Build for Production
 ```sh
-npm run build && npm run start
+pnpm build && pnpm start
 ```
 
 ## 📜 License
