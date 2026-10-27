@@ -23,15 +23,15 @@ export default function Hero() {
             <div className="absolute inset-0 bg-linear-to-r from-pink-900/80 via-pink-950/75 to-purple-900/72 z-10"></div>
 
             {/* Content */}
-            <div className="container mx-auto px-4 relative z-20 text-center animate-fade-hero-in">
+            <div className="container mx-auto px-4 relative z-20 text-center motion-safe:animate-fade-hero-in">
                 <div className="max-w-3xl mx-auto">
-                    <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
+                    <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight motion-safe:animate-slide-up">
                         Un Moment de Răsfăț – Remodelare Corporală & Dermato Cosmetică
                     </h1>
-                    <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-slide-up">
+                    <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto motion-safe:animate-slide-up">
                         Simte-te bine în pielea ta! La Slim & Beauty, te ajutăm să scapi de celulită, să îți tonifiezi corpul și să îți îngrijești tenul cu tratamente profesionale, într-un mediu relaxant.
                     </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 motion-safe:animate-slide-up">
                         <Link href="/servicii">
                             <Button  className="bg-pink-600 hover:bg-pink-700 text-white rounded-full px-8 py-6 text-lg transition-all duration-300 transform hover:scale-105">
                                 Descoperă Tratamentele

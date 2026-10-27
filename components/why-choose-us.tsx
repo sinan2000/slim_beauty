@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
                   className="w-full h-full object-contain"
                   controls
                   playsInline
-                  poster="/about-us-poster.png"
+                  poster="/about-us-poster.webp"
                 >
                   <source src="/about-us.mp4" type="video/mp4" />
                 </video>
@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
             {/* Founder Attribution */}
             <div className="reveal mt-6 text-center">
               <div className="relative inline-block">
-                <h3 className="font-playfair text-2xl md:text-3xl font-bold text-gray-800">Mihaela Ceviker</h3>
+                <p className="font-playfair text-2xl md:text-3xl font-bold text-gray-800">Mihaela Ceviker</p>
                 <div className="h-1 w-1/2 bg-gradient-to-r from-pink-300 to-pink-500 rounded-full mx-auto mt-2"></div>
               </div>
               <p className="text-gray-600 mt-2 italic">fondatoarea salonului Slim & Beauty by MC</p>

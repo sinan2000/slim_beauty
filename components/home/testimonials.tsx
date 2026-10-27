@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import Link from 'next/link';
@@ -33,8 +33,21 @@ const testimonials = [
   }
 ]
 
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
+
+const subscribeReducedMotion = (onChange: () => void) => {
+  const query = window.matchMedia(reducedMotionQuery);
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+};
+
+const getReducedMotion = () => window.matchMedia(reducedMotionQuery).matches;
+
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  // Hover or keyboard focus inside the carousel pauses auto-advance (WCAG 2.2.2).
+  const [isPaused, setIsPaused] = useState(false);
+  const reducedMotion = useSyncExternalStore(subscribeReducedMotion, getReducedMotion, () => false);
 
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -44,14 +57,18 @@ const Testimonials = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
   };
 
-  // Auto-scroll testimonials
+  const isAutoPlaying = !isPaused && !reducedMotion;
+
+  // Auto-scroll testimonials. Depends on currentIndex so a manual change restarts the 6 s wait.
   useEffect(() => {
-    const interval = setInterval(() => {
+    if (!isAutoPlaying) return;
+
+    const timeout = setTimeout(() => {
       nextTestimonial();
     }, 6000);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearTimeout(timeout);
+  }, [currentIndex, isAutoPlaying]);
 
   return (
     <section
@@ -79,16 +96,36 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="reveal max-w-4xl mx-auto">
+        <div
+          className="reveal max-w-4xl mx-auto"
+          role="region"
+          aria-roledescription="carusel"
+          aria-label="Recenzii clienți"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false);
+          }}
+        >
           <div className="relative">
             {/* Testimonial Slider */}
             <div className="overflow-hidden">
               <div
-                className="flex transition-transform duration-500 ease-in-out"
+                className="flex motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                aria-live={isAutoPlaying ? 'off' : 'polite'}
               >
                 {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full shrink-0 px-4">
+                  <div
+                    key={index}
+                    className="w-full shrink-0 px-4"
+                    role="group"
+                    aria-roledescription="recenzie"
+                    aria-label={`${index + 1} din ${testimonials.length}`}
+                    aria-hidden={index !== currentIndex}
+                    inert={index !== currentIndex}
+                  >
                     <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-xl">
                       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
                         <div className="shrink-0">
@@ -116,14 +153,15 @@ const Testimonials = () => {
 
                           <div>
                             <h3 className="font-semibold text-white text-lg">{testimonial.name}</h3>
-                            <Link target="_blank" href={testimonial.url} className="flex items-center gap-2 text-pink-200">
-                              <p>Vezi pe </p>
+                            <Link target="_blank" rel="noopener noreferrer" href={testimonial.url} className="flex items-center justify-center md:justify-start gap-2 text-pink-200">
+                              <span>Vezi pe</span>
                               <Image
                                 src='/icons/facebook.svg'
-                                alt="Logo Facebook"
+                                alt=""
                                 width={16}
                                 height={16}
                               />
+                              <span className="sr-only">Facebook (se deschide într-o filă nouă)</span>
                             </Link>
                           </div>
                         </div>
@@ -153,15 +191,21 @@ const Testimonials = () => {
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 space-x-2">
+          {/* The dot stays 10px; padding gives each button a 24px tap target. */}
+          <div className="flex justify-center mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2.5 rounded-full transition-all ${index === currentIndex ? "w-8 bg-white" : "w-2.5 bg-white/40"
-                  }`}
+                className="p-[7px]"
                 aria-label={`Mergi la recenzia ${index + 1}`}
-              />
+                aria-current={index === currentIndex}
+              >
+                <span
+                  className={`block h-2.5 rounded-full motion-safe:transition-all ${index === currentIndex ? "w-8 bg-white" : "w-2.5 bg-white/40"
+                    }`}
+                />
+              </button>
             ))}
           </div>
         </div>

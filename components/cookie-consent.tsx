@@ -87,14 +87,14 @@ export function CookieConsent() {
               <button
                 type="button"
                 onClick={() => decide("denied")}
-                className="rounded-full border border-pink-500 px-5 py-2.5 font-medium text-pink-600 transition-colors hover:bg-pink-50"
+                className="rounded-full border border-pink-600 px-5 py-2.5 font-medium text-pink-600 transition-colors hover:bg-pink-50"
               >
                 Refuz
               </button>
               <button
                 type="button"
                 onClick={() => decide("granted")}
-                className="rounded-full border border-pink-500 bg-pink-500 px-5 py-2.5 font-medium text-white transition-colors hover:bg-pink-600"
+                className="rounded-full border border-pink-600 bg-pink-600 px-5 py-2.5 font-medium text-white transition-colors hover:bg-pink-700"
               >
                 Accept
               </button>

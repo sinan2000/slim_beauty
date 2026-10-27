@@ -25,6 +25,8 @@ export default function Pricing() {
                           <span className="bg-pink-100 text-pink-600 text-xs font-medium px-2 py-0.5 rounded-full">NOU</span>
                         )}
                       </span>
+                      {/* Flex drops whitespace, so screen readers would otherwise hear "VShape Anticelulitic120 RON". */}
+                      <span className="sr-only"> – </span>
                       {service.price.length === 0 ? (
                         <span className="font-medium text-pink-600 whitespace-nowrap">La evaluare</span>
                       ) : (

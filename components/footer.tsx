@@ -79,7 +79,7 @@ export default function Footer() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span>Strada Petőfi Sándor 101, Dumbrăvița 307160, Romania</span>
+                <span>Strada Petőfi Sándor 101, Dumbrăvița 307160, România</span>
               </li>
               <li className="flex items-start">
                 <svg

@@ -84,7 +84,7 @@ export const BeautySalonSchema: WithContext<BeautySalon> = {
   ],
   areaServed: {
     "@type": "Place",
-    name: "Timișoara, Romania",
+    name: "Timișoara, România",
   },
   email: "cevikermihaela@gmail.com",
 };
@@ -269,7 +269,7 @@ export const generateServiceSchema = (
     serviceType: cat.category,
     areaServed: {
       "@type": "Place",
-      name: "Timișoara, Romania",
+      name: "Timișoara, România",
     },
     // Services priced after an evaluation publish no Offer rather than an empty price.
     ...(item.price.length > 0 && {

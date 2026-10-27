@@ -1,12 +1,7 @@
+make epilare definitiva more primary, like show it properly
 - create 'servicii similare' in service detail page;
-
-for ads, make reservation action form submission and send gtm event for marking conversions
-
-meta pixel - start ads
-
-hero2 - a/b testing
 
 sitemap include media?
 
-- EDGE CASE: select time for booking BEFORE EXISTING EVENT,
-but that exceeds with service time offset over an already existing next event... 
+continue with plan:
+/sns-web:page-review https://<domain>/
