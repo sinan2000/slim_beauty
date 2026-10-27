@@ -55,15 +55,14 @@ async function run() {
   return urls.length;
 }
 
+// exitCode instead of process.exit(): exiting while fetch's sockets are still open trips a libuv
+// assertion on Windows and turns exit 1 into 127.
 try {
   const count = await run();
-  if (failures.length === 0) {
-    console.log(`${count} URLs ok`);
-    process.exit(0);
-  }
+  if (failures.length === 0) console.log(`${count} URLs ok`);
 } catch (error) {
   fail(`could not reach ${baseUrl}: ${error.cause?.code ?? error.message}`);
 }
 
 for (const message of failures) console.error(`FAIL ${message}`);
-process.exit(1);
+process.exitCode = failures.length === 0 ? 0 : 1;
