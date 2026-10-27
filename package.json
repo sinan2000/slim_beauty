@@ -2,12 +2,15 @@
   "name": "slim_beauty",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.34.7",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."
+  },
+  "engines": {
+    "node": "24.x"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -31,18 +34,18 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "schema-dts": "^2.1.0",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.5",
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^26.1.2",
+    "@types/node": "^24.19.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.4.2",
-    "postcss": "^8.5.25",
+    "postcss": "^8.5.31",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
   }
