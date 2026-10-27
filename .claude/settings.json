@@ -1,5 +1,6 @@
 {
   "enabledPlugins": {
-    "sns-web@sinan": true
+    "sns-web@sinan": true,
+    "claude-seo@agricidaniel-claude-seo": true
   }
 }
