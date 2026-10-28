@@ -48,7 +48,7 @@ export default function HomePage() {
             </h1>
             <div data-hero-sub className="mt-8 flex max-w-xl flex-col gap-8">
               <p className="text-lg leading-relaxed text-(--cream-dim) md:text-xl">
-                Remodelare corporală non-invazivă, bronz organic și dermato-cosmetică, în salonul nostru din Dumbrăvița, lângă Timișoara.
+                Remodelare corporală non-invazivă, masaj anticelulitic, bronz organic și dermato-cosmetică, în salonul nostru din Dumbrăvița, lângă Timișoara.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href={contact.phoneHref} className="btn-gold h-14 px-8 text-base">

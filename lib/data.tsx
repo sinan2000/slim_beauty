@@ -304,6 +304,8 @@ Deși drenajul limfatic este adesea asociat cu beneficiile de detoxifiere și re
             },
             {
                 title: "Împachetări Tunel IR",
+                metaTitle: "Împachetări la Tunel IR, Dumbrăvița | Slim & Beauty",
+                metaDesc: "Împachetări la tunel cu infraroșu pentru detoxifiere, reducerea celulitei și o siluetă mai zveltă. Salon în Dumbrăvița, lângă Timișoara.",
                 featured: false, featuredDesc: "",
                 shortDescription: "Tratament pentru detoxifiere și pierdere în greutate.",
                 mediumDescription: "Împachetările Tunel IR combină beneficiile termoterapiei cu acțiunea infraroșiilor pentru o detoxifiere profundă și pierdere în greutate. Acest tratament stimulează metabolismul, crește circulația sanguină și ajută la eliminarea toxinelor, rezultând într-o piele mai fermă, reducerea celulitei și o siluetă mai zveltă.",
@@ -345,6 +347,8 @@ De asemenea, împachetările IR ajută la ameliorarea durerilor musculare și ar
             },
             {
                 title: "Bronzare Organică DHA",
+                metaTitle: "Bronzare Organică Timișoara – DHA | Slim & Beauty",
+                metaDesc: "Bronz organic DHA, fără raze UV: uniform, natural, potrivit și pentru piele sensibilă. Salon în Dumbrăvița, lângă Timișoara. Programează-te!",
                 featured: false,
                 featuredDesc: "Pentru un bronz natural și uniform, fără expunere la raze UV.",
                 shortDescription: "Bronzare sănătoasă și naturală fără raze UV.",
@@ -401,6 +405,8 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
         items: [
             {
                 title: "Epilare Definitivă cu Laser Diodă",
+                metaTitle: "Epilare Definitivă cu Laser Dumbrăvița | Slim & Beauty",
+                metaDesc: "Epilare definitivă cu laser diodă, personalizată după fototip și tipul firului de păr. Salon în Dumbrăvița, lângă Timișoara.",
                 featured: true,
                 featuredDesc: "Piele fină, mai puține fire de păr și confort pe termen lung.",
                 isNew: true,

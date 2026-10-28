@@ -70,13 +70,13 @@ export const rootMeta: Metadata = {
   },
 }
 
+const homeTitle = "Remodelare Corporală & Masaj Dumbrăvița | Slim & Beauty";
+const homeDescription = "Salon în Dumbrăvița, lângă Timișoara: remodelare corporală non-invazivă, masaj anticelulitic, bronzare organică și epilare definitivă.";
+
 export const homePageMeta: Metadata = {
-  title: "Remodelare Corporală Timișoara & Dumbrăvița | Slim & Beauty",
-  description: "Remodelare corporală în Timișoara și Dumbrăvița! Slim & Beauty oferă tratamente avansate de slăbire localizată, masaj anticelulitic și dermato-cosmetică.",
-  openGraph: generateOG(
-    "Remodelare Corporală Timișoara & Dumbrăvița | Slim & Beauty",
-    "Remodelare corporală în Timișoara și Dumbrăvița! Slim & Beauty oferă tratamente avansate de slăbire localizată, masaj anticelulitic și dermato-cosmetică."
-  ),
+  title: homeTitle,
+  description: homeDescription,
+  openGraph: generateOG(homeTitle, homeDescription),
   alternates: {
     canonical: "/",
   }
@@ -134,8 +134,8 @@ export async function detailPageMeta({ params }: { params: Promise<{ category: s
     notFound();
   }
 
-  const title = serviceTitle(serviceData.title, categoryData.category);
-  const description = truncate(serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!");
+  const title = serviceData.metaTitle ?? serviceTitle(serviceData.title, categoryData.category);
+  const description = serviceData.metaDesc ?? truncate(serviceData.mediumDescription + " Programează-te acum la Slim & Beauty!");
 
   return {
     title,
