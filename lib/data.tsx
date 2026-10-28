@@ -1,9 +1,11 @@
 import vshape1 from "@/assets/services/vshape/1.jpg";
 import vshape2 from "@/assets/services/vshape/2.jpg";
+import crioApplicator from "@/assets/services/crio/applicator.jpg";
 import crio2 from "@/assets/services/crio/2.jpg";
 import crio3 from "@/assets/services/crio/3.jpg";
 import emslim2 from "@/assets/services/emslim/device.jpg";
 import preso from "@/assets/services/preso/1.jpg";
+import rf1 from "@/assets/services/radiofrecventa/1.jpg";
 import bronz1 from "@/assets/services/bronzare/1.jpg";
 import bronz2 from "@/assets/services/bronzare/2.jpg";
 import bronz3 from "@/assets/services/bronzare/3.jpg";
@@ -115,7 +117,7 @@ De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând 
                     }
                 ],
                 price: [280, 530, 700],
-                media: [crio2, crio3],
+                media: [crioApplicator, crio2, crio3],
                 duration: 40
             },
             {
@@ -202,6 +204,7 @@ Radiofrecvența Bipolară este recunoscută pentru capacitatea sa de a oferi rez
                     }
                 ],
                 price: [90, 510, 750],
+                media: [rf1],
                 duration: 30
             },
             {

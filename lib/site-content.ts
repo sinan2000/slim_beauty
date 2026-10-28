@@ -23,6 +23,8 @@ import bronzTent from "@/assets/services/bronzare/7.jpg";
 import bronzKit from "@/assets/services/bronzare/4.jpg";
 import vshapeDark from "@/assets/services/vshape/1.jpg";
 import vshapeDevice from "@/assets/services/vshape/2.jpg";
+import salonReception from "@/assets/salon-reception.jpg";
+import crioApplicator from "@/assets/services/crio/applicator.jpg";
 import crioRoom from "@/assets/services/crio/2.jpg";
 import crioSession from "@/assets/services/crio/3.jpg";
 import emslimDevice from "@/assets/services/emslim/device.jpg";
@@ -48,6 +50,8 @@ export const photos = {
   bronzKit,
   vshapeDark,
   vshapeDevice,
+  salonReception,
+  crioApplicator,
   crioRoom,
   crioSession,
   emslimDevice,
@@ -148,7 +152,7 @@ export const allServices: PreviewService[] = services.flatMap((category) =>
  * no media at all, so those borrow a neutral photo of the salon's own rooms rather than another device's shot.
  */
 const photoOverrides: Record<string, StaticImageData> = {
-  "Criolipoliză": crioRoom,
+  "Criolipoliză": crioApplicator,
   "Epilare Definitivă cu Laser Diodă": laserHero,
   "Bronzare Organică DHA": bronzDark,
   "EMSlim Neo RF": emslimDevice,

@@ -73,8 +73,8 @@ export default function HomePage() {
             </p>
           </div>
           <Frame
-            src={photos.salonRoom}
-            alt="Interiorul salonului Slim & Beauty by MC din Dumbrăvița"
+            src={photos.salonReception}
+            alt="Recepția salonului Slim & Beauty by MC din Dumbrăvița, cu logo-ul pe perete și flori albe"
             sizes="(min-width: 768px) 40vw, 100vw"
             className="aspect-[3/4] md:col-span-5"
           />

@@ -21,9 +21,9 @@ const art: Record<string, Art> = {
     line: "Radiofrecvență care lucrează în profunzime: stimulează colagenul, activează circulația și netezește aspectul de coajă de portocală.",
   },
   "Criolipoliză": {
-    image: photos.crioSession,
-    alt: "Clientă întinsă în timpul unei ședințe de criolipoliză, cu aplicatoarele pe abdomen",
-    position: "50% 45%",
+    image: photos.crioApplicator,
+    alt: "Aplicator de criolipoliză pe abdomenul unei cliente, sub prosopul brodat Slim & Beauty by MC",
+    position: "50% 60%",
     line: "Răcire controlată pentru grăsimea localizată care nu pleacă nici cu dieta, nici cu sala.",
   },
 };
