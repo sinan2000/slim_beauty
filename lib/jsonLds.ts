@@ -11,11 +11,20 @@ import {
 import { normalizeString } from "./utils";
 import { services } from "./data";
 
+const SITE_URL = "https://www.slimandbeauty.ro";
+const SALON_ID = `${SITE_URL}/#salon`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+/** The verified Google Business Profile (Maps place). */
+const GOOGLE_MAPS_URL = "https://www.google.com/maps?cid=16143540257030615628";
+
 export const webSiteSchema: WithContext<WebSite> = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": WEBSITE_ID,
   name: "Slim & Beauty",
-  url: "https://www.slimandbeauty.ro",
+  url: SITE_URL,
+  inLanguage: "ro-RO",
+  publisher: { "@id": SALON_ID },
   description:
     "Slim & Beauty - Salon de înfrumusețare specializat în remodelare corporală și dermato cosmetică în Timișoara și Dumbrăvița.",
   sameAs: [
@@ -32,8 +41,13 @@ export const BeautySalonSchema: WithContext<BeautySalon> = {
   legalName: "SLIM & BEAUTY BY MC SRL",
   taxID: "30926241",
   image: "https://www.slimandbeauty.ro/logo-jsonld.png",
-  "@id": "https://www.slimandbeauty.ro",
-  url: "https://www.slimandbeauty.ro",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://www.slimandbeauty.ro/logo-jsonld.png",
+  },
+  "@id": SALON_ID,
+  url: SITE_URL,
+  hasMap: GOOGLE_MAPS_URL,
   telephone: "+40733407329",
   priceRange: "$$",
   description:
@@ -66,12 +80,6 @@ export const BeautySalonSchema: WithContext<BeautySalon> = {
       opens: "09:00",
       closes: "17:00",
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Saturday", "Sunday"],
-      opens: "00:00",
-      closes: "00:00",
-    },
   ],
   // No aggregateRating here on purpose: Google treats ratings a business publishes
   // about itself as self-serving and ineligible for rich results. Reviews are
@@ -79,13 +87,13 @@ export const BeautySalonSchema: WithContext<BeautySalon> = {
   sameAs: [
     "https://www.facebook.com/SalonSlimBeautyByMc/",
     "https://www.instagram.com/slimandbeautybymc/",
-    "https://www.slimandbeauty.ro",
     "https://www.tiktok.com/@slimandbeautymc/",
+    GOOGLE_MAPS_URL,
   ],
-  areaServed: {
-    "@type": "Place",
-    name: "Timișoara, România",
-  },
+  areaServed: [
+    { "@type": "City", name: "Dumbrăvița" },
+    { "@type": "City", name: "Timișoara" },
+  ],
   email: "cevikermihaela@gmail.com",
 };
 
@@ -184,7 +192,7 @@ export const serviceSchema: WithContext<Service> = {
   url: "https://www.slimandbeauty.ro/servicii",
   provider: {
     "@type": "BeautySalon",
-    "@id": "https://www.slimandbeauty.ro",
+    "@id": SALON_ID,
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -223,7 +231,7 @@ export const generateCategorySchema = (
     )}`,
     provider: {
       "@type": "BeautySalon",
-      "@id": "https://www.slimandbeauty.ro",
+      "@id": SALON_ID,
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -264,7 +272,7 @@ export const generateServiceSchema = (
     )}/${normalizeString(item.title)}`,
     provider: {
       "@type": "BeautySalon",
-      "@id": "https://www.slimandbeauty.ro",
+      "@id": SALON_ID,
     },
     serviceType: cat.category,
     areaServed: {

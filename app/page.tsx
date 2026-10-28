@@ -155,7 +155,10 @@ export default function HomePage() {
             Ce spun <span className="italic text-(--gold)">clientele</span> noastre
           </h2>
           <p className="mt-5 text-(--muted)">
-            Nota <span className="num text-(--cream)">{facts.rating}</span> din 5, din {facts.ratingCount} recenzii.
+            Nota <span className="num text-(--cream)">{facts.rating}</span> din 5, din {facts.ratingCount} recenzii pe Google.{" "}
+            <a href={contact.googleReview} target="_blank" rel="noopener" className="link-u text-(--gold)">
+              Lasă o recenzie
+            </a>
           </p>
           <ul data-stagger className="mt-16 grid gap-14 md:grid-cols-3 md:gap-10">
             {reviews.map((r, i) => (

@@ -71,7 +71,7 @@ export const rootMeta: Metadata = {
   },
 }
 
-const homeTitle = "Remodelare Corporală & Masaj Dumbrăvița | Slim & Beauty";
+const homeTitle = "Salon Remodelare Corporală Dumbrăvița | Slim & Beauty";
 const homeDescription = "Salon în Dumbrăvița, lângă Timișoara: remodelare corporală non-invazivă, masaj anticelulitic, bronzare organică și epilare definitivă.";
 
 export const homePageMeta: Metadata = {

@@ -20,9 +20,9 @@ export const services = [
     {
         category: "Remodelare Corporală",
         media: vshape1,
-        metaTitle: "Scapă de Celulită cu Remodelare Corporală | Slim & Beauty",
-        metaDesc: "Descoperă tratamente de remodelare corporală pentru un corp tonifiat, reducerea celulitei și slăbire localizată. Programează-te la Slim & Beauty!",
-        description: "Tratamente non-invazive pentru remodelarea corporală și eliminarea celulitei.",
+        metaTitle: "Remodelare Corporală Timișoara & Dumbrăvița | Slim & Beauty",
+        metaDesc: "Remodelare corporală non-invazivă în Dumbrăvița, lângă Timișoara: VShape, criolipoliză, EMSlim, cavitație și alte tratamente, cu prețul afișat.",
+        description: "Tratamente non-invazive pentru remodelarea corporală și eliminarea celulitei, în salonul nostru din Dumbrăvița, lângă Timișoara.",
         items: [
             {
                 title: "VShape Anticelulitic",

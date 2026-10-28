@@ -70,7 +70,9 @@ export const contact = {
   facebook: "https://www.facebook.com/SalonSlimBeautyByMC",
   tiktok: "https://www.tiktok.com/@slimandbeautymc/",
   address: "Str. Petőfi Sándor nr. 101, Dumbrăvița",
-  directions: "https://www.google.com/maps/search/?api=1&query=Slim%20%26%20Beauty%20by%20MC%20Dumbr%C4%83vi%C8%9Ba",
+  directions: "https://www.google.com/maps?cid=16143540257030615628",
+  /** Opens the review form of the verified Google Business Profile. */
+  googleReview: "https://g.page/r/CS_qJDeyb4JTEBM/review",
   hours: [
     { days: "Luni, marți, joi", time: "13:00 – 21:00" },
     { days: "Miercuri, vineri", time: "09:00 – 17:00" },
@@ -218,7 +220,7 @@ export const reviews = [
   {
     name: "Irina Brehui",
     image: review2,
-    url: "https://www.facebook.com/irina.brehui.1/posts%2Fpfbid0fN44vwNTB4FjUgFnpgyiEpZN1LCAietbzYpYRUn6QPFscjhbYo9aYrZ8Qk7WaWkul",
+    url: "https://www.facebook.com/irina.brehui.1/posts/pfbid0fN44vwNTB4FjUgFnpgyiEpZN1LCAietbzYpYRUn6QPFscjhbYo9aYrZ8Qk7WaWkul",
     quote: "Un salon ff fain, cu atmosfera plăcută și personal prietenos, dar în același timp și foarte profi. Recomand cu cea mai mare caldura!",
   },
   {
@@ -239,7 +241,7 @@ export const beforeAfter = [
 export const facts = {
   years: "10+",
   yearsLabel: "ani de experiență",
-  rating: "4,7",
-  ratingCount: 15,
+  rating: "4,8",
+  ratingCount: 17,
   owner: "Mihaela Ceviker",
 };

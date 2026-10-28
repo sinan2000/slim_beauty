@@ -16,38 +16,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const categoryPages = services.map(category => ({
         url: `${baseUrl}/servicii/${normalizeString(category.category)}`,
         lastModified: LAST_MODIFIED,
-        changeFrequency: "yearly" as const,
-        priority: 0.8,
     }));
 
     const servicePages = services.flatMap(category =>
         category.items.map(service => ({
             url: `${baseUrl}/servicii/${normalizeString(category.category)}/${normalizeString(service.title)}`,
             lastModified: LAST_MODIFIED,
-            changeFrequency: "monthly" as const,
-            priority: 0.7,
         }))
     )
 
     const legalPages = ["politica-de-confidentialitate", "termeni-si-conditii", "politica-cookies"].map(path => ({
         url: `${baseUrl}/${path}`,
         lastModified: LEGAL_LAST_MODIFIED,
-        changeFrequency: "yearly" as const,
-        priority: 0.2,
     }));
 
     return [
         {
             url: baseUrl,
             lastModified: LAST_MODIFIED,
-            changeFrequency: "monthly",
-            priority: 1,
         },
         {
             url: `${baseUrl}/servicii`,
             lastModified: LAST_MODIFIED,
-            changeFrequency: "yearly",
-            priority: 0.9,
         },
         ...categoryPages,
         ...servicePages,
