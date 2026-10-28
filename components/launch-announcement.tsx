@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Check, Phone, X } from "lucide-react";
-import laserPhoto from "@/assets/services/laser/announce.jpg";
+// The laser photo cropped clear of the promo graphic's logo inset and printed text.
+import laserPhoto from "@/assets/services/laser/hero.jpg";
 import { CONSENT_CHANGE_EVENT, readConsent } from "@/lib/consent";
 
 const SERVICE_HREF = "/servicii/dermato-cosmetica/epilare-definitiva-cu-laser-dioda";
@@ -91,77 +91,70 @@ export function LaunchAnnouncement() {
         // The content grid fills the dialog, so a click landing on the dialog itself is the backdrop.
         if (e.target === e.currentTarget) close();
       }}
-      className="announcement m-auto w-[calc(100%-2rem)] max-w-3xl max-h-[calc(100dvh-2rem)] overflow-hidden rounded-2xl bg-white p-0 text-gray-600 shadow-xl backdrop:bg-pink-900/40 backdrop:backdrop-blur-sm"
+      className="announcement m-auto w-[calc(100%-1.5rem)] max-w-[60rem] max-h-[calc(100dvh-1.5rem)] overflow-hidden rounded-2xl border border-(--gold)/25 bg-(--espresso) p-0 text-(--cream-dim) shadow-[0_50px_120px_-40px_rgba(0,0,0,0.9)] backdrop:bg-[#0b0806]/75 backdrop:backdrop-blur-[6px]"
     >
       <button
         type="button"
         onClick={close}
         aria-label="Închide"
-        className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-gray-700 transition-colors hover:bg-white hover:text-pink-600"
+        className="absolute top-3 right-3 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-(--cream)/25 bg-(--espresso)/60 text-(--cream) backdrop-blur-sm transition-colors hover:border-(--gold) hover:text-(--gold) md:top-5 md:right-5"
       >
-        <X className="h-5 w-5" aria-hidden="true" />
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M1 1l12 12M13 1 1 13" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        </svg>
       </button>
 
-      <div className="grid max-h-[calc(100dvh-2rem)] overflow-y-auto md:grid-cols-[5fr_6fr]">
-        <div className="relative h-52 sm:h-64 md:h-auto md:min-h-[500px]">
+      <div className="grid max-h-[calc(100dvh-1.5rem)] overflow-y-auto md:grid-cols-[minmax(0,0.92fr)_minmax(0,1fr)]">
+        <div className="grain relative h-56 overflow-hidden sm:h-72 md:h-auto md:min-h-[560px]">
           <Image
             src={laserPhoto}
-            alt="Epilare cu laser diodă profesional IRMEDICAL la Slim & Beauty by MC"
+            alt="Epilare cu laser diodă pe picior, cu aplicatorul răcit pe piele"
             fill
             placeholder="blur"
-            sizes="(max-width: 768px) 100vw, 350px"
-            className="object-cover object-[50%_62%] md:object-center"
+            sizes="(min-width: 768px) 460px, 100vw"
+            className="announcement-photo object-cover object-[60%_45%] md:object-[64%_50%]"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-pink-900/50 via-transparent to-transparent" />
-          <span className="absolute bottom-4 left-4 rounded-full bg-pink-600 px-3 py-1 text-xs font-semibold tracking-[0.15em] text-white">
+          {/* Melts the photo into the panel: down into it on phones, sideways into it from md. */}
+          <div className="absolute inset-0 bg-[linear-gradient(0deg,var(--espresso)_0%,transparent_55%)] md:bg-[linear-gradient(270deg,var(--espresso)_0%,transparent_38%)]" />
+          <span className="absolute bottom-4 left-5 rounded-full border border-(--gold)/70 bg-(--espresso)/60 px-3 py-1 text-[0.7rem] font-semibold tracking-[0.2em] text-(--gold) backdrop-blur-sm md:top-6 md:bottom-auto md:left-6">
             NOU
           </span>
         </div>
 
-        <div className="flex flex-col p-6 sm:p-8 md:p-10">
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-pink-600">
-            Acum la Slim & Beauty by MC
-          </p>
-
+        <div className="flex flex-col px-6 pt-4 pb-7 sm:px-9 md:px-10 md:pt-14 md:pb-10">
           <h2
             id="announcement-title"
             ref={titleRef}
             tabIndex={-1}
-            className="font-playfair text-3xl font-bold leading-tight text-gray-800 outline-none md:text-4xl"
+            className="f-display text-[2.4rem] leading-[1] font-normal tracking-[-0.02em] text-(--cream) outline-none md:text-[3.2rem]"
           >
             Epilare definitivă
-            <span className="block font-normal italic text-pink-600">cu laser diodă</span>
+            <span className="block italic text-(--gold)">cu laser diodă</span>
           </h2>
 
-          <p id="announcement-desc" className="mt-4 text-gray-600">
+          <p id="announcement-desc" className="mt-5 max-w-[40ch] leading-relaxed">
             Piele fină, mai puține fire de păr și confort pe termen lung. Fiecare tratament începe cu o evaluare și parametri adaptați ție.
           </p>
 
-          <ul className="mt-6 space-y-3">
+          <ul className="mt-7 border-t border-(--line)">
             {highlights.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-pink-50 text-pink-600">
-                  <Check className="h-3.5 w-3.5" aria-hidden="true" />
-                </span>
+              <li key={item} className="flex items-baseline gap-4 border-b border-(--line) py-3 text-sm text-(--cream-dim)">
+                <span className="h-px w-4 shrink-0 translate-y-[-0.3em] bg-(--gold)" aria-hidden="true" />
                 {item}
               </li>
             ))}
           </ul>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 md:mt-auto md:pt-8">
-            <Link
-              href={SERVICE_HREF}
-              onClick={close}
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-pink-600 px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-pink-700"
-            >
+          <p className="f-display mt-7 text-xl text-(--cream)">
+            Preț stabilit <span className="italic text-(--gold)">la evaluare</span>
+          </p>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-4 md:mt-auto md:pt-8">
+            <Link href={SERVICE_HREF} onClick={close} className="btn-gold h-12 whitespace-nowrap px-7 text-sm">
               Descoperă tratamentul
             </Link>
-            <a
-              href="tel:+40733407329"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium text-pink-600 transition-colors hover:text-pink-700"
-            >
-              <Phone className="h-4 w-4" aria-hidden="true" />
-              Programează evaluarea
+            <a href="tel:+40733407329" className="link-u inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium text-(--gold)">
+              Programează evaluarea · <span className="num">0733 407 329</span>
             </a>
           </div>
         </div>

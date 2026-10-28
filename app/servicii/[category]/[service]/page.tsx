@@ -4,7 +4,7 @@ import { services } from '@/lib/data';
 import { detailPageMeta } from '@/lib/metadatas';
 import { generateFAQSchema, generateServiceSchema } from '@/lib/jsonLds';
 import { allServices, contact, priceFrom, relatedServices, ron, serviceImage, whatsappFor } from '@/lib/site-content';
-import { BronzShell } from '@/components/bronz/shell';
+import { BronzChoreo } from '@/components/bronz/choreo';
 import { PageHero } from '@/components/bronz/page-hero';
 import { BronzBreadcrumbs } from '@/components/bronz/breadcrumbs';
 import { BronzContact } from '@/components/bronz/contact';
@@ -56,7 +56,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
   const secondPhoto = media.find((m) => typeof m !== 'string' && m !== serviceImage(s));
 
   return (
-    <BronzShell whatsapp={whatsapp}>
+    <BronzChoreo>
       <script
         id="individual-schema"
         type="application/ld+json"
@@ -265,7 +265,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
 
         <BronzContact whatsapp={whatsapp} />
       </main>
-    </BronzShell>
+    </BronzChoreo>
   );
 }
 

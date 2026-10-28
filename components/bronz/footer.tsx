@@ -5,6 +5,7 @@ import { SnsCredit } from "@/components/sns/sns-credit";
 import { CookieSettingsButton } from "@/components/cookie-consent";
 import { company } from "@/lib/company";
 import { contact } from "@/lib/site-content";
+import { BronzLogo } from "./logo";
 
 const legal = [
   { href: "/politica-de-confidentialitate", label: "Politica de confidențialitate" },
@@ -23,10 +24,9 @@ export function BronzFooter() {
     <footer className="border-t border-(--line) bg-[#100c09]">
       <div className="mx-auto flex max-w-[1400px] flex-col gap-10 px-5 py-14 md:px-10">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <p className="f-display text-[clamp(2.4rem,6vw,5rem)] leading-none text-(--cream)">
-            Slim <span className="italic text-(--gold)">&amp;</span> Beauty
-            <span className="f-body ml-3 align-middle text-xs tracking-[0.3em] text-(--muted) uppercase">by MC</span>
-          </p>
+          <Link href="/" aria-label="Slim & Beauty by MC, pagina principală" className="text-(--cream)">
+            <BronzLogo variant="full" title="Slim & Beauty by MC" className="h-auto w-[min(26rem,78vw)]" />
+          </Link>
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             {socials.map((s) => (
               <li key={s.label}>

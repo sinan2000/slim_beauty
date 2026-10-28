@@ -1,6 +1,5 @@
 /*
-  Bronz: the dark espresso and gold world of the /servicii pages (and the homepage preview E).
-  Everything is scoped under .bronz so the rest of the site keeps its own styles.
+  Bronz: the dark espresso and gold world of the whole site. The root layout puts .bronz on <body>.
 */
 html:has(.bronz) { background: #15100c; color-scheme: dark; scrollbar-color: #6b5236 #15100c; }
 html:has(.bronz)::-webkit-scrollbar { width: 10px; }
@@ -17,6 +16,8 @@ html:has(.bronz)::-webkit-scrollbar-thumb { background: #6b5236; border-radius: 
 }
 .bronz ::selection { background: #d5b071; color: #15100c; }
 .bronz :focus-visible { outline: 1.5px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
+/* Headings that receive focus programmatically (dialog titles) are landmarks, not controls: no ring. */
+.bronz [tabindex="-1"]:focus-visible { outline: none; }
 .bronz .f-display { font-family: var(--font-bodoni), Georgia, serif; font-optical-sizing: auto; }
 .bronz .f-body { font-family: var(--font-manrope), system-ui, sans-serif; }
 .bronz .num { font-variant-numeric: tabular-nums lining-nums; }
@@ -38,7 +39,7 @@ html:has(.bronz)::-webkit-scrollbar-thumb { background: #6b5236; border-radius: 
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Nav backdrop: --nav is scrubbed 0 → 1 by the choreography; without JS (or with reduced motion) it is solid. */
+/* Nav backdrop: solid by default. Over a photo hero it starts clear and NavBackdrop fades it in with scroll. */
 .bronz .nav-bar {
   --nav: 1;
   background-color: rgb(21 16 12 / calc(var(--nav) * .82));
@@ -51,12 +52,29 @@ html:has(.bronz)::-webkit-scrollbar-thumb { background: #6b5236; border-radius: 
 @keyframes bz-show { to { visibility: visible; } }
 @media (prefers-reduced-motion: no-preference) {
   .bronz [data-hero-title], .bronz [data-hero-sub] { visibility: hidden; animation: bz-show 0s 2.5s forwards; }
-  .bronz .nav-bar { --nav: 0; }
+  .bronz:has([data-hero]) .nav-bar { --nav: 0; }
 }
 .bronz .hero-line { padding-bottom: .08em; }
 /* Hero photo entrance is CSS so it starts before the GSAP build (which waits for fonts.ready). */
 @keyframes bz-photo { from { transform: scale(1.12); filter: brightness(.4); } to { transform: scale(1); filter: none; } }
 .bronz .hero-photo { animation: bz-photo 2.6s cubic-bezier(.16,1,.3,1) both; }
+
+/* Homepage featured run: stacked by default, horizontal on wide screens with motion allowed. The media query matches
+   the choreography's, so the server already paints the final layout and nothing jumps when GSAP pins it. */
+.bronz .feat-track { display: flex; flex-direction: column; gap: 6rem; padding: 6rem 1.25rem; }
+@media (min-width: 768px) { .bronz .feat-track { padding-inline: 2.5rem; } }
+.bronz .feat-progress { display: none; }
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .bronz .feat .feat-viewport { height: 100dvh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding-top: 5rem; position: relative; }
+  .bronz .feat .feat-track { flex-direction: row; align-items: stretch; width: max-content; padding: 0 2.5rem; will-change: transform; }
+  .bronz .feat .feat-progress { display: block; }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) { .bronz .feat .feat-track { gap: 6rem; } }
+
+/* Phone menu (popover): fades and settles in from the top layer. */
+.bronz .bz-menu { opacity: 0; translate: 0 -12px; transition: opacity .4s cubic-bezier(.16,1,.3,1), translate .5s cubic-bezier(.16,1,.3,1), overlay .5s allow-discrete, display .5s allow-discrete; }
+.bronz .bz-menu:popover-open { opacity: 1; translate: 0 0; }
+@starting-style { .bronz .bz-menu:popover-open { opacity: 0; translate: 0 -12px; } }
 
 /* Price rows: the title leans in and turns gold on hover, like a menu line being chosen. */
 .bronz .row .row-title { transition: color .5s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
@@ -89,7 +107,33 @@ html:has(.bronz)::-webkit-scrollbar-thumb { background: #6b5236; border-radius: 
   padding: .06em .12em 0 0; color: var(--gold);
 }
 
+/* Loading screen: the logo breathes. */
+@keyframes bz-breathe { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) { .bronz .bz-breathe { animation: bz-breathe 2.4s ease-in-out infinite; } }
+
+/* Legal pages: long-form reading in the bronz palette. */
+.bronz .legal { font-size: 1.0625rem; line-height: 1.75; color: var(--cream-dim); }
+.bronz .legal > * + * { margin-top: 1.1em; }
+.bronz .legal h2 {
+  font-family: var(--font-bodoni), Georgia, serif; font-weight: 400; color: var(--cream);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem); line-height: 1.15; letter-spacing: -.01em;
+  margin-top: 2.6em; padding-top: 1.2em; border-top: 1px solid var(--line); scroll-margin-top: 7rem;
+}
+.bronz .legal h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.bronz .legal h3 { font-family: var(--font-bodoni), Georgia, serif; font-style: italic; font-weight: 400; color: var(--gold); font-size: 1.35rem; margin-top: 1.8em; }
+.bronz .legal h2 + *, .bronz .legal h3 + * { margin-top: .7em; }
+.bronz .legal strong { color: var(--cream); font-weight: 600; }
+.bronz .legal a { color: var(--gold); text-decoration: underline; text-decoration-color: rgba(213,176,113,.4); text-underline-offset: 4px; transition: text-decoration-color .3s; }
+.bronz .legal a:hover { text-decoration-color: var(--gold); }
+.bronz .legal ul { padding-left: 1.2rem; list-style: none; }
+.bronz .legal ul > li { position: relative; padding-left: .4rem; }
+.bronz .legal ul > li + li { margin-top: .5em; }
+.bronz .legal ul > li::before { content: ""; position: absolute; left: -1rem; top: .78em; width: .45rem; height: 1px; background: var(--gold); }
+.bronz .legal table { width: 100%; border-collapse: collapse; font-size: .9375rem; font-variant-numeric: tabular-nums; }
+.bronz .legal th { text-align: left; font-weight: 600; color: var(--cream); border-bottom: 1px solid rgba(213,176,113,.5); padding: .7rem .8rem .7rem 0; }
+.bronz .legal td { vertical-align: top; border-bottom: 1px solid var(--line); padding: .7rem .8rem .7rem 0; }
+
 @media (prefers-reduced-motion: reduce) {
-  .bronz .row .row-title, .bronz .zoom img, .bronz .faq .faq-icon { transition: none; }
+  .bronz .row .row-title, .bronz .zoom img, .bronz .faq .faq-icon, .bronz .bz-menu { transition: none; }
   .bronz .hero-photo { animation: none; }
 }

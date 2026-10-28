@@ -72,13 +72,13 @@ export function CookieConsent() {
       {open && (
         <section
           aria-label="Consimțământ cookie-uri"
-          className="fixed inset-x-0 bottom-0 z-50 px-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]"
+          className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] md:px-4 md:pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))]"
         >
-          <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-pink-100 bg-white p-5 text-sm text-gray-600 shadow-xl md:flex-row md:items-center md:gap-6">
+          <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-(--gold)/30 bg-(--espresso-2)/95 p-5 text-sm leading-relaxed text-(--cream-dim) shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] backdrop-blur-md md:flex-row md:items-center md:gap-6 md:p-6">
             <p className="flex-1">
               Folosim cookie-uri de analiză (Google Analytics) doar cu acordul tău, ca să vedem cum este folosit
               site-ul. Poți schimba oricând alegerea din „Setări cookie”, în subsolul paginii. Detalii în{" "}
-              <Link href="/politica-cookies" className="text-pink-600 underline">
+              <Link href="/politica-cookies" className="text-(--gold) underline underline-offset-4">
                 Politica de cookies
               </Link>
               .
@@ -87,14 +87,14 @@ export function CookieConsent() {
               <button
                 type="button"
                 onClick={() => decide("denied")}
-                className="rounded-full border border-pink-600 px-5 py-2.5 font-medium text-pink-600 transition-colors hover:bg-pink-50"
+                className="btn-ghost h-11 cursor-pointer px-5 text-sm"
               >
                 Refuz
               </button>
               <button
                 type="button"
                 onClick={() => decide("granted")}
-                className="rounded-full border border-pink-600 bg-pink-600 px-5 py-2.5 font-medium text-white transition-colors hover:bg-pink-700"
+                className="btn-gold h-11 cursor-pointer px-5 text-sm"
               >
                 Accept
               </button>

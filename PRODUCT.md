@@ -46,7 +46,7 @@ This means price is not something to hide behind a "contact us for a quote". Tra
 
 ## Capabilities and Constraints
 
-**Stack (existing):** Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4, Radix UI primitives, framer-motion, `next/image` with sharp. Deployed on Vercel. Analytics via Google Tag Manager (`GTM-5L3ZD3KW`).
+**Stack (existing):** Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4, GSAP (ScrollTrigger, SplitText) for motion, `next/image` with sharp. Deployed on Vercel. Analytics via Google Tag Manager (`GTM-5L3ZD3KW`).
 
 **Content model:** all services live in a single hand-authored file, `lib/data.tsx` — two categories (Remodelare Corporală, Dermato Cosmetică) holding 12 treatments. Each treatment carries short/medium/long descriptions, a "did you know" fact, a benefits list, its own FAQ set, price tiers, duration, and images. There is no CMS; the owner does not edit content, the developer does.
 

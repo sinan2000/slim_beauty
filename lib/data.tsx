@@ -1,10 +1,8 @@
 import vshape1 from "@/assets/services/vshape/1.jpg";
 import vshape2 from "@/assets/services/vshape/2.jpg";
-import crio from "@/assets/services/crio/1.jpg";
 import crio2 from "@/assets/services/crio/2.jpg";
 import crio3 from "@/assets/services/crio/3.jpg";
-import emslim2 from "@/assets/services/emslim/1.jpg";
-import emslim3 from "@/assets/services/emslim/2.jpg";
+import emslim2 from "@/assets/services/emslim/device.jpg";
 import preso from "@/assets/services/preso/1.jpg";
 import bronz1 from "@/assets/services/bronzare/1.jpg";
 import bronz2 from "@/assets/services/bronzare/2.jpg";
@@ -13,9 +11,8 @@ import bronz4 from "@/assets/services/bronzare/4.jpg";
 import bronz5 from "@/assets/services/bronzare/5.jpg";
 import bronz6 from "@/assets/services/bronzare/6.jpg";
 import bronz7 from "@/assets/services/bronzare/7.jpg";
-import dermapen from "@/assets/services/dermapen/1.jpg";
-import laser from "@/assets/services/laser/1.jpg";
-import laserPhoto from "@/assets/services/laser/announce.jpg";
+import dermapen from "@/assets/services/dermapen/skin.jpg";
+import laserHero from "@/assets/services/laser/hero.jpg";
 
 export const services = [
     {
@@ -118,7 +115,7 @@ De-a lungul procesului, criolipoliza stimulează conturarea corpului, reducând 
                     }
                 ],
                 price: [280, 530, 700],
-                media: [crio, crio2, crio3],
+                media: [crio2, crio3],
                 duration: 40
             },
             {
@@ -163,7 +160,7 @@ Tratamentul este perfect pentru cei care doresc să combine slăbirea localizat�
                     }
                 ],
                 price: [85, 480, 700],
-                media: ["/emslim.mp4", emslim2, emslim3],
+                media: ["/emslim.mp4", emslim2],
                 duration: 30
             },
             {
@@ -205,49 +202,6 @@ Radiofrecvența Bipolară este recunoscută pentru capacitatea sa de a oferi rez
                     }
                 ],
                 price: [90, 510, 750],
-                duration: 30
-            },
-            {
-                title: "Masaj Vacuum Anticelulitic",
-                featured: false, featuredDesc: "",
-                shortDescription: "Reducerea celulitei și tonifierea pielii.",
-                mediumDescription: "Masajul Vacuum Anticelulitic este o tehnică eficientă pentru combaterea celulitei și tonifierea pielii. Prin stimularea circulației sanguine și limfatice, acest tratament ajută la eliminarea toxinelor, reducerea retenției de apă și îmbunătățirea texturii pielii, oferind un aspect mai neted și mai tonic zonelor predispuse la celulită.",
-                longDescription: `Masajul Vacuum Anticelulitic este un tratament inovator care ajută la reducerea aspectului celulitei și la îmbunătățirea fermității pielii. Acest tratament folosește un dispozitiv special care creează un efect de vacuum asupra pielii, stimulând circulația sanguină și limfatică. Prin aplicarea presiunii negative, masajul cu vacuum descompune grăsimile din țesuturile afectate de celulită și ajută la eliminarea acestora prin procese naturale, precum drenajul limfatic.
-
-Acest tratament nu doar că ajută la reducerea vizibilă a celulitei, dar contribuie și la detoxifierea corpului, prin eliminarea toxinelor și reducerea retenției de apă. Masajul Vacuum Anticelulitic este ideal pentru zonele corporale predispuse la acumularea de grăsime și celulită, cum ar fi coapsele, abdomenul și fesele. De asemenea, îmbunătățește aspectul general al pielii, oferind un tonus mai ferm și o textură mai netedă.
-
-Tratamentul anticelulitic cu vacuum este non-invaziv și complet sigur, fără durere sau disconfort semnificativ pentru pacient. Rezultatele devin vizibile după primele câteva ședințe, cu efecte cumulative pe termen lung, oferind o piele netedă și un aspect sculptat.
-
-`,
-                fact: "Masajul cu vacuum ajută la îmbunătățirea drenajului limfatic, care elimină toxinele și reduc retenția de apă.",
-                benefits: [
-                    "Reducerea celulitei: Masajul vacuum ajută la descompunerea și eliminarea celulelor grase din țesuturile afectate de celulită.",
-                    "Tonifierea pielii: Stimulează producția de colagen, îmbunătățind elasticitatea și fermitatea pielii.",
-                    "Îmbunătățirea circulației: Stimulează fluxul sanguin și circulația limfatică, promovând detoxifierea naturală a corpului.",
-                    "Reducerea retenției de apă: Ajută la eliminarea excesului de apă și toxine, ameliorând senzația de picioare grele.",
-                    "Tratament non-invaziv: Este o procedură sigură, fără intervenții chirurgicale, fără durere și fără timp de recuperare.",
-                    "Rezultate rapide și durabile: Primele rezultate devin vizibile rapid, iar îmbunătățirile continuă pe măsură ce se efectuează mai multe sesiuni.",
-                    "Adaptabil la diferite zone ale corpului: Poate fi aplicat pe coapse, abdomen, brațe și fese, oferind un tratament personalizat."
-                ],
-                faq: [
-                    {
-                        question: "Ce este masajul vacuum anticelulitic?",
-                        answer: "Masajul vacuum anticelulitic este o tehnică non-invazivă care utilizează presiunea negativă pentru a stimula circulația și a descompune celulele grase din zonele afectate de celulită, oferind o piele mai fermă și mai netedă.",
-                    },
-                    {
-                        question: "Este dureros masajul vacuum anticelulitic?",
-                        answer: "Masajul vacuum anticelulitic nu este dureros. Pacienții pot simți o ușoară senzație de tragere sau presiune în timpul tratamentului, dar acest disconfort este minim."
-                    },
-                    {
-                        question: "Cum funcționează masajul cu vacuum anticelulitic?",
-                        answer: "Masajul cu vacuum creează o presiune negativă care stimulează fluxul sanguin și limfatic, ajutând la descompunerea celulelor grase și la îmbunătățirea elasticității pielii.",
-                    },
-                    {
-                        question: "Există efecte secundare după masajul vacuum anticelulitic?",
-                        answer: "Nu există efecte secundare majore, însă pot apărea ușoare înroșiri ale pielii sau vânătăi temporare după tratament, care dispar rapid."
-                    }
-                ],
-                price: [75, 400, 600],
                 duration: 30
             },
             {
@@ -388,7 +342,7 @@ De asemenea, împachetările IR ajută la ameliorarea durerilor musculare și ar
             },
             {
                 title: "Bronzare Organică DHA",
-                featured: true,
+                featured: false,
                 featuredDesc: "Pentru un bronz natural și uniform, fără expunere la raze UV.",
                 shortDescription: "Bronzare sănătoasă și naturală fără raze UV.",
                 mediumDescription: "Bronzarea Organică DHA oferă o alternativă sigură și sănătoasă la expunerea la soare sau la solariu. Utilizând ingrediente naturale și DHA (dihydroxyacetone), acest tratament oferă un bronz uniform și natural, fără riscurile asociate cu expunerea la raze UV. Rezultatul este o piele frumos bronzată, hidratată și protejată.",
@@ -444,7 +398,8 @@ Fie că te pregătești pentru un eveniment special sau dorești să obții un b
         items: [
             {
                 title: "Epilare Definitivă cu Laser Diodă",
-                featured: false, featuredDesc: "",
+                featured: true,
+                featuredDesc: "Piele fină, mai puține fire de păr și confort pe termen lung.",
                 isNew: true,
                 shortDescription: "Piele fină, mai puține fire de păr și confort pe termen lung.",
                 mediumDescription: "Epilarea cu laser diodă profesional este o metodă modernă de reducere progresivă și de lungă durată a părului nedorit. Energia laserului este absorbită de pigmentul firului de păr și transmisă către folicul, acționând cu eficiență în special asupra firelor aflate în faza activă de creștere.",
@@ -481,7 +436,7 @@ Programează-te pentru evaluare și află care este protocolul potrivit pentru t
                     }
                 ],
                 price: [] as number[],
-                media: [laserPhoto, laser],
+                media: [laserHero],
             },
             {
                 title: "Dermapen cu Microneedling",
@@ -528,48 +483,47 @@ Dermapen este un dispozitiv controlat electronic, care asigură o penetrare unif
                 duration: 45
             },
             {
-                title: "Microdermabraziune",
-                shortDescription: "Exfoliere și curățare profundă a pielii.",
-                mediumDescription: "Microdermabraziunea este o procedură de exfoliere mecanică care îndepărtează delicat stratul superior al pielii moarte. Acest tratament stimulează reînnoirea celulară, îmbunătățește textura pielii și reduce aspectul porilor dilatați, al liniilor fine și al hiperpigmentării. Rezultatul este o piele mai netedă, mai luminoasă și cu un aspect mai tânăr.",
-                longDescription: `Microdermabraziunea este o procedură de exfoliere mecanică ce îndepărtează delicat stratul superior de celule moarte ale pielii, stimulând procesul natural de regenerare celulară. Acest tratament neinvaziv îmbunătățește textura pielii, reducând vizibilitatea porilor dilatați, liniilor fine și a petelor de hiperpigmentare. Procedura este ideală pentru toate tipurile de piele, contribuind la o curățare facială profundă și la reînnoirea vizibilă a tenului.
+                title: "Aqua Hydra (Hidrodermabraziune)",
+                featured: false, featuredDesc: "",
+                shortDescription: "Curățare, exfoliere și hidratare profundă a tenului.",
+                mediumDescription: "Aqua Hydra este un tratament facial de hidrodermabraziune care curăță, exfoliază și hidratează pielea într-o singură ședință. Cu ajutorul apei și al serurilor aplicate prin vacuum blând, porii sunt curățați în profunzime, iar pielea rămâne hidratată, mai netedă și mai luminoasă.",
+                longDescription: `Aqua Hydra este un tratament facial de hidrodermabraziune, o variantă blândă a exfolierii clasice. În locul particulelor abrazive, tratamentul folosește apă și seruri, aplicate cu un vârf special care lucrează prin vacuum. Astfel, celulele moarte și impuritățile sunt îndepărtate, iar pielea primește în același timp hidratare.
 
-Prin stimularea regenerării pielii, microdermabraziunea ajută la refacerea straturilor superficiale ale epidermei, oferind un aspect mai neted și mai tânăr. Tratamentul este eficient nu doar pentru a îmbunătăți aspectul general al pielii, dar și pentru a crește eficiența produselor de îngrijire a pielii, deoarece pielea este mai pregătită să absoarbă ingredientele active după exfoliere.
+Ședința are mai multe etape: curățarea tenului, exfolierea, extragerea impurităților din pori și aplicarea serurilor hidratante. Fiecare etapă se adaptează tipului tău de ten, iar tratamentul se face fără ace și fără disconfort.
 
-Această tehnică modernă este blândă, dar eficientă, și necesită un timp minim de recuperare. Dacă dorești o piele mai curată, luminoasă și revitalizată, microdermabraziunea este alegerea potrivită pentru tine.`,
-                fact: "Pielea se regenerează complet la fiecare 28 de zile, iar microdermabraziunea accelerează acest proces natural.",
+După ședință, tenul arată mai curat, mai odihnit și mai luminos, iar porii sunt vizibil mai curați. Pentru că nu necesită timp de recuperare, îți poți relua imediat activitățile obișnuite. Vrei un ten curat, hidratat și proaspăt? Sună-ne și îți recomandăm frecvența potrivită pentru pielea ta.`,
+                fact: "Știai că hidrodermabraziunea exfoliază pielea cu apă în loc de particule abrazive? De aceea este mai blândă cu tenul și poate fi combinată cu hidratarea în aceeași ședință.",
                 benefits: [
-                    "Exfoliere eficientă: Îndepărtează celulele moarte de pe suprafața pielii, stimulând regenerarea celulară.",
-                    "Îmbunătățirea texturii pielii: Reduce aspectul liniilor fine și al porilor dilatați, oferind o textură mai uniformă și netedă.",
-                    "Curățare facială profundă: Curăță în profunzime pielea, eliminând impuritățile și excesul de sebum.",
-                    "Îmbunătățirea tonusului pielii: Rezultatul este un ten mai luminos și mai uniform, cu o reducere a hiperpigmentării.",
-                    "Potrivit pentru toate tipurile de piele: Tratamentul este sigur și blând, fiind recomandat pentru toate tipurile de ten, inclusiv pielea sensibilă.",
-                    "Crescând eficiența produselor de îngrijire: După microdermabraziune, pielea absoarbe mai bine serurile și cremele, maximizând rezultatele îngrijirii ulterioare.",
-                    "Rezultate vizibile imediat: Pielea este vizibil mai netedă și mai luminoasă imediat după tratament, fără timp de recuperare extins."
+                    "Curățare profundă a porilor: Impuritățile și excesul de sebum sunt extrase prin vacuum blând.",
+                    "Exfoliere delicată: Apa înlocuiește particulele abrazive, așa că pielea este exfoliată fără iritații.",
+                    "Hidratare intensă: Serurile sunt aplicate în timpul tratamentului, în aceeași ședință cu exfolierea.",
+                    "Ten mai luminos: Pielea arată mai odihnită și mai uniformă imediat după ședință.",
+                    "Fără timp de recuperare: Îți poți relua imediat activitățile obișnuite.",
+                    "Adaptat tenului tău: Etapele și serurile se aleg în funcție de nevoile pielii tale."
                 ],
                 faq: [
                     {
-                        question: "Ce este microdermabraziunea?",
-                        answer: "Microdermabraziunea este un tratament non-invaziv de exfoliere mecanică, care îndepărtează stratul superior al pielii moarte pentru a îmbunătăți textura și tonusul pielii.",
+                        question: "Ce este hidrodermabraziunea Aqua Hydra?",
+                        answer: "Este un tratament facial care curăță, exfoliază și hidratează pielea folosind apă și seruri aplicate prin vacuum blând, în locul particulelor abrazive.",
                     },
                     {
-                        question: "Este dureros tratamentul de microdermabraziune?",
-                        answer: "Tratamentul de microdermabraziune este blând și nedureros. Majoritatea pacienților simt doar o ușoară senzație de exfoliere pe piele, fără disconfort semnificativ."
+                        question: "Este dureros tratamentul Aqua Hydra?",
+                        answer: "Nu. Tratamentul este blând și se face fără ace. Vei simți doar o ușoară senzație de aspirare și răcoare pe piele."
                     },
                     {
-                        question: "Cât de des ar trebui să fac microdermabraziune?",
-                        answer: "Frecvența tratamentului variază în funcție de nevoile pielii. În general, se recomandă o sesiune de microdermabraziune la fiecare 3-4 săptămâni pentru a menține rezultatele și a stimula regenerarea celulară."
+                        question: "Care este diferența față de microdermabraziune?",
+                        answer: "Microdermabraziunea exfoliază mecanic, cu particule abrazive. Hidrodermabraziunea folosește apă și seruri, așa că este mai blândă și hidratează pielea în aceeași ședință."
                     },
                     {
-                        question: "Ce rezultate pot aștepta după microdermabraziune?",
-                        answer: "După microdermabraziune, vei observa o piele mai netedă, mai luminoasă și cu un tonus îmbunătățit. Pielea va arăta mai tânără și mai sănătoasă, cu o reducere vizibilă a liniilor fine și a porilor dilatați."
+                        question: "Cât costă o ședință Aqua Hydra?",
+                        answer: "O ședință de hidrodermabraziune Aqua Hydra costă 210 RON."
                     },
                     {
-                        question: "Este microdermabraziunea potrivită pentru pielea sensibilă?",
-                        answer: "Da, microdermabraziunea este un tratament blând și sigur pentru toate tipurile de piele, inclusiv pielea sensibilă. Tratamentul poate fi ajustat în funcție de sensibilitatea pielii fiecărui pacient."
+                        question: "Cât de des pot face tratamentul?",
+                        answer: "Frecvența depinde de tipul tău de ten și de ce îți dorești. Sună-ne și îți recomandăm ritmul potrivit pentru pielea ta."
                     }
                 ],
-                price: [170],
-                duration: 60
+                price: [210]
             },
             {
                 title: "Tratament Clasic de Curățire",

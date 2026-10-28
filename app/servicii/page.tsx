@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { servicesPageMeta } from "@/lib/metadatas";
 import { serviceSchema } from "@/lib/jsonLds";
-import { categories, contact, photos, priceFrom, ron } from "@/lib/site-content";
-import { BronzShell } from "@/components/bronz/shell";
+import { categories, contact, photos, priceFrom, ron, spotlight } from "@/lib/site-content";
+import { Spotlight } from "@/components/bronz/spotlight";
+import { BronzChoreo } from "@/components/bronz/choreo";
 import { PageHero } from "@/components/bronz/page-hero";
 import { Frame } from "@/components/bronz/frame";
 import { ServiceIndex } from "@/components/bronz/service-index";
@@ -18,7 +19,7 @@ function lowestPrice(services: (typeof categories)[number]["services"]) {
 
 export default function ServicesPage() {
   return (
-    <BronzShell>
+    <BronzChoreo>
       <script id="services-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
 
       <main>
@@ -50,6 +51,8 @@ export default function ServicesPage() {
             </a>
           </div>
         </PageHero>
+
+        {spotlight ? <Spotlight service={spotlight} /> : null}
 
         {/* The two categories, each led by its strongest photograph */}
         <section aria-label="Categorii de tratamente" className="mx-auto flex max-w-[1400px] flex-col gap-28 px-5 py-28 md:gap-40 md:px-10 md:py-40">
@@ -113,12 +116,12 @@ export default function ServicesPage() {
                 Prețul afișat e pentru o ședință; dedesubt vezi pachetele, care ies mai avantajos. Plata se face cash, în lei.
               </p>
             </div>
-            <ServiceIndex />
+            <ServiceIndex lead={spotlight?.title} />
           </div>
         </section>
 
         <BronzContact />
       </main>
-    </BronzShell>
+    </BronzChoreo>
   );
 }

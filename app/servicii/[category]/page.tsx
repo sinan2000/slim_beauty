@@ -5,7 +5,7 @@ import { normalizeString } from '@/lib/utils';
 import { categoryPageMeta } from '@/lib/metadatas';
 import { generateCategorySchema } from '@/lib/jsonLds';
 import { categories, contact, priceFrom, ron } from '@/lib/site-content';
-import { BronzShell } from '@/components/bronz/shell';
+import { BronzChoreo } from '@/components/bronz/choreo';
 import { PageHero } from '@/components/bronz/page-hero';
 import { BronzBreadcrumbs } from '@/components/bronz/breadcrumbs';
 import { ServiceIndex } from '@/components/bronz/service-index';
@@ -28,7 +28,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   const [first, ...rest] = cat.name.split(' ');
 
   return (
-    <BronzShell>
+    <BronzChoreo>
       <script
         id="category-schema"
         type="application/ld+json"
@@ -104,7 +104,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
         <BronzContact />
       </main>
-    </BronzShell>
+    </BronzChoreo>
   );
 }
 

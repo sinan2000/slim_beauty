@@ -13,28 +13,57 @@ function priceLabel(s: PreviewService) {
 /**
  * Every treatment as a price list: title, packages, duration and the single-session price. On a mouse, hovering a
  * row floats that treatment's photo under the cursor (`HoverPreview`); on phones each row carries a thumbnail.
- * `withDescriptions` adds each treatment's short description under its name (category pages).
+ * `withDescriptions` adds each treatment's short description under its name (category pages). `lead` names a
+ * treatment to lift out of its category and open the list with, at a larger size (the salon's newest service).
  */
 export function ServiceIndex({
   categories = allCategories,
   withDescriptions = false,
   showCategoryHeads = true,
   headingLevel = 3,
+  lead,
 }: {
   categories?: Category[];
   withDescriptions?: boolean;
   showCategoryHeads?: boolean;
   /** Level of the category heads; treatment names sit one level below them. */
   headingLevel?: 2 | 3;
+  lead?: string;
 }) {
-  const flat = categories.flatMap((c) => c.services);
+  const leadService = lead ? categories.flatMap((c) => c.services).find((s) => s.title === lead) : undefined;
+  const listed = categories.map((c) => ({ ...c, services: c.services.filter((s) => s !== leadService) }));
+  const flat = [...(leadService ? [leadService] : []), ...listed.flatMap((c) => c.services)];
   const items = flat.map((s) => ({ image: serviceImage(s), price: priceLabel(s) }));
   const CatHead = `h${headingLevel}` as const;
   const RowHead = showCategoryHeads ? (`h${headingLevel + 1}` as "h3" | "h4") : (`h${headingLevel}` as "h2" | "h3");
 
   return (
     <HoverPreview items={items}>
-      {categories.map((cat) => (
+      {leadService ? (
+        <div data-row className="mb-16 border-y border-(--gold)/50 md:mb-24">
+          <Link href={leadService.href} data-preview={0} className="row group grid items-center gap-x-8 gap-y-5 py-8 md:grid-cols-[1fr_auto] md:py-12">
+            <span className="min-w-0">
+              <RowHead className="row-title f-display block text-[clamp(2rem,5vw,4.4rem)] leading-[1] font-normal text-(--cream)">
+                {leadService.title}
+                {leadService.isNew ? (
+                  <span className="f-body ml-3 inline-block translate-y-[-0.6em] rounded-full border border-(--gold)/60 px-2.5 py-0.5 align-middle text-[0.65rem] font-semibold tracking-[0.18em] text-(--gold) not-italic uppercase">
+                    Nou
+                  </span>
+                ) : null}
+              </RowHead>
+              <span className="mt-4 block max-w-[56ch] text-base leading-relaxed text-(--cream-dim)">{leadService.short}</span>
+            </span>
+            <span className="flex flex-col gap-1 md:items-end md:text-right">
+              <span className="f-display text-[clamp(1.6rem,2.6vw,2.2rem)] text-(--gold) italic">
+                <span className="sr-only"> · </span>
+                {priceLabel(leadService)}
+              </span>
+              {leadService.tiers.length ? null : <span className="text-sm text-(--muted)">Prețul depinde de zonă; îl afli la telefon.</span>}
+            </span>
+          </Link>
+        </div>
+      ) : null}
+      {listed.map((cat) => (
         <div key={cat.name} className="mt-16 first:mt-0 md:mt-24">
           {showCategoryHeads ? (
             <div className="flex items-baseline justify-between gap-4 border-b border-(--gold)/50 pb-4">

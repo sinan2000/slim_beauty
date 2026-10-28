@@ -1,16 +1,11 @@
 import "./globals.css";
-import { Inter, Playfair_Display } from 'next/font/google';
+import "@/components/bronz/bronz.css";
 import { CookieConsent } from '@/components/cookie-consent';
-
-import Navbar from "@/components/navbar";
-import Footer from '@/components/footer';
 import { LaunchAnnouncement } from '@/components/launch-announcement';
-import { SiteChromeGate } from '@/components/site-chrome-gate';
+import { bronzFonts } from '@/components/bronz/fonts';
+import { SiteShell } from '@/components/bronz/site-shell';
 import { rootMeta } from "@/lib/metadatas";
 import { BeautySalonSchema, webSiteSchema, navSchema } from "@/lib/jsonLds";
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
 
 export default function RootLayout({
   children,
@@ -19,8 +14,8 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="ro" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
+    <html lang="ro" data-scroll-behavior="smooth" className="scroll-smooth">
+      <body className={`bronz ${bronzFonts} min-h-dvh pb-20 md:pb-0`}>
         <script
           id="website-schema"
           type="application/ld+json"
@@ -38,13 +33,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(navSchema) }}
         />
 
-        <SiteChromeGate>
-          <Navbar />
-        </SiteChromeGate>
-        {children}
-        <SiteChromeGate>
-          <Footer />
-        </SiteChromeGate>
+        <SiteShell>{children}</SiteShell>
         <LaunchAnnouncement />
         <CookieConsent />
       </body>

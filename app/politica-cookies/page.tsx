@@ -21,7 +21,7 @@ export default function CookiePolicyPage() {
 
       <h2>1. Cookie-uri și stocare necesare</h2>
       <p>Acestea fac site-ul să funcționeze și nu pot fi dezactivate din banner.</p>
-      <div className="overflow-x-auto mb-4">
+      <div className="overflow-x-auto">
         <table>
           <thead>
             <tr>
@@ -50,7 +50,7 @@ export default function CookiePolicyPage() {
         Dacă apeși „Accept”, încărcăm Google Tag Manager și Google Analytics, care ne arată în mod agregat câte persoane
         vizitează site-ul și ce pagini citesc. Dacă apeși „Refuz”, aceste servicii nu se încarcă deloc.
       </p>
-      <div className="overflow-x-auto mb-4">
+      <div className="overflow-x-auto">
         <table>
           <thead>
             <tr>
@@ -92,7 +92,7 @@ export default function CookiePolicyPage() {
         retragi acordul, ștergem cookie-urile de analiză și reîncărcăm pagina.
       </p>
       <p>
-        <CookieSettingsButton className="rounded-full border border-pink-500 px-5 py-2.5 font-medium text-pink-600 transition-colors hover:bg-pink-50" />
+        <CookieSettingsButton className="btn-ghost h-11 cursor-pointer px-6 text-sm no-underline!" />
       </p>
       <p>
         Poți șterge sau bloca cookie-urile și din setările browserului tău. Dacă blochezi toate cookie-urile, site-ul va

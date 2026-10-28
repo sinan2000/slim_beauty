@@ -1,312 +1,21 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
-
-@theme {
-  --font-sans: var(--font-inter);
-  --font-playfair: var(--font-playfair);
-
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-
-  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-  --background-image-gradient-conic: conic-gradient(from 180deg at 50% 50%,
-      var(--tw-gradient-stops));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-
-  --color-chart-1: hsl(var(--chart-1));
-  --color-chart-2: hsl(var(--chart-2));
-  --color-chart-3: hsl(var(--chart-3));
-  --color-chart-4: hsl(var(--chart-4));
-  --color-chart-5: hsl(var(--chart-5));
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-fade-in: fadeIn 0.5s ease-out forwards;
-  --animate-fade-hero-in: fadeHeroIn 0.8s ease-out forwards;
-  --animate-slide-up: slideUp 0.8s ease-out forwards;
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-
-    to {
-      height: 0;
-    }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeHeroIn {
-    from {
-      opacity: 0.2;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0.2;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
+/*
+  The site's own styles live in components/bronz/bronz.css (loaded by the root layout). This file only holds
+  Tailwind and the few rules that belong to the document rather than to the bronz world.
+*/
 
 /*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
+  Tailwind v4 borders default to `currentColor`. Hairlines here are always a soft cream on espresso, so that is the
+  default; components that want gold say so explicitly.
 */
 @layer base {
-
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-}
-
-@utility text-balance {
-  text-wrap: balance;
-}
-
-@layer utilities {
-  :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 0, 0, 0;
-      --background-end-rgb: 0, 0, 0;
-    }
-  }
-}
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-/*
-  Scroll reveal.
-
-  Deliberately CSS-only and scroll-timeline driven rather than JS driven. The
-  hidden state exists *only* inside the keyframe, so the served HTML never
-  contains `opacity: 0` - crawlers and text extractors that do not run scripts
-  still see the content. Browsers without `animation-timeline` support simply
-  render everything visible, which is the correct fallback.
-*/
-/* Loading fallback animations - CSS so the root loading UI pulls no JS. */
-@keyframes loading-dot {
-
-  0%,
-  100% {
-    transform: scale(0);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-}
-
-@keyframes loading-bar {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes reveal-in {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/*
-  Hero scroll cue.
-
-  Deliberately NOT Tailwind's built-in bounce utility, which pairs
-  cubic-bezier(0.8, 0, 1, 1) on the way down with cubic-bezier(0, 0, 0.2, 1) on
-  the way up - a gravity/elastic snap that reads as cartoonish against a calm
-  salon hero. This is a slow symmetric sine drift with no overshoot: it still
-  says "there is more below" without yanking the eye back every second.
-
-  Animates `transform` rather than `translate` on purpose - the element is
-  centred with `-translate-x-1/2`, which sets the standalone `translate`
-  property, so the two compose instead of clobbering each other.
-
-  Resting opacity lives on the element, not only in the keyframe, so a
-  reduced-motion visitor gets a still chevron at the same weight rather than
-  whatever frame the animation would have started on.
-*/
-.hero-cue {
-  opacity: 0.7;
-}
-
-@keyframes hero-cue {
-
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.6;
-  }
-
-  50% {
-    transform: translateY(10px);
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-cue {
-    animation: hero-cue 2.8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
-  }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation: reveal-in linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 30%;
-    }
+    border-color: rgb(233 217 191 / 0.14);
   }
 }
 
@@ -332,6 +41,18 @@ html:has(.announcement[open]) {
   }
 }
 
+@keyframes announcement-photo {
+  from {
+    transform: scale(1.08);
+    filter: brightness(0.55);
+  }
+
+  to {
+    transform: none;
+    filter: none;
+  }
+}
+
 @keyframes announcement-backdrop-in {
   from {
     opacity: 0;
@@ -345,6 +66,10 @@ html:has(.announcement[open]) {
 @media (prefers-reduced-motion: no-preference) {
   .announcement[open] {
     animation: announcement-in 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .announcement[open] .announcement-photo {
+    animation: announcement-photo 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .announcement[open]::backdrop {

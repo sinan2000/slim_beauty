@@ -8,11 +8,13 @@ import review2 from "@/assets/reviews/2.jpg";
 import review3 from "@/assets/reviews/3.jpg";
 import before1 from "@/assets/before_after/before1.png";
 import after1 from "@/assets/before_after/after1.png";
-import before2 from "@/assets/before_after/before2.png";
-import after2 from "@/assets/before_after/after2.png";
+// Cropped below the English "Before"/"After" text printed on the originals; the slider labels them in Romanian.
+import before2 from "@/assets/before_after/before2-crop.jpg";
+import after2 from "@/assets/before_after/after2-crop.jpg";
 
 import heroFace from "@/assets/hero.jpg";
 import salonRoom from "@/assets/salon2.jpg";
+import mihaela from "@/assets/mihaela.jpg";
 import bronzDark from "@/assets/services/bronzare/1.jpg";
 import bronzMirror from "@/assets/services/bronzare/2.jpg";
 import bronzBack from "@/assets/services/bronzare/3.jpg";
@@ -23,21 +25,21 @@ import vshapeDark from "@/assets/services/vshape/1.jpg";
 import vshapeDevice from "@/assets/services/vshape/2.jpg";
 import crioRoom from "@/assets/services/crio/2.jpg";
 import crioSession from "@/assets/services/crio/3.jpg";
-import emslimDevice from "@/assets/services/emslim/1.jpg";
+import emslimDevice from "@/assets/services/emslim/device.jpg";
 import presoLegs from "@/assets/services/preso/1.jpg";
-import laserLeg from "@/assets/services/laser/announce.jpg";
-// announce.jpg cropped below its logo inset, so the photo works full-bleed without printed text.
+// The laser promo (announce.jpg) cropped below its logo inset, so the photo works full-bleed without printed text.
 import laserHero from "@/assets/services/laser/hero.jpg";
-import dermaSkin from "@/assets/services/dermapen/1.jpg";
+import dermaSkin from "@/assets/services/dermapen/skin.jpg";
 
 /**
- * Presentation layer over `lib/data.tsx` for the bronz pages (the /servicii routes and the homepage previews):
+ * Presentation layer over `lib/data.tsx` for the bronz pages:
  * photos, contact channels, and services flattened with their package maths. It adds no facts of its own.
  */
 
 export const photos = {
   heroFace,
   salonRoom,
+  mihaela,
   bronzDark,
   bronzMirror,
   bronzBack,
@@ -50,7 +52,7 @@ export const photos = {
   crioSession,
   emslimDevice,
   presoLegs,
-  laserLeg,
+  laserHero,
   dermaSkin,
 } satisfies Record<string, StaticImageData>;
 
@@ -141,6 +143,9 @@ const photoOverrides: Record<string, StaticImageData> = {
   "Bronzare Organică DHA": bronzDark,
   "EMSlim Neo RF": emslimDevice,
 };
+
+/** The treatment the salon is putting forward: featured and new (laser, since October 2026). Lists open with it. */
+export const spotlight = allServices.find((s) => s.featured && s.isNew);
 
 export function serviceImage(s: PreviewService) {
   return photoOverrides[s.title] ?? s.image ?? (s.category.startsWith("Dermato") ? heroFace : salonRoom);
