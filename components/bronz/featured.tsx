@@ -47,7 +47,7 @@ function perSession(price: number, label: string) {
 function Panel({ item }: { item: (typeof featured)[number] }) {
   const { service } = item;
   return (
-    <article data-panel className="grid shrink-0 gap-8 md:h-[min(74vh,42rem)] md:w-[min(84vw,76rem)] md:grid-cols-[1.05fr_1fr] md:gap-12">
+    <article data-panel data-service={service.title} className="grid shrink-0 gap-8 md:h-[min(74vh,42rem)] md:w-[min(84vw,76rem)] md:grid-cols-[1.05fr_1fr] md:gap-12">
       <div className="relative aspect-[4/5] overflow-hidden md:aspect-auto md:h-full">
         {/* Wider than its frame, so the scrubbed parallax in the choreography never shows an edge. */}
         <div data-panel-photo className="absolute inset-y-0 -inset-x-[8%]">

@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 export function MobileBar({ phoneHref, whatsapp, whatsappByPath }: { phoneHref: string; whatsapp: string; whatsappByPath: Record<string, string> }) {
   const pathname = usePathname();
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-(--line) bg-(--espresso)/90 p-3 backdrop-blur-md md:hidden">
+    <div data-cta="mobile_bar" className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-(--line) bg-(--espresso)/90 p-3 backdrop-blur-md md:hidden">
       <a href={phoneHref} className="btn-gold h-12 text-sm">
         Sună
       </a>

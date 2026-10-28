@@ -57,6 +57,8 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
 
   return (
     <BronzChoreo>
+      {/* Tells the analytics listener which treatment this page is about (service_name on contact clicks). */}
+      <span hidden data-service-page={serviceData.title} />
       <script
         id="individual-schema"
         type="application/ld+json"

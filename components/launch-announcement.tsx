@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 // The laser photo cropped clear of the promo graphic's logo inset and printed text.
 import laserPhoto from "@/assets/services/laser/hero.jpg";
 import { CONSENT_CHANGE_EVENT, readConsent } from "@/lib/consent";
+import { track } from "@/lib/analytics";
 
 const SERVICE_HREF = "/servicii/dermato-cosmetica/epilare-definitiva-cu-laser-dioda";
 
@@ -61,6 +62,7 @@ export function LaunchAnnouncement() {
       timer = window.setTimeout(() => {
         shownThisVisit = true;
         dialogRef.current?.showModal();
+        track("announcement_shown");
         // Start on the title rather than the close button, which would otherwise open with a focus ring.
         titleRef.current?.focus();
       }, OPEN_DELAY_MS);
@@ -81,12 +83,23 @@ export function LaunchAnnouncement() {
 
   const close = () => dialogRef.current?.close();
 
+  // A visitor who took one of the dialog's actions didn't dismiss it; onClose only reports a dismissal otherwise.
+  const engaged = useRef(false);
+  const engage = (target: string) => {
+    engaged.current = true;
+    track("announcement_click", { link_url: target });
+  };
+  const onClose = () => {
+    markSeen();
+    if (!engaged.current) track("announcement_dismiss");
+  };
+
   return (
     <dialog
       ref={dialogRef}
       aria-labelledby="announcement-title"
       aria-describedby="announcement-desc"
-      onClose={markSeen}
+      onClose={onClose}
       onClick={(e) => {
         // The content grid fills the dialog, so a click landing on the dialog itself is the backdrop.
         if (e.target === e.currentTarget) close();
@@ -150,10 +163,10 @@ export function LaunchAnnouncement() {
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-4 md:mt-auto md:pt-8">
-            <Link href={SERVICE_HREF} onClick={close} className="btn-gold h-12 whitespace-nowrap px-7 text-sm">
+            <Link href={SERVICE_HREF} onClick={() => { engage(SERVICE_HREF); close(); }} className="btn-gold h-12 whitespace-nowrap px-7 text-sm">
               Descoperă tratamentul
             </Link>
-            <a href="tel:+40733407329" className="link-u inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium text-(--gold)">
+            <a href="tel:+40733407329" onClick={() => engage("tel")} className="link-u inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium text-(--gold)">
               Programează evaluarea · <span className="num">0733 407 329</span>
             </a>
           </div>

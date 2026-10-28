@@ -2,6 +2,7 @@ import "./globals.css";
 import "@/components/bronz/bronz.css";
 import { CookieConsent } from '@/components/cookie-consent';
 import { LaunchAnnouncement } from '@/components/launch-announcement';
+import { AnalyticsEvents } from '@/components/analytics-events';
 import { bronzFonts } from '@/components/bronz/fonts';
 import { SiteShell } from '@/components/bronz/site-shell';
 import { rootMeta } from "@/lib/metadatas";
@@ -36,6 +37,7 @@ export default function RootLayout({
         <SiteShell>{children}</SiteShell>
         <LaunchAnnouncement />
         <CookieConsent />
+        <AnalyticsEvents />
       </body>
     </html>
   );
