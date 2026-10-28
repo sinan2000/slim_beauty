@@ -1,10 +1,10 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { priceFrom, ron, serviceImage, type PreviewService, type Tier } from "@/lib/site-content";
+import { priceFrom, ron, serviceImage, type PreviewService, type Tier, type Unit } from "@/lib/site-content";
 import { Arrow, Plus } from "./ui";
 
-/** Package tiers as the value argument: total, price per session and what the package saves. */
-export function TierTable({ tiers, duration }: { tiers: Tier[]; duration?: number }) {
+/** Package tiers as the value argument: total, price per session (or applicator) and what the package saves. */
+export function TierTable({ tiers, unit, duration }: { tiers: Tier[]; unit: Unit; duration?: number }) {
   return (
     <div>
       <ul className="border-t border-(--gold)/50">
@@ -13,7 +13,7 @@ export function TierTable({ tiers, duration }: { tiers: Tier[]; duration?: numbe
             <span className="f-display text-2xl text-(--cream) md:text-3xl">{t.label}</span>
             <span className="num f-display text-right text-3xl text-(--cream) md:text-4xl">{ron(t.price)}</span>
             <span className="num text-sm text-(--muted)">
-              {t.sessions > 1 ? `${ron(t.perSession)} pe ședință` : duration ? `${duration} de minute` : "o singură ședință"}
+              {t.sessions > 1 ? `${ron(t.perSession)} pe ${unit.one}` : duration ? `${duration} de minute` : `o singură ${unit.one}`}
             </span>
             <span className="num text-right text-sm">
               {t.saving > 0 ? <span className="text-(--gold)">economisești {t.saving}%</span> : <span className="text-(--muted)">preț întreg</span>}

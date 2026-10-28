@@ -155,7 +155,7 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
                     <h2 id="pret" data-split className="f-display text-[clamp(2.4rem,4.6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-(--cream)">
                       {s.tiers.length > 1 ? (
                         <>
-                          Mai multe ședințe, <span className="italic text-(--gold)">preț mai mic</span>
+                          Mai multe {s.unit.many}, <span className="italic text-(--gold)">preț mai mic</span>
                         </>
                       ) : (
                         <>
@@ -165,10 +165,10 @@ export default async function ServicePage({ params }: { params: Promise<{ catego
                     </h2>
                     <p className="mt-6 mb-10 max-w-[44ch] text-base leading-relaxed text-(--muted)">
                       {s.tiers.length > 1
-                        ? 'Cu un pachet, fiecare ședință te costă mai puțin. Plata se face cash, în lei.'
-                        : 'Prețul este pentru o ședință. Plata se face cash, în lei.'}
+                        ? `Cu un pachet, fiecare ${s.unit.one} te costă mai puțin. Plata se face cash, în lei.`
+                        : `Prețul este pentru o ${s.unit.one}. Plata se face cash, în lei.`}
                     </p>
-                    <TierTable tiers={s.tiers} duration={s.duration} />
+                    <TierTable tiers={s.tiers} unit={s.unit} duration={s.duration} />
                   </>
                 )}
               </div>

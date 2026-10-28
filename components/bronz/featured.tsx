@@ -87,7 +87,7 @@ function Panel({ item }: { item: (typeof featured)[number] }) {
                       <th scope="row" className="py-3.5 font-normal text-(--cream-dim)">
                         {tier.label}
                       </th>
-                      <td className="py-3.5 text-sm text-(--muted)">{each ? `${each} RON / ședință` : ""}</td>
+                      <td className="py-3.5 text-sm text-(--muted)">{each ? `${each} RON / ${service.unit.one}` : ""}</td>
                       <td className="f-display py-3.5 text-right text-2xl text-(--cream)">{ron(tier.price)}</td>
                     </tr>
                   );

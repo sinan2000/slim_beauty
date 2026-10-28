@@ -74,9 +74,17 @@ export const contact = {
   ],
 } as const;
 
-/** Package labels the service detail page uses: criolipoliză is sold in 1/2/3, everything else in 1/6/10. */
+/** What one paid unit is called: criolipoliză is sold per applicator placement, everything else per session. */
+export type Unit = { one: string; many: string };
+
+function unitFor(title: string): Unit {
+  return title === "Criolipoliză" ? { one: "aplicare", many: "aplicări" } : { one: "ședință", many: "ședințe" };
+}
+
+/** Package labels: criolipoliză is sold in 1/2/3, everything else in 1/6/10. */
 function tierLabels(title: string) {
-  return title === "Criolipoliză" ? ["o ședință", "2 ședințe", "3 ședințe"] : ["o ședință", "6 ședințe", "10 ședințe"];
+  const { one, many } = unitFor(title);
+  return title === "Criolipoliză" ? [`o ${one}`, `2 ${many}`, `3 ${many}`] : [`o ${one}`, `6 ${many}`, `10 ${many}`];
 }
 
 export type Tier = {
@@ -101,6 +109,7 @@ export type PreviewService = {
   duration?: number;
   /** Empty when the salon prices after an evaluation (laser). */
   tiers: Tier[];
+  unit: Unit;
   image?: StaticImageData;
 };
 
@@ -128,6 +137,7 @@ export const allServices: PreviewService[] = services.flatMap((category) =>
         const perSession = Math.round(price / count);
         return { label: labels[i], price, sessions: count, perSession, saving: i === 0 ? 0 : Math.round(100 - (price / count / item.price[0]) * 100) };
       }),
+      unit: unitFor(item.title),
       image,
     };
   }),
