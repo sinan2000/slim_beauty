@@ -41,10 +41,12 @@ function subscribe(onChange: () => void) {
  * with the same weight.
  */
 export function CookieConsent() {
-  // undefined on the server, so nothing renders until the cookie has been read.
+  // undefined on the server and during hydration: the banner is then rendered into the HTML, so it paints with the
+  // page instead of after the JavaScript (it is the largest text on a phone, so this is the page's LCP for new
+  // visitors). For visitors who already chose, CONSENT_PREPAINT hides it before paint and it unmounts once read.
   const choice = useSyncExternalStore<ConsentChoice | null | undefined>(subscribe, readConsent, () => undefined);
   const [reopened, setReopened] = useState(false);
-  const open = choice === null || reopened;
+  const open = choice === undefined || choice === null || reopened;
 
   useEffect(() => {
     if (choice === "denied") clearAnalyticsCookies();
@@ -72,6 +74,8 @@ export function CookieConsent() {
       {open && (
         <section
           aria-label="Consimțământ cookie-uri"
+          data-cookie-banner
+          data-reopened={reopened ? "" : undefined}
           className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] md:px-4 md:pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))]"
         >
           <div className="mx-auto flex max-w-3xl flex-col gap-3 rounded-2xl border border-(--gold)/30 bg-(--espresso-2)/95 p-4 text-[13px] leading-snug text-(--cream-dim) shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] backdrop-blur-md md:flex-row md:items-center md:gap-6 md:p-6 md:text-sm md:leading-relaxed">

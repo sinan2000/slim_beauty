@@ -5,6 +5,12 @@ export type ConsentChoice = "granted" | "denied";
 export const CONSENT_COOKIE = "sb_consent";
 const CONSENT_DAYS = 180;
 
+/**
+ * Inline script for <head>: marks <html> when a consent choice is already stored, so CSS (bronz.css) hides the
+ * server-rendered cookie banner before the first paint.
+ */
+export const CONSENT_PREPAINT = `if(/(?:^|;\\s*)${CONSENT_COOKIE}=(?:granted|denied)/.test(document.cookie))document.documentElement.dataset.consent="1"`;
+
 /** Fired on window after the visitor accepts or rejects analytics cookies. */
 export const CONSENT_CHANGE_EVENT = "sb:consent-change";
 /** Fired on window to reopen the banner (footer and cookie policy "Setări cookie"). */

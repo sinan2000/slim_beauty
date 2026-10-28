@@ -72,98 +72,140 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
   return s;
 }
 
-/** Slow "liquid gold" light over the hero photo. Screen-blended, pauses off-screen, frozen under reduced motion. */
+/** The light is a soft blur, so half the CSS size (ignoring DPR) looks the same and shades a quarter of the pixels. */
+const RENDER_SCALE = 0.5;
+const FRAME_MS = 1000 / 30;
+
+/**
+ * GPU emulated on the CPU (SwiftShader, llvmpipe, Windows' Basic Render Driver): a full-screen shader there blocks
+ * the main thread for seconds. Lighthouse and PageSpeed run this way, as do some low-end and VM browsers.
+ */
+function isSoftwareRenderer(gl: WebGLRenderingContext) {
+  const info = gl.getExtension("WEBGL_debug_renderer_info");
+  const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : "";
+  return /swiftshader|llvmpipe|softpipe|software|basic render/i.test(renderer);
+}
+
+/**
+ * Slow "liquid gold" light over the hero photo. Screen-blended, pauses off-screen, frozen under reduced motion.
+ * Starts only once the page has loaded and the main thread is idle, renders at half resolution and 30 fps, and is
+ * skipped on software renderers, where the hero keeps its static photo and gradient.
+ */
 export function GoldLight({ className }: { className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas) return;
-    const gl = canvas.getContext("webgl", { premultipliedAlpha: true, antialias: false, alpha: true });
-    if (!gl) return;
+    let stop = () => {};
+    let cancelled = false;
 
-    const vs = compile(gl, gl.VERTEX_SHADER, VERT);
-    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
-    if (!vs || !fs) return;
-    const prog = gl.createProgram()!;
-    gl.attachShader(prog, vs);
-    gl.attachShader(prog, fs);
-    gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
-    gl.useProgram(prog);
-
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    const loc = gl.getAttribLocation(prog, "a_pos");
-    gl.enableVertexAttribArray(loc);
-    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-
-    const uRes = gl.getUniformLocation(prog, "u_res");
-    const uTime = gl.getUniformLocation(prog, "u_time");
-    const uMouse = gl.getUniformLocation(prog, "u_mouse");
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const target = { x: 0.72, y: 0.55 };
-    const mouse = { x: 0.72, y: 0.55 };
-
-    const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      const w = Math.round(canvas.clientWidth * dpr);
-      const h = Math.round(canvas.clientHeight * dpr);
-      if (canvas.width !== w || canvas.height !== h) {
-        canvas.width = w;
-        canvas.height = h;
-        gl.viewport(0, 0, w, h);
-      }
+    const begin = () => {
+      if (cancelled) return;
+      stop = run(canvas);
     };
-
-    const draw = (time: number) => {
-      resize();
-      mouse.x += (target.x - mouse.x) * 0.04;
-      mouse.y += (target.y - mouse.y) * 0.04;
-      gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.uniform1f(uTime, time);
-      gl.uniform2f(uMouse, mouse.x, mouse.y);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-    };
-
-    let raf = 0;
-    let visible = true;
-    const start = performance.now();
-    const loop = () => {
-      draw((performance.now() - start) / 1000 + 20);
-      raf = visible ? requestAnimationFrame(loop) : 0;
-    };
-
-    const onMove = (e: PointerEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      target.x = (e.clientX - rect.left) / rect.width;
-      target.y = 1 - (e.clientY - rect.top) / rect.height;
-    };
-
-    const io = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      if (visible && !raf && !reduced) raf = requestAnimationFrame(loop);
-    });
-
-    if (reduced) {
-      draw(20);
-    } else {
-      io.observe(canvas);
-      window.addEventListener("pointermove", onMove, { passive: true });
-      raf = requestAnimationFrame(loop);
-    }
-    const onResize = () => reduced && draw(20);
-    window.addEventListener("resize", onResize);
+    // Safari has no requestIdleCallback.
+    const idle = () => (typeof window.requestIdleCallback === "function" ? window.requestIdleCallback(begin, { timeout: 2000 }) : setTimeout(begin, 200));
+    if (document.readyState === "complete") idle();
+    else window.addEventListener("load", idle, { once: true });
 
     return () => {
-      cancelAnimationFrame(raf);
-      io.disconnect();
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("resize", onResize);
+      cancelled = true;
+      window.removeEventListener("load", idle);
+      stop();
     };
   }, []);
 
   return <canvas ref={ref} aria-hidden="true" className={className} />;
+}
+
+/** Sets up the shader and its loop; returns the cleanup. */
+function run(canvas: HTMLCanvasElement): () => void {
+  const gl = canvas.getContext("webgl", { premultipliedAlpha: true, antialias: false, alpha: true, powerPreference: "low-power" });
+  if (!gl || isSoftwareRenderer(gl)) return () => {};
+
+  const vs = compile(gl, gl.VERTEX_SHADER, VERT);
+  const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
+  if (!vs || !fs) return () => {};
+  const prog = gl.createProgram()!;
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return () => {};
+  gl.useProgram(prog);
+
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, "a_pos");
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  const uRes = gl.getUniformLocation(prog, "u_res");
+  const uTime = gl.getUniformLocation(prog, "u_time");
+  const uMouse = gl.getUniformLocation(prog, "u_mouse");
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const target = { x: 0.72, y: 0.55 };
+  const mouse = { x: 0.72, y: 0.55 };
+
+  const resize = () => {
+    const w = Math.max(1, Math.round(canvas.clientWidth * RENDER_SCALE));
+    const h = Math.max(1, Math.round(canvas.clientHeight * RENDER_SCALE));
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+      gl.viewport(0, 0, w, h);
+    }
+  };
+
+  const draw = (time: number) => {
+    resize();
+    mouse.x += (target.x - mouse.x) * 0.04;
+    mouse.y += (target.y - mouse.y) * 0.04;
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uTime, time);
+    gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  };
+
+  let raf = 0;
+  let visible = true;
+  let last = 0;
+  const start = performance.now();
+  const loop = (now: number) => {
+    if (now - last >= FRAME_MS) {
+      last = now;
+      draw((now - start) / 1000 + 20);
+    }
+    raf = visible ? requestAnimationFrame(loop) : 0;
+  };
+
+  const onMove = (e: PointerEvent) => {
+    const rect = canvas.getBoundingClientRect();
+    target.x = (e.clientX - rect.left) / rect.width;
+    target.y = 1 - (e.clientY - rect.top) / rect.height;
+  };
+
+  const io = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible && !raf && !reduced) raf = requestAnimationFrame(loop);
+  });
+
+  if (reduced) {
+    draw(20);
+  } else {
+    io.observe(canvas);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    raf = requestAnimationFrame(loop);
+  }
+  const onResize = () => reduced && draw(20);
+  window.addEventListener("resize", onResize);
+
+  return () => {
+    cancelAnimationFrame(raf);
+    io.disconnect();
+    window.removeEventListener("pointermove", onMove);
+    window.removeEventListener("resize", onResize);
+  };
 }

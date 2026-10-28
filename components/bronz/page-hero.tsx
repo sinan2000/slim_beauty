@@ -3,7 +3,7 @@ import { GoldLight } from "./gold-light";
 
 /**
  * Full-height photographic hero. The photo eases in with CSS (`.hero-photo`); the title and the content under it
- * are the choreography's `data-hero-title` / `data-hero-sub`, held hidden by CSS until GSAP brings them in.
+ * are the choreography's `data-hero-title` (held hidden until GSAP splits it) and `data-hero-sub` (CSS entrance).
  */
 export function PageHero({
   photo,

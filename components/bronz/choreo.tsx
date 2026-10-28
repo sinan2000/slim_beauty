@@ -13,7 +13,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
  * optional, so a page opts in by marking elements:
  *
  * - `data-hero` (value `"pin"` pins it on desktop) with `data-hero-title`, `data-hero-sub`, `data-hero-photo`:
- *   masked word rise on load, then a scrubbed exit. The photo's entrance is CSS (`.hero-photo`).
+ *   masked word rise on load, then a scrubbed exit. The photo and the copy under the title enter in CSS.
  * - `data-split`: headings rise line by line in masks.
  * - `data-scrub-words`: words light up as the paragraph scrolls past.
  * - `data-curtain` (`"rise"` | `"side"`) with `data-curtain-img`: clip-path opening plus a scrubbed drift.
@@ -56,9 +56,9 @@ export function BronzChoreo({ className, children }: { className?: string; child
               const split = title ? SplitText.create(title, { type: "lines,words", mask: "lines", linesClass: "hero-line" }) : null;
 
               if (split) gsap.from(split.words, { yPercent: 115, rotate: 4, duration: 1.4, ease: "expo.out", stagger: 0.06, delay: 0.15 });
-              if (sub) gsap.from(sub.children, { autoAlpha: 0, y: 24, duration: 1.2, ease: "expo.out", stagger: 0.12, delay: 0.6 });
-              // CSS held these hidden until now; the tweens above already hold them at their start.
-              gsap.set([title, sub].filter(Boolean), { visibility: "visible" });
+              // The copy under the title enters in CSS (bronz.css, bz-sub) so it paints without waiting for this script.
+              // CSS held the title hidden until now; the word tween above already holds it at its start.
+              if (title) gsap.set(title, { visibility: "visible" });
 
               const pin = desktop && hero.dataset.hero === "pin";
               const exit = gsap.timeline({

@@ -1,6 +1,7 @@
 import "./globals.css";
 import "@/components/bronz/bronz.css";
 import { CookieConsent } from '@/components/cookie-consent';
+import { CONSENT_PREPAINT } from '@/lib/consent';
 import { LaunchAnnouncement } from '@/components/launch-announcement';
 import { AnalyticsEvents } from '@/components/analytics-events';
 import { bronzFonts } from '@/components/bronz/fonts';
@@ -15,7 +16,12 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="ro" data-scroll-behavior="smooth" className="scroll-smooth">
+    // suppressHydrationWarning: the inline script below sets data-consent on <html> before React hydrates.
+    <html lang="ro" data-scroll-behavior="smooth" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        {/* Runs before first paint: visitors who already chose never see the server-rendered cookie banner flash. */}
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_PREPAINT }} />
+      </head>
       <body className={`bronz ${bronzFonts} min-h-dvh pb-20 md:pb-0`}>
         <script
           id="website-schema"
