@@ -128,7 +128,7 @@ export function LaunchAnnouncement() {
             tabIndex={-1}
             className="f-display text-[2.4rem] leading-[1] font-normal tracking-[-0.02em] text-(--cream) outline-none md:text-[3.2rem]"
           >
-            Epilare definitivă
+            Epilare definitivă{" "}
             <span className="block italic text-(--gold)">cu laser diodă</span>
           </h2>
 

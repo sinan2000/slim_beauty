@@ -77,10 +77,12 @@ export function BronzChoreo({ className, children }: { className?: string; child
 
             /* ---- Words that light up as you read ---- */
             q("[data-scrub-words]").forEach((el) => {
-              const words = SplitText.create(el, { type: "words" });
+              // aria "none": the default puts an aria-label on the <p>, which is not allowed on a paragraph.
+              const words = SplitText.create(el, { type: "words", aria: "none" });
               gsap.fromTo(
                 words.words,
-                { opacity: 0.16 },
+                // 0.55 keeps the unread words, gold italics included, above 3:1 contrast on the espresso background.
+                { opacity: 0.55 },
                 { opacity: 1, ease: "none", stagger: 0.1, scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: true } },
               );
             });
@@ -173,7 +175,8 @@ export function BronzChoreo({ className, children }: { className?: string; child
 
             /* ---- Headings ---- */
             q("[data-split]").forEach((heading) => {
-              const s = SplitText.create(heading, { type: "lines", mask: "lines" });
+              // A paragraph can't carry the aria-label SplitText adds by default; headings can.
+              const s = SplitText.create(heading, { type: "lines", mask: "lines", aria: heading.tagName === "P" ? "none" : "auto" });
               gsap.from(s.lines, {
                 yPercent: 105,
                 duration: 1.2,

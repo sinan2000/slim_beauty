@@ -32,7 +32,8 @@ function generateOG(
     locale: "ro_RO",
     type: "website",
     images: [
-      photo
+      // Only a photo that is at least 1200x630 is used; smaller ones crop badly when shared, so they fall back to the logo card.
+      photo && photo.width >= 1200 && photo.height >= 630
         ? {
           url: photo.src,
           alt: alt ? `${alt} la Slim & Beauty by MC` : defaultOgImage.alt,

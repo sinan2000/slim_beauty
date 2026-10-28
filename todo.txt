@@ -1,7 +1,5 @@
-make epilare definitiva more primary, like show it properly
-- create 'servicii similare' in service detail page;
+- poza scaun salon
 
-sitemap include media?
+- full check
 
-continue with plan:
-/sns-web:page-review https://<domain>/
+- analytics track events properly

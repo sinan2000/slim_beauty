@@ -28,7 +28,7 @@ export function BronzBreadcrumbs({ category, service }: { category?: string; ser
               {last ? (
                 <span aria-current="page" className="text-(--cream-dim)">{c.label}</span>
               ) : (
-                <Link href={c.href} className="link-u hover:text-(--cream)">{c.label}</Link>
+                <Link href={c.href} className="link-u inline-flex min-h-11 items-center hover:text-(--cream)">{c.label}</Link>
               )}
               {last ? null : <span aria-hidden="true" className="text-(--gold)/70">/</span>}
             </li>

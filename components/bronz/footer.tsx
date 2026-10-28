@@ -27,10 +27,10 @@ export function BronzFooter() {
           <Link href="/" aria-label="Slim & Beauty by MC, pagina principală" className="text-(--cream)">
             <BronzLogo variant="full" title="Slim & Beauty by MC" className="h-auto w-[min(26rem,78vw)]" />
           </Link>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <ul className="flex flex-wrap gap-x-6 text-sm">
             {socials.map((s) => (
               <li key={s.label}>
-                <a href={s.href} target="_blank" rel="noopener" className="link-u text-(--cream-dim) hover:text-(--gold)">
+                <a href={s.href} target="_blank" rel="noopener" className="link-u inline-flex min-h-11 items-center text-(--cream-dim) hover:text-(--gold)">
                   {s.label}
                 </a>
               </li>
@@ -43,13 +43,13 @@ export function BronzFooter() {
               © {company.legalName} · CUI {company.cui} · Nr. Reg. Com. {company.regCom}
             </p>
             <p>Sediu: {company.address}</p>
-            <nav aria-label="Informații legale" className="flex flex-wrap gap-x-6 gap-y-2">
+            <nav aria-label="Informații legale" className="flex flex-wrap gap-x-6">
               {legal.map((l) => (
-                <Link key={l.href} href={l.href} className="link-u hover:text-(--cream)">
+                <Link key={l.href} href={l.href} className="link-u inline-flex min-h-11 items-center hover:text-(--cream)">
                   {l.label}
                 </Link>
               ))}
-              <CookieSettingsButton className="link-u cursor-pointer hover:text-(--cream)" />
+              <CookieSettingsButton className="link-u inline-flex min-h-11 cursor-pointer items-center hover:text-(--cream)" />
             </nav>
           </div>
           <div className="flex flex-wrap items-center gap-6">

@@ -90,7 +90,7 @@ export function RelatedServices({ items }: { items: PreviewService[] }) {
                 <Image src={serviceImage(s)} alt={`Tratament ${s.title} la Slim & Beauty by MC`} fill placeholder="blur" sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="object-cover" />
               </span>
               <span className="mt-6 flex items-baseline justify-between gap-4">
-                <span className="f-display text-[1.7rem] leading-tight text-(--cream) transition-colors group-hover:text-(--gold)">{s.title}</span>
+                <span className="f-display min-w-0 text-[1.7rem] leading-tight break-words text-(--cream) transition-colors group-hover:text-(--gold)">{s.title}</span>
                 <span className="num shrink-0 text-sm text-(--muted)">{from === null ? "La evaluare" : `de la ${ron(from)}`}</span>
               </span>
               <span className="mt-3 block text-base leading-relaxed">{s.short}</span>

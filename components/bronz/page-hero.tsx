@@ -33,6 +33,8 @@ export function PageHero({
         <Image src={photo} alt={alt} fill priority placeholder="blur" sizes="100vw" className="object-cover" style={{ objectPosition: position }} />
       </div>
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(21,16,12,.94)_0%,rgba(21,16,12,.62)_45%,rgba(21,16,12,.12)_80%),linear-gradient(0deg,rgba(21,16,12,1)_0%,rgba(21,16,12,0)_45%),linear-gradient(180deg,rgba(21,16,12,.7)_0%,rgba(21,16,12,0)_22%)]" />
+      {/* Phones: the text runs the full width, so the side gradient above isn't enough over a bright photo. */}
+      <div className="absolute inset-0 -z-10 md:hidden bg-[linear-gradient(0deg,rgba(21,16,12,.9)_0%,rgba(21,16,12,.74)_50%,rgba(21,16,12,0)_85%),linear-gradient(180deg,rgba(21,16,12,.72)_0%,rgba(21,16,12,0)_40%)]" />
       {goldLight ? <GoldLight className="pointer-events-none absolute inset-0 -z-10 h-full w-full mix-blend-screen" /> : null}
 
       <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pt-24 pb-24 md:px-10 md:pt-32 md:pb-20">

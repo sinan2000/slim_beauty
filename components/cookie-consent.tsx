@@ -74,10 +74,10 @@ export function CookieConsent() {
           aria-label="Consimțământ cookie-uri"
           className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] md:px-4 md:pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))]"
         >
-          <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-(--gold)/30 bg-(--espresso-2)/95 p-5 text-sm leading-relaxed text-(--cream-dim) shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] backdrop-blur-md md:flex-row md:items-center md:gap-6 md:p-6">
+          <div className="mx-auto flex max-w-3xl flex-col gap-3 rounded-2xl border border-(--gold)/30 bg-(--espresso-2)/95 p-4 text-[13px] leading-snug text-(--cream-dim) shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] backdrop-blur-md md:flex-row md:items-center md:gap-6 md:p-6 md:text-sm md:leading-relaxed">
             <p className="flex-1">
               Folosim cookie-uri de analiză (Google Analytics) doar cu acordul tău, ca să vedem cum este folosit
-              site-ul. Poți schimba oricând alegerea din „Setări cookie”, în subsolul paginii. Detalii în{" "}
+              site-ul.<span className="hidden md:inline"> Poți schimba oricând alegerea din „Setări cookie”, în subsolul paginii.</span> Detalii în{" "}
               <Link href="/politica-cookies" className="text-(--gold) underline underline-offset-4">
                 Politica de cookies
               </Link>

@@ -68,7 +68,7 @@ export function ServiceIndex({
           {showCategoryHeads ? (
             <div className="flex items-baseline justify-between gap-4 border-b border-(--gold)/50 pb-4">
               <CatHead className="f-display text-2xl text-(--gold) italic md:text-3xl">{cat.name}</CatHead>
-              <Link href={cat.href} className="link-u shrink-0 text-sm text-(--muted) hover:text-(--cream)">
+              <Link href={cat.href} className="link-u relative shrink-0 text-sm text-(--muted) hover:text-(--cream) after:absolute after:inset-x-0 after:-inset-y-3">
                 Vezi categoria
               </Link>
             </div>

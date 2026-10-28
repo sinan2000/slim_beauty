@@ -94,7 +94,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   <p className="num mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
-                    <Link href={cat.href} className="link-u inline-flex items-center gap-3 text-(--gold)">
+                    <Link href={cat.href} className="link-u relative inline-flex items-center gap-3 text-(--gold) after:absolute after:inset-x-0 after:-inset-y-3">
                       Vezi cele {cat.services.length} tratamente <Arrow />
                     </Link>
                     {from !== null ? <span className="text-sm text-(--muted)">de la {ron(from)} pe ședință</span> : null}

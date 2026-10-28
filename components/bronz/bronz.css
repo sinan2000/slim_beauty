@@ -11,6 +11,8 @@ html:has(.bronz)::-webkit-scrollbar-thumb { background: #6b5236; border-radius: 
   --cream: #f1e6d3; --cream-dim: #d9c9b0; --muted: #b5a088;
   --gold: #d5b071; --gold-deep: #a97c42; --line: rgba(233, 217, 191, 0.14);
   background: var(--espresso); color: var(--cream-dim);
+  /* `clip`, not `hidden`: keeps the entrance transforms from adding a sideways scrollbar without breaking pinning. */
+  overflow-x: clip;
   font-family: var(--font-manrope), system-ui, sans-serif;
   caret-color: var(--gold);
 }
